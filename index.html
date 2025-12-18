@@ -2,10 +2,10 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <title>مؤسسة إبداع الظل | سندوتش بنل ومظلات وملاحق احترافية</title>
+    <title>مؤسسة إبداع الظل | سندوتش بنل ومظلات وملاحق احترافية في الرياض</title>
     <meta
       name="description"
-      content="مؤسسة إبداع الظل – تنفيذ وتركيب سندوتش بنل، مستودعات، ملاحق، مظلات سيارات وحدائق، سواتر وحدادة مميزة في الرياض وما حولها."
+      content="مؤسسة إبداع الظل متخصصة في تنفيذ السندوتش بنل، المستودعات، الهناجر، الملاحق، مظلات السيارات والحدائق، والسواتر والحدادة في الرياض وما حولها مع عزل حراري عالي وتشطيب نظيف."
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
@@ -25,13 +25,14 @@
               sans: ['Tajawal', 'system-ui', 'sans-serif'],
             },
             colors: {
-              primary: '#071824',
-              primarySoft: '#0b2535',
-              accent: '#d4af37',
-              accentSoft: '#f3e4b3',
+              primary: '#020617',
+              primarySoft: '#0b1120',
+              accent: '#eab308',
+              accentSoft: '#facc15',
             },
             boxShadow: {
-              soft: '0 18px 45px rgba(0,0,0,.35)',
+              soft: '0 18px 45px rgba(0,0,0,.45)',
+              card: '0 18px 35px rgba(15,23,42,.70)',
             },
           },
         },
@@ -39,32 +40,70 @@
     </script>
 
     <style>
-      /* تأثير 3D خفيف على سلايدر الهيرو */
-      .tilt-hero {
-        transform-style: preserve-3d;
-        transition: transform 0.25s ease, box-shadow 0.25s ease;
-      }
-      .tilt-hero.is-tilting {
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65);
-      }
       html {
         scroll-behavior: smooth;
         font-family: 'Tajawal', system-ui, sans-serif;
       }
 
-      /* خلفية متحركة خفيفة */
-      .bg-hero-animated {
-        background: radial-gradient(circle at top, #1e293b 0, #020617 45%, #000 100%);
+      body {
+  background:
+    radial-gradient(circle at 0% 0%, rgba(234, 179, 8, 0.08) 0, transparent 45%),
+    radial-gradient(circle at 100% 0%, rgba(56, 189, 248, 0.08) 0, transparent 45%),
+    radial-gradient(circle at 50% 100%, rgba(34, 197, 94, 0.12) 0, transparent 50%),
+    radial-gradient(circle at 50% 20%, #020617 0, #020617 40%, #020617 55%, #000 100%);
+}
+      /* خلفية خطوط خفيفة */
+      .grid-bg {
+        background-image: linear-gradient(
+            rgba(148, 163, 184, 0.08) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(148, 163, 184, 0.08) 1px, transparent 1px);
+        background-size: 32px 32px;
       }
 
-      /* زجاجية */
       .glass {
-        background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(15, 23, 42, 0.8));
-        border: 1px solid rgba(148, 163, 184, 0.3);
+        background: linear-gradient(
+          135deg,
+          rgba(15, 23, 42, 0.96),
+          rgba(15, 23, 42, 0.88)
+        );
+        border: 1px solid rgba(148, 163, 184, 0.35);
         backdrop-filter: blur(18px);
       }
-
-      /* بوردر متدرج للكروت مع حل مشكلة الـ mask */
+       .scroll-top-btn {
+        position: fixed;
+        bottom: 4.5rem;
+        right: 1.2rem;
+        width: 40px;
+        height: 40px;
+        border-radius: 999px;
+        border: none;
+        background: radial-gradient(circle at 30% 0, #facc15, #d4af37);
+        color: #020617;
+        font-weight: 700;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.75);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(10px);
+        transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+        z-index: 40;
+      }
+      .scroll-top-btn.show {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+      .scroll-top-btn:hover {
+        transform: translateY(-2px);
+      }
       .gradient-border {
         position: relative;
       }
@@ -73,8 +112,15 @@
         position: absolute;
         inset: 0;
         padding: 1px;
-        border-radius: 1.25rem;
-        background: linear-gradient(135deg, #d4af37, rgba(148, 163, 184, 0.5));
+        border-radius: 1.75rem;
+        background: conic-gradient(
+          from 160deg,
+          #eab308,
+          #22c55e,
+          #0ea5e9,
+          rgba(148, 163, 184, 0.5),
+          #eab308
+        );
 
         /* القناع القياسي */
         mask:
@@ -82,7 +128,7 @@
           linear-gradient(#000 0 0);
         mask-composite: exclude;
 
-        /* للمتصفحات القديمة / WebKit */
+        /* للويب كيت */
         -webkit-mask:
           linear-gradient(#000 0 0) content-box,
           linear-gradient(#000 0 0);
@@ -91,18 +137,6 @@
         z-index: -1;
       }
 
-      /* أنيميشن دخول بسيط */
-      .fade-up {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
-      }
-      .fade-up.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* كروت بـ هوفر ناعم */
       .hover-card {
         transition:
           transform 0.25s ease,
@@ -110,18 +144,76 @@
           border-color 0.25s ease,
           background 0.25s ease;
       }
-      .hover-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 22px 55px rgba(0, 0, 0, 0.55);
-        border-color: rgba(212, 175, 55, 0.85);
-        background: linear-gradient(
-          145deg,
-          rgba(15, 23, 42, 0.96),
-          rgba(15, 23, 42, 0.9)
-        );
+       .pill-metric {
+        border-radius: 999px;
+        border: 1px solid rgba(148, 163, 184, 0.45);
+        background:
+          radial-gradient(circle at 0 0, rgba(248, 250, 252, 0.06), transparent 60%),
+          rgba(15, 23, 42, 0.96);
+        padding: 0.4rem 0.8rem;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        white-space: nowrap;
       }
+.timeline {
+        position: relative;
+        padding-right: 1.5rem;
+      }
+      .timeline::before {
+        content: '';
+        position: absolute;
+        top: 0.75rem;
+        bottom: 0.75rem;
+        right: 1.2rem;
+        width: 2px;
+        background: linear-gradient(
+          to bottom,
+          rgba(148, 163, 184, 0.15),
+          rgba(234, 179, 8, 0.8)
+        );
+        opacity: 0.9;
+      }
+      .timeline-item {
+        position: relative;
+        display: flex;
+        gap: 0.75rem;
+      }
+      .timeline-marker {
+        position: relative;
+        z-index: 1;
+      }
+      .timeline-dot {
+        width: 28px;
+        height: 28px;
+        border-radius: 999px;
+        background: radial-gradient(circle at 30% 0, #facc15, #d4af37);
+        border: 2px solid #020617;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #020617;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.65);
+      }
+      @media (max-width: 767px) {
+        .timeline {
+          padding-right: 0.5rem;
+        }
+        .timeline::before {
+          right: 0.9rem;
+        }
+      }
+      .hover-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: 0 26px 65px rgba(0, 0, 0, 0.85);
+  border-color: rgba(234, 179, 8, 0.95);
+  background: radial-gradient(circle at top, rgba(250, 250, 250, 0.04), transparent 60%),
+              linear-gradient(145deg, rgba(15, 23, 42, 1), rgba(15, 23, 42, 0.96));
+}
+      
 
-      /* أزرار رئيسية بلمعة خفيفة */
       .btn-main {
         position: relative;
         overflow: hidden;
@@ -136,7 +228,7 @@
         inset: 0;
         background: radial-gradient(
           circle at 0 0,
-          rgba(255, 255, 255, 0.22),
+          rgba(255, 255, 255, 0.25),
           transparent 55%
         );
         opacity: 0;
@@ -144,13 +236,12 @@
       }
       .btn-main:hover {
         transform: translateY(-2px);
-        box-shadow: 0 14px 35px rgba(0, 0, 0, 0.55);
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
       }
       .btn-main:hover::before {
         opacity: 1;
       }
 
-      /* أزرار حدودية (مثل زر الاتصال) */
       .btn-outline {
         transition:
           transform 0.18s ease,
@@ -160,11 +251,74 @@
       }
       .btn-outline:hover {
         transform: translateY(-2px);
-        border-color: #d4af37;
-        background: rgba(15, 23, 42, 0.9);
+        border-color: #eab308;
+        background: rgba(15, 23, 42, 0.95);
+        color: #fefce8;
       }
 
-      /* FAQ – شكل أجمل عند الفتح (في حال إضافة قسم FAQ) */
+      .fade-up {
+        opacity: 0;
+        transform: translateY(22px);
+        transition: all 0.7s cubic-bezier(0.22, 0.61, 0.36, 1);
+      }
+      .fade-up.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .brand-logo {
+        animation: logoGlow 3.2s ease-in-out infinite;
+      }
+      @keyframes logoGlow {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+        }
+        50% {
+          transform: translateY(-1px) scale(1.06);
+          box-shadow: 0 16px 40px rgba(234, 179, 8, 0.55);
+        }
+      }
+
+      .hero-shine {
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-shine::after {
+        content: '';
+        position: absolute;
+        top: -40%;
+        bottom: -40%;
+        right: -60%;
+        left: -60%;
+        background: linear-gradient(
+          115deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.25) 45%,
+          rgba(255, 255, 255, 0.7) 50%,
+          rgba(255, 255, 255, 0.25) 55%,
+          transparent 100%
+        );
+        transform: translateX(-140%) rotate(12deg);
+        animation: heroShine 7s ease-in-out infinite;
+        mix-blend-mode: screen;
+        opacity: 0.35;
+        pointer-events: none;
+      }
+      @keyframes heroShine {
+        0% {
+          transform: translateX(-140%) rotate(12deg);
+        }
+        18% {
+          transform: translateX(140%) rotate(12deg);
+        }
+        100% {
+          transform: translateX(140%) rotate(12deg);
+        }
+      }
+
+      /* FAQ */
       .faq-item summary::-webkit-details-marker {
         display: none;
       }
@@ -173,7 +327,7 @@
       }
       details[open] .faq-icon {
         transform: rotate(180deg);
-        background: rgba(212, 175, 55, 0.18);
+        background: rgba(234, 179, 8, 0.16);
         color: #fef9c3;
       }
       .faq-body {
@@ -189,193 +343,163 @@
           transform: translateY(0);
         }
       }
-
-      /* أنيميشن لوجو الهيدر */
-      .brand-link {
-        transition: transform 0.2s ease;
-      }
-      .brand-link:hover {
-        transform: translateY(-1px);
-      }
-      .brand-logo {
-        position: relative;
-        animation: logoGlow 3.2s ease-in-out infinite;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
-      }
-      @keyframes logoGlow {
-        0%,
-        100% {
-          transform: translateY(0) scale(1);
-          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
-        }
-        50% {
-          transform: translateY(-1px) scale(1.05);
-          box-shadow: 0 16px 40px rgba(212, 175, 55, 0.45);
-        }
-      }
-
-      /* لمعة متحركة تمر على سلايدر الهيرو */
-      .hero-slider {
-        position: relative;
-        overflow: hidden;
-      }
-      .hero-slider::after {
-        content: '';
-        position: absolute;
-        top: -40%;
-        bottom: -40%;
-        right: -60%;
-        left: -60%;
-        background: linear-gradient(
-          115deg,
-          transparent 0%,
-          rgba(255, 255, 255, 0.25) 45%,
-          rgba(255, 255, 255, 0.7) 50%,
-          rgba(255, 255, 255, 0.25) 55%,
-          transparent 100%
-        );
-        transform: translateX(-130%) rotate(10deg);
-        animation: heroShine 7s ease-in-out infinite;
-        mix-blend-mode: screen;
-        opacity: 0.35;
-        pointer-events: none;
-      }
-      @keyframes heroShine {
-        0% {
-          transform: translateX(-140%) rotate(10deg);
-        }
-        18% {
-          transform: translateX(140%) rotate(10deg);
-        }
-        100% {
-          transform: translateX(140%) rotate(10deg);
-        }
-      }
     </style>
   </head>
 
-  <body class="min-h-screen bg-slate-950 text-slate-50">
-    <!-- شريط تقدم التمرير -->
-    <div id="scrollProgress" style="
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 3px;
-      width: 0;
-      z-index: 50;
-      background: linear-gradient(90deg, #d4af37, #facc15);
-      box-shadow: 0 0 18px rgba(250, 204, 21, 0.7);
-      pointer-events: none;
-    "></div>    <div
-      class="fixed inset-0 bg-hero-animated bg-no-repeat bg-cover bg-center opacity-95 -z-10"
-    ></div>
+  <body class="min-h-screen text-slate-50 bg-slate-950">
+    <!-- خلفية إضاءة دائرية -->
     <div
-      class="fixed inset-0 opacity-20 -z-10"
+      class="pointer-events-none fixed inset-0 -z-10 opacity-40"
       style="
-        background-image: radial-gradient(circle at 10% 20%, #d4af37 0, transparent 40%),
-          radial-gradient(circle at 90% 10%, #22c55e 0, transparent 40%),
-          radial-gradient(circle at 50% 90%, #0ea5e9 0, transparent 45%);
+        background-image:
+          radial-gradient(circle at 10% 15%, rgba(234, 179, 8, 0.4) 0, transparent 45%),
+          radial-gradient(circle at 85% 10%, rgba(56, 189, 248, 0.35) 0, transparent 45%),
+          radial-gradient(circle at 50% 85%, rgba(34, 197, 94, 0.35) 0, transparent 45%);
       "
     ></div>
 
-    <!-- هيدر ثابت -->
+    <!-- هيدر -->
     <header class="sticky top-0 z-40">
-      <div class="backdrop-blur-xl bg-black/40 border-b border-white/10">
+      <div class="backdrop-blur-xl bg-black/55 border-b border-white/10">
         <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
-          <!-- الشعار -->
-          <a href="#hero" class="flex items-center gap-3 brand-link">
+          <!-- شعار -->
+          <a href="#hero" class="flex items-center gap-3">
             <div
-              class="brand-logo w-10 h-10 rounded-2xl bg-gradient-to-br from-accent to-accentSoft flex items-center justify-center text-primary font-extrabold text-2xl shadow-lg"
+              class="brand-logo w-11 h-11 rounded-2xl bg-gradient-to-br from-accentSoft to-amber-500 flex items-center justify-center text-primary font-extrabold text-2xl"
             >
               م
             </div>
             <div class="leading-tight">
               <div class="font-bold text-sm md:text-base">مؤسسة إبداع الظل</div>
               <div class="text-[11px] md:text-xs text-slate-300">
-                مظلات • سواتر • حدادة • سندوتش بنل
+                سندوتش بنل • ملاحق • مظلات • سواتر
               </div>
             </div>
           </a>
 
-          <!-- نافيجايشن -->
-          <nav class="hidden md:flex items-center gap-5 text-xs text-slate-200 ml-auto">
+          <!-- نافبار ديسكتوب -->
+          <nav
+            class="hidden md:flex items-center gap-5 text-xs text-slate-200 ml-auto"
+          >
+            <a href="#hero" class="hover:text-accent transition-colors">الرئيسية</a>
             <a href="#services" class="hover:text-accent transition-colors">الخدمات</a>
             <a href="#sandwich-panel" class="hover:text-accent transition-colors">
               السندوتش بنل
             </a>
             <a href="#projects" class="hover:text-accent transition-colors">أعمالنا</a>
-            <a href="#process" class="hover:text-accent transition-colors">آلية العمل</a>
             <a href="#about" class="hover:text-accent transition-colors">من نحن</a>
             <a href="#faq" class="hover:text-accent transition-colors">
-  الأسئلة الشائعة
-</a>
-            <a href="#contact" class="hover:text-accent transition-colors">التواصل</a>
+              الأسئلة الشائعة
+            </a>
+            <a href="#contact" class="hover:text-accent transition-colors">
+              التواصل
+            </a>
           </nav>
 
-          <!-- CTA -->
-          <div class="ml-auto md:ml-4">
+          <!-- CTA ديسكتوب -->
+          <div class="hidden md:block md:ml-4">
             <a
               href="#contact"
-              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 text-xs font-bold shadow-lg hover:bg-accentSoft transition-colors"
+              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 text-xs font-bold"
             >
-              اطلب عرض سعر
+              اطلب معاينة مجانية
               <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full"
-                >استجابة سريعة</span
+                >استشارة بدون التزام</span
               >
+            </a>
+          </div>
+
+          <!-- منيو موبايل -->
+          <button
+            id="mobileMenuBtn"
+            class="md:hidden ml-auto inline-flex items-center justify-center w-9 h-9 rounded-xl border border-white/20 bg-black/40 text-slate-100"
+            aria-label="قائمة الموقع"
+          >
+            <span id="mobileMenuIconOpen">☰</span>
+            <span id="mobileMenuIconClose" class="hidden">✕</span>
+          </button>
+        </div>
+
+        <!-- قائمة الموبايل -->
+        <div
+          id="mobileMenu"
+          class="md:hidden max-w-6xl mx-auto px-4 pb-3 space-y-3 hidden"
+        >
+          <div class="glass rounded-2xl p-3 text-xs text-slate-200">
+            <nav class="flex flex-col gap-2">
+              <a href="#hero" class="hover:text-accent">الرئيسية</a>
+              <a href="#services" class="hover:text-accent">الخدمات</a>
+              <a href="#sandwich-panel" class="hover:text-accent">السندوتش بنل</a>
+              <a href="#projects" class="hover:text-accent">أعمالنا</a>
+              <a href="#about" class="hover:text-accent">من نحن</a>
+              <a href="#faq" class="hover:text-accent">الأسئلة الشائعة</a>
+              <a href="#contact" class="hover:text-accent">التواصل</a>
+            </nav>
+            <a
+              href="#contact"
+              class="btn-main mt-3 w-full inline-flex items-center justify-center gap-2 rounded-full bg-accent text-primary px-4 py-2 text-xs font-bold"
+            >
+              اطلب عرض سعر الآن
             </a>
           </div>
         </div>
       </div>
     </header>
 
-    <main class="max-w-6xl mx-auto px-4 pt-8 pb-20 space-y-24">
+    <main class="max-w-6xl mx-auto px-4 pt-8 pb-20 space-y-20 md:space-y-28">
       <!-- هيرو -->
       <section
         id="hero"
-        class="grid md:grid-cols-2 gap-10 items-center mt-4 fade-up"
+        class="grid md:grid-cols-[1.3fr_1fr] gap-8 items-center mt-4 fade-up"
       >
         <!-- نص -->
-        <div class="space-y-5">
+        <div class="space-y-6">
           <div
-            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/60 border border-white/10 text-[11px] text-slate-200"
+            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primarySoft/70 border border-white/10 text-[11px] text-slate-200"
           >
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"></span>
-            حلول سندوتش بنل متكاملة للمنازل والمشاريع التجارية
+            <span
+              class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"
+            ></span>
+            حلول سندوتش بنل ومظلات وملاحق جاهزة لمناخ الرياض
           </div>
 
           <h1
             class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-snug text-slate-50"
           >
-            تصميم وتنفيذ
-            <span class="text-accent">سندوتش بنل</span> وملاحق ومظلات
-            <span class="block text-base md:text-xl text-slate-300 mt-2">
-              نخدم الرياض وما حولها بجودة تنفيذ ترفع من قيمة المكان وثقتك بالمشروع.
+            نفكّر في
+            <span class="text-accent">تفاصيل التنفيذ</span>
+            <span class="block mt-1">
+              حتى تستلم
+              <span class="text-accentSoft">غرفتك أو مستودعك أو مظلاتك</span> جاهزة
+              للاستخدام بثقة وراحة.
             </span>
           </h1>
 
           <p class="text-sm md:text-base text-slate-300 leading-relaxed max-w-xl">
-            مؤسسة <span class="font-semibold text-accent">إبداع الظل</span> متخصصة في
+            <span class="font-semibold text-accent">مؤسسة إبداع الظل</span> متخصصة في
             تنفيذ
             <span class="font-semibold">
-              غرف سندوتش بنل، مستودعات، ملاحق عائلية، مظلات سيارات وحدائق، وسواتر
+              غرف سندوتش بنل، مستودعات وهناجر، ملاحق عائلية، مظلات سيارات وحدائق،
+              وسواتر
             </span>
-            مع عزل حراري وصوتي ممتاز وتشطيبات نظيفة تضمن العمر الطويل.
+            مع اختيار السماكات والعزل بطريقة مدروسة تناسب حرارة الرياض وطبيعة
+            الاستخدام.
           </p>
 
+          <!-- أزرار -->
           <div class="flex flex-wrap items-center gap-3 text-xs md:text-sm">
             <a
               href="#contact"
-              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-5 py-2 font-bold shadow-soft hover:bg-accentSoft transition"
+              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-5 py-2 font-bold"
             >
-              <span>اطلب معاينة ميدانية</span>
-              <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full"
-                >زيارة وتقييم مجاني</span
-              >
+              اطلب تشخيص لمشروعك
+              <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full">
+                نحدد لك أفضل حل
+              </span>
             </a>
-
             <a
               href="tel:0562526395"
-              class="btn-outline inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-primary/40 px-4 py-2 text-slate-100 hover:border-accent hover:text-accentSoft transition"
+              class="btn-outline inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-primarySoft/80 px-4 py-2 text-slate-100"
             >
               📞 اتصال مباشر
               <span class="font-semibold tracking-widest ltr:text-left"
@@ -384,51 +508,39 @@
             </a>
           </div>
 
+          <!-- مؤشرات الثقة -->
           <div class="grid grid-cols-3 gap-3 text-xs md:text-sm mt-4">
-            <div
-              class="glass rounded-2xl px-3 py-3 border border-white/10 text-center hover-card"
-            >
-              <div class="text-lg md:text-xl font-extrabold text-accent">
-  +<span class="counter" data-target="10">0</span>
-</div>
+            <div class="glass rounded-2xl px-3 py-3 border border-white/10 text-center">
+              <div class="text-lg md:text-xl font-extrabold text-accent">+10</div>
               <div class="text-slate-300 text-[11px] md:text-xs">
-                سنوات من الخبرة الميدانية
+                سنوات خبرة ميدانية
               </div>
             </div>
-            <div
-              class="glass rounded-2xl px-3 py-3 border border-white/10 text-center hover-card"
-            >
-              <div class="text-lg md:text-xl font-extrabold text-accent">
-  +<span class="counter" data-target="300">0</span>
-</div>
+            <div class="glass rounded-2xl px-3 py-3 border border-white/10 text-center">
+              <div class="text-lg md:text-xl font-extrabold text-accent">+300</div>
               <div class="text-slate-300 text-[11px] md:text-xs">
                 مشروع منفّذ في الرياض وما حولها
               </div>
-              
             </div>
-            <div
-              class="glass rounded-2xl px-3 py-3 border border-white/10 text-center hover-card"
-            >
-             <div class="text-lg md:text-xl font-extrabold text-accent">
-  <span class="counter" data-target="100">0</span>%
-</div>
+            <div class="glass rounded-2xl px-3 py-3 border border-white/10 text-center">
+              <div class="text-lg md:text-xl font-extrabold text-emerald-400">+90%</div>
               <div class="text-slate-300 text-[11px] md:text-xs">
-                جودة التنفيذ والمواد المستخدمة
+                من العملاء عن طريق ترشيح
               </div>
             </div>
           </div>
         </div>
 
-        <!-- سلايدر صور احترافي -->
-        <div class="relative fade-up">
+        <!-- بطاقة تشخيص المشروع + سلايدر صورة -->
+        <div class="space-y-4 fade-up">
           <div
-            class="gradient-border hero-slider rounded-2xl overflow-hidden shadow-soft bg-primary/80"
+            class="gradient-border hero-shine rounded-[1.75rem] overflow-hidden shadow-soft bg-primarySoft/90"
           >
             <div class="relative h-64 md:h-80 overflow-hidden">
               <img
                 id="heroSlide1"
                 src="images/5.jpeg"
-                alt="تنفيذ غرف سندوتش بنل"
+                alt="غرفة سندوتش بنل"
                 class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-800 ease-in-out"
               />
               <img
@@ -437,10 +549,8 @@
                 alt="مستودع سندوتش بنل"
                 class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-800 ease-in-out"
               />
-
-              <!-- تدرج -->
               <div
-                class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"
+                class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent"
               ></div>
 
               <!-- شارة -->
@@ -451,23 +561,23 @@
                   <span
                     class="w-2 h-2 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"
                   ></span>
-                  لقطات من أعمالنا
+                  لقطات حقيقية من أعمالنا
                 </div>
                 <div
                   class="px-3 py-1 rounded-full bg-black/60 border border-emerald-400/40 text-emerald-200"
                 >
-                  عزل حراري وصوتي عالي
+                  عزل حراري يناسب جو الرياض
                 </div>
               </div>
 
               <!-- نص داخلي -->
               <div class="absolute bottom-4 right-4 left-4 text-right space-y-1">
                 <h2 class="text-lg md:text-xl font-bold text-white drop-shadow-md">
-                  سندوتش بنل بمقايسة مدروسة لكل مشروع
+                  سندوتش بنل وهياكل حديد
                 </h2>
                 <p class="text-[11px] md:text-xs text-slate-100/90 leading-relaxed">
-                  نختار السماكة ونوع العزل والطريقة الأنسب للتثبيت حسب استخدامك:
-                  مستودع، غرفة، ملحق عائلي، أو مشروع تجاري.
+                  نضبط المقاسات، سماكة العزل، أماكن الأبواب والنوافذ، وفتحات
+                  التكييف، بحيث تستلم مشروع جاهز للاستخدام بدون مفاجآت.
                 </p>
               </div>
 
@@ -496,120 +606,285 @@
 
             <!-- شريط سفلي -->
             <div
-              class="flex items-center justify-between px-4 py-2 bg-primarySoft/90 border-t border-white/10 text-[11px] md:text-xs text-slate-200"
+              class="flex items-center justify-between px-4 py-2 bg-primarySoft/95 border-t border-white/10 text-[11px] md:text-xs text-slate-200"
             >
-              <span>سندوتش بنل • هياكل حديد • تشطيب وتنفيذ كامل</span>
-              <span class="text-accent font-semibold">جاهز للتسليم السريع</span>
+              <span>سندوتش بنل • ملاحق • مستودعات • مظلات</span>
+              <span class="text-accent font-semibold">جاهزون لتنفيذ مشروعك</span>
+            </div>
+          </div>
+
+          <!-- كارت تشخيص سريع -->
+          <div class="glass rounded-2xl border border-white/15 p-4 text-xs space-y-2">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🧭</span>
+              <div class="font-semibold text-slate-50">
+                مو متأكد أي حل يناسبك؟ خلك علينا
+              </div>
+            </div>
+            <p class="text-slate-300 leading-relaxed">
+              أرسل لنا مساحة الموقع، نوع الاستخدام (سكن، تخزين، ورشة…) وصور بسيطة،
+              وفريقنا يقترح لك أفضل حل:
+              <span class="text-accent">سندوتش بنل، ملحق، مظلات، أو مزيج بينها.</span>
+            </p>
+            <a
+              href="https://wa.me/966554803704"
+              target="_blank"
+              class="btn-main inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-4 py-1.5 font-bold"
+            >
+              إرسال تفاصيل المشروع عبر واتساب
+              <span>💬</span>
+            </a>
+          </div>
+        </div>
+      </section>
+<!-- شريط إنجازات فوقي بسيط -->
+      <section class="fade-up -mt-8 md:-mt-10">
+        <div
+          class="glass max-w-5xl mx-auto rounded-2xl border border-amber-400/40 px-4 md:px-6 py-3 md:py-4 flex flex-wrap items-center justify-between gap-3"
+        >
+          <div class="flex items-center gap-2 text-xs md:text-sm text-amber-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"></span>
+            <span class="font-semibold">
+              تنفيذ سندوتش بنل ومظلات وملاحق بمعايير عالية في الرياض وما حولها
+            </span>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-2 md:gap-3 text-[11px]">
+            <div
+              class="pill-metric"
+            >
+              <span>📍</span>
+              <span>الرياض – أحياء الشمال والشرق والغرب</span>
+            </div>
+            <div
+              class="pill-metric"
+            >
+              <span>📆</span>
+              <span>مواعيد زيارة مرنة حسب وقتك</span>
+            </div>
+            <div
+              class="pill-metric"
+            >
+              <span>⚙️</span>
+              <span>حلول مخصّصة لكل مشروع – مو شغل جاهز لكل الناس</span>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- من نحن مختصر -->
+      <section id="about" class="grid md:grid-cols-[1.2fr_.9fr] gap-8 items-start fade-up">
+        <div class="space-y-4">
+          <h2 class="text-xl md:text-2xl font-bold text-slate-50">من نحن؟</h2>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            <span class="font-semibold text-accent">مؤسسة إبداع الظل</span> مؤسسة
+            سعودية تعمل في
+            <span class="font-semibold">
+              أعمال السندوتش بنل، الهياكل المعدنية، الملاحق، المظلات والسواتر
+            </span>
+            في الرياض وما حولها، مع تركيز على التنفيذ النظيف والالتزام بالمواعيد.
+          </p>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            ما يهمنا فقط إتمام المشروع، بل
+            <span class="font-semibold">سهولة استخدامه على المدى الطويل</span>:
+            توزيع الأبواب والنوافذ، مسارات السيارات، التهوية، والعزل كلها تُحسب من
+            البداية حتى لا تضطر للتعديل بعدين.
+          </p>
+
+          <div class="text-xs text-slate-300 space-y-1">
+            <div>• حلول عملية تناسب المنازل، الاستراحات، الأنشطة التجارية والصناعية</div>
+            <div>• استخدام خامات وسماكات مناسبة لمناخ الرياض</div>
+            <div>• فريق فني متمرّس في أعمال السندوتش بنل والحديد</div>
+          </div>
+
+          <div class="flex items-center gap-3 text-xs pt-2">
+            <span class="text-slate-300">تابع أعمالنا على:</span>
+            <a
+              href="https://tiktok.com/@abda.adel100"
+              class="px-3 py-1 rounded-full bg-primarySoft border border-white/10 hover:border-accent transition"
+              >TikTok</a
+            >
+            <a
+              href="https://www.instagram.com/mzalat1"
+              class="px-3 py-1 rounded-full bg-primarySoft border border-white/10 hover:border-accent transition"
+              >Instagram</a
+            >
+            <a
+              href="https://www.youtube.com/@%D8%A8%D9%86%D8%A7%D8%A1-%D9%85%D9%84%D8%A7%D8%AD%D9%82-%D8%AA%D8%B1%D9%85%D9%8A%D9%85"
+              class="px-3 py-1 rounded-full bg-primarySoft border border-white/10 hover:border-accent transition"
+              >YouTube</a
+            >
+          </div>
+        </div>
+
+        <!-- كارت بيانات سريعة -->
+        <div class="glass rounded-2xl border border-white/10 p-5 space-y-4 hover-card">
+          <h3 class="font-semibold text-slate-50 text-sm">بيانات التواصل المباشر</h3>
+          <div class="space-y-3 text-sm">
+            <div class="flex items-center gap-3">
+              <div
+                class="w-9 h-9 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-accent"
+              >
+                📞
+              </div>
+              <div>
+                <div class="text-xs text-slate-300">اتصال مباشر</div>
+                <a
+                  href="tel:0562526395"
+                  class="text-lg font-bold text-accent hover:underline"
+                  >0562526395</a
+                >
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div
+                class="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-400/40 flex items-center justify-center text-emerald-300"
+              >
+                💬
+              </div>
+              <div>
+                <div class="text-xs text-slate-300">واتساب لخدمة العملاء</div>
+                <a
+                  href="https://wa.me/966554803704"
+                  target="_blank"
+                  class="text-sm font-semibold text-emerald-300 hover:underline"
+                >
+                  فتح واتساب مباشرة
+                </a>
+              </div>
+            </div>
+
+            <div class="text-[11px] text-slate-300 pt-2 leading-relaxed">
+              كل ما كانت معلوماتك أوضح (المساحة، الاستخدام، الموقع، صور للمكان) كل
+              ما قدرنا نعطيك
+              <span class="font-semibold text-accent">عرض سعر أدق وحل أنسب</span> من
+              أول اتصال.
             </div>
           </div>
         </div>
       </section>
 
-      <!-- الخدمات العامة -->
-      <section id="services" class="space-y-8 fade-up">
+      <!-- الخدمات الرئيسية -->
+      <section id="services" class="space-y-6 fade-up">
         <div class="flex items-center justify-between gap-3">
           <div>
             <h2 class="text-xl md:text-2xl font-bold text-slate-50">
               خدمات مؤسسة إبداع الظل
             </h2>
-            <p class="text-sm text-slate-300 max-w-md mt-1">
-              حلول كاملة للمظلات والملاحق والسندوتش بنل من التصميم حتى التسليم، مع
-              مراعاة الجمال والعملية في كل مشروع.
+            <p class="text-sm text-slate-300 max-w-xl mt-1">
+              نخدم الأفراد والشركات بحلول متكاملة من التصميم حتى التسليم، مع إمكانية
+              زيارة ميدانية للموقع داخل الرياض وما حولها.
             </p>
           </div>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-5">
-          <!-- خدمة 1 -->
-          <div
-            class="glass rounded-2xl border border-white/10 p-5 space-y-3 hover-card"
+        <div class="grid md:grid-cols-4 gap-4">
+          <!-- سندوتش بنل -->
+          <a
+            href="sandwich-panel.html"
+            class="glass rounded-2xl border border-white/10 p-4 space-y-3 hover-card flex flex-col"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <div class="text-2xl">🏗️</div>
+              <div
+                class="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/40"
+              >
+                الأكثر طلبًا
+              </div>
+            </div>
+            <h3 class="font-semibold text-slate-50 text-sm">
+              غرف وملاحق ومستودعات سندوتش بنل
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-relaxed flex-1">
+              تصميم وتنفيذ غرف وملاحق ومستودعات بسندوتش بنل بعزل مدروس يناسب الحرارة
+              والاستخدام، مع هياكل حديدية محسوبة.
+            </p>
+            <span class="text-[11px] text-accent mt-1">تفاصيل الخدمة &rarr;</span>
+          </a>
+
+          <!-- مظلات سيارات -->
+          <a
+            href="car-shades.html"
+            class="glass rounded-2xl border border-white/10 p-4 space-y-3 hover-card flex flex-col"
           >
             <div class="flex items-center justify-between gap-3">
               <div class="text-2xl">🚗</div>
               <div
                 class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-400/30"
               >
-                مظلات سيارات
+                حماية السيارات
               </div>
             </div>
-            <h3 class="font-semibold text-slate-50">مظلات سيارات ومداخل</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              تصميم وتنفيذ مظلات سيارات مستقلة أو مرتبطة بالمبنى، بأشكال حديثة
-              وخامات تتحمل حرارة الشمس والغبار لسنوات طويلة.
+            <h3 class="font-semibold text-slate-50 text-sm">مظلات سيارات ومداخل</h3>
+            <p class="text-[11px] text-slate-300 leading-relaxed flex-1">
+              مظلات سيارات أمام الفلل والاستراحات والمحلات بأشكال حديثة لا تشوّه
+              الواجهة وتتحمل الشمس والغبار.
             </p>
-            <ul class="text-[11px] text-slate-300 space-y-1">
-              <li>• مظلات فلل واستراحات</li>
-              <li>• مظلات مواقف شركات ومحلات</li>
-              <li>• خيارات قماش، حديد، وبولي كربونيت</li>
-            </ul>
-          </div>
+            <span class="text-[11px] text-accent mt-1">تفاصيل الخدمة &rarr;</span>
+          </a>
 
-          <!-- خدمة 2 -->
-          <div
-            class="glass rounded-2xl border border-white/10 p-5 space-y-3 hover-card"
-          >
-            <div class="flex items-center justify-between gap-3">
-              <div class="text-2xl">🏡</div>
-              <div
-                class="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/40"
-              >
-                ملاحق وحدائق
-              </div>
-            </div>
-            <h3 class="font-semibold text-slate-50">ملاحق وغرف خارجية</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              تنفيذ ملاحق عائلية وغرف خارجية معزولة بمواد مناسبة للاستخدام اليومي،
-              مع توزيع نوافذ وأبواب يضمن الراحة والإضاءة.
-            </p>
-            <ul class="text-[11px] text-slate-300 space-y-1">
-              <li>• ملاحق سندوتش بنل أو حديد وبناء</li>
-              <li>• جلسات خارجية مظللة</li>
-              <li>• أرضيات جاهزة أو حسب الطلب</li>
-            </ul>
-          </div>
-
-          <!-- خدمة 3 -->
-          <div
-            class="glass rounded-2xl border border-white/10 p-5 space-y-3 hover-card"
+          <!-- مستودعات -->
+          <a
+            href="stores-hangers.html"
+            class="glass rounded-2xl border border-white/10 p-4 space-y-3 hover-card flex flex-col"
           >
             <div class="flex items-center justify-between gap-3">
               <div class="text-2xl">📦</div>
               <div
                 class="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-400/40"
               >
-                مستودعات وسندوتش بنل
+                تجارة ومستودعات
               </div>
             </div>
-            <h3 class="font-semibold text-slate-50">مستودعات وهياكل معدنية</h3>
-            <p class="text-xs text-slate-300 leading-relaxed">
-              إنشاء مستودعات ومحلات وهناجر من هياكل معدنية مغطاة بسندوتش بنل بعزل
-              قوي وتركيب احترافي يراعي التهوية والسلامة.
+            <h3 class="font-semibold text-slate-50 text-sm">
+              مستودعات وهناجر وهياكل معدنية
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-relaxed flex-1">
+              إنشاء مستودعات وهناجر وهياكل حديدية مغطاة بسندوتش بنل مع فتحات تهوية
+              وتكييف محسوبة لمخزونك.
             </p>
-            <ul class="text-[11px] text-slate-300 space-y-1">
-              <li>• تصميم الهيكل حسب مساحة الموقع</li>
-              <li>• اختيار سماكات الألواح المناسبة</li>
-              <li>• فتحات تكييف وتهوية مدروسة</li>
-            </ul>
-          </div>
+            <span class="text-[11px] text-accent mt-1">تفاصيل الخدمة &rarr;</span>
+          </a>
+
+          <!-- سواتر وحدادة -->
+          <a
+            href="shelters-steel.html"
+            class="glass rounded-2xl border border-white/10 p-4 space-y-3 hover-card flex flex-col"
+          >
+            <div class="flex items-center justify-between gap-3">
+              <div class="text-2xl">🧱</div>
+              <div
+                class="text-[10px] px-2 py-0.5 rounded-full bg-fuchsia-500/10 text-fuchsia-300 border border-fuchsia-400/40"
+              >
+                خصوصية وأمان
+              </div>
+            </div>
+            <h3 class="font-semibold text-slate-50 text-sm">
+              سواتر وحدادة وأعمال تكميلية
+            </h3>
+            <p class="text-[11px] text-slate-300 leading-relaxed flex-1">
+              سواتر حديد وخشب وبي في سي، وأعمال حدادة مرتبطة بالمشروع مثل الدرابزين
+              والأبواب والفريمات.
+            </p>
+            <span class="text-[11px] text-accent mt-1">تفاصيل الخدمة &rarr;</span>
+          </a>
         </div>
       </section>
 
-      <!-- قسم خاص بالسندوتش بنل -->
+      <!-- قسم السندوتش بنل -->
       <section
         id="sandwich-panel"
-        class="grid md:grid-cols-2 gap-8 items-start fade-up"
+        class="grid md:grid-cols-[1.2fr_.9fr] gap-8 items-start fade-up"
       >
         <div class="space-y-4">
           <h2 class="text-xl md:text-2xl font-bold text-slate-50">
-            لماذا السندوتش بنل مع مؤسسة إبداع الظل؟
+            لماذا السندوتش بنل حل ذكي لمشروعك؟
           </h2>
           <p class="text-sm text-slate-300 leading-relaxed">
-            السندوتش بنل حل ذكي وسريع للبناء والعزل في آن واحد. نساعدك في اختيار
-            النوع والسماكة والطريقة المناسبة لتركيب
-            <span class="font-semibold text-accent">
-              غرفة، مستودع، ملحق، أو سكن عمال
-            </span>
-            مع تشطيب نهائي مرتب.
+            السندوتش بنل يعطيك
+            <span class="font-semibold text-accent">جدار أو سقف جاهز</span> في قطعة
+            واحدة: صاج خارجي، عزل حراري وصوتي داخلي، وصاج داخلي. يعني:
+            <span class="font-semibold">سرعة تنفيذ + عزل ممتاز + شكل مرتب.</span>
           </p>
 
           <div class="space-y-3 text-sm">
@@ -617,11 +892,23 @@
               <span class="mt-1 text-emerald-400">✓</span>
               <div>
                 <div class="font-semibold text-slate-50 text-sm">
-                  عزل حراري وصوتي فعّال
+                  مناسب لغرف السطح والملاحق والمستودعات
                 </div>
                 <p class="text-xs text-slate-300 mt-1">
-                  استخدام ألواح بسماكات مدروسة تناسب حرارة الرياض وتخفف استهلاك
-                  التكييف وتحافظ على الجو الداخلي مريح.
+                  سواء غرفة خارجية للعائلة، سكن عمال، أو مستودع لنشاطك التجاري، نختار
+                  السماكات والطريقة الأنسب لمشروعك.
+                </p>
+              </div>
+            </div>
+
+            <div class="flex gap-3 items-start">
+              <span class="mt-1 text-emerald-400">✓</span>
+              <div>
+                <div class="font-semibold text-slate-50 text-sm">عزل فعلي في الحر</div>
+                <p class="text-xs text-slate-300 mt-1">
+                  استخدام سماكات وعزل
+                  <span class="font-semibold text-accent">مجرّبة في الرياض</span> مع
+                  معالجة النقاط الحساسة يقلل تسرب الحرارة ويخفف ضغط المكيف.
                 </p>
               </div>
             </div>
@@ -630,24 +917,11 @@
               <span class="mt-1 text-emerald-400">✓</span>
               <div>
                 <div class="font-semibold text-slate-50 text-sm">
-                  سرعة في التنفيذ مع تشطيب نظيف
+                  مرونة في التقسيم والتعديل
                 </div>
                 <p class="text-xs text-slate-300 mt-1">
-                  تجهيز الموقع، تركيب الهيكل، تثبيت ألواح السندوتش بنل، وإنهاء
-                  الفواصل والفتحات خلال فترة قصيرة مقارنة بالبناء التقليدي.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex gap-3 items-start">
-              <span class="mt-1 text-emerald-400">✓</span>
-              <div>
-                <div class="font-semibold text-slate-50 text-sm">
-                  تصميم حسب الاستخدام والموقع
-                </div>
-                <p class="text-xs text-slate-300 mt-1">
-                  سواء مستودع تخزين، ورشة عمل، أو غرفة إضافية للمنزل؛ نضبط
-                  المقاسات، الفتحات، والأبواب لتناسب استخدامك الفعلي ومساحة الموقع.
+                  يمكن إضافة فتحات، أبواب، نوافذ أو تقسيم داخلي حسب استخدامك، بدون
+                  تعقيد البناء التقليدي.
                 </p>
               </div>
             </div>
@@ -655,20 +929,20 @@
 
           <div class="flex flex-wrap items-center gap-3 pt-2 text-xs">
             <a
-              href="#contact"
-              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 font-bold shadow-lg hover:bg-accentSoft transition"
+              href="sandwich-panel.html"
+              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 font-bold"
             >
-              اطلب معاينة لمشروع السندوتش بنل
+              تفاصيل أكثر عن السندوتش بنل
             </a>
             <span class="text-slate-300">
               نحدد لك
-              <span class="font-semibold text-accent">سماكة اللوح، نوع العزل،</span>
+              <span class="font-semibold text-accent">السماكة، نوع العزل،</span>
               والتكلفة المتوقعة قبل التنفيذ.
             </span>
           </div>
         </div>
 
-        <!-- صور صغيرة للسندوتش بنل -->
+        <!-- صور -->
         <div class="grid grid-cols-2 gap-3 fade-up">
           <div
             class="relative rounded-2xl overflow-hidden h-40 md:h-44 glass border border-white/10 hover-card"
@@ -682,7 +956,7 @@
               class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
             ></div>
             <div class="absolute bottom-3 right-3 text-[11px] text-slate-50">
-              سماكات وألوان مختلفة للألواح
+              سماكات وألوان متعددة حسب المشروع
             </div>
           </div>
           <div
@@ -697,35 +971,286 @@
               class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
             ></div>
             <div class="absolute bottom-3 right-3 text-[11px] text-slate-50">
-              مستودعات متينة بهياكل حديدية مدروسة
+              مستودعات وهناجر بسندوتش بنل وعزل عالي
             </div>
           </div>
         </div>
       </section>
-<!-- الأسئلة الشائعة عن السندوتش بنل -->
+
+      <!-- شهادات عملاء -->
+      <section id="testimonials" class="space-y-6 fade-up">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-50">
+              ثقة تُبنى من تجربة عملاء حقيقيين
+            </h2>
+            <p class="text-sm text-slate-300 mt-1 max-w-xl">
+              كثير من عملائنا الجدد يأتون عن طريق ترشيح من قريب أو صديق جرّب أعمالنا
+              في الملاحق أو المستودعات أو المظلات.
+            </p>
+          </div>
+          <span
+            class="hidden md:inline-block text-[11px] px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-400/40 text-emerald-300"
+          >
+            جودة تنفيذ + التزام بالمواعيد
+          </span>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <article
+            class="glass rounded-2xl border border-white/10 p-4 flex flex-col justify-between hover-card"
+          >
+            <p class="text-xs text-slate-200 leading-relaxed">
+              "نفذوا لنا ملحق سندوتش بنل على السطح، فرق واضح في الحرارة عن البناء
+              العادي، والتشطيب الداخلي مرتب جدًا."
+            </p>
+            <div class="mt-3 text-[11px] text-slate-400">
+              <div class="font-semibold text-slate-100">أبو فهد</div>
+              <div>ملحق عائلي – شمال الرياض</div>
+            </div>
+          </article>
+
+          <article
+            class="glass rounded-2xl border border-white/10 p-4 flex flex-col justify-between hover-card"
+          >
+            <p class="text-xs text-slate-200 leading-relaxed">
+              "مستودعنا صار أفضل من ناحية التهوية وتنظيم الدخول والخروج، والتسليم
+              كان في الوقت المتفق عليه بدون تأخير."
+            </p>
+            <div class="mt-3 text-[11px] text-slate-400">
+              <div class="font-semibold text-slate-100">شركة توريد مواد</div>
+              <div>مستودع تجاري – المنطقة الصناعية</div>
+            </div>
+          </article>
+
+          <article
+            class="glass rounded-2xl border border-white/10 p-4 flex flex-col justify-between hover-card"
+          >
+            <p class="text-xs text-slate-200 leading-relaxed">
+              "مظلات السيارات أمام البيت صارت جزء من شكل الواجهة، التنفيذ نظيف
+              والوقوف صار مريح حتى في عز الظهر."
+            </p>
+            <div class="mt-3 text-[11px] text-slate-400">
+              <div class="font-semibold text-slate-100">أبو عبدالعزيز</div>
+              <div>مظلات سيارات – شرق الرياض</div>
+            </div>
+          </article>
+        </div>
+      </section>
+            <!-- آلية العمل – تايملاين احترافي -->
+      <section id="process" class="space-y-6 fade-up">
+        <div class="flex flex-col md:flex-row md:items-end gap-3">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-50">
+              كيف ننفّذ مشروعك خطوة بخطوة؟
+            </h2>
+            <p class="text-sm text-slate-300 max-w-xl mt-1">
+              نحرص أن تكون كل خطوة واضحة لك من أول اتصال حتى تسليم المفتاح، مع متابعة
+              مباشرة من مسؤول المشروع.
+            </p>
+          </div>
+          <div class="md:ml-auto text-[11px] text-slate-400">
+            نسجّل لك كل ملاحظة واتفاق
+            <span class="text-amber-300 font-semibold">كتابيًا</span>
+            في الواتساب قبل التنفيذ، لراحة بالك.
+          </div>
+        </div>
+
+        <div
+          class="grid md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] gap-8 items-start"
+        >
+          <!-- التايملاين -->
+          <div class="timeline space-y-4">
+            <!-- خطوة 1 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <div class="timeline-dot">1</div>
+              </div>
+              <div
+                class="timeline-card glass rounded-2xl border border-white/10 hover-card p-4 flex flex-col gap-1 text-xs md:text-sm"
+              >
+                <div class="font-semibold text-slate-50">
+                  اتصال أو رسالة واتساب مع وصف بسيط للمشروع
+                </div>
+                <p class="text-slate-300">
+                  تخبرنا نوع المشروع (غرفة، مستودع، ملحق، مظلات...) والموقع التقريبي
+                  وبعض الصور إن أمكن، عشان تتضح لنا الصورة من البداية.
+                </p>
+              </div>
+            </div>
+
+            <!-- خطوة 2 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <div class="timeline-dot">2</div>
+              </div>
+              <div
+                class="timeline-card glass rounded-2xl border border-white/10 hover-card p-4 flex flex-col gap-1 text-xs md:text-sm"
+              >
+                <div class="font-semibold text-slate-50">
+                  معاينة ميدانية وتحديد المقاسات والسماكات
+                </div>
+                <p class="text-slate-300">
+                  يتم الوقوف على الموقع، قياس الأبعاد، وتحديد اتجاه الشمس، ثم اقتراح
+                  أفضل حل من ناحية
+                  <span class="text-amber-300">السندوتش بنل أو نوع المظلة</span>
+                  المناسب.
+                </p>
+              </div>
+            </div>
+
+            <!-- خطوة 3 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <div class="timeline-dot">3</div>
+              </div>
+              <div
+                class="timeline-card glass rounded-2xl border border-white/10 hover-card p-4 flex flex-col gap-1 text-xs md:text-sm"
+              >
+                <div class="font-semibold text-slate-50">
+                  عرض سعر واضح واتفاق مكتوب على التفاصيل
+                </div>
+                <p class="text-slate-300">
+                  نرسل لك عرض سعر
+                  <span class="font-semibold">مفصّل</span>
+                  يشمل نوع المواد، سماكات السندوتش بنل، نوع الهيكل الحديدي، ووقت
+                  التنفيذ المتوقع – ويتم تأكيده كتابيًا.
+                </p>
+              </div>
+            </div>
+
+            <!-- خطوة 4 -->
+            <div class="timeline-item">
+              <div class="timeline-marker">
+                <div class="timeline-dot">4</div>
+              </div>
+              <div
+                class="timeline-card glass rounded-2xl border border-white/10 hover-card p-4 flex flex-col gap-1 text-xs md:text-sm"
+              >
+                <div class="font-semibold text-slate-50">
+                  تنفيذ احترافي وتسليم في الموعد
+                </div>
+                <p class="text-slate-300">
+                  يبدأ الفريق الفني العمل وفق الخطة المتفق عليها، مع متابعة مسؤول
+                  المشروع وتوثيق مراحل التنفيذ بالصور، حتى التسليم النهائي.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- كارت جانبي -->
+          <div
+            class="glass rounded-2xl border border-white/10 hover-card p-5 space-y-3 text-xs md:text-sm text-slate-300"
+          >
+            <div class="text-sm font-semibold text-slate-50 mb-1">
+              ماذا يميّز تنفيذنا عن غيرنا؟
+            </div>
+            <ul class="space-y-1.5 leading-relaxed">
+              <li>• لا نبدأ التنفيذ حتى تكون كل نقطة واضحة ومكتوبة بين الطرفين.</li>
+              <li>
+                • نختار لك الحل المناسب لميزانيتك، بدون مبالغة في السماكات أو المواد
+                بلا داعي.
+              </li>
+              <li>
+                • نهتم بشكل العمل النهائي ليكون مرتب، كأنه جزء من المبنى الأصلي.
+              </li>
+              <li>
+                • نحرص على نظافة الموقع بعد الانتهاء وتسليمك المكان جاهز للاستخدام.
+              </li>
+            </ul>
+            <div class="pt-2 text-[11px] text-slate-400">
+              تقدر تطلب
+              <span class="font-semibold text-amber-300">زيارة مبدئية بدون التزام</span>
+              لمعرفة أنسب حل لمشروعك قبل اتخاذ القرار.
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- أعمالنا -->
+      <section id="projects" class="space-y-6 fade-up">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h2 class="text-xl md:text-2xl font-bold text-slate-50">نماذج من أعمالنا</h2>
+            <p class="text-sm text-slate-300 mt-1">
+              صور من مشاريع منفذة في الرياض وما حولها بمقاسات واستخدامات مختلفة.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-4">
+          <div
+            class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card"
+          >
+            <img
+              src="images/k.jpg"
+              alt="مظلات سيارات"
+              class="w-full h-44 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"
+            ></div>
+            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
+              مظلات سيارات أمام فيلا بتصميم يحافظ على جمالية الواجهة ويؤمن ظل حقيقي
+            </div>
+          </div>
+
+          <div
+            class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card"
+          >
+            <img
+              src="images/h.jpg"
+              alt="ملحق عائلي سندوتش بنل"
+              class="w-full h-44 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"
+            ></div>
+            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
+              ملحق عائلي بسندوتش بنل مع تشطيب داخلي وأبواب ونوافذ ألمنيوم
+            </div>
+          </div>
+
+          <div
+            class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card"
+          >
+            <img
+              src="images/r.jpeg"
+              alt="مستودع سندوتش بنل"
+              class="w-full h-44 object-cover"
+            />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"
+            ></div>
+            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
+              مستودع تجاري بسقف وجدران سندوتش بنل مع فتحات تهوية وتكييف مدروسة
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- الأسئلة الشائعة -->
       <section id="faq" class="space-y-8 fade-up">
         <div class="flex flex-col md:flex-row md:items-end gap-3">
           <div class="space-y-2">
             <h2 class="text-xl md:text-2xl font-bold text-slate-50">
-              الأسئلة الشائعة عن السندوتش بنل
+              الأسئلة الشائعة قبل تنفيذ السندوتش بنل والملاحق
             </h2>
             <p class="text-sm text-slate-300 max-w-xl">
-              جمعنا لك أهم الأسئلة التي تتكرر من العملاء قبل تنفيذ غرف أو مستودعات
-              السندوتش بنل، مع إجابات واضحة تساعدك تختار الحل الأنسب لمشروعك.
+              أكثر الأسئلة التي نسمعها من العملاء الجدد، وإجابات تساعدك تقرر وانت
+              مطمئن قبل البدء في التنفيذ.
             </p>
           </div>
           <div class="md:ml-auto text-xs text-slate-400">
-            لم تجد سؤالك هنا؟
+            لم تجد سؤالك؟
             <a href="#contact" class="text-accent hover:underline">
-              تواصل معنا وسنجيبك بالتفصيل
+              تواصل معنا وسنشرح لك بالتفصيل
             </a>
           </div>
         </div>
 
         <div class="grid md:grid-cols-3 gap-5 items-start">
-          <!-- كولمن الأسئلة 1 -->
+          <!-- أسئلة -->
           <div class="space-y-3 md:col-span-2">
-            <!-- سؤال 1 -->
             <details
               class="faq-item glass rounded-2xl border border-white/10 p-4 hover-card"
               open
@@ -740,27 +1265,21 @@
                     ؟
                   </span>
                   <h3 class="text-sm font-semibold text-slate-50">
-                    ما هو السندوتش بنل بشكل بسيط؟
+                    ما هو السندوتش بنل بطريقة بسيطة؟
                   </h3>
                 </div>
-                <span class="text-[11px] text-slate-400 hidden sm:inline">
-                  اضغط لعرض / إخفاء الإجابة
-                </span>
               </summary>
               <div
                 class="faq-body pt-3 mt-3 border-t border-slate-700/70 text-xs text-slate-300 leading-relaxed"
               >
-                السندوتش بنل عبارة عن
-                <span class="font-semibold text-accent">
-                  لوح جاهز مكوّن من طبقتين صاج (معدن)
-                </span>
-                وبينها طبقة عزل حراري وصوتي (عادة فوم). الفكرة أنه يعطيك
-                <span class="font-semibold">جدار أو سقف جاهز</span> في قطعة واحدة:
-                شكلاً مرتب، وعزل ممتاز، وتنفيذ أسرع من البناء التقليدي.
+                هو لوح جاهز مكوّن من
+                <span class="font-semibold text-accent">صاج خارجي + عزل + صاج داخلي</span>
+                يعطيك جدار أو سقف جاهز في قطعة واحدة. يعني توفير في وقت التنفيذ، مع
+                عزل أفضل من كثير من الحلول التقليدية إذا تم اختيار السماكة والعزل
+                بشكل صحيح.
               </div>
             </details>
 
-            <!-- سؤال 2 -->
             <details
               class="faq-item glass rounded-2xl border border-white/10 p-4 hover-card"
             >
@@ -774,29 +1293,23 @@
                     ؟
                   </span>
                   <h3 class="text-sm font-semibold text-slate-50">
-                    في أي استخدامات يناسبني السندوتش بنل؟
+                    هل يناسب جو الرياض فعلًا من ناحية العزل؟
                   </h3>
                 </div>
               </summary>
               <div
                 class="faq-body pt-3 mt-3 border-t border-slate-700/70 text-xs text-slate-300 leading-relaxed"
               >
-                يستخدم كثيرًا في:
-                <br />
-                • غرف خارجية وملحقات عائلية في المنازل والاستراحات<br />
-                • مستودعات، هناجر، ورش ومحلات تجارية<br />
-                • سكن عمال ومكاتب مؤقتة للمشاريع<br />
-                • غرف أجهزة، مخازن مبردة (بسماكات عزل أعلى)
+                نعم، بشرط:
+                <br />• اختيار سماكة عزل مناسبة<br />• تنفيذ الفواصل والفتحات بطريقة
+                صحيحة<br />• تحديد أماكن الشمس المباشرة وتوجيه الغرفة أو المستودع
+                بشكل مناسب
                 <br /><br />
-                في مؤسسة
-                <span class="font-semibold text-accent">إبداع الظل</span> نضبط
-                السماكة ونوع العزل حسب
-                <span class="font-semibold">الاستخدام الفعلي ودرجة الحرارة</span>
-                في الموقع.
+                في مؤسسة <span class="font-semibold text-accent">إبداع الظل</span>
+                نعتمد سماكات وعزل مجرّب فعليًا في مشاريع سابقة داخل الرياض.
               </div>
             </details>
 
-            <!-- سؤال 3 -->
             <details
               class="faq-item glass rounded-2xl border border-white/10 p-4 hover-card"
             >
@@ -810,54 +1323,21 @@
                     ؟
                   </span>
                   <h3 class="text-sm font-semibold text-slate-50">
-                    هل فعلاً يعزل الحرارة في جو الرياض؟
+                    كم يحتاج وقت لتنفيذ مشروع متوسط؟
                   </h3>
                 </div>
               </summary>
               <div
                 class="faq-body pt-3 mt-3 border-t border-slate-700/70 text-xs text-slate-300 leading-relaxed"
               >
-                نعم، إذا تم اختيار
-                <span class="font-semibold">سماكة ولوح وعزل مناسب</span>
-                وتنفيذه بطريقة صحيحة. نحن نستخدم سماكات وعوازل
-                <span class="font-semibold text-accent">مجرّبة في مناخ الرياض</span>
-                مع معالجة فتحات التكييف والنوافذ بحيث تقل نسبة تسرب الحرارة، وهذا
-                ينعكس على راحة المكان وتخفيف استهلاك المكيف.
+                يعتمد على المساحة والتفاصيل، لكن غالبًا
+                <span class="font-semibold">مشروع متوسط</span> مثل غرفة سندوتش بنل أو
+                ملحق خارجي يتم تنفيذه خلال فترة
+                <span class="font-semibold text-accent">من عدة أيام لأسبوع تقريبًا</span>
+                من بدء العمل في الموقع إذا توفرت الخامات.
               </div>
             </details>
 
-            <!-- سؤال 4 -->
-            <details
-              class="faq-item glass rounded-2xl border border-white/10 p-4 hover-card"
-            >
-              <summary
-                class="flex items-center justify-between gap-3 cursor-pointer select-none"
-              >
-                <div class="flex items-center gap-2">
-                  <span
-                    class="faq-icon w-7 h-7 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-[13px]"
-                  >
-                    ؟
-                  </span>
-                  <h3 class="text-sm font-semibold text-slate-50">
-                    كم العمر الافتراضي للسندوتش بنل وهل يحتاج صيانة؟
-                  </h3>
-                </div>
-              </summary>
-              <div
-                class="faq-body pt-3 mt-3 border-t border-slate-700/70 text-xs text-slate-300 leading-relaxed"
-              >
-                مع تركيب صحيح واستخدام مواد جيدة، يمكن أن يخدمك السندوتش بنل
-                <span class="font-semibold">سنوات طويلة</span> بإذن الله. يحتاج فقط
-                إلى:
-                <br />
-                • متابعة دورية لحالة الصاج الخارجي من الصدأ أو الخدوش الكبيرة<br />
-                • التأكد من سلامة السيليكون والعوازل في الفواصل والفتحات<br />
-                وإذا احتاج إصلاح يكون في جزء محدد، وليس بالضرورة تغيير اللوح كامل.
-              </div>
-            </details>
-
-            <!-- سؤال 5 -->
             <details
               class="faq-item glass rounded-2xl border border-white/10 p-4 hover-card"
             >
@@ -878,42 +1358,32 @@
               <div
                 class="faq-body pt-3 mt-3 border-t border-slate-700/70 text-xs text-slate-300 leading-relaxed"
               >
-                نعم، ويتم ذلك غالبًا بطريقتين:
-                <br />
-                • تمديدات داخل مواسير وسكّرات فوق الجدران أو أسفل السقف<br />
-                • أو تمديدات مخفية حسب تصميم الموقع
+                نعم، ويتم التخطيط له من البداية. أثناء التشخيص نحدد:
+                <br />• مكان المكيف الأنسب<br />• مسار الأفياش والإنارة<br />• أماكن
+                التمديدات الموجودة مسبقًا حتى لا تتضرر
                 <br /><br />
-                عند المعاينة نقترح عليك
-                <span class="font-semibold text-accent">
-                  أفضل مكان للتكييف، الأفياش، والإنارة
-                </span>
-                بحيث تكون عملية وآمنة ولا تشوّه شكل الغرفة.
+                بهذا الشكل تحصل على غرفة أو ملحق مرتب وآمن كهربائيًا بدون تمديدات
+                عشوائية.
               </div>
             </details>
           </div>
 
-          <!-- كارت جانبي: نصائح سريعة -->
+          <!-- نصائح جانبية -->
           <div class="space-y-3">
-            <div
-              class="glass rounded-2xl border border-accent/40 p-4 md:p-5 hover-card"
-            >
+            <div class="glass rounded-2xl border border-accent/40 p-4 md:p-5 hover-card">
               <h3 class="text-sm font-semibold text-accent mb-2">
-                قبل ما تطلب سندوتش بنل.. ركّز على التالي:
+                عشان نعطيك عرض دقيق من أول اتصال:
               </h3>
               <ul class="text-[11px] text-slate-200 space-y-1.5 leading-relaxed">
-                <li>• حدّد استخدام الغرفة أو المستودع: سكن، تخزين، ورشة...</li>
-                <li>• قرّب لنا المقاسات التقريبية (طول × عرض × ارتفاع).</li>
-                <li>• ذكّرنا باتجاه الشمس والموقع (سطح، حوش، أرض فاضية).</li>
-                <li>• قرّر عدد الأبواب والنوافذ ومكانها المفضّل.</li>
-                <li>
-                  • لو فيه تمديدات سابقة (ماء، صرف، كهرباء) نبغى نعرف مكانها لتجنّب
-                  المشاكل.
-                </li>
+                <li>• نوع الاستخدام: سكن، تخزين، ورشة، مكتب…</li>
+                <li>• الموقع التقريبي: حي / منطقة داخل الرياض أو حولها</li>
+                <li>• مساحة تقريبية (طول × عرض × ارتفاع)</li>
+                <li>• وجود بناء سابق أو السطح/الأرضية جاهزة أم لا</li>
+                <li>• عدد الأبواب والنوافذ المرغوبة واتجاهها إن أمكن</li>
               </ul>
               <p class="text-[11px] text-slate-400 mt-3">
-                كل ما كانت البيانات أوضح، نقدر نعطيك
-                <span class="font-semibold text-accent">عرض سعر أدق وتصميم أنسب</span>
-                من أول مرة.
+                هذه المعلومات تختصر عليك الوقت والزيارات وتعطيك تصور أوضح من أول
+                استفسار.
               </p>
             </div>
 
@@ -923,13 +1393,14 @@
               <div class="flex items-center gap-2">
                 <span class="text-lg">📸</span>
                 <div class="font-semibold text-slate-50 text-sm">
-                  صور المكان تختصر علينا وعليك وقت كثير
+                  صورة واحدة للموقع توضح علينا وعليك كثير
                 </div>
               </div>
               <p class="leading-relaxed">
-                أرسل لنا صور واضحة للموقع على الواتساب مع وصف بسيط، وفريق مؤسسة
+                صوّر الموقع وأرسل لنا عبر الواتساب مع وصف بسيط للمساحة والاستخدام،
+                وفريق مؤسسة
                 <span class="font-semibold text-accent">إبداع الظل</span> يقترح عليك
-                أفضل توزيع وسماكات للسندوتش بنل قبل الزيارة الميدانية.
+                أنسب خيار قبل حتى ما نجي نعاين.
               </p>
               <a
                 href="https://wa.me/966554803704"
@@ -943,228 +1414,13 @@
           </div>
         </div>
       </section>
-      <!-- أعمالنا -->
-      <section id="projects" class="space-y-6 fade-up">
-        <div class="flex items-center justify-between gap-3">
-          <div>
-            <h2 class="text-xl md:text-2xl font-bold text-slate-50">نماذج من أعمالنا</h2>
-            <p class="text-sm text-slate-300 mt-1">
-              مجموعة من المشاريع المنفّذة في الرياض وضواحيها بمقاسات واستخدامات
-              مختلفة.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-4">
-          <div
-            class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card"
-          >
-            <img
-              src="images/k.jpg"
-              alt="مظلات سيارات"
-              class="w-full h-44 object-cover"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
-            ></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              مظلات سيارات أمام فيلا • تصميم حديث يحافظ على واجهة البيت
-            </div>
-          </div>
-
-          <div
-            class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card"
-          >
-            <img
-              src="images/h.jpg"
-              alt="ملحق عائلي سندوتش بنل"
-              class="w-full h-44 object-cover"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
-            ></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              ملحق عائلي سندوتش بنل مع تشطيب داخلي وأبواب ونوافذ ألمنيوم
-            </div>
-          </div>
-
-          <div
-            class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card"
-          >
-            <img
-              src="images/r.jpeg"
-              alt="مستودع سندوتش بنل"
-              class="w-full h-44 object-cover"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"
-            ></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              مستودع تجاري بسقف وجدران سندوتش بنل وعزل عالي
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- آلية العمل -->
-      <section id="process" class="space-y-6 fade-up">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-50">
-          خطوات تنفيذ مشروعك معنا
-        </h2>
-
-        <div class="grid md:grid-cols-4 gap-4 text-xs md:text-sm">
-          <div
-            class="glass rounded-2xl border border-white/10 p-4 flex flex-col gap-2 relative hover-card"
-          >
-            <span
-              class="absolute -top-3 right-4 w-7 h-7 rounded-full bg-accent text-primary flex items-center justify-center text-xs font-bold shadow"
-              >1</span
-            >
-            <div class="font-semibold text-slate-50">اتصال أو واتساب</div>
-            <p class="text-slate-300">
-              تواصل معنا وحدد نوع المشروع: غرفة، مستودع، ملحق، أو مظلات.
-            </p>
-          </div>
-
-          <div
-            class="glass rounded-2xl border border-white/10 p-4 flex flex-col gap-2 relative hover-card"
-          >
-            <span
-              class="absolute -top-3 right-4 w-7 h-7 rounded-full bg-accent text-primary flex items-center justify-center text-xs font-bold shadow"
-              >2</span
-            >
-            <div class="font-semibold text-slate-50">معاينة ميدانية أو صور</div>
-            <p class="text-slate-300">
-              نعاين الموقع أو نستقبل صورًا وأبعادًا واضحة للمكان المطلوب.
-            </p>
-          </div>
-
-          <div
-            class="glass rounded-2xl border border-white/10 p-4 flex flex-col gap-2 relative hover-card"
-          >
-            <span
-              class="absolute -top-3 right-4 w-7 h-7 rounded-full bg-accent text-primary flex items-center justify-center text-xs font-bold shadow"
-              >3</span
-            >
-            <div class="font-semibold text-slate-50">عرض سعر وتصميم مقترح</div>
-            <p class="text-slate-300">
-              نحدد نوع المواد، السماكات، والهيكل مع تسعيرة واضحة قبل البدء.
-            </p>
-          </div>
-
-          <div
-            class="glass rounded-2xl border border-white/10 p-4 flex flex-col gap-2 relative hover-card"
-          >
-            <span
-              class="absolute -top-3 right-4 w-7 h-7 rounded-full bg-accent text-primary flex items-center justify-center text-xs font-bold shadow"
-              >4</span
-            >
-            <div class="font-semibold text-slate-50">تنفيذ وتسليم</div>
-            <p class="text-slate-300">
-              فريق مُدرّب ينفّذ العمل بسرعة مع حرص على النظافة والتسليم في الموعد.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- من نحن -->
-      <section id="about" class="grid md:grid-cols-2 gap-8 items-start fade-up">
-        <div class="space-y-4">
-          <h2 class="text-xl md:text-2xl font-bold text-slate-50">من نحن</h2>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            <span class="font-semibold text-accent">مؤسسة إبداع الظل</span> مؤسسة
-            سعودية متخصصة في أعمال المظلات، السواتر، الهياكل المعدنية، والسندوتش بنل
-            في الرياض وما حولها.
-          </p>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            نركز على الجمع بين
-            <span class="font-semibold">جودة التنفيذ، جمال الشكل، وسلامة الهيكل</span>
-            لنقدم لك حلًا متكاملاً يناسب استخدامك الفعلي وميزانيتك.
-          </p>
-
-          <div class="text-xs text-slate-300 space-y-1">
-            <div>• التزام بالمواعيد وجودة التشطيب</div>
-            <div>• استخدام مواد معتمدة وسماكات مناسبة لبيئة الرياض</div>
-            <div>• فريق فني ذو خبرة في مشاريع المساكن والتجارية</div>
-          </div>
-
-          <div class="flex items-center gap-3 text-xs pt-2">
-            <span class="text-slate-300">تابع أعمالنا على:</span>
-            <a
-              href="https://tiktok.com/@abda.adel100"
-              class="px-3 py-1 rounded-full bg-primary/60 border border-white/10 hover:border-accent hover:text-accentSoft transition"
-              >TikTok</a
-            >
-            <a
-              href="https://www.instagram.com/mzalat1"
-              class="px-3 py-1 rounded-full bg-primary/60 border border-white/10 hover:border-accent hover:text-accentSoft transition"
-              >Instagram</a
-            >
-            <a
-              href="https://www.youtube.com/@%D8%A8%D9%86%D8%A7%D8%A1-%D9%85%D9%84%D8%A7%D8%AD%D9%82-%D8%AA%D8%B1%D9%85%D9%8A%D9%85"
-              class="px-3 py-1 rounded-full bg-primary/60 border border-white/10 hover:border-accent hover:text-accentSoft transition"
-              >YouTube</a
-            >
-          </div>
-        </div>
-
-        <!-- كارت بيانات الاتصال -->
-        <div
-          class="glass rounded-2xl border border-white/10 p-6 space-y-4 fade-up hover-card"
-        >
-          <h3 class="font-semibold text-slate-50">بيانات التواصل السريع</h3>
-          <div class="space-y-3 text-sm">
-            <div class="flex items-center gap-3">
-              <div
-                class="w-9 h-9 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-accent"
-              >
-                📞
-              </div>
-              <div>
-                <div class="text-xs text-slate-300">اتصال مباشر</div>
-                <a
-                  href="tel:0562526395"
-                  class="text-base font-bold text-accent hover:underline"
-                  >0562526395</a
-                >
-              </div>
-            </div>
-
-            <div class="flex items-center gap-3">
-              <div
-                class="w-9 h-9 rounded-full bg-emerald-500/10 border border-emerald-400/40 flex items-center justify-center text-emerald-300"
-              >
-                💬
-              </div>
-              <div>
-                <div class="text-xs text-slate-300">واتساب لخدمة العملاء</div>
-                <a
-                  href="https://wa.me/966554803704"
-                  target="_blank"
-                  class="text-sm font-semibold text-emerald-300 hover:underline"
-                >
-                  فتح محادثة واتساب
-                </a>
-              </div>
-            </div>
-
-            <div class="text-xs text-slate-300 pt-2">
-              نرحب بالرسائل التي تحتوي على:
-              <span class="font-semibold text-slate-100">
-                نوع المشروع، الموقع، وأبعاد تقريبية
-              </span>
-              حتى نجهز لك عرض سعر مبدئي قبل المعاينة.
-            </div>
-          </div>
-        </div>
-      </section>
 
       <!-- تواصل -->
       <section id="contact" class="space-y-6 fade-up">
-        <h2 class="text-xl md:text-2xl font-bold text-slate-50">طلب عرض سعر</h2>
+        <h2 class="text-xl md:text-2xl font-bold text-slate-50">اطلب عرض سعر الآن</h2>
         <p class="text-sm text-slate-300 max-w-xl">
-          عبّئ بياناتك الأساسية، وسيتم فتح واتساب برسالة جاهزة تحتوي على تفاصيل
-          طلبك، لنعود إليك بأفضل عرض يناسب مشروعك.
+          عبي بياناتك الأساسية، وسيتم فتح واتساب برسالة جاهزة تحتوي على تفاصيل
+          طلبك. نراجعها ونرجع لك بأفضل حل يناسب ميزانيتك واستخدامك.
         </p>
 
         <form
@@ -1176,7 +1432,7 @@
             <input
               id="name"
               type="text"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
+              class="w-full rounded-xl bg-slate-950/70 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
               placeholder="اكتب اسمك هنا"
             />
           </div>
@@ -1186,7 +1442,7 @@
             <input
               id="phone"
               type="tel"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
+              class="w-full rounded-xl bg-slate-950/70 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
               placeholder="05XXXXXXXX"
             />
           </div>
@@ -1196,7 +1452,7 @@
             <input
               id="city"
               type="text"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
+              class="w-full rounded-xl bg-slate-950/70 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
               placeholder="مثال: الرياض - حي الياسمين"
             />
           </div>
@@ -1205,7 +1461,7 @@
             <label for="service" class="text-xs text-slate-200">نوع الخدمة</label>
             <select
               id="service"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
+              class="w-full rounded-xl bg-slate-950/70 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
             >
               <option value="">اختر نوع الخدمة</option>
               <option>سندوتش بنل - غرفة أو ملحق</option>
@@ -1224,7 +1480,7 @@
             <textarea
               id="details"
               rows="3"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
+              class="w-full rounded-xl bg-slate-950/70 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
               placeholder="مثال: مساحة تقريبية، ارتفاع مطلوب، استخدام الغرفة أو المستودع، وجود بناء سابق أو أرض فاضية..."
             ></textarea>
           </div>
@@ -1232,7 +1488,7 @@
           <div class="md:col-span-2 flex flex-wrap items-center gap-4 mt-2">
             <button
               type="submit"
-              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-6 py-2 font-bold text-sm shadow-soft hover:bg-accentSoft transition"
+              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-6 py-2 font-bold text-sm shadow-soft"
             >
               إرسال الطلب عبر واتساب
               <span>💬</span>
@@ -1245,18 +1501,36 @@
       </section>
     </main>
 
+    <!-- زر رجوع للأعلى -->
+    <button
+      id="backToTop"
+      class="hidden fixed bottom-4 right-4 z-40 w-10 h-10 rounded-full glass border border-white/20 text-slate-100 text-lg flex items-center justify-center shadow-soft"
+      aria-label="الرجوع للأعلى"
+    >
+      ↑
+    </button>
+
     <!-- زر واتساب عائم -->
     <a
       href="https://wa.me/966554803704"
       target="_blank"
-      class="btn-main fixed bottom-4 left-4 z-50 flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-full shadow-soft text-sm"
+      class="btn-main fixed bottom-4 left-4 z-40 flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-full shadow-soft text-sm"
     >
       <span class="text-lg">💬</span>
       <span class="font-semibold">تواصل واتساب</span>
     </a>
-
+<!-- زر الرجوع للأعلى -->
+    <button
+      id="scrollTopBtn"
+      class="scroll-top-btn"
+      type="button"
+      aria-label="الرجوع للأعلى"
+    >
+      ↑
+    </button>
+    
     <!-- فوتر -->
-    <footer class="border-t border-slate-800 bg-black/70">
+    <footer class="border-t border-slate-800 bg-black/80">
       <div
         class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-[11px] text-slate-400"
       >
@@ -1278,16 +1552,11 @@
       </div>
     </footer>
 
-    <!-- سكربت السلايدر + أنيميشن + نموذج واتساب -->
+    <!-- سكربت التفاعلات -->
     <script>
-      // سلايدر الهيرو (سندوتش بنل)
       document.addEventListener('DOMContentLoaded', function () {
-        const images = [
-          'images/4.jpeg',
-          'images/6.jpeg',
-          'images/33.jpeg',
-          'images/1.jpeg',
-        ];
+        // سلايدر الهيرو
+        const images = ['images/4.jpeg', 'images/6.jpeg', 'images/33.jpeg', 'images/1.jpeg'];
 
         const img1 = document.getElementById('heroSlide1');
         const img2 = document.getElementById('heroSlide2');
@@ -1338,7 +1607,7 @@
             updateDots(currentIndex);
           }
 
-          setInterval(switchSlide, 2500);
+          setInterval(switchSlide, 2600);
         }
 
         // أنيميشن ظهور العناصر عند التمرير
@@ -1355,11 +1624,42 @@
             },
             { threshold: 0.1 }
           );
-
           fadeEls.forEach((el) => observer.observe(el));
         } else {
           fadeEls.forEach((el) => el.classList.add('show'));
         }
+
+        // منيو الموبايل
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const iconOpen = document.getElementById('mobileMenuIconOpen');
+        const iconClose = document.getElementById('mobileMenuIconClose');
+
+        if (mobileBtn && mobileMenu) {
+          mobileBtn.addEventListener('click', () => {
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            if (isOpen) {
+              mobileMenu.classList.add('hidden');
+              iconOpen.classList.remove('hidden');
+              iconClose.classList.add('hidden');
+            } else {
+              mobileMenu.classList.remove('hidden');
+              iconOpen.classList.add('hidden');
+              iconClose.classList.remove('hidden');
+            }
+          });
+
+          // إغلاق عند اختيار رابط
+          mobileMenu.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+              mobileMenu.classList.add('hidden');
+              iconOpen.classList.remove('hidden');
+              iconClose.classList.add('hidden');
+            });
+          });
+        }
+
+    
 
         // نموذج الواتساب
         const WHATSAPP_NUMBER = '966554803704';
@@ -1385,91 +1685,22 @@
             const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`;
             window.open(url, '_blank');
           });
+        }// زر الرجوع للأعلى
+        const scrollBtn = document.getElementById('scrollTopBtn');
+        if (scrollBtn) {
+          window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+              scrollBtn.classList.add('show');
+            } else {
+              scrollBtn.classList.remove('show');
+            }
+          });
+
+          scrollBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
         }
       });
-      // عدّاد الأرقام المتحرك
-        const counters = document.querySelectorAll('.counter');
-        if (counters.length) {
-          const startCounting = () => {
-            counters.forEach((counter) => {
-              const target = +counter.getAttribute('data-target');
-              let started = false;
-
-              const animate = () => {
-                const current = +counter.innerText;
-                const increment = Math.max(1, Math.floor(target / 80));
-
-                if (current < target) {
-                  counter.innerText = current + increment;
-                  requestAnimationFrame(animate);
-                } else {
-                  counter.innerText = target;
-                }
-              };
-
-              if (!started) {
-                started = true;
-                counter.innerText = '0';
-                animate();
-              }
-            });
-          };
-
-          // نربطها مع الـ IntersectionObserver لو متوفر
-          if ('IntersectionObserver' in window) {
-            const countersObserver = new IntersectionObserver(
-              (entries) => {
-                entries.forEach((entry) => {
-                  if (entry.isIntersecting) {
-                    startCounting();
-                    countersObserver.disconnect();
-                  }
-                });
-              },
-              { threshold: 0.3 }
-            );
-            const firstCounter = counters[0];
-            if (firstCounter) countersObserver.observe(firstCounter);
-          } else {
-            // لو المتصفح قديم، نشغّلها مباشرة
-            startCounting();
-          }
-        }
-
-        // تأثير 3D لسلايدر الهيرو (tilt)
-        const tiltHero = document.querySelector('.tilt-hero');
-        if (tiltHero) {
-          const maxRotate = 6; // درجة الدوران القصوى
-
-          tiltHero.addEventListener('mousemove', (e) => {
-            const rect = tiltHero.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-
-            const rotateY = ((x / rect.width) - 0.5) * (maxRotate * 2);
-            const rotateX = ((y / rect.height) - 0.5) * (maxRotate * -2);
-
-            tiltHero.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-            tiltHero.classList.add('is-tilting');
-          });
-
-          tiltHero.addEventListener('mouseleave', () => {
-            tiltHero.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
-            tiltHero.classList.remove('is-tilting');
-          });
-        }
-
-        // شريط تقدم التمرير (scroll progress bar)
-        const scrollProgress = document.getElementById('scrollProgress');
-        if (scrollProgress) {
-          window.addEventListener('scroll', () => {
-            const docHeight =
-              document.documentElement.scrollHeight -
-              document.documentElement.clientHeight;
-            const scrolled = (window.scrollY / docHeight) * 100;
-            scrollProgress.style.width = scrolled + '%';
-          });
-        }
     </script>
   </body>
 </html>
