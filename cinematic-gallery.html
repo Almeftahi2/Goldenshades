@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>المعرض السينمائي | مؤسسة إبداع الظل</title>
+    <meta
+      name="description"
+      content="معرض سينمائي فخم لأعمال مؤسسة إبداع الظل: اسحب، زوّم، دبل-تاب… صور حقيقية من التنفيذ (سندوتش بنل، مظلات، مستودعات، سواتر وحدادة) في الرياض وما حولها." 
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071824" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="المعرض السينمائي | مؤسسة إبداع الظل" />
+    <meta property="og:description" content="صور حقيقية + تجربة تفاعلية (Swipe/Zoom/Double Tap) — شغل يبان من أول نظرة." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="images/7.PNG" />
+
+    <!-- Tajawal -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Tajawal', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              primary: '#071824',
+              primarySoft: '#0b2535',
+              accent: '#d4af37',
+              accentSoft: '#f3e4b3',
+            },
+            boxShadow: {
+              soft: '0 18px 45px rgba(0,0,0,.35)',
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-50">
+    <div class="scroll-progress"><span id="scrollProgressBar"></span></div>
+
+    <!-- الخلفية الفاخرة -->
+    <div class="fixed inset-0 bg-hero-animated bg-no-repeat bg-cover bg-center opacity-95 -z-10"></div>
+    <div
+      class="fixed inset-0 opacity-20 -z-10"
+      style="
+        background-image: radial-gradient(circle at 10% 20%, #d4af37 0, transparent 40%),
+          radial-gradient(circle at 90% 10%, #22c55e 0, transparent 40%),
+          radial-gradient(circle at 50% 90%, #0ea5e9 0, transparent 45%);
+      "
+    ></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40">
+      <div class="backdrop-blur-xl bg-black/40 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+          <a href="index.html#hero" class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-2xl bg-gradient-to-br from-accent to-accentSoft flex items-center justify-center text-primary font-extrabold text-2xl shadow-lg"
+              aria-hidden="true"
+            >
+              م
+            </div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm md:text-base">مؤسسة إبداع الظل</div>
+              <div class="text-[11px] md:text-xs text-slate-300">
+                سندوتش بنل • مظلات • مستودعات • سواتر • حدادة
+              </div>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-5 text-xs text-slate-200 ml-auto">
+            <a href="index.html#services" class="hover:text-accent transition-colors">الخدمات</a>
+            <a href="sandwich-panel.html" class="hover:text-accent transition-colors">السندوتش بنل</a>
+            <a href="car-shades.html" class="hover:text-accent transition-colors">مظلات السيارات</a>
+            <a href="stores-hangers.html" class="hover:text-accent transition-colors">المستودعات والهناجر</a>
+            <a href="shelters-steel.html" class="hover:text-accent transition-colors">السواتر والحدادة</a>
+
+            <!-- Trend Lab -->
+            <div class="relative group">
+              <button type="button" class="inline-flex items-center gap-2 hover:text-accent transition-colors">
+                ✨ مختبر 3.2
+                <span class="text-[10px] opacity-70">▾</span>
+              </button>
+              <div
+                class="absolute right-0 mt-3 w-56 rounded-2xl glass border border-white/10 shadow-soft overflow-hidden opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition"
+              >
+                <a href="cinematic-gallery.html" class="block px-4 py-3 text-xs hover:bg-white/5">🎬 المعرض السينمائي</a>
+                <a href="material-playground.html" class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5">🧪 مختبر الخامات</a>
+                <a href="configurator.html" class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5">⚙️ مُكوّن المشروع</a>
+              </div>
+            </div>
+
+            <a href="projects.html" class="hover:text-accent transition-colors">أعمالنا</a>
+            <a href="index.html#contact" class="hover:text-accent transition-colors">التواصل</a>
+          </nav>
+
+          <div class="hidden md:block">
+            <a
+              href="index.html#contact"
+              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 text-xs font-extrabold shadow-lg hover:bg-accentSoft transition-colors"
+            >
+              اطلب عرض سعر
+              <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full">استجابة سريعة</span>
+            </a>
+          </div>
+
+          <button
+            id="menuBtn"
+            class="md:hidden ml-auto inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent transition"
+            aria-label="فتح القائمة"
+            title="القائمة"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <div id="menuOverlay" class="hidden fixed inset-0 bg-black/60 z-40"></div>
+      <div
+        id="mobileMenu"
+        class="fixed top-0 right-0 h-full w-80 max-w-[86%] z-50 translate-x-full transition-transform duration-300 glass border-l border-white/10 p-4"
+        aria-label="قائمة الموبايل"
+      >
+        <div class="flex items-center justify-between">
+          <div class="font-extrabold text-slate-50">القائمة</div>
+          <button
+            id="menuClose"
+            class="w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent transition"
+            aria-label="إغلاق القائمة"
+            title="إغلاق"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="mt-4 space-y-2 text-sm">
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="index.html#services">الخدمات</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="sandwich-panel.html">السندوتش بنل</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="car-shades.html">مظلات السيارات</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="stores-hangers.html">المستودعات والهناجر</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="shelters-steel.html">السواتر والحدادة</a>
+
+          <div class="mt-2 text-[11px] text-slate-400 px-1">مختبر 3.2</div>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="cinematic-gallery.html">🎬 المعرض السينمائي</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="material-playground.html">🧪 مختبر الخامات</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="configurator.html">⚙️ مُكوّن المشروع</a>
+
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="projects.html">أعمالنا</a>
+          <a class="block px-3 py-2 rounded-xl bg-accent text-primary font-extrabold" href="index.html#contact">اطلب عرض سعر</a>
+        </div>
+
+        <div class="mt-5 glass rounded-2xl border border-white/10 p-4 text-xs text-slate-200">
+          <div class="font-extrabold text-slate-50 mb-2">تواصل سريع</div>
+          <a
+            href="tel:0562526395"
+            class="btn-outline inline-flex w-full justify-center gap-2 rounded-full border border-slate-600/80 bg-primary/40 px-4 py-2"
+          >
+            📞 اتصال <span dir="ltr" class="font-semibold">0562526395</span>
+          </a>
+          <a
+            href="https://wa.me/966554803704"
+            target="_blank"
+            class="btn-main mt-2 inline-flex w-full justify-center gap-2 rounded-full bg-emerald-500 text-white px-4 py-2 font-extrabold"
+          >
+            💬 واتساب
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pt-8 pb-24 space-y-16" data-cinema-gallery>
+      <!-- HERO -->
+      <section class="grid lg:grid-cols-2 gap-8 items-center fade-up">
+        <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/60 border border-white/10 text-[11px] text-slate-200">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"></span>
+            تجربة ترند: Swipe + Zoom + Double Tap
+          </div>
+
+          <h1 class="text-2xl md:text-4xl font-extrabold leading-snug">
+            المعرض
+            <span class="text-accent">السينمائي</span>
+            لأعمالنا
+            <span class="block text-base md:text-xl text-slate-300 mt-2">
+              صور حقيقية… بتشوف الجودة قبل ما تتواصل.
+            </span>
+          </h1>
+
+          <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
+            هذه الصفحة مصممة “كترند” للسوشال: صور كبيرة، تأثيرات فخمة، وتصفح سهل.
+            اضغط أي صورة للتكبير — وتقدر تسوي <span class="text-accent font-semibold">زوّم</span> وتتحكم بالسحب.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3 text-xs">
+            <a href="configurator.html" class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-5 py-2 font-extrabold shadow-soft">
+              جهّز طلبك خلال دقيقة <span>⚙️</span>
+            </a>
+            <a href="material-playground.html" class="btn-outline inline-flex items-center gap-2 rounded-full border border-white/10 bg-primary/40 px-5 py-2 hover:border-accent">
+              جرّب الخامات <span>🧪</span>
+            </a>
+            <button id="copyPageLink" class="btn-outline inline-flex items-center gap-2 rounded-full border border-white/10 bg-primary/40 px-5 py-2 hover:border-accent" type="button">
+              نسخ رابط الصفحة <span>🔗</span>
+            </button>
+          </div>
+
+          <div class="text-[11px] text-slate-400">
+            ملاحظة: استبدل/أضف صورك الحقيقية داخل <span class="text-slate-200">/images</span> لزيادة قوة الإقناع.
+          </div>
+        </div>
+
+        <div class="cinema-stage glass border border-white/10 p-4 hover-card">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-sm font-extrabold text-slate-50">لقطة اليوم</div>
+            <div class="text-[11px] text-slate-400">اضغط للتكبير</div>
+          </div>
+
+          <button
+            class="cinema-hero rounded-2xl overflow-hidden w-full text-right"
+            data-lightbox
+            data-src="images/4.PNG"
+            data-caption="سندوتش بنل — شغل نظيف وعزل ممتاز"
+            type="button"
+          >
+            <img src="images/4.PNG" alt="سندوتش بنل" class="w-full h-64 md:h-72 object-cover" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
+            <div class="absolute bottom-4 right-4 left-4">
+              <div class="text-slate-50 font-extrabold">“شغل يبان من أول نظرة”</div>
+              <div class="text-[11px] text-slate-200/90 mt-1">اضغط للتكبير + زوم + دبل-تاب</div>
+            </div>
+          </button>
+        </div>
+      </section>
+
+      <!-- CINEMA ROW -->
+      <section class="space-y-4 fade-up">
+        <div class="flex items-center justify-between gap-3">
+          <div>
+            <h2 class="text-xl md:text-2xl font-extrabold">تصفح كأنك داخل فيلم 🎬</h2>
+            <p class="text-sm text-slate-300 mt-1">سحب أفقي + سناب + تأثيرات فخمة…</p>
+          </div>
+          <div class="text-[11px] text-slate-400">اسحب ⇠ ⇢</div>
+        </div>
+
+        <div class="cinema-row" data-cinema-strip>
+          <!-- Cards: click opens lightbox (site.js) -->
+          <button class="cinema-card" data-lightbox data-src="images/11.PNG" data-caption="مظلات سيارات — تصميم حديث" type="button">
+            <img src="images/12.PNG" alt="مظلات سيارات" />
+            <div class="cinema-meta"><span>مظلات</span><span>كود: CAR</span></div>
+          </button>
+          <button class="cinema-card" data-lightbox data-src="images/15.PNG" data-caption="مستودع سندوتش بنل — عزل عالي" type="button">
+            <img src="images/16.PNG" alt="مستودع" />
+            <div class="cinema-meta"><span>مستودع</span><span>كود: WH</span></div>
+          </button>
+          <button class="cinema-card" data-lightbox data-src="images/1.PNG" data-caption="تفاصيل ألواح سندوتش بنل — سماكات" type="button">
+            <img src="images/32.PNG" alt="تفاصيل ألواح" />
+            <div class="cinema-meta"><span>تفاصيل</span><span>كود: SP</span></div>
+          </button>
+          <button class="cinema-card" data-lightbox data-src="images/1.PNG" data-caption="جلسة/ملحق — لمسة فخمة" type="button">
+            <img src="images/1.PNG" alt="ملحق" />
+            <div class="cinema-meta"><span>ملحق</span><span>كود: EXT</span></div>
+          </button>
+          <button class="cinema-card" data-lightbox data-src="images/6.PNG" data-caption="تنفيذ سندوتش بنل — شغل مرتب" type="button">
+            <img src="images/6.PNG" alt="سندوتش بنل" />
+            <div class="cinema-meta"><span>سندوتش</span><span>كود: PN</span></div>
+          </button>
+          <button class="cinema-card" data-lightbox data-src="images/25.PNG" data-caption="سقف/مستودع — عزل وتهوية" type="button">
+            <img src="images/26.PNG" alt="سقف" />
+            <div class="cinema-meta"><span>سقف</span><span>كود: RF</span></div>
+          </button>
+          <button class="cinema-card" data-lightbox data-src="images/5.PNG" data-caption="تفاصيل تشطيب — فواصل نظيفة" type="button">
+            <img src="images/5.PNG" alt="تشطيب" />
+            <div class="cinema-meta"><span>تشطيب</span><span>كود: FIN</span></div>
+          </button>
+        </div>
+
+        <div class="cinema-indicator" aria-label="مؤشر المعرض">
+          <span data-ci></span><span data-ci></span><span data-ci></span><span data-ci></span><span data-ci></span><span data-ci></span><span data-ci></span>
+        </div>
+      </section>
+
+      <!-- CTA SECTION -->
+      <section class="grid lg:grid-cols-2 gap-6 items-start fade-up">
+        <div class="glass rounded-2xl border border-white/10 p-6 hover-card space-y-3">
+          <h2 class="text-xl md:text-2xl font-extrabold">تبغى نفس الفخامة بمكانك؟</h2>
+          <p class="text-sm text-slate-300 leading-relaxed">
+            أفضل طريقة تبدأ: <span class="text-accent font-semibold">أرسل صور المكان</span> + مقاسات تقريبية.
+            نرجع لك بتقدير واضح + اقتراح تصميم يناسب واجهتك.
+          </p>
+          <div class="flex flex-wrap items-center gap-3 text-xs">
+            <a href="https://wa.me/966554803704" target="_blank" class="btn-main inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-5 py-2 font-extrabold">
+              💬 إرسال على واتساب
+            </a>
+            <a href="tel:0562526395" class="btn-outline inline-flex items-center gap-2 rounded-full border border-white/10 bg-primary/40 px-5 py-2 hover:border-accent">
+              📞 اتصال مباشر
+              <span dir="ltr" class="font-semibold">0562526395</span>
+            </a>
+          </div>
+          <div class="text-[11px] text-slate-400">الرياض وما حولها — معاينة/تقييم سريع</div>
+        </div>
+
+        <div class="glass rounded-2xl border border-white/10 p-6 hover-card space-y-3">
+          <h3 class="text-lg font-extrabold">ثقة… بدون كلام كثير</h3>
+          <ul class="text-[12px] text-slate-300 space-y-2 leading-relaxed">
+            <li>• صور حقيقية من التنفيذ (مو تصوير تسويقي).</li>
+            <li>• شرح واضح للمواصفة قبل التنفيذ: سماكة/عزل/هيكل/تشطيب.</li>
+            <li>• ملخص قبل الإرسال (ترند الثقة) — تشوف الرسالة قبل تروح واتساب.</li>
+          </ul>
+          <a href="configurator.html" class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-5 py-2 font-extrabold">
+            افتح مُكوّن المشروع الآن <span>→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- زر واتساب عائم -->
+    <a
+      href="https://wa.me/966554803704"
+      target="_blank"
+      class="btn-main fixed bottom-4 left-4 z-50 flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-full shadow-soft text-sm"
+    >
+      <span class="text-lg">💬</span>
+      <span class="font-extrabold">تواصل واتساب</span>
+    </a>
+
+    <button
+      id="toTop"
+      class="fixed bottom-4 right-4 z-50 w-11 h-11 rounded-2xl bg-primary/70 border border-white/10 hover:border-accent shadow-soft"
+      aria-label="العودة للأعلى"
+      title="العودة للأعلى"
+    >
+      ⬆️
+    </button>
+
+    <!-- Lightbox (reused by site.js) -->
+    <div id="lightbox" class="fixed inset-0 z-[100]">
+      <div id="lightboxOverlay" class="absolute inset-0 bg-black/70"></div>
+      <div class="relative max-w-4xl mx-auto px-4 h-full flex items-center justify-center">
+        <div class="glass border border-white/10 rounded-2xl overflow-hidden w-full">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
+            <div id="lightboxTitle" class="text-sm font-extrabold text-slate-50">عرض الصورة</div>
+            <button
+              id="lightboxClose"
+              class="w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent"
+              aria-label="إغلاق"
+              title="إغلاق"
+            >
+              ✕
+            </button>
+          </div>
+          <img id="lightboxImg" src="" alt="" class="w-full max-h-[70vh] object-contain bg-black/30" />
+          <div class="px-4 py-3 text-[11px] text-slate-300">
+            Swipe / Zoom / Double Tap — جربها ✨
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="border-t border-slate-800 bg-black/70">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
+        <div>© <span class="font-semibold text-slate-200">مؤسسة إبداع الظل</span> – جميع الحقوق محفوظة.</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <span>الرياض وما حولها</span>
+          <span class="w-px h-3 bg-slate-600"></span>
+          <a href="tel:0562526395" class="hover:text-accent transition-colors font-semibold" dir="ltr">0562526395</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      window.WHATSAPP_NUMBER = '966554803704';
+    </script>
+    <script src="assets/js/site.js"></script>
+    <script src="assets/js/trend32.js"></script>
+    <script>
+      // Copy page link
+      document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('copyPageLink');
+        if (!btn) return;
+        btn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(window.location.href);
+            btn.textContent = 'تم نسخ الرابط ✅';
+            setTimeout(() => (btn.textContent = 'نسخ رابط الصفحة 🔗'), 1400);
+          } catch (_) {
+            // fallback
+            const ta = document.createElement('textarea');
+            ta.value = window.location.href;
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            ta.remove();
+            btn.textContent = 'تم نسخ الرابط ✅';
+            setTimeout(() => (btn.textContent = 'نسخ رابط الصفحة 🔗'), 1400);
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

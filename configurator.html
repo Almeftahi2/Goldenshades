@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>مُكوّن المشروع (Configurator) | مؤسسة إبداع الظل</title>
+    <meta
+      name="description"
+      content="مُكوّن تفاعلي لتجهيز عرض السعر: اختر الخدمة، أدخل المقاسات، واختر المواصفات—ثم شاهد ملخصًا واضحًا وتأكيد قبل الإرسال. (يحفظ اختيار الخدمة للزيارة القادمة)." 
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071824" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Tajawal', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              primary: '#071824',
+              primarySoft: '#0b2535',
+              accent: '#d4af37',
+              accentSoft: '#f3e4b3',
+            },
+            boxShadow: {
+              soft: '0 18px 45px rgba(0,0,0,.35)',
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-50" data-configurator>
+    <!-- Scroll Progress -->
+    <div class="scroll-progress"><span id="scrollProgressBar"></span></div>
+
+    <!-- Background -->
+    <div class="fixed inset-0 bg-hero-animated bg-no-repeat bg-cover bg-center opacity-95 -z-10"></div>
+    <div
+      class="fixed inset-0 opacity-20 -z-10"
+      style="
+        background-image: radial-gradient(circle at 10% 20%, #d4af37 0, transparent 40%),
+          radial-gradient(circle at 90% 10%, #22c55e 0, transparent 40%),
+          radial-gradient(circle at 50% 90%, #0ea5e9 0, transparent 45%);
+      "
+    ></div>
+
+    <!-- Header (same) -->
+    <header class="sticky top-0 z-40">
+      <div class="backdrop-blur-xl bg-black/40 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+          <a href="index.html#hero" class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-2xl bg-gradient-to-br from-accent to-accentSoft flex items-center justify-center text-primary font-extrabold text-2xl shadow-lg"
+              aria-hidden="true"
+            >
+              م
+            </div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm md:text-base">مؤسسة إبداع الظل</div>
+              <div class="text-[11px] md:text-xs text-slate-300">
+                سندوتش بنل • مظلات • مستودعات • سواتر • حدادة
+              </div>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-5 text-xs text-slate-200 ml-auto">
+            <a href="index.html#services" class="hover:text-accent transition-colors">الخدمات</a>
+            <a href="sandwich-panel.html" class="hover:text-accent transition-colors">السندوتش بنل</a>
+            <a href="car-shades.html" class="hover:text-accent transition-colors">مظلات السيارات</a>
+            <a href="stores-hangers.html" class="hover:text-accent transition-colors">المستودعات والهناجر</a>
+            <a href="shelters-steel.html" class="hover:text-accent transition-colors">السواتر والحدادة</a>
+
+            <!-- Trend Lab 3.2 -->
+            <div class="relative group">
+              <button
+                type="button"
+                class="inline-flex items-center gap-2 hover:text-accent transition-colors"
+                aria-haspopup="menu"
+                aria-label="مختبر 3.2"
+              >
+                ✨ مختبر 3.2 <span class="text-[10px] opacity-70">▾</span>
+              </button>
+              <div
+                class="absolute right-0 mt-3 w-56 rounded-2xl glass border border-white/10 shadow-soft overflow-hidden opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition"
+              >
+                <a href="cinematic-gallery.html" class="block px-4 py-3 text-xs hover:bg-white/5">🎬 المعرض السينمائي</a>
+                <a href="material-playground.html" class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5">🧪 مختبر الخامات</a>
+                <a href="configurator.html" class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5">⚙️ مُكوّن المشروع</a>
+              </div>
+            </div>
+
+            <a href="projects.html" class="hover:text-accent transition-colors">أعمالنا</a>
+            <a href="index.html#contact" class="hover:text-accent transition-colors">التواصل</a>
+          </nav>
+
+          <div class="hidden md:block">
+            <a
+              href="#config"
+              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 text-xs font-extrabold shadow-lg hover:bg-accentSoft transition-colors"
+            >
+              ابدأ التكوين
+              <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full">ملخص قبل الإرسال</span>
+            </a>
+          </div>
+
+          <button
+            id="menuBtn"
+            class="md:hidden ml-auto inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent transition"
+            aria-label="فتح القائمة"
+            title="القائمة"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <div id="menuOverlay" class="hidden fixed inset-0 bg-black/60 z-40"></div>
+
+      <div
+        id="mobileMenu"
+        class="fixed top-0 right-0 h-full w-80 max-w-[86%] z-50 translate-x-full transition-transform duration-300 glass border-l border-white/10 p-4"
+        aria-label="قائمة الموبايل"
+      >
+        <div class="flex items-center justify-between">
+          <div class="font-extrabold text-slate-50">القائمة</div>
+          <button
+            id="menuClose"
+            class="w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent transition"
+            aria-label="إغلاق القائمة"
+            title="إغلاق"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="mt-4 space-y-2 text-sm">
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="index.html#services">الخدمات</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="sandwich-panel.html">السندوتش بنل</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="car-shades.html">مظلات السيارات</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="stores-hangers.html">المستودعات والهناجر</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="shelters-steel.html">السواتر والحدادة</a>
+
+          <div class="mt-2 pt-2 border-t border-white/10">
+            <div class="text-[11px] text-slate-400 px-1 mb-2">✨ مختبر 3.2</div>
+            <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="cinematic-gallery.html">🎬 المعرض السينمائي</a>
+            <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="material-playground.html">🧪 مختبر الخامات</a>
+            <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="configurator.html">⚙️ مُكوّن المشروع</a>
+          </div>
+
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="projects.html">أعمالنا</a>
+          <a class="block px-3 py-2 rounded-xl bg-accent text-primary font-extrabold" href="index.html#contact">اطلب عرض سعر</a>
+        </div>
+
+        <div class="mt-5 glass rounded-2xl border border-white/10 p-4 text-xs text-slate-200">
+          <div class="font-extrabold text-slate-50 mb-2">تواصل سريع</div>
+          <a
+            href="tel:0562526395"
+            class="btn-outline inline-flex w-full justify-center gap-2 rounded-full border border-slate-600/80 bg-primary/40 px-4 py-2"
+          >
+            📞 اتصال <span dir="ltr" class="font-semibold">0562526395</span>
+          </a>
+          <a
+            href="https://wa.me/966554803704"
+            target="_blank"
+            class="btn-main mt-2 inline-flex w-full justify-center gap-2 rounded-full bg-emerald-500 text-white px-4 py-2 font-extrabold"
+          >
+            💬 واتساب
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pt-8 pb-24 space-y-24">
+      <!-- HERO -->
+      <section class="fade-up" id="config">
+        <div class="grid lg:grid-cols-2 gap-8 items-start">
+          <div class="space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/60 border border-white/10 text-[11px] text-slate-200">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"></span>
+              ملخص واضح + تأكيد قبل الإرسال
+            </div>
+
+            <h1 class="text-2xl md:text-4xl font-extrabold leading-snug text-slate-50">
+              مُكوّن المشروع
+              <span class="text-accent">(Configurator)</span>
+              <span class="block text-base md:text-xl text-slate-300 mt-2">
+                جهّز طلبك مثل المحترفين… وبعدها أرسله في رسالة وحدة مرتبة.
+              </span>
+            </h1>
+
+            <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
+              بدل المكالمات الطويلة: اختر الخدمة، المقاسات، والمواصفات… ويطلع لك
+              <span class="font-semibold text-accent">ملخص جاهز</span>
+              تراجعه وتؤكده قبل ما ينفتح الواتساب. (ويحفظ اختيارك للزيارة القادمة.)
+            </p>
+
+            <div class="flex flex-wrap gap-2 text-[11px] text-slate-200 pt-2">
+              <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">يحفظ اختيار الخدمة</span>
+              <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">تقدير مبدئي للنطاق</span>
+              <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">رسالة واتساب جاهزة</span>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl border border-white/10 p-5 hover-card">
+            <div class="flex items-center justify-between">
+              <div class="font-extrabold">فكرة التكوين</div>
+              <div class="text-[11px] text-slate-400">3 خطوات بسيطة</div>
+            </div>
+            <div class="mt-4 grid grid-cols-3 gap-3 text-xs">
+              <div class="glass rounded-2xl border border-white/10 p-3">
+                <div class="text-accent font-extrabold">1</div>
+                <div class="text-slate-200 mt-1">اختر الخدمة</div>
+                <div class="text-[11px] text-slate-400 mt-1">سندوتش/مظلات/مستودعات/سواتر</div>
+              </div>
+              <div class="glass rounded-2xl border border-white/10 p-3">
+                <div class="text-accent font-extrabold">2</div>
+                <div class="text-slate-200 mt-1">أدخل المقاسات</div>
+                <div class="text-[11px] text-slate-400 mt-1">طول/عرض/ارتفاع + فتحة تكييف</div>
+              </div>
+              <div class="glass rounded-2xl border border-white/10 p-3">
+                <div class="text-accent font-extrabold">3</div>
+                <div class="text-slate-200 mt-1">راجع الملخص</div>
+                <div class="text-[11px] text-slate-400 mt-1">ثم أرسل على الواتساب</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONFIGURATOR -->
+      <section class="fade-up" aria-label="المُكوّن" data-configurator>
+        <div class="grid lg:grid-cols-5 gap-6 items-start">
+          <div class="lg:col-span-3 space-y-4">
+            <div class="glass rounded-2xl border border-white/10 p-4 md:p-5 hover-card">
+              <div class="flex items-center justify-between gap-3">
+                <div>
+                  <h2 class="font-extrabold text-lg">كوّن طلبك</h2>
+                  <p class="text-[11px] text-slate-400 mt-1">الحقول المهمة فقط… بدون تعقيد.</p>
+                </div>
+                <div class="text-xs text-slate-300">
+                  <span class="text-accent font-extrabold" id="cfgStepLabel">الخطوة 1</span> / 3
+                </div>
+              </div>
+
+              <div class="cfg-progress mt-4" aria-hidden="true"><span id="cfgProgress"></span></div>
+
+              <!-- STEP 1 -->
+              <div class="cfg-step mt-4" data-step="1">
+                <div class="grid md:grid-cols-2 gap-3">
+                  <button
+                    type="button"
+                    class="cfg-card glass rounded-2xl border border-white/10 p-4 text-right hover-card"
+                    data-service="سندوتش بنل"
+                    data-img="images/4.PNG"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="text-2xl">🧱</div>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/40">الأكثر طلباً</span>
+                    </div>
+                    <div class="font-extrabold mt-2">سندوتش بنل</div>
+                    <div class="text-[11px] text-slate-300 mt-1">غرف • ملاحق • أسقف • جدران</div>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="cfg-card glass rounded-2xl border border-white/10 p-4 text-right hover-card"
+                    data-service="مظلات سيارات"
+                    data-img="images/24.PNG"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="text-2xl">🚗</div>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-400/30">واجهة فخمة</span>
+                    </div>
+                    <div class="font-extrabold mt-2">مظلات سيارات</div>
+                    <div class="text-[11px] text-slate-300 mt-1">تصميم حديث + تثبيت آمن</div>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="cfg-card glass rounded-2xl border border-white/10 p-4 text-right hover-card"
+                    data-service="مستودعات وهناجر"
+                    data-img="images/12.PNG"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="text-2xl">🏭</div>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-400/40">تجاري</span>
+                    </div>
+                    <div class="font-extrabold mt-2">مستودعات وهناجر</div>
+                    <div class="text-[11px] text-slate-300 mt-1">هيكل مدروس + تهوية</div>
+                  </button>
+
+                  <button
+                    type="button"
+                    class="cfg-card glass rounded-2xl border border-white/10 p-4 text-right hover-card"
+                    data-service="سواتر وحدادة"
+                    data-img="images/7.PNG"
+                  >
+                    <div class="flex items-center justify-between">
+                      <div class="text-2xl">🛡️</div>
+                      <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/5 text-slate-200 border border-white/10">خصوصية</span>
+                    </div>
+                    <div class="font-extrabold mt-2">سواتر وحدادة</div>
+                    <div class="text-[11px] text-slate-300 mt-1">شكل مرتب + خامات قوية</div>
+                  </button>
+                </div>
+
+                <div class="mt-4 flex flex-wrap items-center gap-3">
+                  <div class="text-xs text-slate-300">اختيارك:</div>
+                  <div id="cfgServicePill" class="px-3 py-1 rounded-full bg-primary/60 border border-white/10 text-xs text-slate-100">—</div>
+                </div>
+              </div>
+
+              <!-- STEP 2 -->
+              <div class="cfg-step mt-4 hidden" data-step="2">
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgCity">المنطقة / الحي</label>
+                    <input
+                      id="cfgCity"
+                      type="text"
+                      class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
+                      placeholder="مثال: الرياض - حي الياسمين"
+                    />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgTimeline">متى تبي التنفيذ؟</label>
+                    <select
+                      id="cfgTimeline"
+                      class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
+                    >
+                      <option value="">اختر</option>
+                      <option>خلال أسبوع</option>
+                      <option>خلال أسبوعين</option>
+                      <option>خلال شهر</option>
+                      <option>لاحقًا (تخطيط)</option>
+                    </select>
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgLen">الطول (متر)</label>
+                    <input id="cfgLen" type="number" inputmode="decimal" class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="مثال: 6" />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgWid">العرض (متر)</label>
+                    <input id="cfgWid" type="number" inputmode="decimal" class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="مثال: 4" />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgHei">الارتفاع (متر)</label>
+                    <input id="cfgHei" type="number" inputmode="decimal" class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="مثال: 3" />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgOpenings">أبواب/نوافذ (تقريبًا)</label>
+                    <input id="cfgOpenings" type="text" class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="مثال: باب واحد + شباكين" />
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <label class="text-xs text-slate-200" for="cfgNotes">تفاصيل إضافية</label>
+                  <textarea
+                    id="cfgNotes"
+                    rows="3"
+                    class="mt-1 w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
+                    placeholder="مثال: استخدام المكان، اتجاه الشمس، تكييف سبليت، أرض فاضية…"
+                  ></textarea>
+                </div>
+              </div>
+
+              <!-- STEP 3 -->
+              <div class="cfg-step mt-4 hidden" data-step="3">
+                <div class="grid md:grid-cols-2 gap-4 text-sm">
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgName">الاسم</label>
+                    <input id="cfgName" type="text" class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="اسمك" />
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgPhone">رقم الجوال</label>
+                    <input id="cfgPhone" type="tel" class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" placeholder="05XXXXXXXX" />
+                  </div>
+
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgBudget">ميزانية تقريبية (اختياري)</label>
+                    <select id="cfgBudget" class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent">
+                      <option value="">بدون</option>
+                      <option>أقل من 10,000</option>
+                      <option>10,000 – 20,000</option>
+                      <option>20,000 – 40,000</option>
+                      <option>أعلى من 40,000</option>
+                    </select>
+                  </div>
+
+                  <div class="space-y-1">
+                    <label class="text-xs text-slate-200" for="cfgNeedVisit">هل تحتاج معاينة؟</label>
+                    <select id="cfgNeedVisit" class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent">
+                      <option>نعم، أفضّل معاينة</option>
+                      <option>لا، عندي صور ومقاسات</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="glass rounded-2xl border border-white/10 p-4 mt-4">
+                  <div class="flex items-center justify-between">
+                    <div class="font-extrabold">ملخص سريع</div>
+                    <div class="text-[11px] text-slate-400">يظهر كامل قبل الإرسال</div>
+                  </div>
+                  <div id="cfgSummary" class="text-xs text-slate-200 mt-3 leading-relaxed"></div>
+                  <div class="text-[11px] text-slate-400 mt-3">
+                    * هذا تقدير/ملخص مبدئي لتسهيل التواصل — السعر النهائي يتحدد بعد معاينة/صور واضحة.
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-5 flex items-center justify-between gap-3">
+                <button
+                  type="button"
+                  id="cfgBack"
+                  class="btn-outline inline-flex items-center gap-2 rounded-full border border-white/10 bg-primary/40 px-4 py-2 text-xs hover:border-accent"
+                  disabled
+                >
+                  ← رجوع
+                </button>
+
+                <div class="flex items-center gap-2">
+                  <button
+                    type="button"
+                    id="cfgNext"
+                    class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-5 py-2 text-xs font-extrabold shadow-soft hover:bg-accentSoft transition"
+                  >
+                    التالي →
+                  </button>
+
+                  <button
+                    type="button"
+                    id="cfgSend"
+                    class="btn-main hidden inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-5 py-2 text-xs font-extrabold shadow-soft hover:bg-emerald-400 transition"
+                  >
+                    إرسال على واتساب 💬
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <aside class="lg:col-span-2 space-y-4">
+            <div class="glass rounded-2xl border border-white/10 p-5 hover-card">
+              <div class="flex items-center justify-between">
+                <div class="font-extrabold">شاهد شكل الخدمة</div>
+                <div class="text-[11px] text-slate-400">يتغيّر مع اختيارك</div>
+              </div>
+              <div class="mt-4 relative rounded-2xl overflow-hidden border border-white/10">
+                <img id="cfgPreviewImg" src="images/4.PNG" alt="معاينة" class="w-full h-44 object-cover" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-3 right-3 text-[11px] text-slate-50" id="cfgPreviewLabel">سندوتش بنل</div>
+              </div>
+              <p class="text-[11px] text-slate-300 mt-3 leading-relaxed">
+                تبي نرجع لك بسرعة؟ أرسل <span class="text-accent font-semibold">صور المكان</span> مع المقاسات.
+              </p>
+              <a
+                href="https://wa.me/966554803704"
+                target="_blank"
+                class="btn-main mt-3 inline-flex items-center justify-center gap-2 w-full rounded-full bg-accent text-primary px-4 py-2 font-extrabold"
+              >
+                فتح واتساب الآن →
+              </a>
+            </div>
+
+            <div class="glass rounded-2xl border border-accent/40 p-5 hover-card">
+              <div class="font-extrabold text-accent">نصائح ترفع دقة التسعير</div>
+              <ul class="text-[11px] text-slate-200 mt-3 space-y-2">
+                <li>• صور واضحة للموقع (أبعد/أقرب) + اتجاه الشمس.</li>
+                <li>• المقاسات تقريبية تكفي كبداية: طول × عرض × ارتفاع.</li>
+                <li>• عدد الفتحات (باب/نوافذ) يغير السعر بشكل ملحوظ.</li>
+                <li>• اذكر استخدام المكان: سكن/تخزين/ورشة…</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <!-- Confirm Modal (Summary before WhatsApp) -->
+    <div id="cfgConfirm" class="fixed inset-0 z-[120] hidden">
+      <div class="absolute inset-0 bg-black/70"></div>
+      <div class="relative max-w-2xl mx-auto px-4 h-full flex items-center justify-center">
+        <div class="glass border border-white/10 rounded-2xl overflow-hidden w-full">
+          <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
+            <div class="text-sm font-extrabold text-slate-50">ملخص الطلب قبل الإرسال</div>
+            <button
+              id="cfgConfirmClose"
+              class="w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent"
+              aria-label="إغلاق"
+            >
+              ✕
+            </button>
+          </div>
+          <div class="p-4">
+            <div id="cfgConfirmBody" class="text-xs text-slate-200 leading-relaxed"></div>
+            <div class="text-[11px] text-slate-400 mt-3">
+              ملاحظة: هذا ملخص مبدئي لتسريع التواصل. السعر النهائي بعد معاينة/صور واضحة.
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <button
+                id="cfgConfirmEdit"
+                class="btn-outline inline-flex items-center gap-2 rounded-full border border-white/10 bg-primary/40 px-4 py-2 text-xs hover:border-accent"
+              >
+                تعديل البيانات
+              </button>
+              <button
+                id="cfgConfirmSend"
+                class="btn-main inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-5 py-2 text-xs font-extrabold shadow-soft hover:bg-emerald-400 transition"
+              >
+                تأكيد وإرسال واتساب 💬
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating WhatsApp -->
+    <a
+      href="https://wa.me/966554803704"
+      target="_blank"
+      class="btn-main fixed bottom-4 left-4 z-50 flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-full shadow-soft text-sm"
+    >
+      <span class="text-lg">💬</span>
+      <span class="font-extrabold">تواصل واتساب</span>
+    </a>
+
+    <button
+      id="toTop"
+      class="fixed bottom-4 right-4 z-50 w-11 h-11 rounded-2xl bg-primary/70 border border-white/10 hover:border-accent shadow-soft"
+      aria-label="العودة للأعلى"
+      title="العودة للأعلى"
+    >
+      ⬆️
+    </button>
+
+    <footer class="border-t border-slate-800 bg-black/70">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
+        <div>© <span class="font-semibold text-slate-200">مؤسسة إبداع الظل</span> – جميع الحقوق محفوظة.</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <span>الرياض وما حولها</span>
+          <span class="w-px h-3 bg-slate-600"></span>
+          <a href="tel:0562526395" class="hover:text-accent transition-colors font-semibold" dir="ltr">0562526395</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      window.WHATSAPP_NUMBER = '966554803704';
+    </script>
+    <script src="assets/js/site.js"></script>
+    <script src="assets/js/trend32.js"></script>
+  </body>
+</html>

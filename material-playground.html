@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>مختبر الخامات | مؤسسة إبداع الظل</title>
+    <meta
+      name="description"
+      content="مختبر تفاعلي لاختيار خامة/لون/سماكة السندوتش بنل أو التشطيب (أسود مطفي + ذهبي لامع) مع حفظ الإعدادات. شاهد الشكل قبل التنفيذ وخذ قرارك بثقة." 
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#071824" />
+
+    <!-- خط تاجوال -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Tajawal', 'system-ui', 'sans-serif'],
+            },
+            colors: {
+              primary: '#071824',
+              primarySoft: '#0b2535',
+              accent: '#d4af37',
+              accentSoft: '#f3e4b3',
+            },
+            boxShadow: {
+              soft: '0 18px 45px rgba(0,0,0,.35)',
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="assets/css/site.css" />
+  </head>
+
+  <body class="min-h-screen bg-slate-950 text-slate-50" data-material-playground>
+    <!-- Background -->
+    <div class="fixed inset-0 bg-hero-animated bg-no-repeat bg-cover bg-center opacity-95 -z-10"></div>
+    <div
+      class="fixed inset-0 opacity-20 -z-10"
+      style="
+        background-image: radial-gradient(circle at 10% 20%, #d4af37 0, transparent 40%),
+          radial-gradient(circle at 90% 10%, #22c55e 0, transparent 40%),
+          radial-gradient(circle at 50% 90%, #0ea5e9 0, transparent 45%);
+      "
+    ></div>
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40">
+      <div class="backdrop-blur-xl bg-black/40 border-b border-white/10">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
+          <a href="index.html#hero" class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-2xl bg-gradient-to-br from-accent to-accentSoft flex items-center justify-center text-primary font-extrabold text-2xl shadow-lg"
+              aria-hidden="true"
+            >
+              م
+            </div>
+            <div class="leading-tight">
+              <div class="font-bold text-sm md:text-base">مؤسسة إبداع الظل</div>
+              <div class="text-[11px] md:text-xs text-slate-300">
+                مختبر الخامات • فخامة الأسود المطفي/الذهبي
+              </div>
+            </div>
+          </a>
+
+          <nav class="hidden md:flex items-center gap-5 text-xs text-slate-200 ml-auto">
+            <a href="index.html#services" class="hover:text-accent transition-colors">الخدمات</a>
+            <a href="sandwich-panel.html" class="hover:text-accent transition-colors">السندوتش بنل</a>
+            <a href="car-shades.html" class="hover:text-accent transition-colors">مظلات السيارات</a>
+            <a href="stores-hangers.html" class="hover:text-accent transition-colors">المستودعات والهناجر</a>
+            <a href="shelters-steel.html" class="hover:text-accent transition-colors">السواتر والحدادة</a>
+
+            <!-- Trend Lab -->
+            <div class="relative group">
+              <button type="button" class="inline-flex items-center gap-2 hover:text-accent transition-colors">
+                ✨ مختبر 3.2 <span class="text-[10px] opacity-70">▾</span>
+              </button>
+              <div
+                class="absolute right-0 mt-3 w-56 rounded-2xl glass border border-white/10 shadow-soft overflow-hidden opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition"
+              >
+                <a href="cinematic-gallery.html" class="block px-4 py-3 text-xs hover:bg-white/5">🎬 المعرض السينمائي</a>
+                <a href="material-playground.html" class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5">🧪 مختبر الخامات</a>
+                <a href="configurator.html" class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5">⚙️ مُكوّن المشروع</a>
+              </div>
+            </div>
+
+            <a href="projects.html" class="hover:text-accent transition-colors">أعمالنا</a>
+            <a href="index.html#contact" class="hover:text-accent transition-colors">التواصل</a>
+          </nav>
+
+          <div class="hidden md:block">
+            <a
+              href="configurator.html"
+              class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 text-xs font-extrabold shadow-lg hover:bg-accentSoft transition-colors"
+            >
+              جرّب المُكوّن <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full">تقدير مبدئي</span>
+            </a>
+          </div>
+
+          <button
+            id="menuBtn"
+            class="md:hidden ml-auto inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent transition"
+            aria-label="فتح القائمة"
+            title="القائمة"
+          >
+            ☰
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Menu (same as other pages) -->
+      <div id="menuOverlay" class="hidden fixed inset-0 bg-black/60 z-40"></div>
+      <div
+        id="mobileMenu"
+        class="fixed top-0 right-0 h-full w-80 max-w-[86%] z-50 translate-x-full transition-transform duration-300 glass border-l border-white/10 p-4"
+        aria-label="قائمة الموبايل"
+      >
+        <div class="flex items-center justify-between">
+          <div class="font-extrabold text-slate-50">القائمة</div>
+          <button
+            id="menuClose"
+            class="w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent transition"
+            aria-label="إغلاق القائمة"
+            title="إغلاق"
+          >
+            ✕
+          </button>
+        </div>
+
+        <div class="mt-4 space-y-2 text-sm">
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="index.html#services">الخدمات</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="sandwich-panel.html">السندوتش بنل</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="car-shades.html">مظلات السيارات</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="stores-hangers.html">المستودعات والهناجر</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="shelters-steel.html">السواتر والحدادة</a>
+
+          <div class="mt-3 px-3 text-[11px] text-slate-400">✨ مختبر 3.2</div>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="cinematic-gallery.html">🎬 المعرض السينمائي</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="material-playground.html">🧪 مختبر الخامات</a>
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="configurator.html">⚙️ مُكوّن المشروع</a>
+
+          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="projects.html">أعمالنا</a>
+          <a class="block px-3 py-2 rounded-xl bg-accent text-primary font-extrabold" href="index.html#contact">اطلب عرض سعر</a>
+        </div>
+
+        <div class="mt-5 glass rounded-2xl border border-white/10 p-4 text-xs text-slate-200">
+          <div class="font-extrabold text-slate-50 mb-2">تواصل سريع</div>
+          <a href="tel:0562526395" class="btn-outline inline-flex w-full justify-center gap-2 rounded-full border border-slate-600/80 bg-primary/40 px-4 py-2">
+            📞 اتصال <span dir="ltr" class="font-semibold">0562526395</span>
+          </a>
+          <a
+            href="https://wa.me/966554803704"
+            target="_blank"
+            class="btn-main mt-2 inline-flex w-full justify-center gap-2 rounded-full bg-emerald-500 text-white px-4 py-2 font-extrabold"
+          >
+            💬 واتساب
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 pt-8 pb-24 space-y-16">
+      <section class="fade-up">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/60 border border-white/10 text-[11px] text-slate-200">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"></span>
+          جرّب الشكل قبل التنفيذ — قرار أوضح وثقة أعلى
+        </div>
+
+        <h1 class="text-2xl md:text-4xl font-extrabold text-slate-50 mt-4">
+          🧪 مختبر الخامات
+          <span class="block text-base md:text-xl text-slate-300 mt-2">
+            اختر: اللمعة، اللون، سُمك العزل… وشوف النتيجة "فورًا" على نفس فخامة الأسود المطفي/الذهبي.
+          </span>
+        </h1>
+      </section>
+
+      <section class="grid lg:grid-cols-5 gap-6 items-start fade-up" data-material-playground>
+        <!-- Stage -->
+        <div class="lg:col-span-3">
+          <div class="material-stage glass border border-white/10 rounded-2xl p-5 hover-card" data-material-stage>
+            <div class="flex items-center justify-between gap-3">
+              <div>
+                <div class="font-extrabold text-slate-50">Preview — معاينة فورية</div>
+                <div class="text-[11px] text-slate-400 mt-1">مرّر المؤشر فوق البطاقة… بتشوف "لمعة معدن" ناعمة (ترند).</div>
+              </div>
+              <div class="flex gap-2">
+                <button class="btn-outline rounded-full border border-white/10 bg-primary/40 px-4 py-2 text-xs hover:border-accent" data-mat-reset>
+                  إعادة
+                </button>
+                <button class="btn-main rounded-full bg-accent text-primary px-4 py-2 text-xs font-extrabold" data-mat-copy>
+                  نسخ المواصفة
+                </button>
+              </div>
+            </div>
+
+            <div class="mt-5 grid md:grid-cols-2 gap-4 items-center">
+              <div>
+                <div class="panel-sample" data-panel-sample>
+                  <div class="panel-face" aria-hidden="true"></div>
+                  <div class="panel-edge" aria-hidden="true"></div>
+                  <div class="panel-label">
+                    <div class="text-[11px] text-slate-400">النتيجة النهائية</div>
+                    <div class="font-extrabold text-slate-50">أسود مطفي + ذهبي</div>
+                    <div class="text-[11px] text-slate-300 mt-1">— إحساس فخم ومميز.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="space-y-3">
+                <div class="glass rounded-2xl border border-white/10 p-4">
+                  <div class="font-extrabold text-slate-50 text-sm">Presets جاهزة</div>
+                  <div class="flex flex-wrap gap-2 mt-3">
+                    <button class="preset-pill" data-mat-preset="luxe">Luxe</button>
+                    <button class="preset-pill" data-mat-preset="desert">Desert</button>
+                    <button class="preset-pill" data-mat-preset="industrial">Industrial</button>
+                  </div>
+                  <div class="text-[11px] text-slate-400 mt-3">اختر ثم عدّل على راحتك.</div>
+                </div>
+
+                <div class="glass rounded-2xl border border-white/10 p-4">
+                  <div class="flex items-center justify-between">
+                    <div class="font-extrabold text-slate-50 text-sm">المواصفة الحالية</div>
+                    <span class="text-[10px] text-slate-400">تتحفظ تلقائيًا</span>
+                  </div>
+                  <pre class="spec-box mt-3" data-mat-spec>
+Finish: Matte
+PanelColor: Black
+Trim: Gold
+Profile: Micro-Rib
+Thickness: 75mm
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="glass rounded-2xl border border-white/10 p-5 hover-card">
+            <div class="font-extrabold text-slate-50">التحكم بالخامة</div>
+            <p class="text-[11px] text-slate-300 mt-2 leading-relaxed">
+              الفكرة: الزائر يشوف "شكل قريب جدًا" قبل ما يطلب… وهذا يرفع الثقة ويختصر الأسئلة.
+            </p>
+
+            <div class="grid gap-3 mt-4 text-sm">
+              <label class="text-xs text-slate-200">Finish</label>
+              <select class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" data-mat-finish>
+                <option value="matte">Matte (مطفي)</option>
+                <option value="satin">Satin (ساتان)</option>
+                <option value="glossy">Glossy (لامع)</option>
+              </select>
+
+              <label class="text-xs text-slate-200">Panel Color</label>
+              <select class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" data-mat-color>
+                <option value="black">Black</option>
+                <option value="charcoal">Charcoal</option>
+                <option value="sand">Sand</option>
+                <option value="silver">Silver</option>
+              </select>
+
+              <label class="text-xs text-slate-200">Trim (الإطار/الحلية)</label>
+              <select class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" data-mat-trim>
+                <option value="gold">Gold</option>
+                <option value="black">Black</option>
+                <option value="silver">Silver</option>
+              </select>
+
+              <label class="text-xs text-slate-200">Profile (شكل اللوح)</label>
+              <select class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent" data-mat-rib>
+                <option value="micro">Micro-Rib</option>
+                <option value="smooth">Smooth</option>
+              </select>
+
+              <label class="text-xs text-slate-200">Thickness (سُمك العزل)</label>
+              <div class="flex items-center gap-3">
+                <input type="range" min="50" max="100" step="5" value="75" class="w-full" data-mat-thickness />
+                <span class="text-xs text-slate-200 w-14 text-center" data-mat-thickness-label>75mm</span>
+              </div>
+            </div>
+
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="configurator.html" class="btn-main inline-flex items-center gap-2 rounded-full bg-accent text-primary px-5 py-2 text-xs font-extrabold">
+                استخدم المواصفة في المُكوّن ⚙️
+              </a>
+              <a href="index.html#contact" class="btn-outline inline-flex items-center gap-2 rounded-full border border-white/10 bg-primary/40 px-5 py-2 text-xs hover:border-accent">
+                اطلب تنفيذها الآن
+              </a>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl border border-white/10 p-5 hover-card">
+            <div class="font-extrabold text-slate-50">💡 لماذا هذا يزيد الإقناع؟</div>
+            <ul class="text-[11px] text-slate-300 mt-3 space-y-2 leading-relaxed">
+              <li>• الزائر يرى النتيجة "بعينه" قبل ما يدفع.</li>
+              <li>• يقل التردد لأن القرار صار واضح.</li>
+              <li>• يحس أنكم "منظمين"… وهذا بحد ذاته ثقة.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating WhatsApp -->
+    <a
+      href="https://wa.me/966554803704"
+      target="_blank"
+      class="btn-main fixed bottom-4 left-4 z-50 flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-full shadow-soft text-sm"
+    >
+      <span class="text-lg">💬</span>
+      <span class="font-extrabold">تواصل واتساب</span>
+    </a>
+
+    <button
+      id="toTop"
+      class="fixed bottom-4 right-4 z-50 w-11 h-11 rounded-2xl bg-primary/70 border border-white/10 hover:border-accent shadow-soft"
+      aria-label="العودة للأعلى"
+      title="العودة للأعلى"
+    >
+      ⬆️
+    </button>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-black/70">
+      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
+        <div>© <span class="font-semibold text-slate-200">مؤسسة إبداع الظل</span> – جميع الحقوق محفوظة.</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <span>الرياض وما حولها</span>
+          <span class="w-px h-3 bg-slate-600"></span>
+          <a href="tel:0562526395" class="hover:text-accent transition-colors font-semibold" dir="ltr">0562526395</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      window.WHATSAPP_NUMBER = '966554803704';
+    </script>
+    <script src="assets/js/site.js"></script>
+    <script src="assets/js/trend32.js"></script>
+  </body>
+</html>
