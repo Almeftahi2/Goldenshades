@@ -713,6 +713,26 @@ body.offer-open { overflow: hidden; }
   backdrop-filter: blur(18px);
   box-shadow: 0 25px 70px rgba(0,0,0,.65);
 }
+
+/* ✅ Fix: make offer modal scrollable on mobile */
+.offer-shell{
+  overflow-y: auto;
+  align-items: flex-start;         /* بدل center */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ✅ Keep card inside viewport */
+.offer-card{
+  max-height: calc(100dvh - 2rem); /* مهم للجوال */
+  overflow: auto;                  /* يصير الكرت قابل للسكرول */
+}
+
+/* ✅ Keep close bar visible */
+.offer-topbar{
+  position: sticky;
+  top: 0;
+  z-index: 5;
+}
 .offer-topbar {
   display: flex;
   align-items: center;
