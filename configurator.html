@@ -264,7 +264,7 @@
                     type="button"
                     class="cfg-card glass rounded-2xl border border-white/10 p-4 text-right hover-card"
                     data-service="سندوتش بنل"
-                    data-img="images/4.PNG"
+                    data-img="images/4.webp"
                   >
                     <div class="flex items-center justify-between">
                       <div class="text-2xl">🧱</div>
@@ -278,7 +278,7 @@
                     type="button"
                     class="cfg-card glass rounded-2xl border border-white/10 p-4 text-right hover-card"
                     data-service="مظلات سيارات"
-                    data-img="images/24.PNG"
+                    data-img="images/24.webp"
                   >
                     <div class="flex items-center justify-between">
                       <div class="text-2xl">🚗</div>
@@ -292,7 +292,7 @@
                     type="button"
                     class="cfg-card glass rounded-2xl border border-white/10 p-4 text-right hover-card"
                     data-service="مستودعات وهناجر"
-                    data-img="images/12.PNG"
+                    data-img="images/12.webp"
                   >
                     <div class="flex items-center justify-between">
                       <div class="text-2xl">🏭</div>
@@ -306,7 +306,7 @@
                     type="button"
                     class="cfg-card glass rounded-2xl border border-white/10 p-4 text-right hover-card"
                     data-service="سواتر وحدادة"
-                    data-img="images/7.PNG"
+                    data-img="images/7.webp"
                   >
                     <div class="flex items-center justify-between">
                       <div class="text-2xl">🛡️</div>
@@ -459,7 +459,7 @@
                 <div class="text-[11px] text-slate-400">يتغيّر مع اختيارك</div>
               </div>
               <div class="mt-4 relative rounded-2xl overflow-hidden border border-white/10">
-                <img id="cfgPreviewImg" src="images/4.PNG" alt="معاينة" class="w-full h-44 object-cover" loading="lazy" />
+                <img id="cfgPreviewImg" src="images/4.webp" alt="معاينة" class="w-full h-44 object-cover" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                 <div class="absolute bottom-3 right-3 text-[11px] text-slate-50" id="cfgPreviewLabel">سندوتش بنل</div>
               </div>
@@ -489,44 +489,7 @@
       </section>
     </main>
 
-    <!-- Confirm Modal (Summary before WhatsApp) -->
-    <div id="cfgConfirm" class="fixed inset-0 z-[120] hidden">
-      <div class="absolute inset-0 bg-black/70"></div>
-      <div class="relative max-w-2xl mx-auto px-4 h-full flex items-center justify-center">
-        <div class="glass border border-white/10 rounded-2xl overflow-hidden w-full">
-          <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
-            <div class="text-sm font-extrabold text-slate-50">ملخص الطلب قبل الإرسال</div>
-            <button
-              id="cfgConfirmClose"
-              class="w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent"
-              aria-label="إغلاق"
-            >
-              ✕
-            </button>
-          </div>
-          <div class="p-4">
-            <div id="cfgConfirmBody" class="text-xs text-slate-200 leading-relaxed"></div>
-            <div class="text-[11px] text-slate-400 mt-3">
-              ملاحظة: هذا ملخص مبدئي لتسريع التواصل. السعر النهائي بعد معاينة/صور واضحة.
-            </div>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <button
-                id="cfgConfirmEdit"
-                class="btn-outline inline-flex items-center gap-2 rounded-full border border-white/10 bg-primary/40 px-4 py-2 text-xs hover:border-accent"
-              >
-                تعديل البيانات
-              </button>
-              <button
-                id="cfgConfirmSend"
-                class="btn-main inline-flex items-center gap-2 rounded-full bg-emerald-500 text-white px-5 py-2 text-xs font-extrabold shadow-soft hover:bg-emerald-400 transition"
-              >
-                تأكيد وإرسال واتساب 💬
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <!-- Floating WhatsApp -->
     <a
