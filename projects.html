@@ -1,336 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <title>أعمالنا | مؤسسة إبداع الظل</title>
-    <meta
-      name="description"
-      content="معرض أعمال مؤسسة إبداع الظل: سندوتش بنل، مظلات، مستودعات، سواتر وحدادة. صور حقيقية من التنفيذ + تفاصيل تشطيب." 
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#050608" />
-
-    <!-- خط تاجوال -->
-    
-    <script>document.documentElement.classList.add('js');</script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Tajawal', 'system-ui', 'sans-serif'],
-            },
-            colors: {
-              primary: '#050608',
-              primarySoft: '#0a0d12',
-              accent: '#d4af37',
-              accentSoft: '#ffe9a6',
-            },
-            boxShadow: {
-              soft: '0 18px 45px rgba(0,0,0,.35)',
-            },
-          },
-        },
-      };
-    </script>
-
-    <link rel="stylesheet" href="assets/css/site.css" />
-  </head>
-
-  <body class="min-h-screen bg-slate-950 text-slate-50">
-    <div class="scroll-progress"><span id="scrollProgressBar"></span></div>
-
-    <!-- خلفية عامة -->
-    <div class="fixed inset-0 bg-hero-animated bg-no-repeat bg-cover bg-center opacity-95 -z-10"></div>
-    <div
-      class="fixed inset-0 opacity-20 -z-10"
-      style="
-        background-image: radial-gradient(circle at 10% 20%, #d4af37 0, transparent 40%),
-          radial-gradient(circle at 90% 10%, #22c55e 0, transparent 40%),
-          radial-gradient(circle at 50% 90%, #0ea5e9 0, transparent 45%);
-      "
-    ></div>
-
-    <!-- Header -->
-    <header class="sticky top-0 z-40">
-      <div class="backdrop-blur-xl bg-black/40 border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
-          <a href="index.html#hero" class="flex items-center gap-3">
-            <div
-              class="w-10 h-10 rounded-2xl bg-gradient-to-br from-accent to-accentSoft metallic flex items-center justify-center text-primary font-extrabold text-2xl shadow-lg"
-              aria-hidden="true"
-            >
-              م
-            </div>
-            <div class="leading-tight">
-              <div class="font-bold text-sm md:text-base">مؤسسة إبداع الظل</div>
-              <div class="text-[11px] md:text-xs text-slate-300">
-                سندوتش بنل • مظلات • مستودعات • سواتر • حدادة
-              </div>
-            </div>
-          </a>
-
-          <nav class="hidden md:flex items-center gap-5 text-xs text-slate-200 ml-auto">
-            <a href="index.html#services" class="hover:text-accent transition-colors">الخدمات</a>
-            <a href="sandwich-panel.html" class="hover:text-accent transition-colors">السندوتش بنل</a>
-            <a href="car-shades.html" class="hover:text-accent transition-colors">مظلات السيارات</a>
-            <a href="stores-hangers.html" class="hover:text-accent transition-colors">المستودعات والهناجر</a>
-            <a href="shelters-steel.html" class="hover:text-accent transition-colors">السواتر والحدادة</a>
-
-            <!-- Trend Lab -->
-            <div class="relative group">
-              <button type="button" class="inline-flex items-center gap-2 hover:text-accent transition-colors" aria-label="مختبر الترند">
-                ✨ مختبر 3.2
-                <span class="text-[10px] opacity-70">▾</span>
-              </button>
-              <div
-                class="absolute right-0 mt-3 w-56 rounded-2xl glass border border-white/10 shadow-soft overflow-hidden opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition"
-              >
-                <a href="cinematic-gallery.html" class="block px-4 py-3 text-xs hover:bg-white/5">🎬 المعرض السينمائي</a>
-                <a href="material-playground.html" class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5">🧪 مختبر الخامات</a>
-                <a href="configurator.html" class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5">⚙️ مُكوّن المشروع</a>
-              </div>
-            </div>
-            <a href="projects.html" class="text-accent font-extrabold">أعمالنا</a>
-            <a href="index.html#contact" class="hover:text-accent transition-colors">التواصل</a>
-          </nav>
-
-          <div class="hidden md:block">
-            <button
-              data-offer-open
-              class="btn-main metallic inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 text-xs font-extrabold shadow-lg hover:bg-accentSoft transition-colors"
-            >
-              احصل على عرض سريع
-              <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full">خصم اليوم</span>
-            </button>
-          </div>
-
-          <button
-            id="menuBtn"
-            class="md:hidden ml-auto inline-flex items-center justify-center w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent transition"
-            aria-label="فتح القائمة"
-            title="القائمة"
-          >
-            ☰
-          </button>
-        </div>
-      </div>
-
-      <!-- Mobile Menu -->
-      <div id="menuOverlay" class="hidden fixed inset-0 bg-black/60 z-40"></div>
-      <div
-        id="mobileMenu"
-        class="fixed top-0 right-0 h-full w-80 max-w-[86%] z-50 translate-x-full transition-transform duration-300 glass border-l border-white/10 p-4"
-        aria-label="قائمة الموبايل"
-      >
-        <div class="flex items-center justify-between">
-          <div class="font-extrabold text-slate-50">القائمة</div>
-          <button
-            id="menuClose"
-            class="w-10 h-10 rounded-xl bg-primary/60 border border-white/10 hover:border-accent transition"
-            aria-label="إغلاق القائمة"
-            title="إغلاق"
-          >
-            ✕
-          </button>
-        </div>
-
-        <div class="mt-4 space-y-2 text-sm">
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="index.html#services">الخدمات</a>
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="sandwich-panel.html">السندوتش بنل</a>
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="car-shades.html">مظلات السيارات</a>
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="stores-hangers.html">المستودعات والهناجر</a>
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="shelters-steel.html">السواتر والحدادة</a>
-          <a class="block px-3 py-2 rounded-xl bg-accent text-primary font-extrabold" href="projects.html">أعمالنا</a>
-
-          <div class="mt-2 text-[11px] text-slate-400">✨ مختبر 3.2</div>
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="cinematic-gallery.html">🎬 المعرض السينمائي</a>
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="material-playground.html">🧪 مختبر الخامات</a>
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="configurator.html">⚙️ مُكوّن المشروع</a>
-          <a class="block px-3 py-2 rounded-xl bg-primary/40 border border-white/10" href="index.html#contact">التواصل</a>
-        </div>
-
-        <div class="mt-5 glass rounded-2xl border border-white/10 p-4 text-xs text-slate-200">
-          <div class="font-extrabold text-slate-50 mb-2">تواصل سريع</div>
-          <a href="tel:0562526395" class="btn-outline inline-flex w-full justify-center gap-2 rounded-full border border-slate-600/80 bg-primary/40 px-4 py-2">
-            📞 اتصال <span dir="ltr" class="font-semibold">0562526395</span>
-          </a>
-          <a
-            href="https://wa.me/966554803704"
-            target="_blank"
-            class="btn-main mt-2 inline-flex w-full justify-center gap-2 rounded-full bg-emerald-500 text-white px-4 py-2 font-extrabold"
-          >
-            💬 واتساب
-          </a>
-        </div>
-      </div>
-    </header>
-
-    <main class="max-w-6xl mx-auto px-4 pt-8 pb-28 space-y-14">
-      <!-- Hero -->
-      <section class="fade-up grid md:grid-cols-2 gap-8 items-center">
-        <div class="space-y-4">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/60 border border-white/10 text-[11px] text-slate-200">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"></span>
-            صور حقيقية + تكبير + حفظ
-          </div>
-          <h1 class="text-2xl md:text-4xl font-extrabold leading-snug">
-            معرض أعمال
-            <span class="text-accent">إبداع الظل</span>
-            <span class="block text-base md:text-xl text-slate-300 mt-2">اضغط على أي صورة للتكبير… واستخدم السحب + الزوم.</span>
-          </h1>
-          <p class="text-sm text-slate-300 leading-relaxed max-w-xl">
-            هنا تشوف النتيجة… لأن القرار يبان من الصورة. كل لقطة تعكس تشطيبنا: زوايا نظيفة، تثبيت آمن، وتناسق مع الواجهة.
-          </p>
-
-          <div class="flex flex-wrap gap-2 text-[11px] text-slate-200">
-            <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">سندوتش بنل</span>
-            <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">مظلات</span>
-            <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">مستودعات</span>
-            <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">سواتر وحدادة</span>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-3 pt-2">
-            <button data-offer-open class="btn-main metallic inline-flex items-center gap-2 rounded-full bg-accent text-primary px-5 py-2 font-extrabold shadow-soft hover:bg-accentSoft transition">
-              احصل على عرض سريع
-              <span>→</span>
-            </button>
-            <a href="index.html#contact" class="btn-outline inline-flex items-center gap-2 rounded-full border border-white/10 bg-primary/40 px-4 py-2 text-xs hover:border-accent">
-              اطلب معاينة
-            </a>
-          </div>
-        </div>
-
-        <div class="glass rounded-2xl border border-white/10 p-4 hover-card">
-          <div class="grid grid-cols-2 gap-3">
-            <button class="relative rounded-2xl overflow-hidden h-36 glass border border-white/10 hover-card text-right" data-lightbox data-src="images/4.webp" data-caption="سندوتش بنل — غرفة/ملحق">
-              <img src="images/4.webp" alt="سندوتش بنل" class="w-full h-full object-cover" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-              <div class="absolute bottom-2 right-2 text-[11px] text-slate-50">سندوتش بنل</div>
-            </button>
-            <button class="relative rounded-2xl overflow-hidden h-36 glass border border-white/10 hover-card text-right" data-lightbox data-src="images/24.webp" data-caption="مظلات سيارات — تصميم حديث">
-              <img src="images/32.webp" alt="مظلات سيارات" class="w-full h-full object-cover" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-              <div class="absolute bottom-2 right-2 text-[11px] text-slate-50">مظلات</div>
-            </button>
-            <button class="relative rounded-2xl overflow-hidden h-36 glass border border-white/10 hover-card text-right" data-lightbox data-src="images/26.webp" data-caption="مستودع — هيكل مضبوط">
-              <img src="images/12.webp" alt="مستودع" class="w-full h-full object-cover" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-              <div class="absolute bottom-2 right-2 text-[11px] text-slate-50">مستودعات</div>
-            </button>
-            <button class="relative rounded-2xl overflow-hidden h-36 glass border border-white/10 hover-card text-right" data-lightbox data-src="images/16.webp" data-caption="تفاصيل تشطيب — زوايا وفواصل">
-              <img src="images/20.webp" alt="تفاصيل" class="w-full h-full object-cover" loading="lazy" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-              <div class="absolute bottom-2 right-2 text-[11px] text-slate-50">تفاصيل</div>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Gallery Grid (Bento) -->
-      <section class="fade-up space-y-5">
-        <div class="flex items-end justify-between gap-3">
-          <div>
-            <h2 class="text-xl md:text-2xl font-extrabold">الصور (Bento Gallery)</h2>
-            <p class="text-sm text-slate-300 mt-1">ترتيب “ترندي” يرفع التفاعل… ومع تكبير/سحب/زوم داخل اللايتبوكس.</p>
-          </div>
-          <div class="hidden md:flex items-center gap-2 text-[11px] text-slate-300">
-            <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">Swipe</span>
-            <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">Zoom</span>
-            <span class="px-3 py-1 rounded-full bg-primary/60 border border-white/10">Double tap</span>
-          </div>
-        </div>
-
-        <div class="grid md:grid-cols-12 gap-4">
-          <button class="md:col-span-7 relative rounded-2xl overflow-hidden h-64 glass border border-white/10 hover-card text-right" data-lightbox data-src="images/16.webp" data-caption="مشروع سندوتش بنل — تنفيذ متوازن">
-            <img src="images/16.webp" alt="مشروع" class="w-full h-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">سندوتش بنل — تنفيذ متوازن + عزل</div>
-          </button>
-
-          <button class="md:col-span-5 relative rounded-2xl overflow-hidden h-64 glass border border-white/10 hover-card text-right" data-lightbox data-src="images/7.webp" data-caption="مظلات — تناسق مع الواجهة">
-            <img src="images/7.webp" alt="مظلات" class="w-full h-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">مظلات — تناسق مع الواجهة</div>
-          </button>
-
-          <button class="md:col-span-4 relative rounded-2xl overflow-hidden h-52 glass border border-white/10 hover-card text-right" data-lightbox data-src="images/12.webp" data-caption="مستودع — تهوية + فتحات محسوبة">
-            <img src="images/12.webp" alt="مستودع" class="w-full h-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">مستودع — تهوية + فتحات محسوبة</div>
-          </button>
-
-          <button class="md:col-span-4 relative rounded-2xl overflow-hidden h-52 glass border border-white/10 hover-card text-right" data-lightbox data-src="images/24.webp" data-caption="تشطيب — فواصل نظيفة">
-            <img src="images/32.webp" alt="تشطيب" class="w-full h-full object-cover" loading="lazy" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">تشطيب — فواصل نظيفة</div>
-          </button>
-
-          <div class="md:col-span-4 glass rounded-2xl border border-white/10 p-4 hover-card flex flex-col justify-between">
-            <div>
-              <div class="text-accent font-extrabold text-xs">نصيحة سريعة</div>
-              <h3 class="font-extrabold mt-2">خلّي الصور “تشرح” بدل الكلام</h3>
-              <p class="text-[11px] text-slate-300 mt-2 leading-relaxed">
-                صور قبل/بعد + صور التفاصيل (الفواصل/الزوايا) = أعلى ثقة. إذا تبغى… نرتّب لك قالب تصوير للعمال في الموقع.
-              </p>
-            </div>
-            <button data-offer-open class="btn-main metallic mt-4 inline-flex items-center justify-center gap-2 rounded-full bg-accent text-primary px-4 py-2 font-extrabold">
-              اطلب قالب تصوير + عرض
-              <span>→</span>
-            </button>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Floating WhatsApp -->
-    <a
-      href="https://wa.me/966554803704"
-      target="_blank"
-      class="btn-main fixed bottom-4 left-4 z-50 flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-full shadow-soft text-sm"
-    >
-      <span class="text-lg">💬</span>
-      <span class="font-extrabold">واتساب</span>
-    </a>
-
-    <!-- Back to top -->
-    <button
-      id="toTop"
-      class="fixed bottom-4 right-4 z-50 w-11 h-11 rounded-2xl bg-primary/70 border border-white/10 hover:border-accent shadow-soft"
-      aria-label="العودة للأعلى"
-      title="العودة للأعلى"
-    >
-      ⬆️
-    </button>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-black/70">
-      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
-        <div>© <span class="font-semibold text-slate-200">مؤسسة إبداع الظل</span> – جميع الحقوق محفوظة.</div>
-        <div class="flex flex-wrap items-center gap-3">
-          <span>الرياض وما حولها</span>
-          <span class="w-px h-3 bg-slate-600"></span>
-          <a href="tel:0562526395" class="hover:text-accent transition-colors font-semibold" dir="ltr">0562526395</a>
-        </div>
-      </div>
-    </footer>
-
-    <script>
-      window.WHATSAPP_NUMBER = '966554803704';
-      window.HERO_SLIDES = ['images/16.webp', 'images/12.webp', 'images/7.webp', 'images/32.webp'];
-      // لو عندك إيميل رسمي، ضعّه هنا لتفعيل خيار إرسال عبر البريد داخل ملخص التأكيد
-      // window.EMAIL_TO = 'info@example.com';
-    </script>
-    <script src="assets/js/site.js"></script>
-    <script src="assets/js/trend32.js"></script>
-  </body>
-</html>

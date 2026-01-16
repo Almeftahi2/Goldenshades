@@ -1,874 +1,0 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>السندوتش بنل في الرياض | غرف وملاحق ومستودعات - مؤسسة إبداع الظل</title>
-    <meta
-      name="description"
-      content="تنفيذ سندوتش بنل في الرياض: غرف، ملاحق، مستودعات وهناجر بعزل حراري وصوتي وتشطيب نظيف. مؤسسة إبداع الظل – معاينة سريعة وتسعيرة واضحة."
-    />
-
-    <!-- Tajawal -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: { sans: ['Tajawal', 'system-ui', 'sans-serif'] },
-            colors: {
-              primary: '#050608',
-              primarySoft: '#0a0d12',
-              accent: '#d4af37',
-              accentSoft: '#ffe1a6',
-            },
-            boxShadow: {
-              soft: '0 18px 45px rgba(0,0,0,.35)',
-            },
-          },
-        },
-      };
-    </script>
-
-    <!-- Shared CSS -->
-    <link rel="stylesheet" href="assets/css/site.css" />
-
-    <!-- Structured data -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "مؤسسة إبداع الظل",
-        "telephone": "+966562526395",
-        "areaServed": "الرياض",
-        "url": "https://example.com",
-        "description": "تنفيذ وتركيب سندوتش بنل وملاحق ومستودعات ومظلات في الرياض وما حولها."
-      }
-    </script>
-  
-    <script>document.documentElement.classList.add('js');</script>
-  </head>
-
-  <body class="min-h-screen bg-slate-950 text-slate-50">
-    <!-- Progress -->
-    <div class="scroll-progress"><span id="scrollProgressBar"></span></div>
-
-    <!-- Background -->
-    <div class="fixed inset-0 bg-hero-animated bg-no-repeat bg-cover bg-center opacity-95 -z-10"></div>
-    <div
-      class="fixed inset-0 opacity-20 -z-10"
-      style="
-        background-image: radial-gradient(circle at 10% 20%, #d4af37 0, transparent 40%),
-          radial-gradient(circle at 90% 10%, #22c55e 0, transparent 40%),
-          radial-gradient(circle at 50% 90%, #0ea5e9 0, transparent 45%);
-      "
-    ></div>
-
-    <!-- Header -->
-    <header class="sticky top-0 z-40">
-      <div class="backdrop-blur-xl bg-black/40 border-b border-white/10">
-        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center gap-4">
-          <a href="index.html" class="flex items-center gap-3 brand-link">
-            <div
-              class="brand-logo w-10 h-10 rounded-2xl bg-gradient-to-br from-accent to-accentSoft metallic flex items-center justify-center text-primary font-extrabold text-2xl"
-            >
-              م
-            </div>
-            <div class="leading-tight">
-              <div class="font-bold text-sm md:text-base">مؤسسة إبداع الظل</div>
-              <div class="text-[11px] md:text-xs text-slate-300">
-                سندوتش بنل • مظلات • سواتر • حدادة
-              </div>
-            </div>
-          </a>
-
-          <nav class="hidden md:flex items-center gap-5 text-xs text-slate-200 ml-auto">
-            <a href="index.html#services" class="hover:text-accent transition-colors">الخدمات</a>
-            <a href="sandwich-panel.html" class="text-accent font-bold">السندوتش بنل</a>
-            <a href="car-shades.html" class="hover:text-accent transition-colors">مظلات السيارات</a>
-            <a href="stores-hangers.html" class="hover:text-accent transition-colors">مستودعات/هناجر</a>
-
-            <!-- Trend Lab -->
-            <div class="relative group">
-              <button type="button" class="inline-flex items-center gap-2 hover:text-accent transition-colors" aria-label="مختبر الترند">
-                ✨ مختبر 3.2
-                <span class="text-[10px] opacity-70">▾</span>
-              </button>
-              <div
-                class="absolute right-0 mt-3 w-56 rounded-2xl glass border border-white/10 shadow-soft overflow-hidden opacity-0 translate-y-2 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition"
-              >
-                <a href="cinematic-gallery.html" class="block px-4 py-3 text-xs hover:bg-white/5">🎬 المعرض السينمائي</a>
-                <a
-                  href="material-playground.html"
-                  class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5"
-                >
-                  🧪 مختبر الخامات
-                </a>
-                <a
-                  href="configurator.html"
-                  class="block px-4 py-3 text-xs hover:bg-white/5 border-t border-white/5"
-                >
-                  ⚙️ مُكوّن المشروع
-                </a>
-              </div>
-            </div>
-
-            <a href="index.html#projects" class="hover:text-accent transition-colors">أعمالنا</a>
-            <a href="index.html#contact" class="hover:text-accent transition-colors">التواصل</a>
-          </nav>
-
-          <div class="flex items-center gap-2 ml-auto md:ml-4">
-            <a
-              href="#quote"
-              class="btn-main metallic inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 text-xs font-bold shadow-lg hover:bg-accentSoft"
-            >
-              اطلب عرض سعر
-              <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full">سريع</span>
-            </a>
-
-            <button
-              id="menuBtn"
-              class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-white/15 bg-black/30 hover:bg-black/40"
-              aria-label="فتح القائمة"
-            >
-              ☰
-            </button>
-          </div>
-        </div>
-      </div>
-    </header>
-
-    <!-- Mobile menu -->
-    <div id="menuOverlay" class="hidden fixed inset-0 bg-black/60 z-50"></div>
-    <aside
-      id="mobileMenu"
-      class="fixed top-0 right-0 h-full w-80 max-w-[86vw] translate-x-full transition-transform duration-300 z-50 glass border-l border-white/10 p-5"
-      aria-label="قائمة الجوال"
-    >
-      <div class="flex items-center justify-between gap-3">
-        <div class="flex items-center gap-3">
-          <div
-            class="w-9 h-9 rounded-2xl bg-gradient-to-br from-accent to-accentSoft metallic flex items-center justify-center text-primary font-extrabold"
-          >
-            م
-          </div>
-          <div>
-            <div class="font-bold text-sm">إبداع الظل</div>
-            <div class="text-[11px] text-slate-300">روابط سريعة</div>
-          </div>
-        </div>
-        <button
-          id="menuClose"
-          class="w-10 h-10 rounded-full border border-white/15 bg-black/30 hover:bg-black/40"
-          aria-label="إغلاق القائمة"
-        >
-          ✕
-        </button>
-      </div>
-
-      <nav class="mt-6 space-y-1 text-sm">
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="index.html">الرئيسية</a>
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="sandwich-panel.html">السندوتش بنل</a>
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="car-shades.html">مظلات السيارات</a>
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="stores-hangers.html">مستودعات/هناجر</a>
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="index.html#projects">أعمالنا</a>
-
-        <div class="mt-2 text-[11px] text-slate-400">✨ مختبر 3.2</div>
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="cinematic-gallery.html">🎬 المعرض السينمائي</a>
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="material-playground.html">🧪 مختبر الخامات</a>
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="configurator.html">⚙️ مُكوّن المشروع</a>
-
-        <a class="block px-3 py-2 rounded-xl hover:bg-white/5" href="index.html#contact">التواصل</a>
-      </nav>
-
-      <div class="mt-6 glass rounded-2xl border border-white/10 p-4 text-xs text-slate-300">
-        <div class="font-semibold text-slate-50 mb-1">تواصل مباشر</div>
-        <a class="block mt-2 text-accent font-bold text-base" href="tel:0562526395">0562526395</a>
-        <a class="block mt-2 text-emerald-300 font-semibold" href="https://wa.me/966554803704" target="_blank">فتح واتساب</a>
-      </div>
-    </aside>
-
-    <main class="max-w-6xl mx-auto px-4 pt-8 pb-32 space-y-24">
-      <!-- Hero -->
-      <section class="grid md:grid-cols-2 gap-10 items-center fade-up">
-        <div class="space-y-5">
-          <div class="flex flex-wrap items-center gap-2 text-[11px] text-slate-300">
-            <a href="index.html" class="hover:text-accent">الرئيسية</a>
-            <span class="opacity-50">/</span>
-            <span class="text-accent font-semibold">السندوتش بنل</span>
-          </div>
-
-          <div
-            class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/60 border border-white/10 text-[11px] text-slate-200"
-          >
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"></span>
-            عزل + سرعة + تشطيب نظيف — بنفس المشروع
-          </div>
-
-          <h1 class="text-2xl md:text-4xl lg:text-5xl font-extrabold leading-snug">
-            <span class="text-accent">سندوتش بنل</span> في الرياض
-            <span class="block text-base md:text-xl text-slate-300 mt-2">
-              غرف، ملاحق، مستودعات… تنفيذ سريع يعزل حرارة الرياض ويعطي شكل مرتب.
-            </span>
-          </h1>
-
-          <p class="text-sm md:text-base text-slate-300 leading-relaxed max-w-xl">
-            إذا هدفك <span class="font-semibold text-slate-100">حل عملي يحترم ميزانيتك</span>
-            ويعطيك مساحة جاهزة للاستخدام خلال وقت قصير:
-            السندوتش بنل خيار ممتاز — بشرط اختيار
-            <span class="font-semibold text-accent">سماكة مناسبة</span>، و
-            <span class="font-semibold text-accent">تركيب مضبوط</span>.
-            هنا يبان الفرق بين “شغل سريع” و “شغل يعيش”.
-          </p>
-
-          <div class="flex flex-wrap items-center gap-3 text-xs md:text-sm">
-            <a
-              href="#quote"
-              class="btn-main metallic inline-flex items-center gap-2 rounded-full bg-accent text-primary px-5 py-2 font-bold shadow-soft hover:bg-accentSoft"
-            >
-              احصل على تسعيرة دقيقة
-              <span class="text-[10px] bg-primary/10 px-2 py-0.5 rounded-full">خلال دقائق</span>
-            </a>
-
-            <a
-              href="tel:0562526395"
-              class="btn-outline inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-primary/40 px-4 py-2 text-slate-100 hover:border-accent hover:text-accentSoft"
-            >
-              📞 اتصال مباشر
-              <span class="font-semibold tracking-widest ltr:text-left">0562526395</span>
-            </a>
-          </div>
-
-          <div class="grid grid-cols-3 gap-3 text-xs md:text-sm mt-4">
-            <div class="glass rounded-2xl px-3 py-3 border border-white/10 text-center hover-card">
-              <div class="text-lg md:text-xl font-extrabold text-accent">مقايسة</div>
-              <div class="text-slate-300 text-[11px] md:text-xs">واضحة قبل التنفيذ</div>
-            </div>
-            <div class="glass rounded-2xl px-3 py-3 border border-white/10 text-center hover-card">
-              <div class="text-lg md:text-xl font-extrabold text-accent">عزل</div>
-              <div class="text-slate-300 text-[11px] md:text-xs">حراري وصوتي فعّال</div>
-            </div>
-            <div class="glass rounded-2xl px-3 py-3 border border-white/10 text-center hover-card">
-              <div class="text-lg md:text-xl font-extrabold text-accent">تشطيب</div>
-              <div class="text-slate-300 text-[11px] md:text-xs">نظيف + تسليم مرتب</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Hero slider -->
-        <div class="relative fade-up">
-          <div class="gradient-border hero-slider rounded-2xl overflow-hidden shadow-soft bg-primary/80 metallic-border">
-            <div class="relative h-64 md:h-80 overflow-hidden">
-              <img
-                id="heroSlide1"
-                src="images/4.webp"
-                alt="غرف سندوتش بنل"
-                class="absolute inset-0 w-full h-full object-cover opacity-100 transition-opacity duration-700 ease-in-out"
-              />
-              <img
-                id="heroSlide2"
-                src="images/6.webp"
-                alt="مستودع سندوتش بنل"
-                class="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 ease-in-out"
-              />
-
-              <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent"></div>
-
-              <div class="absolute top-3 right-3 flex flex-col gap-2 text-[11px]">
-                <div class="px-3 py-1 rounded-full bg-black/70 border border-white/20 text-white/90 flex items-center gap-1">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-[pulse_1.5s_infinite]"></span>
-                  صور من مشاريع حقيقية
-                </div>
-                <div class="px-3 py-1 rounded-full bg-black/60 border border-accent/40 text-accentSoft">
-                  العزل يبدأ من التفاصيل
-                </div>
-              </div>
-
-              <div class="absolute bottom-4 right-4 left-4 text-right space-y-1">
-                <h2 class="text-lg md:text-xl font-bold text-white drop-shadow-md">
-                  “جاهز للاستخدام”… مو بس شكل
-                </h2>
-                <p class="text-[11px] md:text-xs text-slate-100/90 leading-relaxed">
-                  سدّ الفواصل، معالجة الفتحات، تثبيت صحيح — عشان تعيش معك الغرفة سنوات بدون مشاكل.
-                </p>
-              </div>
-
-              <div id="heroDots" class="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
-                <span data-dot class="w-2 h-2 rounded-full bg-white/90"></span>
-                <span data-dot class="w-2 h-2 rounded-full bg-white/40"></span>
-                <span data-dot class="w-2 h-2 rounded-full bg-white/40"></span>
-                <span data-dot class="w-2 h-2 rounded-full bg-white/40"></span>
-              </div>
-            </div>
-
-            <div class="flex items-center justify-between px-4 py-2 bg-primarySoft/90 border-t border-white/10 text-[11px] md:text-xs text-slate-200">
-              <span>سندوتش بنل • هياكل حديد • أبواب/نوافذ</span>
-              <span class="text-accent font-semibold">جاهزية سريعة</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Why us / Value -->
-      <section class="space-y-8 fade-up">
-        <div class="space-y-2">
-          <h2 class="text-xl md:text-2xl font-bold">ليش عملاؤنا يختارون السندوتش بنل؟</h2>
-          <p class="text-sm text-slate-300 max-w-2xl">
-            لأنك تحصل على نتيجة “عمليّة” بسرعة — لكن جودة النتيجة تعتمد على
-            <span class="font-semibold text-accent">المواصفة</span> و
-            <span class="font-semibold text-accent">طريقة التركيب</span>.
-            نحن نشتغل على اللي يهمك: راحة المكان، شكل مرتب، وتقليل المفاجآت بعد التسليم.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-5">
-          <article class="glass rounded-2xl border border-white/10 p-5 hover-card">
-            <div class="flex items-center justify-between">
-              <div class="text-2xl">🌡️</div>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-400/30">عزل</span>
-            </div>
-            <h3 class="mt-3 font-semibold">راحة حرارية ملموسة</h3>
-            <p class="mt-2 text-xs text-slate-300 leading-relaxed">
-              نرشّح السماكة المناسبة حسب الاستخدام (جلسة / غرفة / مستودع) ونراعي فتحات التكييف،
-              لأن العزل الحقيقي يبان في الحرّ.
-            </p>
-          </article>
-
-          <article class="glass rounded-2xl border border-white/10 p-5 hover-card">
-            <div class="flex items-center justify-between">
-              <div class="text-2xl">⚙️</div>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-sky-500/10 text-sky-300 border border-sky-400/40">تنفيذ</span>
-            </div>
-            <h3 class="mt-3 font-semibold">تنفيذ مرتب بدون “فوضى”</h3>
-            <p class="mt-2 text-xs text-slate-300 leading-relaxed">
-              نعتمد خطوات واضحة: قياس، تجهيز الهيكل، تثبيت الألواح، معالجة الفواصل، ثم تشطيب.
-              النتيجة: شكل أنظف وتسليم أسرع.
-            </p>
-          </article>
-
-          <article class="glass rounded-2xl border border-white/10 p-5 hover-card">
-            <div class="flex items-center justify-between">
-              <div class="text-2xl">🧱</div>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-accent/10 text-accent border border-accent/40">تحمّل</span>
-            </div>
-            <h3 class="mt-3 font-semibold">عمر أطول = تكلفة أقل</h3>
-            <p class="mt-2 text-xs text-slate-300 leading-relaxed">
-              شغل مضبوط من البداية يقلل الصيانة لاحقًا. نهتم بالتفاصيل اللي تُنسى: تصريف المطر،
-              التثبيت، العوازل حول الفتحات، وتقفيل الزوايا.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <!-- Spec helper -->
-      <section class="grid md:grid-cols-2 gap-8 items-start fade-up">
-        <div class="space-y-4">
-          <h2 class="text-xl md:text-2xl font-bold">كيف نحدد مواصفات السندوتش بنل المناسبة؟</h2>
-          <p class="text-sm text-slate-300 leading-relaxed">
-            بدل ما نرمي رقم عشوائي… نمشيها بطريقة “مقايسة”:
-            نسألك 3 أسئلة بسيطة ثم نعطيك توصية واضحة.
-          </p>
-
-          <div class="space-y-3 text-sm">
-            <div class="flex gap-3 items-start">
-              <span class="mt-1 text-emerald-400">✓</span>
-              <div>
-                <div class="font-semibold text-slate-50 text-sm">١) استخدام المكان</div>
-                <p class="text-xs text-slate-300 mt-1">
-                  جلسة/غرفة نوم/مستودع/ورشة… الاستخدام يحدد السماكة ونوع العزل والتهوية.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex gap-3 items-start">
-              <span class="mt-1 text-emerald-400">✓</span>
-              <div>
-                <div class="font-semibold text-slate-50 text-sm">٢) الأبعاد والارتفاع</div>
-                <p class="text-xs text-slate-300 mt-1">
-                  المقاسات تؤثر على اختيار الهيكل الحديد وطريقة توزيع الأعمدة وتثبيت الألواح.
-                </p>
-              </div>
-            </div>
-
-            <div class="flex gap-3 items-start">
-              <span class="mt-1 text-emerald-400">✓</span>
-              <div>
-                <div class="font-semibold text-slate-50 text-sm">٣) فتحات التكييف والنوافذ</div>
-                <p class="text-xs text-slate-300 mt-1">
-                  مكان الفتحات وطريقة عزلها هو السر في تقليل تسرب الحرارة والحفاظ على الشكل.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-3 pt-2 text-xs">
-            <a
-              href="#quote"
-              class="btn-main metallic inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-1.5 font-bold shadow-lg hover:bg-accentSoft"
-            >
-              اطلب توصية سماكة وعزل
-            </a>
-            <span class="text-slate-300">
-              نعطيك خيارين: <span class="font-semibold text-accent">متوازن</span> و
-              <span class="font-semibold text-accent">بريميوم</span> حسب ميزانيتك.
-            </span>
-          </div>
-        </div>
-
-        <div class="space-y-4">
-          <div class="glass rounded-2xl border border-white/10 p-5 hover-card">
-            <h3 class="font-semibold text-slate-50">خيارات شائعة (توضيح مبسط)</h3>
-            <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-              هذه أمثلة متداولة تساعدك تفهم الفكرة — الاختيار النهائي يكون بعد معرفة الاستخدام.
-            </p>
-
-            <div class="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
-                <div class="text-accent font-extrabold text-lg">50mm</div>
-                <div class="text-slate-200 font-semibold mt-1">حل اقتصادي</div>
-                <div class="text-slate-300 mt-1">مناسب لمخازن خفيفة / استخدام محدود</div>
-              </div>
-              <div class="rounded-2xl bg-white/5 border border-accent/30 p-4">
-                <div class="text-accent font-extrabold text-lg">75mm</div>
-                <div class="text-slate-200 font-semibold mt-1">متوازن</div>
-                <div class="text-slate-300 mt-1">اختيار ممتاز لغرف وملاحق في الرياض</div>
-              </div>
-              <div class="rounded-2xl bg-white/5 border border-white/10 p-4">
-                <div class="text-accent font-extrabold text-lg">100mm</div>
-                <div class="text-slate-200 font-semibold mt-1">عزل أعلى</div>
-                <div class="text-slate-300 mt-1">مستودعات حساسة / تبريد / راحة أعلى</div>
-              </div>
-            </div>
-
-            <div class="mt-4 text-[11px] text-slate-400">
-              * المواصفة الدقيقة تختلف حسب (الموقع/الشمس/التكييف/نوافذ/الاستخدام).
-            </div>
-          </div>
-
-          <div class="glass rounded-2xl border border-white/10 p-5 hover-card">
-            <h3 class="font-semibold text-slate-50">وعدنا لك</h3>
-            <ul class="mt-3 text-[12px] text-slate-300 space-y-2 leading-relaxed">
-              <li>• شرح واضح للخيارات قبل ما تدفع.</li>
-              <li>• مقترح تصميم وتوزيع للفتحات حسب احتياجك.</li>
-              <li>• تشطيب نهائي يليق بالمكان (مو “شغل مؤقت”).</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Gallery -->
-      <section class="space-y-7 fade-up">
-        <div class="flex flex-col md:flex-row md:items-end gap-3">
-          <div class="space-y-2">
-            <h2 class="text-xl md:text-2xl font-bold">معرض أعمال السندوتش بنل</h2>
-            <p class="text-sm text-slate-300 max-w-2xl">
-              صور من مشاريع مختلفة (غرف، ملاحق، مستودعات). اضغط على أي صورة للتكبير.
-            </p>
-          </div>
-          <div class="md:ml-auto text-xs text-slate-400">
-            تريد نفس الشكل لمشروعك؟
-            <a href="#quote" class="text-accent hover:underline">اطلب معاينة</a>
-          </div>
-        </div>
-
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <!-- Card -->
-          <div class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card">
-            <img src="images/4.webp" alt="غرفة سندوتش بنل" class="w-full h-44 object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              غرفة سندوتش بنل — تشطيب مرتب
-            </div>
-            <button
-              data-lightbox
-              data-src="images/4.webp"
-              data-caption="غرفة سندوتش بنل — تشطيب مرتب"
-              class="absolute inset-0"
-              aria-label="عرض الصورة"
-            ></button>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card">
-            <img src="images/18.webp" alt="مستودع سندوتش بنل" class="w-full h-44 object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              مستودع سندوتش بنل — عزل ممتاز
-            </div>
-            <button data-lightbox data-src="images/28.webp" data-caption="مستودع سندوتش بنل — عزل ممتاز" class="absolute inset-0" aria-label="عرض الصورة"></button>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card">
-            <img src="images/32.webp" alt="تفاصيل ألواح سندوتش بنل" class="w-full h-44 object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              تفاصيل ألواح + فواصل
-            </div>
-            <button data-lightbox data-src="images/20.webp" data-caption="تفاصيل ألواح + فواصل" class="absolute inset-0" aria-label="عرض الصورة"></button>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card">
-            <img src="images/12.webp" alt="هنجر سندوتش بنل" class="w-full h-44 object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              هنجر/مستودع — تنفيذ تجاري
-            </div>
-            <button data-lightbox data-src="images/12.webp" data-caption="هنجر/مستودع — تنفيذ تجاري" class="absolute inset-0" aria-label="عرض الصورة"></button>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card">
-            <img src="images/1.webp" alt="غرفة سندوتش بنل" class="w-full h-44 object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              تنفيذ سريع — جاهزية للاستخدام
-            </div>
-            <button data-lightbox data-src="images/2.webp" data-caption="تنفيذ سريع — جاهزية للاستخدام" class="absolute inset-0" aria-label="عرض الصورة"></button>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card">
-            <img src="images/10.webp" alt="ملحق سندوتش بنل" class="w-full h-44 object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              ملحق/غرفة — فتحات مدروسة
-            </div>
-            <button data-lightbox data-src="images/9.webp" data-caption="ملحق/غرفة — فتحات مدروسة" class="absolute inset-0" aria-label="عرض الصورة"></button>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card">
-            <img src="images/5.webp" alt="تشطيب سندوتش بنل" class="w-full h-44 object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              تشطيب خارجي — شكل يليق بالمكان
-            </div>
-            <button data-lightbox data-src="images/5.webp" data-caption="تشطيب خارجي — شكل يليق بالمكان" class="absolute inset-0" aria-label="عرض الصورة"></button>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden glass border border-white/10 hover-card">
-            <img src="images/16.webp" alt="مشروع سندوتش بنل" class="w-full h-44 object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
-            <div class="absolute bottom-3 right-3 left-3 text-[11px] text-slate-50">
-              تنفيذ مقايس — تفاصيل تفرق
-            </div>
-            <button data-lightbox data-src="images/15.webp" data-caption="تنفيذ مقايس — تفاصيل تفرق" class="absolute inset-0" aria-label="عرض الصورة"></button>
-          </div>
-        </div>
-      </section>
-
-      <!-- Packages -->
-      <section class="space-y-8 fade-up">
-        <div class="space-y-2">
-          <h2 class="text-xl md:text-2xl font-bold">باقات تنفيذ (عشان تعرف فرق الأسعار)</h2>
-          <p class="text-sm text-slate-300 max-w-2xl">
-            بدل ما نعطيك سعر “مقطوع” بدون تفاصيل… هذه باقات توضح فرق المواصفات.
-            عند المعاينة نحدد الأنسب لك.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-5">
-          <article class="glass rounded-2xl border border-white/10 p-6 hover-card">
-            <div class="flex items-center justify-between">
-              <h3 class="font-bold text-slate-50">اقتصادي</h3>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-slate-300">للأعمال الخفيفة</span>
-            </div>
-            <ul class="mt-4 text-[12px] text-slate-300 space-y-2 leading-relaxed">
-              <li>• مواصفة مناسبة للمخازن الخفيفة</li>
-              <li>• تشطيب خارجي مرتب</li>
-              <li>• فتحات حسب الحاجة</li>
-            </ul>
-            <a href="#quote" class="btn-outline mt-5 inline-flex w-full justify-center rounded-full border border-slate-600/70 bg-primary/30 py-2 text-sm">
-              اطلب تسعيرة اقتصادية
-            </a>
-          </article>
-
-          <article class="gradient-border rounded-2xl p-6 bg-primary/70 shadow-soft hover-card metallic-border">
-            <div class="flex items-center justify-between">
-              <h3 class="font-extrabold text-slate-50">متوازن ⭐</h3>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-accent/15 border border-accent/40 text-accentSoft">الأكثر طلبًا</span>
-            </div>
-            <ul class="mt-4 text-[12px] text-slate-200 space-y-2 leading-relaxed">
-              <li>• عزل مناسب لمناخ الرياض</li>
-              <li>• معالجة فواصل وفتحات بشكل أقوى</li>
-              <li>• توصية واضحة للتكييف والتهوية</li>
-            </ul>
-            <a href="#quote" class="btn-main metallic mt-5 inline-flex w-full justify-center rounded-full bg-accent text-primary py-2 text-sm font-bold">
-              اطلب تسعيرة متوازنة
-            </a>
-          </article>
-
-          <article class="glass rounded-2xl border border-white/10 p-6 hover-card">
-            <div class="flex items-center justify-between">
-              <h3 class="font-bold text-slate-50">بريميوم</h3>
-              <span class="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-400/30 text-emerald-300">راحة أعلى</span>
-            </div>
-            <ul class="mt-4 text-[12px] text-slate-300 space-y-2 leading-relaxed">
-              <li>• عزل أعلى + حلول للضجيج</li>
-              <li>• تشطيب داخلي/خارجي (حسب الطلب)</li>
-              <li>• تفاصيل إضافية للمظهر (زوايا/حواف)</li>
-            </ul>
-            <a href="#quote" class="btn-outline mt-5 inline-flex w-full justify-center rounded-full border border-slate-600/70 bg-primary/30 py-2 text-sm">
-              اطلب تسعيرة بريميوم
-            </a>
-          </article>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section id="faq" class="space-y-8 fade-up">
-        <div class="space-y-2">
-          <h2 class="text-xl md:text-2xl font-bold">أسئلة شائعة عن السندوتش بنل</h2>
-          <p class="text-sm text-slate-300 max-w-2xl">
-            إجابات مختصرة وواضحة — وإذا تحب، نعطيك توصية على مقاس مشروعك في الواتساب.
-          </p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-5 items-start">
-          <div class="space-y-3">
-            <details class="faq-item glass rounded-2xl border border-white/10 p-4 hover-card" open>
-              <summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
-                <div class="flex items-center gap-2">
-                  <span class="faq-icon w-7 h-7 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-[13px]">؟</span>
-                  <h3 class="text-sm font-semibold">هل السندوتش بنل مناسب لغرفة سكنية؟</h3>
-                </div>
-              </summary>
-              <div class="faq-body pt-3 mt-3 border-t border-slate-700/70 text-xs text-slate-300 leading-relaxed">
-                نعم، بشرط اختيار سماكة مناسبة وعزل مضبوط للفتحات والتكييف.
-                كثير من العملاء يسوون غرفة إضافية أو ملحق عائلي ويطلعون بنتيجة ممتازة.
-              </div>
-            </details>
-
-            <details class="faq-item glass rounded-2xl border border-white/10 p-4 hover-card">
-              <summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
-                <div class="flex items-center gap-2">
-                  <span class="faq-icon w-7 h-7 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-[13px]">؟</span>
-                  <h3 class="text-sm font-semibold">وش يرفع السعر أكثر شيء؟</h3>
-                </div>
-              </summary>
-              <div class="faq-body pt-3 mt-3 border-t border-slate-700/70 text-xs text-slate-300 leading-relaxed">
-                غالبًا: السماكة/نوع العزل + مساحة المشروع + كمية الفتحات (أبواب/نوافذ)
-                + متطلبات التشطيب الداخلي. عشان كذا نفضّل معاينة سريعة أو صور مع أبعاد.
-              </div>
-            </details>
-
-            <details class="faq-item glass rounded-2xl border border-white/10 p-4 hover-card">
-              <summary class="flex items-center justify-between gap-3 cursor-pointer select-none">
-                <div class="flex items-center gap-2">
-                  <span class="faq-icon w-7 h-7 rounded-full bg-accent/10 border border-accent/40 flex items-center justify-center text-[13px]">؟</span>
-                  <h3 class="text-sm font-semibold">هل يركّب على سطح البيت؟</h3>
-                </div>
-              </summary>
-              <div class="faq-body pt-3 mt-3 border-t border-slate-700/70 text-xs text-slate-300 leading-relaxed">
-                ممكن حسب وضع السطح والحمولة ومكان التصريف. نقيم الموقع ونقترح أفضل حل للقاعدة
-                والعزل وتصريف الماء.
-              </div>
-            </details>
-          </div>
-
-          <div class="space-y-3">
-            <div class="glass rounded-2xl border border-accent/40 p-5 hover-card">
-              <h3 class="text-sm font-semibold text-accent">نصيحة ذهبية قبل التنفيذ</h3>
-              <p class="text-xs text-slate-300 mt-2 leading-relaxed">
-                لا تركز على “سعر المتر” فقط. ركّز على: معالجة الفواصل + عزل الفتحات + تثبيت السقف
-                + تصريف الماء. هذه التفاصيل هي اللي تفرق بين مشروع مريح ومشروع “صيانة كل شوي”.
-              </p>
-              <a
-                href="https://wa.me/966554803704"
-                target="_blank"
-                class="btn-main metallic mt-4 inline-flex items-center gap-2 rounded-full bg-accent text-primary px-4 py-2 font-bold text-sm"
-              >
-                اسألنا عن المواصفة المناسبة
-                <span>💬</span>
-              </a>
-            </div>
-
-            <div class="glass rounded-2xl border border-white/10 p-5 hover-card">
-              <h3 class="text-sm font-semibold text-slate-50">خدمات مرتبطة</h3>
-              <div class="mt-3 flex flex-wrap gap-2 text-xs">
-                <a class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-accent" href="stores-hangers.html">مستودعات/هناجر</a>
-                <a class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-accent" href="car-shades.html">مظلات سيارات</a>
-                <a class="px-3 py-1 rounded-full bg-white/5 border border-white/10 hover:border-accent" href="index.html#services">كل الخدمات</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Quote / Contact -->
-      <section id="quote" class="space-y-6 fade-up">
-        <h2 class="text-xl md:text-2xl font-bold">اطلب عرض سعر للسندوتش بنل</h2>
-        <p class="text-sm text-slate-300 max-w-xl">
-          عبّئ بيانات بسيطة — ونفتح لك واتساب برسالة جاهزة. كل ما كانت التفاصيل أوضح، كانت التسعيرة أدق.
-        </p>
-
-        <form
-          id="whatsappForm"
-          class="glass rounded-2xl border border-white/10 p-5 grid md:grid-cols-2 gap-4 text-sm"
-        >
-          <div class="space-y-1">
-            <label for="name" class="text-xs text-slate-200">الاسم الكامل</label>
-            <input
-              id="name"
-              type="text"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
-              placeholder="اكتب اسمك هنا"
-            />
-          </div>
-
-          <div class="space-y-1">
-            <label for="phone" class="text-xs text-slate-200">رقم الجوال</label>
-            <input
-              id="phone"
-              type="tel"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
-              placeholder="05XXXXXXXX"
-            />
-          </div>
-
-          <div class="space-y-1">
-            <label for="city" class="text-xs text-slate-200">المنطقة / الحي</label>
-            <input
-              id="city"
-              type="text"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
-              placeholder="مثال: الرياض - حي الياسمين"
-            />
-          </div>
-
-          <div class="space-y-1">
-            <label for="service" class="text-xs text-slate-200">نوع الخدمة</label>
-            <select
-              id="service"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
-            >
-              <option>سندوتش بنل - غرفة أو ملحق</option>
-              <option>سندوتش بنل - مستودع / هنجر</option>
-              <option>مظلات سيارات</option>
-              <option>مظلات حدائق وأسقف</option>
-              <option>سواتر حديد / خشب</option>
-              <option>أعمال حدادة خاصة</option>
-            </select>
-          </div>
-
-          <div class="space-y-1 md:col-span-2">
-            <label for="details" class="text-xs text-slate-200">
-              تفاصيل إضافية عن الموقع والمساحة
-            </label>
-            <textarea
-              id="details"
-              rows="3"
-              class="w-full rounded-xl bg-slate-900/60 border border-slate-700 text-slate-100 px-3 py-2 text-sm focus:outline-none focus:border-accent"
-              placeholder="مثال: طول×عرض×ارتفاع، استخدام الغرفة، مكان التكييف، عدد الأبواب والنوافذ..."
-            ></textarea>
-          </div>
-
-          <div class="md:col-span-2 flex flex-wrap items-center gap-4 mt-2">
-            <button
-              type="submit"
-              class="btn-main metallic inline-flex items-center gap-2 rounded-full bg-accent text-primary px-6 py-2 font-bold text-sm shadow-soft hover:bg-accentSoft"
-            >
-              إرسال الطلب عبر واتساب
-              <span>💬</span>
-            </button>
-            <div class="text-[11px] text-slate-400">
-              لا يتم حفظ بياناتك في الموقع — تُرسل مباشرة إلى واتساب المؤسسة.
-            </div>
-          </div>
-        </form>
-      </section>
-    </main>
-
-    <!-- CTA Dock (fixed) -->
-    <div class="cta-dock">
-      <div class="cta-inner glass border border-white/10 shadow-soft">
-        <div class="flex items-center justify-between gap-2 text-xs">
-          <div class="hidden sm:block text-slate-200">
-            محتاج “سندوتش بنل”؟ <span class="text-accent font-semibold">أرسل المقاس</span> وخلك مرتاح
-          </div>
-          <div class="flex items-center gap-2 ml-auto">
-            <a
-              href="tel:0562526395"
-              class="btn-outline inline-flex items-center justify-center rounded-full border border-slate-600/70 bg-primary/40 px-3 py-2 text-slate-100"
-            >
-              اتصال
-            </a>
-            <a
-              href="https://wa.me/966554803704"
-              target="_blank"
-              class="btn-main inline-flex items-center justify-center rounded-full bg-emerald-500 hover:bg-emerald-400 text-white px-3 py-2"
-            >
-              واتساب
-            </a>
-            <a
-              href="#quote"
-              class="btn-main metallic inline-flex items-center justify-center rounded-full bg-accent text-primary px-3 py-2 font-bold"
-            >
-              عرض سعر
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Floating buttons -->
-    <a
-      href="https://wa.me/966554803704"
-      target="_blank"
-      class="btn-main fixed bottom-4 left-4 z-50 flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-white px-4 py-2 rounded-full shadow-soft text-sm"
-    >
-      <span class="text-lg">💬</span>
-      <span class="font-semibold">تواصل واتساب</span>
-    </a>
-
-    <button
-      id="toTop"
-      class="hidden fixed bottom-4 right-4 z-50 w-11 h-11 rounded-full border border-white/15 bg-black/40 hover:bg-black/55 shadow-soft"
-      aria-label="العودة للأعلى"
-    >
-      ↑
-    </button>
-
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-black/70">
-      <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row items-center justify-between gap-2 text-[11px] text-slate-400">
-        <div>
-          © <span class="font-semibold text-slate-200">مؤسسة إبداع الظل</span> – جميع الحقوق محفوظة.
-        </div>
-        <div class="flex flex-wrap items-center gap-3">
-          <span>الرياض وما حولها</span>
-          <span class="w-px h-3 bg-slate-600"></span>
-          <a href="tel:0562526395" class="hover:text-accent transition-colors font-semibold">0562526395</a>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Lightbox -->
-    <div id="lightbox" class="fixed inset-0 z-[100]">
-      <div id="lightboxOverlay" class="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
-      <div class="relative max-w-5xl mx-auto px-4 h-full flex items-center justify-center">
-        <div class="w-full glass border border-white/10 rounded-2xl overflow-hidden shadow-soft">
-          <div class="flex items-center justify-between px-4 py-3 border-b border-white/10">
-            <div id="lightboxTitle" class="text-sm font-semibold text-slate-100 truncate"></div>
-            <button id="lightboxClose" class="w-10 h-10 rounded-full border border-white/15 bg-black/30 hover:bg-black/40" aria-label="إغلاق">✕</button>
-          </div>
-          <img id="lightboxImg" src="" alt="" class="w-full max-h-[75vh] object-contain bg-black/40" />
-        </div>
-      </div>
-    </div>
-
-    <!-- Page config -->
-    <script>
-      window.WHATSAPP_NUMBER = '966554803704';
-      window.HERO_SLIDES = ['images/4.webp', 'images/16.webp', 'images/12.webp', 'images/7.webp'];
-      window.HERO_SLIDE_INTERVAL = 2500;
-    </script>
-
-    <!-- Shared JS -->
-    <script src="assets/js/site.js"></script>
-    <script src="assets/js/trend32.js"></script>
-  </body>
-</html>
