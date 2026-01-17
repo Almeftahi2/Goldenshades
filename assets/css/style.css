@@ -99,6 +99,7 @@ img{max-width:100%;display:block}
 }
 .btn{
   display:inline-flex;align-items:center;justify-content:center;
+  width:auto;
   gap:10px;
   padding:10px 14px;
   border-radius:14px;
@@ -133,7 +134,9 @@ img{max-width:100%;display:block}
 }
 .hamburger{
   display:none;
-  width:44px;height:44px;border-radius:14px;
+  height:44px;
+  padding:0 14px;
+  gap:10px;border-radius:14px;
   border:1px solid var(--cardBorder);
   background:rgba(255,255,255,.06);
   align-items:center;justify-content:center;
@@ -338,7 +341,9 @@ img{max-width:100%;display:block}
   display:flex;gap:12px;
 }
 .b .ico{
-  width:44px;height:44px;border-radius:16px;
+  height:44px;
+  padding:0 14px;
+  gap:10px;border-radius:16px;
   background:rgba(181,137,81,.14);
   display:flex;align-items:center;justify-content:center;
   font-weight:900;
@@ -478,6 +483,17 @@ label{display:block;margin:0 0 6px 0;font-weight:800;color:var(--sub)}
 .footer h4{margin:0 0 10px 0;color:#fff}
 .footer a{color:rgba(255,255,255,.86)}
 .small{font-size:13px;color:rgba(255,255,255,.7);margin-top:10px}
+
+/* SOCIAL-LINKS */
+.social-links{display:flex;flex-direction:column;gap:10px;}
+.social{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(181,137,81,.25);transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;background-clip:padding-box;}
+.social .si{width:36px;height:36px;display:inline-flex;align-items:center;justify-content:center;border-radius:12px;background:linear-gradient(135deg, rgba(181,137,81,.35), rgba(181,137,81,.08));border:1px solid rgba(181,137,81,.35);font-weight:800;color:var(--gold);letter-spacing:.5px;}
+.social .st{color:rgba(255,255,255,.92);font-weight:700;}
+.social:hover{transform:translateY(-2px);border-color:rgba(181,137,81,.55);box-shadow:0 16px 40px rgba(0,0,0,.35);}
+@media (max-width: 700px){
+  .social-links{flex-direction:row;flex-wrap:wrap;}
+  .social{width:100%;justify-content:flex-start;}
+}
 
 .floating-wa{
   position:fixed;
@@ -711,7 +727,7 @@ label{display:block;margin:0 0 6px 0;font-weight:800;color:var(--sub)}
   color:#fff;
   backdrop-filter: blur(8px);
   border:1px solid rgba(255,255,255,.18);
-}
+ font-size:14px;}
 .ba-label.before{ left:12px; }
 .ba-label.after{ right:12px; }
 .ba-handle{
@@ -723,7 +739,7 @@ label{display:block;margin:0 0 6px 0;font-weight:800;color:var(--sub)}
   background:rgba(255,255,255,.9);
   transform: translateX(-1px);
   box-shadow: 0 0 0 8px rgba(181,137,81,.10);
-}
+ width:64px;height:64px;}
 .ba-handle:before{
   content:"⇆";
   position:absolute;
@@ -866,7 +882,7 @@ body::after{
 /* Before/After handle glow */
 .ba-handle{
   box-shadow: 0 18px 60px rgba(181,137,81,.22), 0 20px 70px rgba(0,0,0,.50);
-}
+ width:64px;height:64px;}
 .ba-line{
   box-shadow: 0 0 0 1px rgba(181,137,81,.18), 0 22px 70px rgba(181,137,81,.18);
 }
@@ -1447,4 +1463,40 @@ input:focus,select:focus,textarea:focus{
 @media (max-width: 900px){
   .scrolly-wrap{grid-template-columns: 1fr; gap: 16px}
   .scrolly-graphic{position:relative; top:auto}
+}
+
+/* ====== Social Links (Footer) ====== */
+.social-icons{display:flex;gap:10px;flex-wrap:wrap}
+.social{
+  height:44px;
+  padding:0 14px;
+  gap:10px;
+  display:inline-flex;align-items:center;justify-content:center;
+  width:auto;
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(181,137,81,.28);
+  color:rgba(255,255,255,.92);
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.social:hover{
+  transform:translateY(-2px);
+  border-color:rgba(181,137,81,.55);
+  box-shadow:0 14px 34px rgba(0,0,0,.35);
+}
+
+/* ====== Bigger Before/After (اعلاني) ====== */
+.ba-wrap{aspect-ratio: 16 / 9; min-height: 420px;}
+.ba-title{font-size:34px;}
+.ba-sub{font-size:15px;}
+.ba-card{padding:18px;}
+.ba-chip{font-size:14px; padding:8px 12px;}
+.ba-handle{width:64px;height:64px;}
+.ba-handle svg{width:22px;height:22px;}
+@media (min-width: 901px){
+  .ba-wrap{min-height: 520px;}
+}
+@media (max-width: 560px){
+  .ba-title{font-size:28px;}
+  .ba-wrap{min-height: 320px;}
 }

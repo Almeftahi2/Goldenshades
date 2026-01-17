@@ -1,3 +1,4 @@
 User-agent: *
 Allow: /
-Sitemap: https://example.com/sitemap.xml
+
+Sitemap: https://ebdahel.com/sitemap.xml
