@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ebdahel.com/sitemap.xml
+Sitemap: https://ebdadhel.com/sitemap.xml

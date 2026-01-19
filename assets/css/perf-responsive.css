@@ -1,0 +1,83 @@
+/*
+  Performance + Responsive improvements
+  NOTE: Do NOT change any image paths. This file only adjusts layout/paint behavior.
+*/
+
+/* Better default media behavior */
+img, video, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reduce expensive rendering work for offscreen sections (supported browsers only) */
+@supports (content-visibility: auto) {
+  .section {
+    content-visibility: auto;
+    /* Helps avoid layout jumps while the section is skipped */
+    contain-intrinsic-size: 900px;
+  }
+}
+
+/* Prefer simpler blur on small screens for smoother scrolling */
+@media (max-width: 768px) {
+  .glass,
+  .glass-card,
+  .glass-panel {
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+  }
+}
+
+/* Responsive container safety */
+.container {
+  width: min(1200px, calc(100% - 32px));
+}
+
+/* Make top nav wrap gracefully on small screens */
+@media (max-width: 900px) {
+  .topbar,
+  .nav,
+  header .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .topbar a,
+  .nav a,
+  header .nav a {
+    font-size: 14px;
+    white-space: nowrap;
+  }
+}
+
+/* Reduce huge vertical whitespace on short viewports */
+@media (max-height: 700px) {
+  .hero,
+  .hero-section {
+    min-height: 70vh;
+  }
+}
+
+/* Before/After module: keep it usable on phones */
+@media (max-width: 768px) {
+  .before-after,
+  .ba-wrap,
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .before-after .ba-item,
+  .ba-wrap .ba-item,
+  .ba-grid .ba-item {
+    width: 100%;
+  }
+}
+
+/* Accessibility + motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
