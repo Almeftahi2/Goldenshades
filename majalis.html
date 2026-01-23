@@ -1,6 +1,31 @@
 <!doctype html>
 <html lang="ar" dir="rtl" translate="no" class="notranslate">
 <head>
+<script>
+  (function () {
+    // Force canonical host/protocol on the LIVE site only.
+    // لا نعمل Redirect عند فتح الملفات محلياً (file://) أو على localhost.
+    var targetHost = "www.ebdadhel.com";
+    var proto = window.location.protocol;
+    var host = window.location.hostname;
+
+    // Skip local file previews and local dev servers
+    if (proto !== "http:" && proto !== "https:") return;
+    if (host === "localhost" || host === "127.0.0.1") return;
+
+    // Redirect non-www to www
+    if (host === "ebdadhel.com") {
+      window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
+      return;
+    }
+
+    // Enforce HTTPS on www
+    if (host === targetHost && proto !== "https:") {
+      window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
+    }
+  })();
+</script>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="google" content="notranslate">
@@ -8,15 +33,14 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
   <title>المجالس والجلسات | مؤسسة إبداع الظل</title>
-  
-  <link rel=\"canonical\" href=\"https://ebdadhel.com/majalis.html\">
+<link rel="canonical" href="https://www.ebdadhel.com/majalis.html">
+<meta property="og:url" content="https://www.ebdadhel.com/majalis.html">
+
 <meta name="description" content="تصميم وتنفيذ مجالس وجلسات داخلية وخارجية بإطلالة فاخرة، خيارات زجاج وألمنيوم وبديل خشب، مع إنارة وتشطيب راقٍ في الرياض والسعودية.">
   <meta name="theme-color" content="#2D2E32">
   <meta property="og:locale" content="ar_SA">
   <meta property="og:title" content="المجالس والجلسات | مؤسسة إبداع الظل">
   <meta property="og:description" content="تصميم وتنفيذ مجالس وجلسات داخلية وخارجية بإطلالة فاخرة، خيارات زجاج وألمنيوم وبديل خشب، مع إنارة وتشطيب راقٍ في الرياض والسعودية.">
-  
-  <meta property=\"og:url\" content=\"https://ebdadhel.com/majalis.html\" />
 <meta property="og:type" content="website">
   <meta property="og:image" content="assets/img/hero.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,10 +48,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/perf-responsive.css">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "مؤسسة إبداع الظل", "telephone": "0562526395", "areaServed": ["Riyadh", "Saudi Arabia"], "url": "", "sameAs": ["https://tiktok.com/@abda.adel100", "https://www.instagram.com/mzalat1?igsh=czkyMzR5Y2tnNDYx", "https://youtube.com/channel/UCzd1sNGuzWcT3-sJaCvp3FA?si=JgEiq5I6LNmDnbls"]}</script>
-  <link rel="canonical" href="https://ebdadhel.com/majalis.html">
-  <meta name="robots" content="index, follow">
-  <meta property="og:url" content="https://ebdadhel.com/majalis.html">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "مؤسسة إبداع الظل", "telephone": "0562526395", "areaServed": ["Riyadh", "Saudi Arabia"], "url":"https://www.ebdadhel.com/", "sameAs": ["https://tiktok.com/@abda.adel100", "https://www.instagram.com/mzalat1?igsh=czkyMzR5Y2tnNDYx", "https://youtube.com/channel/UCzd1sNGuzWcT3-sJaCvp3FA?si=JgEiq5I6LNmDnbls"]}</script>
+<meta name="robots" content="index, follow">
 </head>
 <body class="notranslate">
 
@@ -373,6 +395,11 @@
     <span class="wa-icon" aria-hidden="true">💬</span>
     <span class="wa-label">واتساب • معاينة مجانية</span>
   </a>
+
+  <a class="call-btn" href="tel:+966562526395" aria-label="اتصال مباشر">
+        <span class="wa-icon">📞</span>
+        <span class="wa-text">اتصال مباشر</span>
+      </a>
 </div>
 
 <script defer src="assets/js/main.js"></script>
