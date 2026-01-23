@@ -1,2 +1,28 @@
-<?xml version='1.0' encoding='utf-8'?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><url><loc>https://ebdadhel.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url><url><loc>https://ebdadhel.com/mazallat.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url><url><loc>https://ebdadhel.com/laser.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url><url><loc>https://ebdadhel.com/wood.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url><url><loc>https://ebdadhel.com/sandwich.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url><url><loc>https://ebdadhel.com/cement.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url><url><loc>https://ebdadhel.com/majalis.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url><url><loc>https://ebdadhel.com/contact.html</loc><changefreq>yearly</changefreq><priority>0.6</priority></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.ebdadhel.com/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.ebdadhel.com/mazallat.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ebdadhel.com/sandwich.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ebdadhel.com/cement.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.ebdadhel.com/contact.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+</urlset>
