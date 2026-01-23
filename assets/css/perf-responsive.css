@@ -81,3 +81,7 @@ img, video, canvas {
     scroll-behavior: auto !important;
   }
 }
+
+/* SEO helper text (kept subtle, readable, non-intrusive) */
+.lead.seo{max-width:900px;margin-top:12px;opacity:.92}
+@media (max-width:600px){.lead.seo{font-size:0.98rem;line-height:1.6}}
