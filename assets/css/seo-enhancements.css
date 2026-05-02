@@ -1,0 +1,153 @@
+
+/* ===== Advanced SEO + Brand Logo Enhancements ===== */
+.skip-link{
+  position:absolute;
+  inset-inline-start:16px;
+  top:-80px;
+  z-index:999;
+  background:var(--gold);
+  color:#111;
+  padding:10px 14px;
+  border-radius:12px;
+  font-weight:900;
+  transition:top .2s ease;
+}
+.skip-link:focus{top:12px}
+
+.brand-link{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:inherit;
+  text-decoration:none;
+}
+.brand-logo{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#f5ead3;
+  border:2px solid rgba(181,137,81,.85);
+  box-shadow:0 10px 28px rgba(0,0,0,.35), 0 0 0 4px rgba(181,137,81,.10);
+  flex:0 0 auto;
+}
+.footer-brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:10px;
+}
+.footer-logo{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid rgba(181,137,81,.85);
+  background:#f5ead3;
+}
+.menu a[aria-current="page"]{
+  box-shadow: inset 0 -2px 0 rgba(181,137,81,.85);
+}
+.seo-local-section .section-head,
+.faq-section .section-head{
+  display:flex;
+  justify-content:space-between;
+  gap:18px;
+  align-items:flex-start;
+  margin-bottom:18px;
+}
+.seo-copy{
+  max-width:960px;
+  color:var(--sub);
+  line-height:1.95;
+  margin-bottom:20px;
+}
+.seo-grid .seo-card{
+  grid-column:span 4;
+}
+.seo-card h3,
+.seo-areas-card h3,
+.seo-links-card h3{
+  margin-top:0;
+}
+.service-areas,
+.seo-link-cluster{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:14px;
+}
+.service-areas span,
+.seo-link-cluster a{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid rgba(181,137,81,.28);
+  background:rgba(181,137,81,.08);
+  color:var(--ivory);
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:800;
+  text-decoration:none;
+}
+.seo-link-cluster a:hover{
+  border-color:rgba(181,137,81,.6);
+  background:rgba(181,137,81,.16);
+}
+.seo-areas-card,
+.seo-links-card{
+  margin-top:16px;
+}
+.faq-list{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.faq-item{
+  border:1px solid rgba(181,137,81,.22);
+  border-radius:18px;
+  background:rgba(255,255,255,.045);
+  padding:14px 16px;
+}
+.faq-item summary{
+  cursor:pointer;
+  font-weight:900;
+  color:var(--ivory);
+}
+.faq-item p{
+  color:var(--sub);
+  line-height:1.9;
+  margin:12px 0 0;
+}
+.section{
+  content-visibility:auto;
+  contain-intrinsic-size: 1px 720px;
+}
+.hero,
+.banner,
+.topbar,
+.intentbar,
+.footer,
+.floating-wa{
+  content-visibility:visible;
+}
+@media (max-width: 900px){
+  .brand-logo{width:48px;height:48px}
+  .seo-grid .seo-card{grid-column:span 12;}
+  .faq-list{grid-template-columns:1fr;}
+  .seo-local-section .section-head,
+  .faq-section .section-head{flex-direction:column;}
+}
+
+.footer-service-links{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+}
+.footer-service-links a{
+  width:max-content;
+}
+.brand-text{
+  display:flex;
+  flex-direction:column;
+  line-height:1.25;
+}

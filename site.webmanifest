@@ -1,0 +1,29 @@
+{
+  "name": "مؤسسة إبداع الظل",
+  "short_name": "إبداع الظل",
+  "description": "مظلات مودرن وساندوتش بانل وإسمنت بورد ومجالس خارجية في الرياض.",
+  "lang": "ar-SA",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#2D2E32",
+  "theme_color": "#2D2E32",
+  "icons": [
+    {
+      "src": "assets/img/favicon-64x64.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/img/logo-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

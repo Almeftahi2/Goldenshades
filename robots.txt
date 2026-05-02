@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
 
+# ملفات غير ضرورية للزحف
+Disallow: /README.txt
+Disallow: /SEO-IMPLEMENTATION-REPORT.md
+
 Sitemap: https://www.ebdadhel.com/sitemap.xml
