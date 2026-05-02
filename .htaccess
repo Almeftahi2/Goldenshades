@@ -1,7 +1,7 @@
-# SEO canonical redirects and performance headers for Apache hosting
+# SEO redirects and performance headers for Apache hosting
 RewriteEngine On
 
-# Force HTTPS and www
+# Force HTTPS and canonical host
 RewriteCond %{HTTPS} !=on [OR]
 RewriteCond %{HTTP_HOST} !^www\.ebdadhel\.com$ [NC]
 RewriteRule ^(.*)$ https://www.ebdadhel.com/$1 [R=301,L]
@@ -17,43 +17,35 @@ RewriteRule ^(.*)$ https://www.ebdadhel.com/$1 [R=301,L]
 # Browser caching
 <IfModule mod_expires.c>
   ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/json "access plus 1 year"
+  ExpiresByType image/avif "access plus 1 year"
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/png "access plus 1 year"
   ExpiresByType image/jpeg "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType image/x-icon "access plus 1 year"
-  ExpiresByType text/css "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 year"
-  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
 </IfModule>
 
 <IfModule mod_headers.c>
-  <FilesMatch "\.(css|js|webp|png|jpg|jpeg|svg|ico)$">
+  FileETag None
+  Header unset ETag
+
+  <FilesMatch "\.(avif|webp|png|jpg|jpeg|svg|ico|css|js|woff|woff2|json|webmanifest)$">
     Header set Cache-Control "public, max-age=31536000, immutable"
   </FilesMatch>
+
   <FilesMatch "\.(html)$">
     Header set Cache-Control "public, max-age=3600, must-revalidate"
   </FilesMatch>
+
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
-</IfModule>
-
-# Performance 90+ cache/compression
-<IfModule mod_expires.c>
-ExpiresActive On
-ExpiresByType image/webp "access plus 1 year"
-ExpiresByType image/png "access plus 1 year"
-ExpiresByType image/jpeg "access plus 1 year"
-ExpiresByType text/css "access plus 1 year"
-ExpiresByType application/javascript "access plus 1 year"
-ExpiresByType text/html "access plus 1 hour"
-</IfModule>
-<IfModule mod_headers.c>
-<FilesMatch "\.(webp|png|jpg|jpeg|css|js|ico|woff2)$">
-Header set Cache-Control "public, max-age=31536000, immutable"
-</FilesMatch>
-</IfModule>
-<IfModule mod_brotli.c>
-AddOutputFilterByType BROTLI_COMPRESS text/html text/plain text/css application/javascript application/json image/svg+xml
+  Header append Vary "Accept-Encoding"
 </IfModule>
