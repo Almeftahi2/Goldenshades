@@ -2,53 +2,124 @@
 
 <html class="notranslate" dir="rtl" lang="ar" translate="no">
 <head>
-<script>
-  (function () {
-    // Force canonical host/protocol on the LIVE site only.
-    // لا نعمل Redirect عند فتح الملفات محلياً (file://) أو على localhost.
-    var targetHost = "www.ebdadhel.com";
-    var proto = window.location.protocol;
-    var host = window.location.hostname;
 
-    // Skip local file previews and local dev servers
-    if (proto !== "http:" && proto !== "https:") return;
-    if (host === "localhost" || host === "127.0.0.1") return;
-
-    // Redirect non-www to www
-    if (host === "ebdadhel.com") {
-      window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
-      return;
-    }
-
-    // Enforce HTTPS on www
-    if (host === targetHost && proto !== "https:") {
-      window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
-    }
-  })();
-</script>
 <meta charset="utf-8"/>
+<link
+  rel="preload"
+  as="image"
+  href="assets/img/sandwich-hero-480w.webp"
+  imagesrcset="
+    assets/img/sandwich-hero-480w.webp 480w,
+    assets/img/sandwich-hero.webp 1200w
+  "
+  imagesizes="(max-width: 640px) 480px, 100vw"
+  fetchpriority="high">
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="notranslate" name="google"/>
 <meta content="notranslate" name="googlebot"/>
-<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
 <link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
-<title>ساندوتش بانل بالرياض | تركيب ملاحق وغرف وأسقف معزولة</title>
-
-
-
-
-
-
-
-
-
+<title>ساندوتش بانل بالرياض | ملاحق وغرف معزولة بعزل حراري</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"/></noscript>
-<style>:root{--charcoal:#2D2E32;--gold:#B58951;--ivory:#F9F9F9;--bg:#1F2023;--text:var(--ivory);--radius:18px;--shadow:0 18px 44px rgba(0,0,0,.45)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#1F2023;color:#F9F9F9;direction:rtl;line-height:1.7}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.container{width:min(1120px,92%);margin:0 auto}.topbar{position:sticky;top:0;z-index:50;background:rgba(45,46,50,.92);border-bottom:1px solid rgba(255,255,255,.06)}.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}.brand-link,.brand,.cta{display:flex;align-items:center;gap:10px}.brand-logo{width:54px;height:54px;border-radius:14px}.brand-title{font-size:15px;font-weight:800}.brand-sub{font-size:12px;color:rgba(243,244,246,.70);font-weight:700}.menu{display:flex;align-items:center;gap:14px}.menu a{color:rgba(243,244,246,.82);padding:8px 10px;border-radius:12px;font-weight:600}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);box-shadow:var(--shadow);font-weight:800}.btn.primary,.btn.gold{background:linear-gradient(135deg,#B58951,#D6A36B);color:#111;border:0}.hero{position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding:56px 0}.hero h1{font-size:clamp(32px,5vw,64px);line-height:1.15;margin:0 0 16px}.lead{font-size:clamp(16px,2vw,21px);color:rgba(249,249,249,.82)}.hero-card{border-radius:24px;overflow:hidden;background:#111;box-shadow:var(--shadow)}@media(max-width:820px){.menu{display:none}.hero-grid{grid-template-columns:1fr;padding:28px 0}.brand-logo{width:44px;height:44px}.cta{gap:6px}.btn{padding:9px 10px}.hero-card{max-width:420px;margin:auto}}</style><link rel="stylesheet" href="assets/css/site.min.css">
+<link as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/><noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
+<style>
+/* Critical CSS - stable header + hero to reduce CLS */
+:root{--charcoal:#2D2E32;--gold:#B58951;--cement:#8D9196;--ivory:#F9F9F9;--bg:#1F2023;--muted:#26272B;--text:var(--ivory);--textDark:var(--charcoal);--sub:rgba(249,249,249,.78);--subDark:rgba(45,46,50,.72);--dark:var(--bg);--beige:#cbb89d;--radius:18px;--shadow:0 18px 44px rgba(0,0,0,.45);--card:rgba(255,255,255,.055);--cardBorder:rgba(255,255,255,.12);--accent:var(--gold)}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#1F2023;color:var(--text);direction:rtl;line-height:1.7}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1120px,92%);margin:0 auto}
+.skip-link{position:absolute;right:-999px;top:auto;width:1px;height:1px;overflow:hidden}
 
+/* Reserve space for top controls before full CSS loads */
+.intentbar{position:sticky;top:64px;z-index:40;min-height:46px;background:rgba(45,46,50,.88);border-bottom:1px solid rgba(181,137,81,.18);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.intentbar-inner{display:flex;align-items:center;gap:.6rem;min-height:46px;padding:.55rem 0;overflow:auto;-webkit-overflow-scrolling:touch}
+.intentbar-label{color:rgba(249,249,249,.85);font-weight:700;white-space:nowrap}
+.intent-pill{border:1px solid rgba(181,137,81,.35);background:rgba(31,32,35,.55);color:var(--ivory);padding:.45rem .8rem;border-radius:999px;font:inherit;font-weight:700;white-space:nowrap}
+.intent-pill.active{background:linear-gradient(135deg,rgba(181,137,81,.95),rgba(181,137,81,.55));color:var(--dark);border-color:rgba(181,137,81,1)}
+.intent-clear{margin-inline-start:auto;color:rgba(249,249,249,.8);font-weight:700;padding:.35rem .5rem;white-space:nowrap}
 
-<meta content="تركيب ساندوتش بانل بالرياض للملاحق والغرف والأسقف بعزل حراري وتشطيب نظيف وسرعة تنفيذ. اطلب عرض سعر ومعاينة مجانية 0562526395." name="description"/><meta content="ساندوتش بانل بالرياض, تركيب ساندوتش بانل, ملاحق ساندوتش بانل الرياض, غرف ساندوتش بانل, أسقف معزولة الرياض" name="keywords"/><meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/><meta content="مؤسسة إبداع الظل" name="author"/><meta content="مؤسسة إبداع الظل" name="publisher"/><meta content="Arabic" name="language"/><meta content="SA-01" name="geo.region"/><meta content="Riyadh" name="geo.placename"/><meta content="telephone=yes" name="format-detection"/><meta content="#2D2E32" name="theme-color"/><meta content="#2D2E32" name="msapplication-TileColor"/><link href="https://www.ebdadhel.com/sandwich.html" rel="canonical"/><link href="https://www.ebdadhel.com/sandwich.html" hreflang="ar-SA" rel="alternate"/><link href="https://www.ebdadhel.com/sandwich.html" hreflang="x-default" rel="alternate"/><link href="assets/img/favicon.ico" rel="icon" sizes="any"/><link href="assets/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/><link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="site.webmanifest" rel="manifest"/><meta content="ar_SA" property="og:locale"/><meta content="website" property="og:type"/><meta content="مؤسسة إبداع الظل" property="og:site_name"/><meta content="ساندوتش بانل بالرياض | تركيب ملاحق وغرف وأسقف معزولة" property="og:title"/><meta content="تركيب ساندوتش بانل بالرياض للملاحق والغرف والأسقف بعزل حراري وتشطيب نظيف وسرعة تنفيذ. اطلب عرض سعر ومعاينة مجانية 0562526395." property="og:description"/><meta content="https://www.ebdadhel.com/sandwich.html" property="og:url"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image:secure_url"/><meta content="تركيب ساندوتش بانل بالرياض - مؤسسة إبداع الظل" property="og:image:alt"/><meta content="image/png" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="ساندوتش بانل بالرياض | تركيب ملاحق وغرف وأسقف معزولة" name="twitter:title"/><meta content="تركيب ساندوتش بانل بالرياض للملاحق والغرف والأسقف بعزل حراري وتشطيب نظيف وسرعة تنفيذ. اطلب عرض سعر ومعاينة مجانية 0562526395." name="twitter:description"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" name="twitter:image"/><meta content="تركيب ساندوتش بانل بالرياض - مؤسسة إبداع الظل" name="twitter:image:alt"/><link as="image" href="assets/img/logo-64.webp" imagesrcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" imagesizes="56px" rel="preload" type="image/webp"/><script type="application/ld+json">{
+.topbar{position:sticky;top:0;z-index:50;min-height:85px;background:rgba(45,46,50,.78);border-bottom:1px solid rgba(255,255,255,.06);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.nav{display:flex;align-items:center;justify-content:space-between;min-height:85px;padding:14px 0;gap:16px}
+.brand,.brand-link,.cta{display:flex;align-items:center;gap:10px}
+.brand-link{min-height:56px}
+.brand-title{display:block;font-size:15px;color:var(--text);font-weight:800}
+.brand-sub{display:block;font-size:12px;color:rgba(243,244,246,.70);font-weight:700}
+.brand-logo{width:56px;height:56px;border-radius:50%;object-fit:cover;background:#f5ead3;border:2px solid rgba(181,137,81,.85);box-shadow:0 10px 28px rgba(0,0,0,.35),0 0 0 4px rgba(181,137,81,.10);flex:0 0 auto}
+.menu{display:flex;align-items:center;gap:14px}
+.menu a{color:rgba(243,244,246,.78);padding:8px 10px;border-radius:12px;font-weight:600}
+.hamburger{display:none;height:44px;padding:0 14px;gap:10px;border-radius:14px;border:1px solid var(--cardBorder);background:rgba(255,255,255,.06);align-items:center;justify-content:center}
+.hamburger span{width:18px;height:2px;background:var(--text);display:block;position:relative}
+.hamburger span:before,.hamburger span:after{content:"";position:absolute;left:0;right:0;height:2px;background:var(--text)}
+.hamburger span:before{top:-6px}
+.hamburger span:after{top:6px}
+
+.btn,.btn-primary,.btn-secondary{display:inline-flex;align-items:center;justify-content:center;width:auto;gap:10px;padding:10px 14px;border-radius:14px;font-weight:800;text-decoration:none}
+.btn{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);box-shadow:var(--shadow)}
+.btn.primary,.btn.gold,.btn-primary{background:linear-gradient(135deg,#B58951,#D6A36B);color:#111;border:0;box-shadow:var(--shadow)}
+.btn-secondary{background:rgba(255,255,255,.055);color:#fff;border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow)}
+
+.sandwich-hero{position:relative;width:100%;height:560px;min-height:560px;display:flex;align-items:center;color:#fff;overflow:hidden;margin-bottom:60px;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.sandwich-hero .hero-image{position:absolute;inset:0;z-index:0;display:block;width:100%;height:100%;aspect-ratio:1200/675}
+.sandwich-hero .hero-image img{display:block;width:100%;height:100%;object-fit:cover}
+.sandwich-hero .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65));pointer-events:none}
+.sandwich-hero .hero-content{position:relative;z-index:2;max-width:780px}
+.sandwich-hero h1{font-size:clamp(32px,5.5vw,52px);line-height:1.2;font-weight:900;margin:0 0 16px}
+.sandwich-hero .hero-subtitle{font-size:clamp(18px,3vw,23px);margin:0 0 32px;opacity:.95;font-weight:500}
+.sandwich-hero .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
+
+@media(max-width:900px){
+  .menu{display:none}
+  .hamburger{display:flex}
+  .menu.mobile-open{display:flex;position:absolute;top:66px;right:4%;left:4%;background:rgba(16,18,23,.95);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:10px;box-shadow:var(--shadow);flex-wrap:wrap}
+}
+@media(max-width:640px){
+  .sandwich-hero{height:520px;min-height:520px;margin-bottom:40px}
+  .sandwich-hero .hero-actions{flex-direction:column}
+  .sandwich-hero .hero-actions a{width:100%;text-align:center}
+}
+</style>
+<link href="assets/css/site.min.css" rel="stylesheet" media="print" onload="this.media='all'"/>
+<noscript><link href="assets/css/site.min.css" rel="stylesheet"/></noscript>
+<meta content="تركيب ساندوتش بانل بالرياض للملاحق والغرف الخارجية والأسطح. عزل حراري فعال وتنفيذ سريع يناسب الفلل والاستراحات مع معاينة مجانية قبل البدء." name="description"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+<meta content="مؤسسة إبداع الظل" name="author"/>
+<meta content="مؤسسة إبداع الظل" name="publisher"/>
+<meta content="Arabic" name="language"/>
+<meta content="SA-01" name="geo.region"/>
+<meta content="Riyadh" name="geo.placename"/>
+<meta content="telephone=yes" name="format-detection"/>
+<meta content="#2D2E32" name="theme-color"/>
+<meta content="#2D2E32" name="msapplication-TileColor"/>
+<link href="https://www.ebdadhel.com/sandwich.html" rel="canonical"/>
+<link href="https://www.ebdadhel.com/sandwich.html" hreflang="ar-SA" rel="alternate"/>
+<link href="https://www.ebdadhel.com/sandwich.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="assets/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="ar_SA" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="مؤسسة إبداع الظل" property="og:site_name"/>
+<meta content="ساندوتش بانل بالرياض | ملاحق وغرف معزولة بعزل حراري" property="og:title"/>
+<meta content="تركيب ساندوتش بانل بالرياض للملاحق والغرف الخارجية والأسطح. عزل حراري فعال وتنفيذ سريع يناسب الفلل والاستراحات مع معاينة مجانية قبل البدء." property="og:description"/>
+<meta content="https://www.ebdadhel.com/sandwich.html" property="og:url"/>
+<meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image"/>
+<meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image:secure_url"/>
+<meta content="ساندوتش بانل بالرياض - مؤسسة إبداع الظل" property="og:image:alt"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="ساندوتش بانل بالرياض | ملاحق وغرف معزولة بعزل حراري" name="twitter:title"/>
+<meta content="تركيب ساندوتش بانل بالرياض للملاحق والغرف الخارجية والأسطح. عزل حراري فعال وتنفيذ سريع يناسب الفلل والاستراحات مع معاينة مجانية قبل البدء." name="twitter:description"/>
+<meta content="https://www.ebdadhel.com/assets/img/og-cover.png" name="twitter:image"/>
+<meta content="ساندوتش بانل بالرياض - مؤسسة إبداع الظل" name="twitter:image:alt"/>
+<link as="image" href="assets/img/logo-64.webp" imagesizes="56px" imagesrcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" rel="preload" type="image/webp"/>
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -71,8 +142,7 @@
       },
       "image": [
         "https://www.ebdadhel.com/assets/img/logo-512.png",
-        "https://www.ebdadhel.com/assets/img/og-cover.png",
-        "https://www.ebdadhel.com/assets/img/hero.webp"
+        "https://www.ebdadhel.com/assets/img/og-cover.png"
       ],
       "telephone": "+966562526395",
       "description": "مؤسسة متخصصة في تنفيذ المظلات المودرن والساندوتش بانل والإسمنت بورد والمجالس والجلسات في الرياض.",
@@ -124,8 +194,8 @@
       "@type": "WebPage",
       "@id": "https://www.ebdadhel.com/sandwich.html#webpage",
       "url": "https://www.ebdadhel.com/sandwich.html",
-      "name": "ساندوتش بانل بالرياض | تركيب ملاحق وغرف وأسقف معزولة",
-      "description": "تركيب ساندوتش بانل بالرياض للملاحق والغرف والأسقف بعزل حراري وتشطيب نظيف وسرعة تنفيذ. اطلب عرض سعر ومعاينة مجانية 0562526395.",
+      "name": "ساندوتش بانل بالرياض | ملاحق وغرف معزولة بعزل حراري",
+      "description": "تركيب ساندوتش بانل بالرياض للملاحق والغرف الخارجية والأسطح. عزل حراري فعال وتنفيذ سريع يناسب الفلل والاستراحات مع معاينة مجانية قبل البدء.",
       "inLanguage": "ar-SA",
       "isPartOf": {
         "@id": "https://www.ebdadhel.com/#website"
@@ -135,7 +205,7 @@
       },
       "primaryImageOfPage": {
         "@type": "ImageObject",
-        "url": "https://www.ebdadhel.com/assets/img/sandwich_panel/20.webp"
+        "url": "https://www.ebdadhel.com/assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh.webp"
       }
     },
     {
@@ -157,51 +227,13 @@
       ]
     },
     {
-      "@type": "FAQPage",
-      "@id": "https://www.ebdadhel.com/sandwich.html#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "ما استخدامات الساندوتش بانل؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "يستخدم للملاحق والغرف والأسقف وبعض حلول العزل، ويتميز بسرعة التنفيذ مقارنة ببعض طرق البناء التقليدية."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل الساندوتش بانل مناسب للرياض؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "نعم، عند اختيار سماكة وخامة مناسبة يمكن أن يكون حلًا عمليًا للعزل الحراري في أجواء الرياض."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل يمكن تنفيذه كملاحق خارجية؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "نعم، يمكن استخدامه في ملاحق وغرف خارجية بحسب متطلبات المساحة والاشتراطات الفنية."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "ما المعلومات المطلوبة للتسعير؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "المقاسات التقريبية، نوع الاستخدام، صور الموقع، والحي؛ ثم يتم تأكيد التفاصيل بالمعاينة."
-          }
-        }
-      ]
-    },
-    {
       "@type": "Service",
       "@id": "https://www.ebdadhel.com/sandwich.html#service",
       "name": "تركيب ساندوتش بانل بالرياض",
-      "serviceType": "تركيب ساندوتش بانل",
-      "description": "تركيب ساندوتش بانل بالرياض للملاحق والغرف والأسقف بعزل حراري وتشطيب نظيف وسرعة تنفيذ. اطلب عرض سعر ومعاينة مجانية 0562526395.",
+      "serviceType": "تركيب ساندوتش بانل للملاحق والغرف الخارجية",
+      "description": "تركيب ساندوتش بانل بالرياض للملاحق الأرضية والعلوية وغرف السطح والغرف الخارجية بعزل حراري مناسب وتنفيذ سريع وتشطيب عملي.",
       "url": "https://www.ebdadhel.com/sandwich.html",
-      "image": "https://www.ebdadhel.com/assets/img/sandwich_panel/20.webp",
+      "image": "https://www.ebdadhel.com/assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh.webp",
       "provider": {
         "@id": "https://www.ebdadhel.com/#business"
       },
@@ -222,15 +254,17 @@
       }
     }
   ]
-}</script></head>
+}
+</script>
+</head>
 <body class="notranslate"><a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a>
 <div class="intentbar" data-intentbar="">
 <div class="container">
 <div class="intentbar-inner">
 <span class="intentbar-label">اختر اهتمامك:</span>
-<button class="intent-pill" data-intent="laser" type="button">مظلات ليزر</button>
+<button class="intent-pill" data-intent="mazallat" type="button">مظلات مودرن</button>
 <button class="intent-pill" data-intent="wood" type="button">بديل خشب</button>
-<button class="intent-pill" data-intent="sandwich" type="button">ساندوتش بانل</button>
+<button class="intent-pill active" data-intent="sandwich" type="button">ساندوتش بانل</button>
 <a class="intent-clear" data-intent-clear="" href="#">عرض الكل</a>
 </div>
 </div>
@@ -242,177 +276,212 @@
 <button aria-expanded="false" aria-label="فتح القائمة" class="hamburger" data-hamburger="">
 <span></span>
 </button>
-<nav aria-label="القائمة الرئيسية" class="menu" data-menu=""><a class="" href="index.html">الرئيسية</a><a class="" href="mazallat.html">المظلات المودرن</a><a class="" href="laser.html">قص ليزر</a><a class="" href="wood.html">بديل خشب</a><a aria-current="page" class="active" href="sandwich.html">الساندوتش بانل</a><a class="" href="cement.html">الإسمنت بورد</a><a class="" href="majalis.html">المجالس والجلسات</a><a class="" href="contact.html">اتصل بنا</a></nav>
+<nav aria-label="القائمة الرئيسية" class="menu" data-menu="">
+<a class="" href="index.html">الرئيسية</a>
+<a class="" href="mazallat.html">المظلات المودرن</a>
+<a class="" href="laser.html">قص ليزر</a>
+<a class="" href="wood.html">بديل خشب</a>
+<a class="" href="sandwich.html">الساندوتش بانل</a>
+<a class="" href="cement.html">الإسمنت بورد</a>
+<a class="" href="majalis.html">المجالس والجلسات</a>
+<a class="" href="contact.html">اتصل بنا</a>
+</nav>
 <div class="cta">
-<a aria-label="طلب معاينة مجانية عبر واتساب لمؤسسة إبداع الظل" class="btn primary" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A2%D9%86." rel="noopener" target="_blank">معاينة مجانية بالرياض</a>
+<a aria-label="طلب معاينة مجانية عبر واتساب لمؤسسة إبداع الظل" class="btn primary" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">معاينة مجانية بالرياض</a>
 </div>
 </div>
 </div>
 </header>
-<section class="banner" id="main-content">
-<div class="container">
-<h1>تركيب الساندوتش بانل بالرياض (ملاحق / غرف / سقوف)</h1>
-<p>تنفيذ ملاحق وغرف وأسقف ساندوتش بانل بعزل حراري ممتاز وسرعة تركيب، حلول عملية للملاحق الخارجية في الرياض والسعودية.</p>
-</div>
-</section>
-<section class="section">
-<div class="container">
-<h2>وصف الخدمة</h2>
-<p class="lead">تنفيذ ملاحق وغرف وأسقف ساندوتش بانل بعزل حراري ممتاز وسرعة تركيب، حلول عملية للملاحق الخارجية في الرياض والسعودية.</p>
-<div class="card pad" style="margin-top:14px">
-<h3 style="margin-top:0">كيف نضمن جودة التنفيذ؟</h3>
-<p>نبدأ بمعاينة مجانية للموقع، ثم نقدم مقترح تصميم عملي مع توضيح الخامات والمدة. أثناء التنفيذ نركز على التفاصيل (الميلان، التثبيت، التشطيب)، وبعدها تسليم نهائي بصورة مرتبة تليق بالمكان.</p>
-<div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-<span class="badge">معاينة مجانية</span>
-<span class="badge">التزام بالمواعيد</span>
-<span class="badge">تشطيب فاخر</span>
-<span class="badge">خامات موثوقة</span>
-</div>
-</div>
-</div>
-</section>
-<section class="section muted">
-<div class="container">
-<h2>مميزات الساندوتش بانل</h2>
-<div class="bullets">
-<div class="b" data-reveal="">
-<div class="ico">✓</div>
-<div><b>عزل حراري ممتاز يساعد على تقليل استهلاك الكهرباء</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
-</div>
-<div class="b" data-reveal="">
-<div class="ico">✓</div>
-<div><b>تركيب سريع وخفة وزن مناسبة للملاحق والغرف</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
-</div>
-<div class="b" data-reveal="">
-<div class="ico">✓</div>
-<div><b>خيارات سماكات وتشطيبات متعددة حسب احتياجك</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
-</div>
-<div class="b" data-reveal="">
-<div class="ico">✓</div>
-<div><b>مقاومة جيدة للعوامل الجوية</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
-</div>
-<div class="b" data-reveal="">
-<div class="ico">✓</div>
-<div><b>مناسب للأسقف والجدران والملاحق</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
-</div>
-<div class="b" data-reveal="">
-<div class="ico">✓</div>
-<div><b>تنفيذ وتسليم وفق جدول واضح</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
-</div>
+<main class="sandwich-page" id="main-content">
+<!-- Hero Section - محسن للـ LCP -->
+<section class="sandwich-hero">
+<picture class="hero-image">
+  <source
+    srcset="
+      assets/img/sandwich-hero-480w.webp 480w,
+      assets/img/sandwich-hero.webp 1200w
+    "
+    sizes="(max-width: 640px) 480px, 100vw"
+    type="image/webp">
+  <img
+    src="assets/img/sandwich-hero.webp"
+    alt="تركيب ساندوتش بانل بالرياض للملاحق وغرف السطح والغرف المعزولة حرارياً"
+    width="1200"
+    height="675"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async">
+</picture>
+<div class="hero-overlay" aria-hidden="true"></div>
+<div class="container hero-content">
+<h1>تركيب ساندوتش بانل بالرياض | ملاحق وغرف معزولة حرارياً</h1>
+<p class="hero-subtitle">ملاحق • غرف سطح • غرف خارجية بعزل حراري عالي الجودة</p>
+<div class="hero-actions">
+<a class="btn-primary" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">طلب معاينة مجانية</a>
+<a class="btn-secondary" href="tel:+966562526395">اتصل بنا الآن</a>
 </div>
 </div>
 </section>
-<section class="section">
+<section class="section sandwich-intro">
 <div class="container">
-<h2>معرض الصور</h2>
-<p class="lead">اضغط على أي صورة للتكبير.</p>
+<h2>تركيب ساندوتش بانل احترافي في الرياض</h2>
+<p>
+      نقدم تركيب ساندوتش بانل احترافي في الرياض للملاحق والغرف الخارجية وغرف السطح. 
+      حلول عزل حراري عالية الجودة مناسبة للمناخ الحار، مع مراعاة الدقة في المقاسات والتشطيب.
+      معاينة مجانية ورفع مقاسات قبل البدء لضمان نتيجة مطابقة لرغبتك.
+    </p>
+</div>
+</section>
+<section class="section why-sandwich">
+<div class="container">
+<h2>لماذا يُفضّل الساندوتش بانل للملاحق والغرف في الرياض؟</h2>
+<div class="benefits-grid">
+<div class="benefit-box">
+<h3>عزل حراري قوي</h3>
+<p>يحتوي على طبقة عازلة فعالة تقلل انتقال الحرارة، مما يجعل المساحة أكثر برودة وراحة في صيف الرياض.</p>
+</div>
+<div class="benefit-box">
+<h3>سرعة التنفيذ</h3>
+<p>يتم تركيبه بسرعة كبيرة مقارنة بالطرق التقليدية، وغالباً ما تنتهي الغرفة أو الملحق في أيام معدودة.</p>
+</div>
+<div class="benefit-box">
+<h3>خفيف الوزن</h3>
+<p>لا يثقل على الأسطح أو الهيكل، وهذا يجعله الخيار الأمثل لغرف السطح والملاحق العلوية.</p>
+</div>
+<div class="benefit-box">
+<h3>مرونة في الاستخدام</h3>
+<p>مناسب لأغراض متعددة: غرفة إضافية، غرفة سائق، تخزين، أو مكتب خارجي، مع إمكانية تشطيب خارجي متنوع.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section muted sandwich-uses">
+<div class="container">
+<h2>أين يُستخدم الساندوتش بانل في الرياض؟</h2>
+<div class="uses-grid">
+<div class="use-box">
+<h3>ملاحق أرضية</h3>
+<p>إضافة غرف أو مساحات خارجية بجانب الفيلا أو في الحوش بسرعة وتكلفة معقولة.</p>
+</div>
+<div class="use-box">
+<h3>ملاحق علوية</h3>
+<p>حل خفيف الوزن وعازل للحرارة، مثالي للطوابق العلوية دون تحميل زائد على المبنى.</p>
+</div>
+<div class="use-box">
+<h3>غرف سطح</h3>
+<p>أشهر استخداماته، يحول السطح إلى غرفة إضافية مريحة مع عزل جيد.</p>
+</div>
+<div class="use-box">
+<h3>غرف خارجية</h3>
+<p>غرف سائق، غرف حارس، أو غرف خدمة مستقلة بعزل حراري ومظهر مرتب.</p>
+</div>
+<div class="use-box">
+<h3>مكاتب ومساحات عمل</h3>
+<p>مكاتب خارجية أو غرف دراسة هادئة داخل الاستراحة أو بجانب المنزل.</p>
+</div>
+<div class="use-box">
+<h3>غرف تخزين معزولة</h3>
+<p>تخزين الأدوات والمعدات بحماية أفضل من الحرارة والغبار.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section sandwich-process">
+<div class="container">
+<h2>كيف ننفذ مشروعك بالساندوتش بانل؟</h2>
+<div class="process-grid">
+<div class="process-box">
+<span>01</span>
+<h3>معاينة الموقع</h3>
+<p>نزور الموقع ونقيم طبيعة السطح أو الأرضية ونحدد أفضل حل حسب احتياجك.</p>
+</div>
+<div class="process-box">
+<span>02</span>
+<h3>رفع المقاسات والتصميم</h3>
+<p>نرفع المقاسات بدقة ونتفق معك على الأبعاد والاستخدام المطلوب للغرفة أو الملحق.</p>
+</div>
+<div class="process-box">
+<span>03</span>
+<h3>اختيار السماكة والمواد</h3>
+<p>نختار نوع وسمك الساندوتش بانل المناسب حسب درجة العزل والاستخدام.</p>
+</div>
+<div class="process-box">
+<span>04</span>
+<h3>التركيب والتنفيذ</h3>
+<p>نقوم بتركيب الهيكل وألواح الساندوتش بانل بطريقة محكمة واحترافية.</p>
+</div>
+<div class="process-box">
+<span>05</span>
+<h3>التشطيب النهائي</h3>
+<p>نركب الأبواب والنوافذ وننهي كافة التفاصيل حسب الاتفاق قبل التسليم.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="section muted sandwich-cost">
+<div class="container">
+<h2>ما هي عوامل تحديد سعر الساندوتش بانل؟</h2>
+<div class="cost-grid">
+<div class="cost-box">
+<h3>مساحة المشروع</h3>
+<p>المساحة الكلية هي العامل الأكبر المؤثر على التكلفة.</p>
+</div>
+<div class="cost-box">
+<h3>سماكة البانل</h3>
+<p>كلما زادت السماكة زاد مستوى العزل والسعر.</p>
+</div>
+<div class="cost-box">
+<h3>نوع الاستخدام</h3>
+<p>غرفة سكن أو مكتب تحتاج تشطيب أعلى من غرفة تخزين أو حارس.</p>
+</div>
+<div class="cost-box">
+<h3>الأبواب والنوافذ</h3>
+<p>عدد ونوع الفتحات تؤثر بشكل مباشر على التكلفة النهائية.</p>
+</div>
+<div class="cost-box">
+<h3>مستوى التشطيب</h3>
+<p>التشطيب الداخلي والخارجي يغير السعر بشكل ملحوظ.</p>
+</div>
+</div>
+<p class="note">لذلك نقدم لك عرض سعر دقيق بعد معاينة الموقع ورفع المقاسات مجاناً.</p>
+</div>
+</section>
+<section class="section sandwich-gallery">
+<div class="container">
+<h2>نماذج من أعمالنا بالساندوتش بانل</h2>
+<p class="section-lead">إليك بعض المشاريع التي نفذناها في الرياض باستخدام الساندوتش بانل للملاحق والغرف المعزولة.</p>
 <div class="gallery">
-<div class="g-item" data-full="assets/img/sandwich_panel/20.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/20.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh.webp" data-gallery-item="">
+<img alt="تركيب ساندوتش بانل للملاحق بالرياض" decoding="async" height="1024" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh.webp" srcset="assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh.webp 1000w" width="1024"/>
 </div>
-<div class="g-item" data-full="assets/img/sandwich_panel/21.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/21.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh.webp" data-gallery-item="">
+<img alt="ساندوتش بانل حديث للملاحق والغرف في الرياض" decoding="async" height="900" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh.webp" srcset="assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh-480w.webp 480w, assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh-768w.webp 768w, assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh.webp 1000w" width="900"/>
 </div>
-<div class="g-item" data-full="assets/img/sandwich_panel/22.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/22.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh.webp" data-gallery-item="">
+<img alt="ساندوتش بانل للأسطح والملاحق في الرياض" decoding="async" height="900" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh.webp" srcset="assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh.webp 1000w" width="900"/>
 </div>
-<div class="g-item" data-full="assets/img/sandwich_panel/23.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/23.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh.webp" data-gallery-item="">
+<img alt="ساندوتش بانل للجلسات والملاحق الخارجية بالرياض" decoding="async" height="900" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh.webp" srcset="assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh.webp 1000w" width="900"/>
 </div>
-<div class="g-item" data-full="assets/img/sandwich_panel/24.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/24.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh.webp" data-gallery-item="">
+<img alt="ساندوتش بانل للغرف الإضافية بعزل حراري في الرياض" decoding="async" height="1024" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh.webp" srcset="assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh.webp 1000w" width="1024"/>
 </div>
-<div class="g-item" data-full="assets/img/sandwich_panel/25.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/25.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/sandwich_panel/sandwich-panel-outdoor-annexes-riyadh.webp" data-gallery-item="">
+<img alt="ساندوتش بانل للملاحق الخارجية في الرياض" decoding="async" height="1024" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/sandwich_panel/sandwich-panel-outdoor-annexes-riyadh.webp" srcset="assets/img/sandwich_panel/sandwich-panel-outdoor-annexes-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-outdoor-annexes-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-outdoor-annexes-riyadh.webp 1000w" width="1024"/>
 </div>
-<div class="g-item" data-full="assets/img/sandwich_panel/26.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/26.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/sandwich_panel/27.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/27.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/sandwich_panel/28.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/28.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/sandwich_panel/29.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/29.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/sandwich_panel/30.webp" data-gallery-item="">
-<img alt="ساندوتش بانل ملاحق غرف سقوف بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/sandwich_panel/30.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh.webp" data-gallery-item="">
+<img alt="ساندوتش بانل مقاوم للحرارة للغرف الخارجية بالرياض" decoding="async" height="1024" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh.webp" srcset="assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh-480w.webp 480w, assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh-768w.webp 768w, assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh.webp 1000w" width="1024"/>
 </div>
 </div>
-<div <div="" aria-hidden="true" class="lightbox" data-lightbox="">
-<img alt="عرض صورة من أعمال مؤسسة إبداع الظل في الرياض السعودية" data-lightbox-img="" decoding="async" loading="lazy"/>
+<div aria-hidden="true" class="lightbox" data-lightbox="">
+<img alt="عرض صورة من أعمال الساندوتش بانل لمؤسسة إبداع الظل" data-lightbox-img="" decoding="async" height="675" loading="lazy" width="1200"/>
 <div aria-hidden="true" class="lb-ui">
 <button aria-label="السابق" class="lb-btn prev" data-lb-prev="">›</button>
 <button aria-label="التالي" class="lb-btn next" data-lb-next="">‹</button>
 <button aria-label="إغلاق" class="lb-close" data-lb-close="">✕</button>
 </div>
 </div>
-<script defer src="assets/js/lightbox.js"></script>
-</div>
-</section>
-<section class="section muted">
-<div class="container">
-<div class="card pad" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
-<div>
-<h3 style="margin:0 0 6px 0">اطلب معاينة مجانية الآن</h3>
-<div style="color:var(--sub)">أرسل لنا موقعك ونوع الخدمة وسنرتب لك معاينة بأقرب وقت.</div>
-</div>
-<a class="btn primary" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D8%B3%D8%A7%D9%86%D8%AF%D9%88%D8%AA%D8%B4%20%D8%A8%D8%A7%D9%86%D9%84%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6." rel="noopener" target="_blank">واتساب الآن</a>
-</div>
-</div>
-</section>
-
-<section class="section seo-local-section" id="seo-local-content">
-<div class="container">
-<div class="section-head">
-<div>
-<div class="kicker">خدماتنا داخل الرياض</div>
-<h2>ساندوتش بانل للملاحق والغرف والأسقف</h2>
-</div>
-<a class="btn primary" href="https://wa.me/966562526395?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%85%D9%86%20%D9%85%D8%A4%D8%B3%D8%B3%D8%A9%20%D8%A5%D8%A8%D8%AF%D8%A7%D8%B9%20%D8%A7%D9%84%D8%B8%D9%84" rel="noopener" target="_blank">اطلب معاينة مجانية</a>
-</div>
-<div class="seo-copy">
-<p>نوضح استخدامات الساندوتش بانل الأكثر طلبًا في الرياض، مثل الملاحق والغرف والأسقف وحلول العزل الحراري، مع تنفيذ سريع وتشطيب عملي.</p>
-<p>القيمة الأساسية للساندوتش بانل تظهر عندما تتوازن سرعة التنفيذ مع جودة الهيكل والتثبيت والتشطيب، وهذا ما يجب توضيحه في كل عرض سعر.</p>
-</div>
-<div class="grid seo-grid">
-<article class="card pad seo-card" data-reveal="">
-<h3>ملاحق خارجية</h3>
-<p>حل مناسب لتوسعة المساحات حسب التصميم والموقع.</p>
-</article>
-<article class="card pad seo-card" data-reveal="">
-<h3>عزل حراري</h3>
-<p>اختيار سماكة وخامة مناسبة لتحسين الراحة الداخلية.</p>
-</article>
-<article class="card pad seo-card" data-reveal="">
-<h3>تنفيذ سريع</h3>
-<p>مدة تنفيذ أقل غالبًا من حلول البناء التقليدية حسب حجم المشروع.</p>
-</article>
-</div>
-<div class="card pad seo-areas-card">
-<h3>مناطق نخدمها داخل الرياض</h3>
-<p>نخدم أحياء شمال وشرق وغرب وجنوب الرياض، مع إمكانية تنسيق المشاريع حسب الموقع وطبيعة العمل.</p>
-<div aria-label="مناطق نخدمها في الرياض" class="service-areas">
-<span>الياسمين</span><span>النرجس</span><span>العارض</span><span>القيروان</span>
-<span>الملقا</span><span>الصحافة</span><span>قرطبة</span><span>غرناطة</span>
-<span>الروضة</span><span>الرمال</span><span>ظهرة لبن</span><span>السويدي</span>
-</div>
-</div>
-<div class="seo-links-card card pad">
-<h3>استكشف خدماتنا</h3>
-<p>انتقل بسهولة بين خدمات مؤسسة إبداع الظل واختر الخدمة الأقرب لاحتياجك.</p>
-<div aria-label="روابط خدمات مؤسسة إبداع الظل" class="seo-link-cluster">
-<a href="mazallat.html">مظلات مودرن</a>
-<a href="laser.html">مظلات قص ليزر</a>
-<a href="wood.html">مظلات بديل خشب</a>
-<a href="sandwich.html">ساندوتش بانل</a>
-<a href="cement.html">إسمنت بورد</a>
-<a href="majalis.html">مجالس خارجية</a>
-<a href="contact.html">طلب معاينة</a>
-</div>
-</div>
+<script defer="" src="assets/js/lightbox.js"></script>
 </div>
 </section>
 <section class="section muted faq-section" id="faq">
@@ -420,42 +489,72 @@
 <div class="section-head">
 <div>
 <div class="kicker">أسئلة شائعة</div>
-<h2>إجابات مختصرة قبل طلب المعاينة</h2>
+<h2>الأسئلة الشائعة حول الساندوتش بانل في الرياض</h2>
 </div>
 </div>
 <div class="faq-list">
 <details class="faq-item">
-<summary>ما استخدامات الساندوتش بانل؟</summary>
-<p>يستخدم للملاحق والغرف والأسقف وبعض حلول العزل، ويتميز بسرعة التنفيذ مقارنة ببعض طرق البناء التقليدية.</p>
+<summary>هل الساندوتش بانل مناسب للمناخ الحار في الرياض؟</summary>
+<p>نعم، الساندوتش بانل من الحلول الممتازة للعزل الحراري في الرياض، حيث يحتوي على طبقة عازلة تساعد على تقليل انتقال الحرارة إلى داخل الغرفة.</p>
 </details>
 <details class="faq-item">
-<summary>هل الساندوتش بانل مناسب للرياض؟</summary>
-<p>نعم، عند اختيار سماكة وخامة مناسبة يمكن أن يكون حلًا عمليًا للعزل الحراري في أجواء الرياض.</p>
+<summary>ما هي السماكات المتوفرة للساندوتش بانل؟</summary>
+<p>تتوفر سماكات متعددة حسب الاستخدام، وغالباً يتم اختيار السماكة المناسبة للملاحق والغرف الخارجية بعد معاينة الموقع وتحديد مستوى العزل المطلوب.</p>
 </details>
 <details class="faq-item">
-<summary>هل يمكن تنفيذه كملاحق خارجية؟</summary>
-<p>نعم، يمكن استخدامه في ملاحق وغرف خارجية بحسب متطلبات المساحة والاشتراطات الفنية.</p>
+<summary>هل يتحمل الساندوتش بانل المطر والرطوبة؟</summary>
+<p>نعم، يتحمل الساندوتش بانل المطر والرطوبة عند تركيبه بشكل صحيح، مع الاهتمام بعزل الفواصل والتقفيل النهائي بطريقة محكمة.</p>
 </details>
 <details class="faq-item">
-<summary>ما المعلومات المطلوبة للتسعير؟</summary>
-<p>المقاسات التقريبية، نوع الاستخدام، صور الموقع، والحي؛ ثم يتم تأكيد التفاصيل بالمعاينة.</p>
+<summary>كم تستغرق مدة تركيب غرفة أو ملحق بالساندوتش بانل؟</summary>
+<p>تختلف مدة التنفيذ حسب مساحة المشروع والتفاصيل المطلوبة، لكن الساندوتش بانل يتميز بسرعة تركيبه مقارنة بالبناء التقليدي.</p>
+</details>
+<details class="faq-item">
+<summary>هل تقدمون معاينة مجانية قبل التنفيذ؟</summary>
+<p>نعم، نقدم معاينة مجانية داخل الرياض لرفع المقاسات وتحديد المواصفات المناسبة لمشروعك قبل تقديم عرض السعر.</p>
+</details>
+<details class="faq-item">
+<summary>هل يمكن تركيب الساندوتش بانل على الأسطح؟</summary>
+<p>نعم، يمكن استخدام الساندوتش بانل في غرف السطح والملاحق العلوية بعد تقييم طبيعة السطح واختيار الهيكل وطريقة التثبيت المناسبة.</p>
 </details>
 </div>
 </div>
 </section>
+<section class="section muted final-cta">
+<div class="container">
+<div class="card pad cta-box">
+<div>
+<h2>جاهز لتنفيذ ملحقك أو غرفتك؟</h2>
+<p>احصل على معاينة مجانية ورفع مقاسات دقيق وعرض سعر واضح حسب احتياجك.</p>
+</div>
+<div class="cta-actions">
+<a class="btn-primary" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">طلب معاينة مجانية عبر واتساب</a>
+<a class="btn-secondary" href="tel:+966562526395">اتصل بنا</a>
+</div>
+</div>
+</div>
+</section>
+</main>
 <div class="footer">
 <div class="container">
 <div class="cols">
-<div class="col"><div class="footer-brand"><img alt="شعار مؤسسة إبداع الظل" class="footer-logo" decoding="async" height="64" loading="lazy" sizes="64px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="64"/><div><h4>مؤسسة إبداع الظل</h4><div>تنفيذ مظلات مودرن، ساندوتش بانل، إسمنت بورد، مجالس وجلسات داخل الرياض.</div></div></div><div class="small">© <span id="year"></span> جميع الحقوق محفوظة</div></div>
+<div class="col"><div class="footer-brand"><img alt="شعار مؤسسة إبداع الظل" class="footer-logo" decoding="async" height="64" loading="lazy" sizes="64px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="64"><div><h4>مؤسسة إبداع الظل</h4><div>تنفيذ ملاحق ساندوتش بانل، إسمنت بورد، مظلات مودرن، مجالس وجلسات داخل الرياض.</div></div></img></div><div class="small">© <span id="year"></span> جميع الحقوق محفوظة</div></div>
 <div class="col">
 <h4>روابط سريعة</h4>
-
-<div class="footer-service-links"><a href="mazallat.html">المظلات المودرن</a><a href="laser.html">مظلات قص ليزر</a><a href="wood.html">مظلات بديل خشب</a><a href="sandwich.html">الساندوتش بانل</a><a href="cement.html">الإسمنت بورد</a><a href="majalis.html">المجالس والجلسات</a><a href="contact.html">اتصل بنا</a></div></div>
+<div class="footer-service-links">
+<a href="mazallat.html">المظلات المودرن</a>
+<a href="laser.html">مظلات قص ليزر</a>
+<a href="wood.html">مظلات بديل خشب</a>
+<a href="sandwich.html">الساندوتش بانل</a>
+<a href="cement.html">الإسمنت بورد</a>
+<a href="majalis.html">المجالس والجلسات</a>
+<a href="contact.html">اتصل بنا</a>
+</div></div>
 <div class="col">
 <h4>تواصل معنا</h4>
 <div style="display:flex;flex-direction:column;gap:8px">
 <div>جوال / واتساب: <b dir="ltr">0562526395</b></div>
-<a class="btn gold" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9.%20" rel="noopener" style="width:max-content" target="_blank">محادثة واتساب</a>
+<a class="btn gold" data-wa="" href="https://wa.me/966562526395" rel="noopener" style="width:max-content" target="_blank">محادثة واتساب</a>
 <div class="small">نخدم الرياض وكافة مناطق السعودية</div>
 </div>
 </div> <div class="col">
@@ -470,7 +569,7 @@
 </div>
 </div>
 <div class="floating-wa">
-<a aria-label="واتساب" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9.%20" rel="noopener" target="_blank">
+<a aria-label="واتساب" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">
 <span aria-hidden="true" class="wa-icon">💬</span>
 <span class="wa-label">واتساب • معاينة مجانية</span>
 </a>
@@ -479,7 +578,44 @@
 <span class="wa-text">اتصال مباشر</span>
 </a>
 </div>
-<script defer src="assets/js/main.js"></script>
-<script defer src="assets/js/intent.js"></script>
+
+<style id="sandwich-noncritical-css">
+.sandwich-page .section h2{margin-top:0}
+.sandwich-intro,.why-sandwich,.sandwich-uses,.sandwich-process,.sandwich-cost,.sandwich-gallery,.faq-section,.final-cta{content-visibility:auto;contain-intrinsic-size:600px}
+.benefits-grid,.uses-grid,.process-grid,.cost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px}
+.benefit-box,.use-box,.process-box,.cost-box{background:var(--card);border:1px solid var(--cardBorder);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
+.benefit-box h3,.use-box h3,.process-box h3,.cost-box h3{margin:0 0 8px;color:#fff}
+.benefit-box p,.use-box p,.process-box p,.cost-box p,.section-lead,.sandwich-cost .note,.final-cta p{color:var(--sub);margin:0}
+.process-box span{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;background:linear-gradient(135deg,#B58951,#D6A36B);color:#111;font-weight:900;margin-bottom:12px}
+.sandwich-cost .note{margin-top:18px;padding:16px 18px;border:1px solid rgba(181,137,81,.35);border-radius:var(--radius);background:rgba(181,137,81,.10);font-weight:700}
+.final-cta .cta-box{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.cta-actions{display:flex;gap:10px;flex-wrap:wrap}
+@media(max-width:640px){.final-cta .cta-actions a{width:100%}}
+</style>
+
+
+<!-- Non-critical canonical redirect moved out of head to avoid blocking first render -->
+<script>
+  (function () {
+    // Force canonical host/protocol on the LIVE site only.
+    var targetHost = "www.ebdadhel.com";
+    var proto = window.location.protocol;
+    var host = window.location.hostname;
+
+    if (proto !== "http:" && proto !== "https:") return;
+    if (host === "localhost" || host === "127.0.0.1") return;
+
+    if (host === "ebdadhel.com") {
+      window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
+      return;
+    }
+
+    if (host === targetHost && proto !== "https:") {
+      window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
+    }
+  })();
+</script>
+<script defer="" src="assets/js/main.js"></script>
+<script defer="" src="assets/js/intent.js"></script>
 </body>
 </html>

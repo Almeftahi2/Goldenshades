@@ -5,22 +5,18 @@
 <script>
   (function () {
     // Force canonical host/protocol on the LIVE site only.
-    // لا نعمل Redirect عند فتح الملفات محلياً (file://) أو على localhost.
     var targetHost = "www.ebdadhel.com";
     var proto = window.location.protocol;
     var host = window.location.hostname;
 
-    // Skip local file previews and local dev servers
     if (proto !== "http:" && proto !== "https:") return;
     if (host === "localhost" || host === "127.0.0.1") return;
 
-    // Redirect non-www to www
     if (host === "ebdadhel.com") {
       window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
       return;
     }
 
-    // Enforce HTTPS on www
     if (host === targetHost && proto !== "https:") {
       window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
     }
@@ -32,23 +28,49 @@
 <meta content="notranslate" name="googlebot"/>
 <link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
 <link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
-<title>مجالس خارجية بالرياض | تنفيذ جلسات داخلية وخارجية فاخرة</title>
-
-
-
-
-
-
-
-
-
+<title>جلسات ومجالس خارجية بالرياض | تصميم وتنفيذ مودرن</title>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"/></noscript>
-<style>:root{--charcoal:#2D2E32;--gold:#B58951;--ivory:#F9F9F9;--bg:#1F2023;--text:var(--ivory);--radius:18px;--shadow:0 18px 44px rgba(0,0,0,.45)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#1F2023;color:#F9F9F9;direction:rtl;line-height:1.7}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.container{width:min(1120px,92%);margin:0 auto}.topbar{position:sticky;top:0;z-index:50;background:rgba(45,46,50,.92);border-bottom:1px solid rgba(255,255,255,.06)}.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}.brand-link,.brand,.cta{display:flex;align-items:center;gap:10px}.brand-logo{width:54px;height:54px;border-radius:14px}.brand-title{font-size:15px;font-weight:800}.brand-sub{font-size:12px;color:rgba(243,244,246,.70);font-weight:700}.menu{display:flex;align-items:center;gap:14px}.menu a{color:rgba(243,244,246,.82);padding:8px 10px;border-radius:12px;font-weight:600}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);box-shadow:var(--shadow);font-weight:800}.btn.primary,.btn.gold{background:linear-gradient(135deg,#B58951,#D6A36B);color:#111;border:0}.hero{position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding:56px 0}.hero h1{font-size:clamp(32px,5vw,64px);line-height:1.15;margin:0 0 16px}.lead{font-size:clamp(16px,2vw,21px);color:rgba(249,249,249,.82)}.hero-card{border-radius:24px;overflow:hidden;background:#111;box-shadow:var(--shadow)}@media(max-width:820px){.menu{display:none}.hero-grid{grid-template-columns:1fr;padding:28px 0}.brand-logo{width:44px;height:44px}.cta{gap:6px}.btn{padding:9px 10px}.hero-card{max-width:420px;margin:auto}}</style><link rel="stylesheet" href="assets/css/site.min.css">
-
-
-<meta content="تصميم وتنفيذ مجالس خارجية وجلسات داخلية بالرياض ببديل خشب وزجاج وألمنيوم ومظلات وإنارة. اطلب معاينة مجانية عبر واتساب 0562526395." name="description"/><meta content="مجالس خارجية بالرياض, جلسات خارجية الرياض, تنفيذ مجالس بالرياض, جلسات حدائق, مجالس فلل الرياض" name="keywords"/><meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/><meta content="مؤسسة إبداع الظل" name="author"/><meta content="مؤسسة إبداع الظل" name="publisher"/><meta content="Arabic" name="language"/><meta content="SA-01" name="geo.region"/><meta content="Riyadh" name="geo.placename"/><meta content="telephone=yes" name="format-detection"/><meta content="#2D2E32" name="theme-color"/><meta content="#2D2E32" name="msapplication-TileColor"/><link href="https://www.ebdadhel.com/majalis.html" rel="canonical"/><link href="https://www.ebdadhel.com/majalis.html" hreflang="ar-SA" rel="alternate"/><link href="https://www.ebdadhel.com/majalis.html" hreflang="x-default" rel="alternate"/><link href="assets/img/favicon.ico" rel="icon" sizes="any"/><link href="assets/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/><link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="site.webmanifest" rel="manifest"/><meta content="ar_SA" property="og:locale"/><meta content="website" property="og:type"/><meta content="مؤسسة إبداع الظل" property="og:site_name"/><meta content="مجالس خارجية بالرياض | تنفيذ جلسات داخلية وخارجية فاخرة" property="og:title"/><meta content="تصميم وتنفيذ مجالس خارجية وجلسات داخلية بالرياض ببديل خشب وزجاج وألمنيوم ومظلات وإنارة. اطلب معاينة مجانية عبر واتساب 0562526395." property="og:description"/><meta content="https://www.ebdadhel.com/majalis.html" property="og:url"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image:secure_url"/><meta content="تنفيذ مجالس وجلسات خارجية بالرياض - مؤسسة إبداع الظل" property="og:image:alt"/><meta content="image/png" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="مجالس خارجية بالرياض | تنفيذ جلسات داخلية وخارجية فاخرة" name="twitter:title"/><meta content="تصميم وتنفيذ مجالس خارجية وجلسات داخلية بالرياض ببديل خشب وزجاج وألمنيوم ومظلات وإنارة. اطلب معاينة مجانية عبر واتساب 0562526395." name="twitter:description"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" name="twitter:image"/><meta content="تنفيذ مجالس وجلسات خارجية بالرياض - مؤسسة إبداع الظل" name="twitter:image:alt"/><link as="image" href="assets/img/logo-64.webp" imagesrcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" imagesizes="56px" rel="preload" type="image/webp"/><script type="application/ld+json">{
+<link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;display=swap" onload="this.onload=null;this.rel='stylesheet'" rel="preload"/><noscript><link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/></noscript>
+<style>:root{--charcoal:#2D2E32;--gold:#B58951;--ivory:#F9F9F9;--bg:#1F2023;--text:var(--ivory);--radius:18px;--shadow:0 18px 44px rgba(0,0,0,.45)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#1F2023;color:#F9F9F9;direction:rtl;line-height:1.7}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.container{width:min(1120px,92%);margin:0 auto}.topbar{position:sticky;top:0;z-index:50;background:rgba(45,46,50,.92);border-bottom:1px solid rgba(255,255,255,.06)}.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}.brand-link,.brand,.cta{display:flex;align-items:center;gap:10px}.brand-logo{width:54px;height:54px;border-radius:14px}.brand-title{font-size:15px;font-weight:800}.brand-sub{font-size:12px;color:rgba(243,244,246,.70);font-weight:700}.menu{display:flex;align-items:center;gap:14px}.menu a{color:rgba(243,244,246,.82);padding:8px 10px;border-radius:12px;font-weight:600}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);box-shadow:var(--shadow);font-weight:800}.btn.primary,.btn.gold{background:linear-gradient(135deg,#B58951,#D6A36B);color:#111;border:0}.hero{position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding:56px 0}.hero h1{font-size:clamp(32px,5vw,64px);line-height:1.15;margin:0 0 16px}.lead{font-size:clamp(16px,2vw,21px);color:rgba(249,249,249,.82)}.hero-card{border-radius:24px;overflow:hidden;background:#111;box-shadow:var(--shadow)}@media(max-width:820px){.menu{display:none}.hero-grid{grid-template-columns:1fr;padding:28px 0}.brand-logo{width:44px;height:44px}.cta{gap:6px}.btn{padding:9px 10px}.hero-card{max-width:420px;margin:auto}}</style>
+<link href="assets/css/site.min.css" rel="stylesheet"/>
+<meta content="تصميم وتنفيذ جلسات ومجالس خارجية بالرياض للحدائق والأسطح والفلل، بخامات مناسبة للأجواء الخارجية وتنسيق يوفر الراحة والخصوصية." name="description"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots">
+<meta content="مؤسسة إبداع الظل" name="author"/>
+<meta content="مؤسسة إبداع الظل" name="publisher"/>
+<meta content="Arabic" name="language"/>
+<meta content="SA-01" name="geo.region"/>
+<meta content="Riyadh" name="geo.placename"/>
+<meta content="telephone=yes" name="format-detection"/>
+<meta content="#2D2E32" name="theme-color"/>
+<meta content="#2D2E32" name="msapplication-TileColor"/>
+<link href="https://www.ebdadhel.com/majalis.html" rel="canonical"/>
+<link href="https://www.ebdadhel.com/majalis.html" hreflang="ar-SA" rel="alternate"/>
+<link href="https://www.ebdadhel.com/majalis.html" hreflang="x-default" rel="alternate">
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="assets/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<link href="site.webmanifest" rel="manifest">
+<meta content="ar_SA" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="مؤسسة إبداع الظل" property="og:site_name"/>
+<meta content="جلسات ومجالس خارجية بالرياض | تصميم وتنفيذ مودرن" property="og:title"/>
+<meta content="تصميم وتنفيذ جلسات ومجالس خارجية بالرياض للحدائق والأسطح والفلل، بخامات مناسبة للأجواء الخارجية وتنسيق يوفر الراحة والخصوصية." property="og:description"/>
+<meta content="https://www.ebdadhel.com/majalis.html" property="og:url"/>
+<meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image"/>
+<meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image:secure_url"/>
+<meta content="مجالس وجلسات خارجية بالرياض - مؤسسة إبداع الظل" property="og:image:alt"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="جلسات ومجالس خارجية بالرياض | تصميم وتنفيذ مودرن" name="twitter:title"/>
+<meta content="تصميم وتنفيذ جلسات ومجالس خارجية بالرياض للحدائق والأسطح والفلل، بخامات مناسبة للأجواء الخارجية وتنسيق يوفر الراحة والخصوصية." name="twitter:description"/>
+<meta content="https://www.ebdadhel.com/assets/img/og-cover.png" name="twitter:image"/>
+<meta content="مجالس وجلسات خارجية بالرياض - مؤسسة إبداع الظل" name="twitter:image:alt"/>
+<link as="image" href="assets/img/logo-64.webp" imagesizes="56px" imagesrcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" rel="preload" type="image/webp"/>
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -71,8 +93,7 @@
       },
       "image": [
         "https://www.ebdadhel.com/assets/img/logo-512.png",
-        "https://www.ebdadhel.com/assets/img/og-cover.png",
-        "https://www.ebdadhel.com/assets/img/hero.webp"
+        "https://www.ebdadhel.com/assets/img/og-cover.png"
       ],
       "telephone": "+966562526395",
       "description": "مؤسسة متخصصة في تنفيذ المظلات المودرن والساندوتش بانل والإسمنت بورد والمجالس والجلسات في الرياض.",
@@ -124,8 +145,8 @@
       "@type": "WebPage",
       "@id": "https://www.ebdadhel.com/majalis.html#webpage",
       "url": "https://www.ebdadhel.com/majalis.html",
-      "name": "مجالس خارجية بالرياض | تنفيذ جلسات داخلية وخارجية فاخرة",
-      "description": "تصميم وتنفيذ مجالس خارجية وجلسات داخلية بالرياض ببديل خشب وزجاج وألمنيوم ومظلات وإنارة. اطلب معاينة مجانية عبر واتساب 0562526395.",
+      "name": "جلسات ومجالس خارجية بالرياض | تصميم وتنفيذ مودرن",
+      "description": "تصميم وتنفيذ جلسات ومجالس خارجية بالرياض للحدائق والأسطح والفلل، بخامات مناسبة للأجواء الخارجية وتنسيق يوفر الراحة والخصوصية.",
       "inLanguage": "ar-SA",
       "isPartOf": {
         "@id": "https://www.ebdadhel.com/#website"
@@ -135,7 +156,7 @@
       },
       "primaryImageOfPage": {
         "@type": "ImageObject",
-        "url": "https://www.ebdadhel.com/assets/img/majalis_jalsat/1.webp"
+        "url": "https://www.ebdadhel.com/assets/img/majalis_jalsat/modern-outdoor-majlis-villas-riyadh.webp"
       }
     },
     {
@@ -162,34 +183,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "هل تنفذون مجالس خارجية للفلل؟",
+          "name": "هل تنفذون جلسات ومجالس خارجية بالرياض للحدائق والأسطح والفلل؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، يتم تنفيذ جلسات ومجالس خارجية للفلل والاستراحات والحدائق حسب المساحة والتصميم المطلوب."
+            "text": "نعم، ننفذ جلسات ومجالس خارجية بالرياض للحدائق والأسطح وأمام الفلل، مع تصميم يناسب مساحة الموقع والاستخدام المطلوب."
           }
         },
         {
           "@type": "Question",
-          "name": "هل يمكن دمج المظلات مع الجلسة؟",
+          "name": "كم تكلفة تصميم وتنفيذ جلسة أو مجلس خارجي في الرياض؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "نعم، يمكن دمج المظلات وبديل الخشب والإنارة وبعض عناصر الخصوصية ضمن تصميم واحد."
+            "text": "تختلف التكلفة حسب مساحة الجلسة أو المجلس، نوع الخامات، مستوى التظليل والديكور المطلوب. يتم تحديد السعر بدقة بعد المعاينة ورفع المقاسات."
           }
         },
         {
           "@type": "Question",
-          "name": "هل تقدمون تصميمًا قبل التنفيذ؟",
+          "name": "ما أفضل الخامات المناسبة للجلسات والمجالس الخارجية في أجواء الرياض؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "يمكن مناقشة التصور المناسب بناءً على صور الموقع والمقاسات وطبيعة الاستخدام."
+            "text": "نختار خامات مناسبة للاستخدام الخارجي وتتحمل حرارة الشمس والغبار، مثل الهياكل المعدنية، التغطيات المناسبة، بديل الخشب أو الإسمنت بورد حسب التصميم."
           }
         },
         {
           "@type": "Question",
-          "name": "ما طريقة طلب المعاينة؟",
+          "name": "هل يمكن تصميم جلسات ومجالس خارجية توفر الخصوصية للعائلة والضيوف؟",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "تواصل عبر واتساب 0562526395 مع صور الموقع والحي والمقاسات التقريبية لتنسيق المعاينة."
+            "text": "نعم، يمكن إضافة حلول تظليل وحواجز ديكورية وتوزيع مناسب للجلسة أو المجلس بما يساعد على توفير الخصوصية والراحة داخل المساحة الخارجية."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "كيف أطلب معاينة لتنفيذ جلسات ومجالس خارجية بالرياض؟",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "يمكنك التواصل معنا عبر واتساب وإرسال صور الموقع أو المساحة المطلوبة، ثم نرتب المعاينة ورفع المقاسات واقتراح التصميم المناسب."
           }
         }
       ]
@@ -197,11 +226,11 @@
     {
       "@type": "Service",
       "@id": "https://www.ebdadhel.com/majalis.html#service",
-      "name": "تنفيذ مجالس وجلسات خارجية بالرياض",
-      "serviceType": "تنفيذ مجالس وجلسات",
-      "description": "تصميم وتنفيذ مجالس خارجية وجلسات داخلية بالرياض ببديل خشب وزجاج وألمنيوم ومظلات وإنارة. اطلب معاينة مجانية عبر واتساب 0562526395.",
+      "name": "جلسات ومجالس خارجية بالرياض",
+      "serviceType": "تصميم وتنفيذ المجالس والجلسات",
+      "description": "تصميم وتنفيذ جلسات ومجالس خارجية بالرياض للحدائق والأسطح والفلل، بخامات مناسبة للأجواء الخارجية وتنسيق يوفر الراحة والخصوصية.",
       "url": "https://www.ebdadhel.com/majalis.html",
-      "image": "https://www.ebdadhel.com/assets/img/majalis_jalsat/1.webp",
+      "image": "https://www.ebdadhel.com/assets/img/majalis_jalsat/modern-outdoor-majlis-villas-riyadh.webp",
       "provider": {
         "@id": "https://www.ebdadhel.com/#business"
       },
@@ -222,13 +251,15 @@
       }
     }
   ]
-}</script></head>
+}
+</script>
+</link></link></meta></head>
 <body class="notranslate"><a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a>
 <div class="intentbar" data-intentbar="">
 <div class="container">
 <div class="intentbar-inner">
 <span class="intentbar-label">اختر اهتمامك:</span>
-<button class="intent-pill" data-intent="laser" type="button">مظلات ليزر</button>
+<button class="intent-pill" data-intent="mazallat" type="button">مظلات مودرن</button>
 <button class="intent-pill" data-intent="wood" type="button">بديل خشب</button>
 <button class="intent-pill" data-intent="sandwich" type="button">ساندوتش بانل</button>
 <a class="intent-clear" data-intent-clear="" href="#">عرض الكل</a>
@@ -242,272 +273,204 @@
 <button aria-expanded="false" aria-label="فتح القائمة" class="hamburger" data-hamburger="">
 <span></span>
 </button>
-<nav aria-label="القائمة الرئيسية" class="menu" data-menu=""><a class="" href="index.html">الرئيسية</a><a class="" href="mazallat.html">المظلات المودرن</a><a class="" href="laser.html">قص ليزر</a><a class="" href="wood.html">بديل خشب</a><a class="" href="sandwich.html">الساندوتش بانل</a><a class="" href="cement.html">الإسمنت بورد</a><a aria-current="page" class="active" href="majalis.html">المجالس والجلسات</a><a class="" href="contact.html">اتصل بنا</a></nav>
+<nav aria-label="القائمة الرئيسية" class="menu" data-menu="">
+<a class="" href="index.html">الرئيسية</a>
+<a class="" href="mazallat.html">المظلات المودرن</a>
+<a class="" href="laser.html">قص ليزر</a>
+<a class="" href="wood.html">بديل خشب</a>
+<a class="" href="sandwich.html">الساندوتش بانل</a>
+<a class="" href="cement.html">الإسمنت بورد</a>
+<a class="" href="majalis.html">المجالس والجلسات</a>
+<a class="" href="contact.html">اتصل بنا</a>
+</nav>
 <div class="cta">
-<a aria-label="طلب معاينة مجانية عبر واتساب لمؤسسة إبداع الظل" class="btn primary" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A2%D9%86." rel="noopener" target="_blank">معاينة مجانية بالرياض</a>
+<a aria-label="طلب معاينة مجانية عبر واتساب لمؤسسة إبداع الظل" class="btn primary" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">معاينة مجانية بالرياض</a>
 </div>
 </div>
 </div>
 </header>
 <section class="banner" id="main-content">
 <div class="container">
-<h1>تنفيذ المجالس والجلسات بالرياض (داخلية / خارجية)</h1>
-<p>تصميم وتنفيذ مجالس وجلسات داخلية وخارجية بإطلالة فاخرة، خيارات زجاج وألمنيوم وبديل خشب، مع إنارة وتشطيب راقٍ في الرياض والسعودية.</p>
+<h1>جلسات ومجالس خارجية بالرياض للحدائق والفلل</h1>
+<p>نصمم وننفذ جلسات ومجالس خارجية بالرياض بتصاميم مودرن وعملية تناسب الحدائق والأسطح والتراسات وأمام الفلل. نوفر لك خامات عالية الجودة تتحمل أجواء الرياض مع التركيز على الراحة والخصوصية، سواء كنت تبحث عن جلسة عائلية مريحة أو مجلس ضيافة فاخر لاستقبال الضيوف.</p>
 </div>
 </section>
-<!-- قبل/بعد (Moved into car section) -->
-<div class="section-head">
-<h2>قبل وبعد التنفيذ</h2>
-<p class="muted">اسحب المؤشر لمقارنة النتائج — ونرتّب صور قبل/بعد بدقة حسب كل مشروع.</p>
-</div>
-<div class="ba-grid">
-<!-- جلسات خارجية (قبل/بعد) -->
-<div class="ba-card" data-reveal="">
-<div class="ba-wrap" style="--pos:55%">
-<img alt="بعد التنفيذ - جلسة خارجية فاخرة مع مظلة مودرن وإضاءة محيطية في الرياض السعودية" class="ba-img ba-after" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/113.webp" width="1600"/>
-<img alt="قبل التنفيذ - ساحة خارجية قبل تركيب الجلسة والمظلة في الرياض" class="ba-img ba-before" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/114.webp" width="1600"/>
-<span class="ba-label before">قبل</span>
-<span class="ba-label after">بعد</span>
-<span aria-hidden="true" class="ba-handle"></span>
-<input aria-label="مقارنة قبل وبعد" class="ba-range" max="100" min="0" type="range" value="55"/>
-</div>
-<div class="ba-caption">قبل/بعد — ساحة فارغة إلى جلسة خارجية فاخرة</div>
-</div>
-<div class="ba-card" data-reveal="">
-<div class="ba-wrap" style="--pos:50%">
-<img alt="بعد التنفيذ - جلسة خارجية في الرياض السعودية" class="ba-img ba-after" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/111.webp" width="1600"/>
-<img alt="قبل التنفيذ - جلسة خارجية في الرياض السعودية" class="ba-img ba-before" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/112.webp" width="1600"/>
-<span class="ba-label before">قبل</span>
-<span class="ba-label after">بعد</span>
-<input aria-label="مقارنة قبل وبعد" class="ba-range" max="100" min="0" type="range" value="50"/>
-</div>
-<div class="ba-caption">قبل/بعد — جلسة خارجية</div>
-</div>
-<div class="ba-card" data-reveal="">
-<div class="ba-wrap" style="--pos:50%">
-<img alt="بعد التنفيذ - جلسة خارجية في الرياض السعودية" class="ba-img ba-after" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/115.webp" width="1600"/>
-<img alt="قبل التنفيذ - جلسة خارجية في الرياض السعودية" class="ba-img ba-before" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/116.webp" width="1600"/>
-<span class="ba-label before">قبل</span>
-<span class="ba-label after">بعد</span>
-<input aria-label="مقارنة قبل وبعد" class="ba-range" max="100" min="0" type="range" value="50"/>
-</div>
-<div class="ba-caption">قبل/بعد — جلسة خارجية</div>
-</div>
-<!-- /قبل/بعد -->
-</div>
-
 <section class="section">
 <div class="container">
-<h2>وصف الخدمة</h2>
-<p class="lead">تصميم وتنفيذ مجالس وجلسات داخلية وخارجية بإطلالة فاخرة، خيارات زجاج وألمنيوم وبديل خشب، مع إنارة وتشطيب راقٍ في الرياض والسعودية.</p>
-<div class="card pad" style="margin-top:14px">
-<h3 style="margin-top:0">كيف نضمن جودة التنفيذ؟</h3>
-<p>نبدأ بمعاينة مجانية للموقع، ثم نقدم مقترح تصميم عملي مع توضيح الخامات والمدة. أثناء التنفيذ نركز على التفاصيل (الميلان، التثبيت، التشطيب)، وبعدها تسليم نهائي بصورة مرتبة تليق بالمكان.</p>
-<div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
-<span class="badge">معاينة مجانية</span>
-<span class="badge">التزام بالمواعيد</span>
-<span class="badge">تشطيب فاخر</span>
-<span class="badge">خامات موثوقة</span>
-</div>
-</div>
-</div>
-</section>
-<section class="section muted">
-<div class="container">
-<h2>مميزات المجالس والجلسات</h2>
+<h2>تصميم جلسات ومجالس خارجية تناسب المساحة والاستخدام</h2>
 <div class="bullets">
 <div class="b" data-reveal="">
 <div class="ico">✓</div>
-<div><b>تصميم حسب الطلب (حديقة/سطح/حوش)</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
+<div><b>تصميم مناسب للمساحة</b><div style="color:var(--sub);margin-top:4px">نراعي مساحة الحديقة أو السطح أو مدخل الفيلا لاختيار توزيع عملي يحقق أفضل استفادة من المكان.</div></div>
 </div>
 <div class="b" data-reveal="">
 <div class="ico">✓</div>
-<div><b>خيارات زجاج وألمنيوم وبديل خشب</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
+<div><b>خامات تتحمل أجواء الرياض</b><div style="color:var(--sub);margin-top:4px">نستخدم خامات مناسبة للاستخدام الخارجي وتتحمل الشمس والغبار مع الحفاظ على الشكل المودرن للجلسة أو المجلس.</div></div>
 </div>
 <div class="b" data-reveal="">
 <div class="ico">✓</div>
-<div><b>إضافة إنارة وديكور حسب رغبتك</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
+<div><b>راحة وخصوصية أعلى</b><div style="color:var(--sub);margin-top:4px">نقترح حلول تظليل وتنسيق تساعد على توفير جلسة مريحة ومجلس ضيافة يحافظ على الخصوصية.</div></div>
 </div>
 <div class="b" data-reveal="">
 <div class="ico">✓</div>
-<div><b>عزل وراحة أعلى مع تشطيبات دقيقة</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
+<div><b>تنفيذ متكامل من المعاينة حتى التسليم</b><div style="color:var(--sub);margin-top:4px">نبدأ برفع المقاسات وفهم الاستخدام المطلوب، ثم ننفذ جلسات ومجالس خارجية بتفاصيل عملية تناسب احتياجك.</div></div>
 </div>
 <div class="b" data-reveal="">
 <div class="ico">✓</div>
-<div><b>حلول عملية لمساحات صغيرة وكبيرة</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
-</div>
-<div class="b" data-reveal="">
-<div class="ico">✓</div>
-<div><b>معاينة مجانية وتحديد أفضل توزيع للمكان</b><div style="color:var(--sub);margin-top:4px">ميزة تساعدك تحصل على نتيجة أجمل وعمر أطول للمشروع.</div></div>
+<div><b>إمكانية الدمج مع المظلات والإضاءة</b><div style="color:var(--sub);margin-top:4px">يمكن دمج الجلسة أو المجلس مع مظلات مودرن، إضاءة ليلية، بديل خشب أو سواتر ديكورية حسب طبيعة المشروع.</div></div>
 </div>
 </div>
-</div>
-</section>
-<section class="section">
-<div class="container">
-<h2>معرض الصور</h2>
-<p class="lead">اضغط على أي صورة للتكبير.</p>
-<div class="gallery">
-<div class="g-item" data-full="assets/img/majalis_jalsat/1.webp" data-gallery-item="">
-<img alt="مجالس وجلسات داخلية وخارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/majalis_jalsat/1.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/majalis_jalsat/2.webp" data-gallery-item="">
-<img alt="مجالس وجلسات داخلية وخارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/majalis_jalsat/2.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/majalis_jalsat/3.webp" data-gallery-item="">
-<img alt="مجالس وجلسات داخلية وخارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/majalis_jalsat/3.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/majalis_jalsat/4.webp" data-gallery-item="">
-<img alt="مجالس وجلسات داخلية وخارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/majalis_jalsat/4.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/majalis_jalsat/5.webp" data-gallery-item="">
-<img alt="مجالس وجلسات داخلية وخارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/majalis_jalsat/5.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/majalis_jalsat/6.webp" data-gallery-item="">
-<img alt="مجالس وجلسات داخلية وخارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/majalis_jalsat/6.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/majalis_jalsat/7.webp" data-gallery-item="">
-<img alt="مجالس وجلسات داخلية وخارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/majalis_jalsat/7.webp" width="1024"/>
-</div>
-<div class="g-item" data-full="assets/img/majalis_jalsat/32.webp" data-gallery-item="">
-<img alt="مجالس وجلسات داخلية وخارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="2048" loading="lazy" src="assets/img/majalis_jalsat/32.webp" width="2048"/>
+<p>إذا كنت بحاجة إلى بناء هيكل صلب ومستقل للمجلس، يمكنك <a href="sandwich.html" style="color:var(--gold);text-decoration:underline;font-weight:600;">الاطلاع على حلول الساندوتش بانل للملاحق</a>، وإذا كنت ترغب في تزيين جدران الجلسة بلمسة دافئة، ننصحك <a href="wood.html" style="color:var(--gold);text-decoration:underline;font-weight:600;">بالتعرف على بديل الخشب للواجهات والجلسات</a> كإضافة ديكورية مميزة تتناغم مع طبيعة المجالس المودرن.</p>
+<div class="card pad" style="margin-top:14px">
+<h3 style="margin-top:0">تخطيط الجلسة حسب الشمس والخصوصية ومساحة الموقع</h3>
+<p>نقوم بزيارة موقعك لرفع المقاسات وفهم طبيعة المساحة واتجاه الشمس ومداخل الحركة، ثم نقترح تصميماً عملياً للمجلس الخارجي أو جلسة السطح أو التراس يضمن أفضل استغلال للمكان مع توفير الخصوصية والراحة.</p>
+<div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+<span class="badge">مجالس خارجية</span>
+<span class="badge">جلسات حدائق</span>
+<span class="badge">جلسات أسطح وتراسات</span>
+<span class="badge">إضاءة وتظليل</span>
 </div>
 </div>
 </div>
 </section>
 <section class="section muted">
 <div class="container">
-<h2>جلسات خارجية</h2>
-<p class="lead">نماذج تنفيذ جلسات خارجية بإضاءة وتشطيب فخم. اضغط على أي صورة للتكبير.</p>
-<div class="subhead" style="margin-top:18px">
-<h3 style="margin:0 0 10px">قبل وبعد — جلسات خارجية</h3>
-<p class="lead" style="margin:0">اسحب المؤشر لمقارنة النتيجة قبل/بعد بدقة.</p>
+<h2>أنواع الجلسات والمجالس الخارجية</h2>
+<div class="bullets">
+<div class="b" data-reveal="">
+<div class="ico">✓</div>
+<div><b>جلسات حدائق خارجية</b><div style="color:var(--sub);margin-top:4px">تصميم جلسات مناسبة للحدائق والمساحات المفتوحة حول المنزل، مع توزيع عملي يراعي الراحة والحركة والخصوصية.</div></div>
 </div>
-<div class="ba-grid" style="margin-top:14px">
-<!-- Pair 1: 5 (قبل) / 6 (بعد) -->
-<div class="ba-card" data-title="جلسة خارجية 1">
-<div class="ba-stage">
-<img alt="جلسة خارجية قبل في الرياض" class="ba-img ba-before" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/5.webp" width="1600"/>
-<img alt="جلسة خارجية بعد في الرياض" class="ba-img ba-after" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/6.webp" width="1600"/>
-<div class="ba-label ba-label-before">قبل</div>
-<div class="ba-label ba-label-after">بعد</div>
-<div aria-hidden="true" class="ba-handle"><span></span></div>
+<div class="b" data-reveal="">
+<div class="ico">✓</div>
+<div><b>جلسات أسطح وتراسات</b><div style="color:var(--sub);margin-top:4px">تحويل الأسطح والتراسات إلى مساحة جلوس مريحة للاستخدام اليومي، مع حلول تظليل وخامات تتحمل أجواء الرياض.</div></div>
 </div>
-<input aria-label="اسحب للمقارنة" class="ba-range" max="100" min="0" type="range" value="50"/>
+<div class="b" data-reveal="">
+<div class="ico">✓</div>
+<div><b>مجالس خارجية منفصلة</b><div style="color:var(--sub);margin-top:4px">تنفيذ مجالس ضيافة مستقلة في الحوش أو الارتداد الخارجي، مناسبة لاستقبال الضيوف مع الحفاظ على خصوصية المنزل.</div></div>
 </div>
-<!-- Pair 2: 7 (قبل) / 8 (بعد) -->
-<div class="ba-card" data-title="جلسة خارجية 2">
-<div class="ba-stage">
-<img alt="جلسة خارجية قبل في الرياض" class="ba-img ba-before" decoding="async" height="1600" loading="lazy" src="assets/img/jalasat_kharijia/7.webp" width="1600"/>
-<img alt="جلسة خارجية بعد في الرياض" class="ba-img ba-after" decoding="async" height="1024" loading="lazy" src="assets/img/jalasat_kharijia/8.webp" width="1024"/>
-<div class="ba-label ba-label-before">قبل</div>
-<div class="ba-label ba-label-after">بعد</div>
-<div aria-hidden="true" class="ba-handle"><span></span></div>
+<div class="b" data-reveal="">
+<div class="ico">✓</div>
+<div><b>جلسات أمام الفلل والمداخل</b><div style="color:var(--sub);margin-top:4px">تنسيق جلسات خارجية أمام الفلل والمداخل بتصاميم مودرن تضيف قيمة جمالية وتوفر مكاناً عملياً للجلوس.</div></div>
 </div>
-<input aria-label="اسحب للمقارنة" class="ba-range" max="100" min="0" type="range" value="50"/>
-</div>
-<!-- Pair 3: 9 (قبل) / 10 (بعد) -->
-<div class="ba-card" data-title="جلسة خارجية 3">
-<div class="ba-stage">
-<img alt="جلسة خارجية قبل في الرياض" class="ba-img ba-before" decoding="async" height="1024" loading="lazy" src="assets/img/jalasat_kharijia/9.webp" width="1024"/>
-<img alt="جلسة خارجية بعد في الرياض" class="ba-img ba-after" decoding="async" height="1024" loading="lazy" src="assets/img/jalasat_kharijia/10.webp" width="1024"/>
-<div class="ba-label ba-label-before">قبل</div>
-<div class="ba-label ba-label-after">بعد</div>
-<div aria-hidden="true" class="ba-handle"><span></span></div>
-</div>
-<input aria-label="اسحب للمقارنة" class="ba-range" max="100" min="0" type="range" value="50"/>
+<div class="b" data-reveal="">
+<div class="ico">✓</div>
+<div><b>مجالس وجلسات عائلية مودرن</b><div style="color:var(--sub);margin-top:4px">تصميم مساحات خارجية للعائلة تجمع بين الراحة والمظهر العصري، مع إمكانية دمج بديل الخشب أو الإسمنت بورد حسب التصميم.</div></div>
 </div>
 </div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<h2>نماذج من أعمالنا في تنفيذ الجلسات والمجالس الخارجية</h2>
+<p class="lead">مجموعة من أعمالنا المنفذة في مختلف أحياء الرياض، وتشمل جلسات حدائق وتراسات ومجالس خارجية للفلل. اضغط على أي صورة للتكبير.</p>
 <div class="gallery">
-<div class="g-item" data-full="assets/img/jalasat_kharijia/8.webp" data-gallery-item="">
-<img alt="جلسات خارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/jalasat_kharijia/8.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/majalis_jalsat/modern-outdoor-majlis-villas-riyadh.webp" data-gallery-item="">
+<img alt="تنفيذ مجلس خارجي مودرن معزول للفلل في الرياض" decoding="async" height="900" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/modern-outdoor-majlis-villas-riyadh.webp" srcset="assets/img/majalis_jalsat/modern-outdoor-majlis-villas-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-majlis-villas-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-majlis-villas-riyadh.webp 900w" width="900"/>
 </div>
-<div class="g-item" data-full="assets/img/jalasat_kharijia/9.webp" data-gallery-item="">
-<img alt="جلسات خارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/jalasat_kharijia/9.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/majalis_jalsat/luxury-garden-outdoor-seating-riyadh.webp" data-gallery-item="">
+<img alt="تجهيز جلسة حديقة خارجية بتصميم عصري ومريح" decoding="async" height="1000" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/luxury-garden-outdoor-seating-riyadh.webp" srcset="assets/img/majalis_jalsat/luxury-garden-outdoor-seating-riyadh-480w.webp 480w, assets/img/majalis_jalsat/luxury-garden-outdoor-seating-riyadh-768w.webp 768w, assets/img/majalis_jalsat/luxury-garden-outdoor-seating-riyadh.webp 1000w" width="1000"/>
 </div>
-<div class="g-item" data-full="assets/img/jalasat_kharijia/10.webp" data-gallery-item="">
-<img alt="جلسات خارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/jalasat_kharijia/10.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/majalis_jalsat/modern-villa-outdoor-majlis-riyadh.webp" data-gallery-item="">
+<img alt="جلسة سطح مغطاة توفر الخصوصية والمظهر الأنيق" decoding="async" height="1000" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/modern-villa-outdoor-majlis-riyadh.webp" srcset="assets/img/majalis_jalsat/modern-villa-outdoor-majlis-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-villa-outdoor-majlis-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-villa-outdoor-majlis-riyadh.webp 1000w" width="1000"/>
 </div>
-<div class="g-item" data-full="assets/img/jalasat_kharijia/11.webp" data-gallery-item="">
-<img alt="جلسات خارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/jalasat_kharijia/11.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/majalis_jalsat/modern-terrace-garden-seating-riyadh.webp" data-gallery-item="">
+<img alt="تصميم مجلس تراثي حديث يتناسب مع المساحات الخارجية" decoding="async" height="1000" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/modern-terrace-garden-seating-riyadh.webp" srcset="assets/img/majalis_jalsat/modern-terrace-garden-seating-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-terrace-garden-seating-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-terrace-garden-seating-riyadh.webp 1000w" width="1000"/>
 </div>
-<div class="g-item" data-full="assets/img/jalasat_kharijia/12.webp" data-gallery-item="">
-<img alt="جلسات خارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="1024" loading="lazy" src="assets/img/jalasat_kharijia/12.webp" width="1024"/>
+<div class="g-item" data-full="assets/img/majalis_jalsat/outdoor-majlis-events-guests-riyadh.webp" data-gallery-item="">
+<img alt="ترتيب وتنسيق جلسات ارتداد المنزل بخامات مقاومة للطقس" decoding="async" height="1000" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/outdoor-majlis-events-guests-riyadh.webp" srcset="assets/img/majalis_jalsat/outdoor-majlis-events-guests-riyadh-480w.webp 480w, assets/img/majalis_jalsat/outdoor-majlis-events-guests-riyadh-768w.webp 768w, assets/img/majalis_jalsat/outdoor-majlis-events-guests-riyadh.webp 1000w" width="1000"/>
 </div>
-<div class="g-item" data-full="assets/img/jalasat_kharijia/31.webp" data-gallery-item="">
-<img alt="جلسات خارجية بالرياض - مؤسسة إبداع الظل - الرياض السعودية" decoding="async" height="2048" loading="lazy" src="assets/img/jalasat_kharijia/31.webp" width="2048"/>
+<div class="g-item" data-full="assets/img/majalis_jalsat/modern-outdoor-seating-villa-garden-riyadh.webp" data-gallery-item="">
+<img alt="جلسات خارجية مودرن في حديقة فلة بالرياض" decoding="async" height="1600" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/modern-outdoor-seating-villa-garden-riyadh.webp" srcset="assets/img/majalis_jalsat/luxury-outdoor-majlis-with-shades-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-garden-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-garden-riyadh-1200w.webp 1200w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-garden-riyadh.webp 1600w" width="1600"/>
+</div>
+<div class="g-item" data-full="assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh.webp" data-gallery-item="">
+<img alt="جلسات تراس خارجي بتصميم حديث بالرياض" decoding="async" height="1600" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh.webp" srcset="assets/img/majalis_jalsat/luxury-outdoor-garden-seating-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh-1200w.webp 1200w, assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh.webp 1600w" width="1600"/>
+</div>
+<div class="g-item" data-full="assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh.webp" data-gallery-item="">
+<img alt="جلسات خارجية مودرن أمام مدخل فلة بالرياض" decoding="async" height="900" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh.webp" srcset="assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh.webp 900w" width="900"/>
+</div>
+<div class="g-item" data-full="assets/img/majalis_jalsat/outdoor-majlis-night-lighting-riyadh.webp" data-gallery-item="">
+<img alt="مجالس خارجية مع إضاءة ليلية في الرياض" decoding="async" height="900" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/outdoor-majlis-night-lighting-riyadh.webp" srcset="assets/img/majalis_jalsat/outdoor-majlis-night-lighting-riyadh-480w.webp 480w, assets/img/majalis_jalsat/outdoor-majlis-night-lighting-riyadh-768w.webp 768w, assets/img/majalis_jalsat/outdoor-majlis-night-lighting-riyadh.webp 900w" width="900"/>
+</div>
+<div class="g-item" data-full="assets/img/majalis_jalsat/modern-outdoor-seating-fabric-shade-riyadh.webp" data-gallery-item="">
+<img alt="جلسات خارجية مودرن مع مظلة قماش في الرياض" decoding="async" height="1200" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/modern-outdoor-seating-fabric-shade-riyadh.webp" srcset="assets/img/majalis_jalsat/outdoor-majlis-sandwich-panel-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-seating-fabric-shade-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-seating-fabric-shade-riyadh.webp 1200w" width="1200"/>
+</div>
+<div class="g-item" data-full="assets/img/majalis_jalsat/modern-outdoor-family-guests-seating-riyadh.webp" data-gallery-item="">
+<img alt="جلسات خارجية مودرن للضيوف والعائلة بالرياض" decoding="async" height="1000" loading="lazy" sizes="(max-width: 560px) 100vw, (max-width: 900px) 50vw, 33vw" src="assets/img/majalis_jalsat/modern-outdoor-family-guests-seating-riyadh.webp" srcset="assets/img/majalis_jalsat/luxury-outdoor-majlis-yasmin-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-family-guests-seating-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-family-guests-seating-riyadh.webp 1000w" width="1000"/>
 </div>
 </div>
 <div aria-hidden="true" class="lightbox" data-lightbox="">
-<img alt="عرض صورة من أعمال مؤسسة إبداع الظل في الرياض السعودية" data-lightbox-img="" decoding="async" loading="lazy"/>
+<img alt="عرض صورة من أعمال المجالس والجلسات لمؤسسة إبداع الظل" data-lightbox-img="" decoding="async" loading="lazy"/>
 <div aria-hidden="true" class="lb-ui">
 <button aria-label="السابق" class="lb-btn prev" data-lb-prev="">›</button>
 <button aria-label="التالي" class="lb-btn next" data-lb-next="">‹</button>
 <button aria-label="إغلاق" class="lb-close" data-lb-close="">✕</button>
 </div>
 </div>
-<script defer src="assets/js/lightbox.js"></script>
+<script defer="" src="assets/js/lightbox.js"></script>
 </div>
 </section>
 <section class="section muted">
 <div class="container">
 <div class="card pad" style="display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap">
 <div>
-<h3 style="margin:0 0 6px 0">اطلب معاينة مجانية الآن</h3>
-<div style="color:var(--sub)">أرسل لنا موقعك ونوع الخدمة وسنرتب لك معاينة بأقرب وقت.</div>
+<h3 style="margin:0 0 6px 0">اطلب معاينة لجلسة أو مجلس خارجي بالرياض</h3>
+<div style="color:var(--sub)">أرسل لنا صور المكان أو المقاسات التقريبية، وسنقترح لك تصميم جلسة أو مجلس خارجي يناسب المساحة والاستخدام.</div>
 </div>
-<a class="btn primary" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%84%D8%AE%D8%AF%D9%85%D8%A9%3A%20%D8%A7%D9%84%D9%85%D8%AC%D8%A7%D9%84%D8%B3%20%D9%88%D8%A7%D9%84%D8%AC%D9%84%D8%B3%D8%A7%D8%AA%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6." rel="noopener" target="_blank">واتساب الآن</a>
+<a class="btn primary" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">واتساب الآن</a>
 </div>
 </div>
 </section>
-
 <section class="section seo-local-section" id="seo-local-content">
 <div class="container">
 <div class="section-head">
 <div>
-<div class="kicker">خدماتنا داخل الرياض</div>
-<h2>مجالس وجلسات خارجية مصممة للاستخدام اليومي</h2>
+<div class="kicker">مساحات خارجية مريحة داخل الرياض</div>
+<h2>خدماتنا في تصميم وتنفيذ الجلسات والمجالس الخارجية بالرياض</h2>
 </div>
-<a class="btn primary" href="https://wa.me/966562526395?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%85%D9%86%20%D9%85%D8%A4%D8%B3%D8%B3%D8%A9%20%D8%A5%D8%A8%D8%AF%D8%A7%D8%B9%20%D8%A7%D9%84%D8%B8%D9%84" rel="noopener" target="_blank">اطلب معاينة مجانية</a>
+<a class="btn primary" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">اطلب معاينة لجلسة حديقتك</a>
 </div>
 <div class="seo-copy">
-<p>صفحة المجالس والجلسات تستهدف الباحثين عن تحويل المساحات الخارجية إلى أماكن جلوس عملية وفاخرة في الرياض.</p>
-<p>نوضح خيارات تصميم المجالس الخارجية والجلسات المناسبة للفلل والاستراحات، مع إجابات مختصرة تساعدك على اختيار الخامة والتصميم قبل طلب المعاينة.</p>
+<p>نعمل في مؤسسة إبداع الظل على تحويل المساحات المكشوفة إلى مجالس وجلسات حيوية تناسب استقبال الضيوف والاجتماعات العائلية. نراعي في تصاميمنا توفير التهوية المناسبة، التظليل الكافي، والديكور الذي يعكس الذوق العام لأصحاب المنزل.</p>
+<p>سواء كان طلبك هو مجلس خارجي مستقل بملحقاته، أو مجرد جلسة بسيطة في السطح أو الحديقة، فإننا نقدم حل بناء وتنسيق عملي يناسب المساحات الخارجية داخل الرياض، مع إمكانية دمج خامات متعددة كالإسمنت بورد والحديد والزجاج لتخرج بنتيجة نهائية متكاملة ومستدامة.</p>
+<p>ننفذ أيضاً جلسات خارجية للحدائق والتراسات وأمام الفلل، مع حلول تظليل وديكور خارجي تساعدك على استغلال المساحات المفتوحة بشكل أجمل وأكثر راحة للاستخدام اليومي أو استقبال الضيوف.</p>
 </div>
 <div class="grid seo-grid">
 <article class="card pad seo-card" data-reveal="">
-<h3>جلسات حدائق</h3>
-<p>استثمار المساحات الخارجية وتحويلها إلى مناطق راحة يومية.</p>
+<h3>المجالس الخارجية المنفصلة</h3>
+<p>بناء وتجهيز مجالس للضيوف في فناء الفيلا بمساحات مدروسة وتصاميم حديثة تلبي الاحتياجات.</p>
 </article>
 <article class="card pad seo-card" data-reveal="">
-<h3>مجالس فلل</h3>
-<p>تصميم يراعي الخصوصية والمظهر العام للفيلا.</p>
+<h3>جلسات الحدائق والارتدادات</h3>
+<p>تنسيق زوايا جلوس هادئة في محيط المنزل تمنحك مساحة للراحة والاستمتاع بالهواء الطلق.</p>
 </article>
 <article class="card pad seo-card" data-reveal="">
-<h3>مظلات وإنارة</h3>
-<p>تكامل بين الظل والراحة البصرية والاستخدام الليلي.</p>
+<h3>جلسات الأسطح المعزولة</h3>
+<p>تحويل السطح إلى منطقة ترفيه وجلوس بتوفير مظلات وحواجز تراعي الخصوصية وتحمي من العوامل الجوية.</p>
+</article>
+<article class="card pad seo-card" data-reveal="">
+<h3>جلسات التراسات وأمام الفلل</h3>
+<p>استغلال التراسات وواجهات الفلل بجلسات مودرن مع تظليل مناسب وتوزيع يحافظ على الحركة والخصوصية.</p>
 </article>
 </div>
 <div class="card pad seo-areas-card">
-<h3>مناطق نخدمها داخل الرياض</h3>
-<p>نخدم أحياء شمال وشرق وغرب وجنوب الرياض، مع إمكانية تنسيق المشاريع حسب الموقع وطبيعة العمل.</p>
+<h3>مناطق تنفيذ المجالس والجلسات داخل الرياض</h3>
+<p>نقدم خدماتنا في تصميم وتركيب المجالس والجلسات الخارجية في جميع أنحاء الرياض. تشمل مناطق خدمتنا: الملقا، الياسمين، الصحافة، النرجس، قرطبة، غرناطة، العارض، القيروان، ظهرة لبن، الروضة، الرمال، والسويدي، مع الالتزام بالمواعيد وتقديم مستوى تشطيب يرضي طموحاتك.</p>
 <div aria-label="مناطق نخدمها في الرياض" class="service-areas">
-<span>الياسمين</span><span>النرجس</span><span>العارض</span><span>القيروان</span>
-<span>الملقا</span><span>الصحافة</span><span>قرطبة</span><span>غرناطة</span>
-<span>الروضة</span><span>الرمال</span><span>ظهرة لبن</span><span>السويدي</span>
+<span>الملقا</span><span>الياسمين</span><span>الصحافة</span><span>النرجس</span>
+<span>قرطبة</span><span>غرناطة</span><span>العارض</span><span>القيروان</span>
+<span>ظهرة لبن</span><span>الروضة</span><span>الرمال</span><span>السويدي</span>
 </div>
 </div>
 <div class="seo-links-card card pad">
-<h3>استكشف خدماتنا</h3>
-<p>انتقل بسهولة بين خدمات مؤسسة إبداع الظل واختر الخدمة الأقرب لاحتياجك.</p>
+<h3>روابط خدمات متصلة بمشروعك</h3>
+<p>لتجهيز جلستك أو مجلسك الخارجي بأفضل صورة، استكشف الحلول الإضافية التي نقدمها.</p>
 <div aria-label="روابط خدمات مؤسسة إبداع الظل" class="seo-link-cluster">
-<a href="mazallat.html">مظلات مودرن</a>
-<a href="laser.html">مظلات قص ليزر</a>
-<a href="wood.html">مظلات بديل خشب</a>
-<a href="sandwich.html">ساندوتش بانل</a>
-<a href="cement.html">إسمنت بورد</a>
-<a href="majalis.html">مجالس خارجية</a>
-<a href="contact.html">طلب معاينة</a>
+<a href="sandwich.html">اطّلع على حلول الساندوتش بانل لبناء الهيكل</a>
+<a href="cement.html">تعرّف على حلول الإسمنت بورد لتقفيل الجدران</a>
+<a href="wood.html">استخدم بديل الخشب لإضافة لمسة دافئة للمجلس</a>
+<a href="laser.html">شاهد تصاميم مظلات وحواجز قص ليزر بالرياض</a>
+<a href="contact.html">تواصل معنا لطلب معاينة المجالس والجلسات</a>
 </div>
 </div>
 </div>
@@ -517,25 +480,29 @@
 <div class="section-head">
 <div>
 <div class="kicker">أسئلة شائعة</div>
-<h2>إجابات مختصرة قبل طلب المعاينة</h2>
+<h2>الأسئلة الشائعة حول الجلسات والمجالس الخارجية بالرياض</h2>
 </div>
 </div>
 <div class="faq-list">
 <details class="faq-item">
-<summary>هل تنفذون مجالس خارجية للفلل؟</summary>
-<p>نعم، يتم تنفيذ جلسات ومجالس خارجية للفلل والاستراحات والحدائق حسب المساحة والتصميم المطلوب.</p>
+<summary>هل تنفذون جلسات ومجالس خارجية بالرياض للحدائق والأسطح والفلل؟</summary>
+<p>نعم، ننفذ جلسات ومجالس خارجية بالرياض للحدائق والأسطح وأمام الفلل، مع تصميم يناسب مساحة الموقع والاستخدام المطلوب.</p>
 </details>
 <details class="faq-item">
-<summary>هل يمكن دمج المظلات مع الجلسة؟</summary>
-<p>نعم، يمكن دمج المظلات وبديل الخشب والإنارة وبعض عناصر الخصوصية ضمن تصميم واحد.</p>
+<summary>كم تكلفة تصميم وتنفيذ جلسة أو مجلس خارجي في الرياض؟</summary>
+<p>تختلف التكلفة حسب مساحة الجلسة أو المجلس، نوع الخامات، مستوى التظليل والديكور المطلوب. يتم تحديد السعر بدقة بعد المعاينة ورفع المقاسات.</p>
 </details>
 <details class="faq-item">
-<summary>هل تقدمون تصميمًا قبل التنفيذ؟</summary>
-<p>يمكن مناقشة التصور المناسب بناءً على صور الموقع والمقاسات وطبيعة الاستخدام.</p>
+<summary>ما أفضل الخامات المناسبة للجلسات والمجالس الخارجية في أجواء الرياض؟</summary>
+<p>نختار خامات مناسبة للاستخدام الخارجي وتتحمل حرارة الشمس والغبار، مثل الهياكل المعدنية، التغطيات المناسبة، بديل الخشب أو الإسمنت بورد حسب التصميم.</p>
 </details>
 <details class="faq-item">
-<summary>ما طريقة طلب المعاينة؟</summary>
-<p>تواصل عبر واتساب 0562526395 مع صور الموقع والحي والمقاسات التقريبية لتنسيق المعاينة.</p>
+<summary>هل يمكن تصميم جلسات ومجالس خارجية توفر الخصوصية للعائلة والضيوف؟</summary>
+<p>نعم، يمكن إضافة حلول تظليل وحواجز ديكورية وتوزيع مناسب للجلسة أو المجلس بما يساعد على توفير الخصوصية والراحة داخل المساحة الخارجية.</p>
+</details>
+<details class="faq-item">
+<summary>كيف أطلب معاينة لتنفيذ جلسات ومجالس خارجية بالرياض؟</summary>
+<p>يمكنك التواصل معنا عبر واتساب وإرسال صور الموقع أو المساحة المطلوبة، ثم نرتب المعاينة ورفع المقاسات واقتراح التصميم المناسب.</p>
 </details>
 </div>
 </div>
@@ -543,16 +510,23 @@
 <div class="footer">
 <div class="container">
 <div class="cols">
-<div class="col"><div class="footer-brand"><img alt="شعار مؤسسة إبداع الظل" class="footer-logo" decoding="async" height="64" loading="lazy" sizes="64px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="64"/><div><h4>مؤسسة إبداع الظل</h4><div>تنفيذ مظلات مودرن، ساندوتش بانل، إسمنت بورد، مجالس وجلسات داخل الرياض.</div></div></div><div class="small">© <span id="year"></span> جميع الحقوق محفوظة</div></div>
+<div class="col"><div class="footer-brand"><img alt="شعار مؤسسة إبداع الظل" class="footer-logo" decoding="async" height="64" loading="lazy" sizes="64px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="64"/><div><h4>مؤسسة إبداع الظل</h4><div>تنفيذ ملاحق ساندوتش بانل، إسمنت بورد، مظلات مودرن، مجالس وجلسات داخل الرياض.</div></div></div><div class="small">© <span id="year"></span> جميع الحقوق محفوظة</div></div>
 <div class="col">
 <h4>روابط سريعة</h4>
-
-<div class="footer-service-links"><a href="mazallat.html">المظلات المودرن</a><a href="laser.html">مظلات قص ليزر</a><a href="wood.html">مظلات بديل خشب</a><a href="sandwich.html">الساندوتش بانل</a><a href="cement.html">الإسمنت بورد</a><a href="majalis.html">المجالس والجلسات</a><a href="contact.html">اتصل بنا</a></div></div>
+<div class="footer-service-links">
+<a href="mazallat.html">المظلات المودرن</a>
+<a href="laser.html">مظلات قص ليزر</a>
+<a href="wood.html">مظلات بديل خشب</a>
+<a href="sandwich.html">الساندوتش بانل</a>
+<a href="cement.html">الإسمنت بورد</a>
+<a href="majalis.html">المجالس والجلسات</a>
+<a href="contact.html">اتصل بنا</a>
+</div></div>
 <div class="col">
 <h4>تواصل معنا</h4>
 <div style="display:flex;flex-direction:column;gap:8px">
 <div>جوال / واتساب: <b dir="ltr">0562526395</b></div>
-<a class="btn gold" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9.%20" rel="noopener" style="width:max-content" target="_blank">محادثة واتساب</a>
+<a class="btn gold" data-wa="" href="https://wa.me/966562526395" rel="noopener" style="width:max-content" target="_blank">محادثة واتساب</a>
 <div class="small">نخدم الرياض وكافة مناطق السعودية</div>
 </div>
 </div> <div class="col">
@@ -567,7 +541,7 @@
 </div>
 </div>
 <div class="floating-wa">
-<a aria-label="واتساب" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9.%20" rel="noopener" target="_blank">
+<a aria-label="واتساب" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">
 <span aria-hidden="true" class="wa-icon">💬</span>
 <span class="wa-label">واتساب • معاينة مجانية</span>
 </a>
@@ -576,7 +550,7 @@
 <span class="wa-text">اتصال مباشر</span>
 </a>
 </div>
-<script defer src="assets/js/main.js"></script>
-<script defer src="assets/js/intent.js"></script>
+<script defer="" src="assets/js/main.js"></script>
+<script defer="" src="assets/js/intent.js"></script>
 </body>
 </html>

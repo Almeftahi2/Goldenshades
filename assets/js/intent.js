@@ -1,421 +1,647 @@
-(function(){
-  const WA_NUMBER = "966562526395";
+// intent.js
+// اسم الملف: assets/js/intent.js
+// آخر تعديل: 2026-06-02
+// الغرض: تحديد نية الخدمة الحالية، تخصيص روابط واتساب عبر data-wa فقط، وعرض Spotlight مخصص لكل خدمة.
 
-  // Level 2 = إعادة ترتيب أقسام الصفحة (Modules) حسب نية الزائر
-  const LEVEL2 = true;
+(function () {
+  'use strict';
+
+  if (window.__IBDAA_INTENT_READY__) return;
+  window.__IBDAA_INTENT_READY__ = true;
+
+  // ==========================================================================
+  // الإعدادات الأساسية
+  // ==========================================================================
+
+  const WHATSAPP_NUMBER = '966562526395';
+  const STORAGE_KEY = 'ibdaa_intent';
+  const STORAGE_TTL_MS = 1000 * 60 * 60 * 24 * 30;
+
+  const SELECTORS = {
+    whatsappLink: 'a[data-wa]',
+    intentBar: '[data-intentbar]',
+    intentButton: '[data-intent]',
+    intentClear: '[data-intent-clear]',
+    intentCta: '[data-intent-cta]',
+    spotlight: '[data-intent-spotlight]',
+    spotlightTitle: '[data-intent-title]',
+    spotlightLead: '[data-intent-lead]',
+    spotlightGallery: '[data-intent-gallery]',
+    lightboxTrigger: '[data-open-lightbox]'
+  };
 
   const INTENTS = {
-    laser: {
-      key: "laser",
-      label: "مظلات ليزر",
-      cta: "اطلب تسعيرة مظلات ليزر الآن",
-      pageHint: "مزودة بتصاميم قص ليزر وإضاءة فخمة حسب الطلب.",
-      keywords: ["ليزر","laser","قص","قص ليزر","مظلات ليزر","ليزر مظلات"]
-    },
-    wood: {
-      key: "wood",
-      label: "بديل خشب",
-      cta: "اطلب تسعيرة بديل خشب الآن",
-      pageHint: "شكل خشبي فاخر بخامات مقاومة للشمس والحرارة.",
-      keywords: ["بديل خشب","خشب","wood","خشبي","بديل"]
-    },
-    sandwich: {
-      key: "sandwich",
-      label: "ساندوتش بانل",
-      cta: "اطلب تسعيرة ساندوتش بانل الآن",
-      pageHint: "حلول عزل حراري وسرعة تركيب للملاحق والغرف والسقوف.",
-      keywords: ["ساندوتش","بانل","panel","sandwich","ساندوتش بانل","ملاحق"]
-    }
-  };
-
-  function normalize(str){
-    return (str || "").toString().toLowerCase();
-  }
-
-  function getParam(name){
-    try{
-      const u = new URL(window.location.href);
-      return u.searchParams.get(name);
-    }catch(e){ return null; }
-  }
-
-  function detectIntent(){
-    // 1) Explicit param
-    const p = normalize(getParam("intent"));
-    if(p && INTENTS[p]) return p;
-
-    // 2) UTM signals
-    const utm = ["utm_term","utm_content","utm_campaign","utm_source"].map(getParam).filter(Boolean).join(" ");
-    const utmN = normalize(utm);
-    if(utmN){
-      for(const k in INTENTS){
-        if(INTENTS[k].keywords.some(w => utmN.includes(normalize(w)))) return k;
-      }
-    }
-
-    // 3) Page path hint
-    const path = normalize(window.location.pathname);
-    if(path.includes("sandwich")) return "sandwich";
-    if(path.includes("mazallat")) {
-      // If user came from laser/wood keyword in referrer, use it
-      const ref = normalize(document.referrer);
-      if(ref){
-        for(const k of ["laser","wood"]){
-          if(INTENTS[k].keywords.some(w => ref.includes(normalize(w)))) return k;
-        }
-      }
-      return "wood"; // sensible default within mazallat page
-    }
-
-    // 4) Previous choice
-    try{
-      const saved = JSON.parse(localStorage.getItem("ibdaa_intent") || "null");
-      if(saved && saved.key && INTENTS[saved.key]) return saved.key;
-    }catch(e){}
-
-    return null;
-  }
-
-  function saveIntent(key){
-    try{
-      localStorage.setItem("ibdaa_intent", JSON.stringify({key, ts: Date.now()}));
-    }catch(e){}
-  }
-
-  function clearIntent(){
-    try{ localStorage.removeItem("ibdaa_intent"); }catch(e){}
-  }
-
-  function buildWhatsAppMessage(intentKey, extra){
-    const base = "السلام عليكم، أرغب في معاينة مجانية وتسعيرة لـ";
-    const service = intentKey && INTENTS[intentKey] ? INTENTS[intentKey].label : "(حدد الخدمة)";
-    const lines = [
-      `${base} ${service}.`,
-      extra?.city ? `الموقع: ${extra.city}` : null,
-      extra?.size ? `المقاس التقريبي: ${extra.size}` : null,
-      extra?.name ? `الاسم: ${extra.name}` : null,
-      extra?.phone ? `الجوال: ${extra.phone}` : null,
-      extra?.note ? `ملاحظات: ${extra.note}` : null
-    ].filter(Boolean);
-    return lines.join("\n");
-  }
-
-  function setWAHrefs(intentKey, extra){
-    const msg = encodeURIComponent(buildWhatsAppMessage(intentKey, extra));
-    const href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-    document.querySelectorAll('a[data-wa], a[href*="wa.me/'+WA_NUMBER+'"]').forEach(a => {
-      a.href = href;
-    });
-  }
-
-  function applyIntentUI(intentKey){
-    document.documentElement.dataset.intent = intentKey || "";
-    // Pills active state
-    document.querySelectorAll("[data-intentbar] .intent-pill").forEach(btn => {
-      btn.classList.toggle("active", btn.dataset.intent === intentKey);
-    });
-
-    // Home spotlight
-    const spot = document.querySelector("[data-intent-spotlight]");
-    if(spot){
-      if(intentKey && INTENTS[intentKey]){
-        spot.hidden = false;
-        const t = spot.querySelector("[data-intent-title]");
-        const l = spot.querySelector("[data-intent-lead]");
-        const cta = spot.querySelector("[data-intent-cta]");
-        if(t) t.textContent = INTENTS[intentKey].label + " — خيارات مختارة لك";
-        if(l) l.textContent = INTENTS[intentKey].pageHint;
-        if(cta) cta.textContent = INTENTS[intentKey].cta;
-
-        // Inject thumbnails
-        const gal = spot.querySelector("[data-intent-gallery]");
-        if(gal){
-          const images = getIntentImages(intentKey);
-          gal.innerHTML = images.slice(0,6).map(src => (
-            `<button class="sg-thumb" type="button" data-open-lightbox data-src="${src}">
-              <img src="${src}" alt="${INTENTS[intentKey].label} - الرياض السعودية" loading="lazy">
-             </button>`
-          )).join("");
-        }
-      }else{
-        spot.hidden = true;
-      }
-    }
-
-    // Reorder & focus services on home
-    const services = document.querySelector("#services .grid");
-    if(services){
-      const cards = Array.from(services.querySelectorAll(".card.service"));
-      const primary = findPrimaryCard(cards, intentKey);
-      if(primary){
-        services.insertBefore(primary, cards[0]);
-        cards.forEach(c => c.classList.toggle("dim", c !== primary && !!intentKey));
-      }else{
-        cards.forEach(c => c.classList.remove("dim"));
-      }
-    }
-
-    // Update WhatsApp links
-    setWAHrefs(intentKey);
-
-    // Level 2: Reorder modules + collapse non-primary sections + filter portfolio gallery
-    if(LEVEL2) applyLevel2(intentKey);
-  }
-
-  function findPrimaryCard(cards, intentKey){
-    if(!intentKey) return null;
-    if(intentKey === "sandwich"){
-      return cards.find(c => c.querySelector('a[href*="sandwich.html"]'));
-    }
-    if(intentKey === "laser" || intentKey === "wood"){
-      return cards.find(c => c.querySelector('a[href*="mazallat.html"]'));
-    }
-    return null;
-  }
-
-  function getIntentImages(intentKey){
-    // Keep it simple & robust: use known folders with fallbacks
-    const map = {
-      laser: [
-        "assets/img/mazallat_modern/17.webp",
-        "assets/img/mazallat_modern/18.webp",
-        "assets/img/mazallat_modern/19.webp",
-        "assets/img/mazallat_modern/20.webp",
-        "assets/img/mazallat_modern/21.webp"
+    mazallat: {
+      key: 'mazallat',
+      label: 'مظلات مودرن',
+      messageLabel: 'مظلات مودرن',
+      cta: 'اطلب تسعيرة مظلات مودرن الآن',
+      hint: 'مظلات سيارات ومداخل وأحواش بتصاميم حديثة تناسب الفلل والمباني السكنية.',
+      keywords: [
+        'mazallat',
+        'مظلات',
+        'مظلة',
+        'مظلات مودرن',
+        'مظلات سيارات',
+        'مظلات مداخل',
+        'مظلات احواش',
+        'مظلات أحواش'
       ],
-      wood: [
-        "assets/img/mazallat_modern/20.webp",
-        "assets/img/mazallat_modern/21.webp",
-        "assets/img/mazallat_modern/19.webp",
-        "assets/img/mazallat_modern/18.webp",
-        "assets/img/mazallat_modern/17.webp"
-      ],
-      sandwich: [
-        "assets/img/sandwich_panel/20.webp",
-        "assets/img/sandwich_panel/21.webp",
-        "assets/img/sandwich_panel/22.webp",
-        "assets/img/sandwich_panel/23.webp",
-        "assets/img/sandwich_panel/24.webp",
-        "assets/img/sandwich_panel/25.webp"
+      images: [
+        'assets/img/mazallat_modern/arched-modern-car-shade-villa-front-riyadh.webp',
+        'assets/img/mazallat_modern/multiple-modern-car-shades-apartment-building-riyadh.webp',
+        'assets/img/mazallat_modern/modern-slat-shade-outdoor-seating-riyadh.webp',
+        'assets/img/mazallat_modern/modern-stretch-fabric-yard-shade-home-entrance-riyadh.webp',
+        'assets/img/mazallat_modern/modern-beige-fabric-villa-entrance-shade-riyadh.webp'
       ]
-    };
-    return map[intentKey] || [];
-  }
+    },
 
-  // ---------------- Level 2 (Module-based page generation) ----------------
-  const LEVEL2_STATE = {
-    ready: false,
-    originalKeys: [],
-    nodesByKey: new Map(),
-    footer: null,
+    laser: {
+      key: 'laser',
+      label: 'مظلات ليزر',
+      messageLabel: 'مظلات ليزر',
+      cta: 'اطلب تسعيرة مظلات ليزر الآن',
+      hint: 'مظلات قص ليزر بتصاميم زخرفية حديثة للفلل والمداخل والجلسات الخارجية.',
+      keywords: [
+        'laser',
+        'ليزر',
+        'قص ليزر',
+        'مظلات ليزر',
+        'مظلة ليزر',
+        'مظلات قص ليزر'
+      ],
+      images: [
+        'assets/img/laser/luxury-wide-laser-cut-shades-riyadh.webp',
+        'assets/img/laser/modern-wide-laser-shades-riyadh.webp',
+        'assets/img/laser/large-modern-laser-shades-riyadh.webp',
+        'assets/img/laser/wide-laser-cut-garden-shade-riyadh.webp',
+        'assets/img/laser/luxury-large-laser-shade-villas-riyadh.webp'
+      ]
+    },
+
+    wood: {
+      key: 'wood',
+      label: 'بديل خشب',
+      messageLabel: 'بديل خشب',
+      cta: 'اطلب تسعيرة بديل خشب الآن',
+      hint: 'بديل خشب داخلي وخارجي بملمس فاخر ومظهر مودرن مناسب للجدران والمداخل والمجالس.',
+      keywords: [
+        'wood',
+        'خشب',
+        'بديل خشب',
+        'خشب بديل',
+        'ديكور خشب',
+        'شرائح خشب',
+        'بديل الخشب'
+      ],
+      images: [
+        'assets/img/wood/wpc-wood-alternative-interior-wall-slats-riyadh.webp',
+        'assets/img/wood/wpc-wood-alternative-stair-entrance-slats-riyadh.webp',
+        'assets/img/wood/wpc-wood-alternative-tv-wall-riyadh.webp',
+        'assets/img/wood/wpc-wood-alternative-stair-wall-riyadh.webp',
+        'assets/img/wood/wpc-wood-alternative-majlis-wall-riyadh.webp',
+        'assets/img/wood/wpc-wood-alternative-lighted-decor-slats-riyadh.webp'
+      ]
+    },
+
+    sandwich: {
+      key: 'sandwich',
+      label: 'ساندوتش بانل',
+      messageLabel: 'ساندوتش بانل',
+      cta: 'اطلب تسعيرة ساندوتش بانل الآن',
+      hint: 'حلول ساندوتش بانل للملاحق والغرف والأسطح بعزل حراري وسرعة تنفيذ عالية.',
+      keywords: [
+        'sandwich',
+        'panel',
+        'sandwich panel',
+        'ساندوتش',
+        'بانل',
+        'ساندوتش بانل',
+        'ملاحق ساندوتش بانل'
+      ],
+      images: [
+        'assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh.webp',
+        'assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh.webp',
+        'assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh.webp',
+        'assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh.webp',
+        'assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh.webp',
+        'assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh.webp'
+      ]
+    },
+
+    cement: {
+      key: 'cement',
+      label: 'اسمنت بورد',
+      messageLabel: 'اسمنت بورد',
+      cta: 'اطلب تسعيرة اسمنت بورد الآن',
+      hint: 'تنفيذ اسمنت بورد للواجهات والملاحق والغرف الخارجية بتشطيب حديث ومقاوم.',
+      keywords: [
+        'cement',
+        'cement board',
+        'اسمنت',
+        'أسمنت',
+        'سمنت',
+        'اسمنت بورد',
+        'أسمنت بورد',
+        'سمنت بورد',
+        'واجهات اسمنت بورد',
+        'ملاحق اسمنت بورد'
+      ],
+      images: [
+        'assets/img/cement_board/cement-board-exterior-cladding-riyadh.webp',
+        'assets/img/cement_board/cement-board-outdoor-seating-annexes-riyadh.webp',
+        'assets/img/cement_board/cement-board-rooftop-rooms-annexes-riyadh.webp',
+        'assets/img/cement_board/cement-board-outdoor-annexes-riyadh.webp',
+        'assets/img/cement_board/cement-board-modern-villa-facades-riyadh.webp',
+        'assets/img/cement_board/cement-board-extra-rooms-installation-riyadh.webp'
+      ]
+    },
+
+ majalis: {
+  key: 'majalis',
+  label: 'المجالس والجلسات',
+  messageLabel: 'مجالس وجلسات خارجية',
+  cta: 'اطلب تسعيرة مجالس وجلسات خارجية الآن',
+  hint: 'جلسات ومجالس خارجية للفلل والحدائق والتراسات بتصاميم مودرن مناسبة للضيوف والعائلة.',
+  keywords: [
+    'majalis',
+    'jalsat',
+    'جلسات',
+    'جلسات خارجية',
+    'مجالس خارجية',
+    'مجلس خارجي',
+    'تراس',
+    'حديقة',
+    'جلسات فلل',
+    'مجالس حدائق'
+  ],
+      images: [
+        'assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh.webp',
+        'assets/img/majalis_jalsat/luxury-outdoor-garden-seating-riyadh.webp',
+        'assets/img/majalis_jalsat/modern-outdoor-seating-villa-front-riyadh.webp',
+        'assets/img/majalis_jalsat/large-outdoor-seating-villas-riyadh.webp',
+        'assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh.webp',
+        'assets/img/majalis_jalsat/luxury-outdoor-majlis-with-shades-riyadh.webp'
+      ]
+    }
   };
 
-  function initLevel2(){
-    if(LEVEL2_STATE.ready) return;
-    const mods = Array.from(document.querySelectorAll("[data-module]"));
-    mods.forEach(m => {
-      const k = m.dataset.module;
-      if(k) LEVEL2_STATE.nodesByKey.set(k, m);
-    });
-    LEVEL2_STATE.originalKeys = mods.map(m => m.dataset.module);
-    LEVEL2_STATE.footer = document.querySelector(".footer");
-    LEVEL2_STATE.ready = true;
+  const RESPONSIVE_IMAGES = {"assets/img/cement_board/cement-board-exterior-cladding-riyadh.webp":{"w":1024,"h":1024,"srcset":"assets/img/cement_board/cement-board-exterior-cladding-riyadh-480w.webp 480w, assets/img/cement_board/cement-board-exterior-cladding-riyadh-768w.webp 768w, assets/img/cement_board/cement-board-exterior-cladding-riyadh.webp 1024w"},"assets/img/cement_board/cement-board-outdoor-seating-annexes-riyadh.webp":{"w":900,"h":900,"srcset":"assets/img/cement_board/cement-board-outdoor-seating-annexes-riyadh-480w.webp 480w, assets/img/cement_board/cement-board-outdoor-seating-annexes-riyadh-768w.webp 768w, assets/img/cement_board/cement-board-outdoor-seating-annexes-riyadh.webp 900w"},"assets/img/cement_board/cement-board-rooftop-rooms-annexes-riyadh.webp":{"w":1024,"h":1024,"srcset":"assets/img/cement_board/cement-board-rooftop-rooms-annexes-riyadh-480w.webp 480w, assets/img/cement_board/cement-board-rooftop-rooms-annexes-riyadh-768w.webp 768w, assets/img/cement_board/cement-board-rooftop-rooms-annexes-riyadh.webp 1024w"},"assets/img/cement_board/cement-board-outdoor-annexes-riyadh.webp":{"w":1024,"h":1024,"srcset":"assets/img/cement_board/cement-board-outdoor-annexes-riyadh-480w.webp 480w, assets/img/cement_board/cement-board-outdoor-annexes-riyadh-768w.webp 768w, assets/img/cement_board/cement-board-outdoor-annexes-riyadh.webp 1024w"},"assets/img/cement_board/cement-board-modern-villa-facades-riyadh.webp":{"w":1024,"h":1024,"srcset":"assets/img/cement_board/cement-board-modern-villa-facades-riyadh-480w.webp 480w, assets/img/cement_board/cement-board-modern-villa-facades-riyadh-768w.webp 768w, assets/img/cement_board/cement-board-modern-villa-facades-riyadh.webp 1024w"},"assets/img/cement_board/cement-board-extra-rooms-installation-riyadh.webp":{"w":1024,"h":1024,"srcset":"assets/img/cement_board/cement-board-extra-rooms-installation-riyadh-480w.webp 480w, assets/img/cement_board/cement-board-extra-rooms-installation-riyadh-768w.webp 768w, assets/img/cement_board/cement-board-extra-rooms-installation-riyadh.webp 1024w"},"assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh.webp":{"w":1600,"h":1600,"srcset":"assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh-1200w.webp 1200w, assets/img/majalis_jalsat/modern-outdoor-terrace-seating-riyadh.webp 1600w"},"assets/img/majalis_jalsat/luxury-outdoor-garden-seating-riyadh.webp":{"w":900,"h":900,"srcset":"assets/img/majalis_jalsat/luxury-outdoor-garden-seating-riyadh-480w.webp 480w, assets/img/majalis_jalsat/luxury-outdoor-garden-seating-riyadh-768w.webp 768w, assets/img/majalis_jalsat/luxury-outdoor-garden-seating-riyadh.webp 900w"},"assets/img/majalis_jalsat/modern-outdoor-seating-villa-front-riyadh.webp":{"w":1200,"h":1200,"srcset":"assets/img/majalis_jalsat/modern-outdoor-seating-villa-front-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-front-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-front-riyadh.webp 1200w"},"assets/img/majalis_jalsat/large-outdoor-seating-villas-riyadh.webp":{"w":2048,"h":2048,"srcset":"assets/img/majalis_jalsat/large-outdoor-seating-villas-riyadh-480w.webp 480w, assets/img/majalis_jalsat/large-outdoor-seating-villas-riyadh-768w.webp 768w, assets/img/majalis_jalsat/large-outdoor-seating-villas-riyadh-1200w.webp 1200w, assets/img/majalis_jalsat/large-outdoor-seating-villas-riyadh.webp 2048w"},"assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh.webp":{"w":900,"h":900,"srcset":"assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh-480w.webp 480w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh-768w.webp 768w, assets/img/majalis_jalsat/modern-outdoor-seating-villa-entrance-riyadh.webp 900w"},"assets/img/majalis_jalsat/luxury-outdoor-majlis-with-shades-riyadh.webp":{"w":1000,"h":1000,"srcset":"assets/img/majalis_jalsat/luxury-outdoor-majlis-with-shades-riyadh-480w.webp 480w, assets/img/majalis_jalsat/luxury-outdoor-majlis-with-shades-riyadh-768w.webp 768w, assets/img/majalis_jalsat/luxury-outdoor-majlis-with-shades-riyadh.webp 1000w"},"assets/img/laser/luxury-wide-laser-cut-shades-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/laser/luxury-wide-laser-cut-shades-riyadh-480w.webp 480w, assets/img/laser/luxury-wide-laser-cut-shades-riyadh-768w.webp 768w, assets/img/laser/luxury-wide-laser-cut-shades-riyadh.webp 1200w"},"assets/img/laser/modern-wide-laser-shades-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/laser/modern-wide-laser-shades-riyadh-480w.webp 480w, assets/img/laser/modern-wide-laser-shades-riyadh-768w.webp 768w, assets/img/laser/modern-wide-laser-shades-riyadh.webp 1200w"},"assets/img/laser/large-modern-laser-shades-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/laser/large-modern-laser-shades-riyadh-480w.webp 480w, assets/img/laser/large-modern-laser-shades-riyadh-768w.webp 768w, assets/img/laser/large-modern-laser-shades-riyadh.webp 1200w"},"assets/img/laser/wide-laser-cut-garden-shade-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/laser/wide-laser-cut-garden-shade-riyadh-480w.webp 480w, assets/img/laser/wide-laser-cut-garden-shade-riyadh-768w.webp 768w, assets/img/laser/wide-laser-cut-garden-shade-riyadh.webp 1200w"},"assets/img/laser/luxury-large-laser-shade-villas-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/laser/luxury-large-laser-shade-villas-riyadh-480w.webp 480w, assets/img/laser/luxury-large-laser-shade-villas-riyadh-768w.webp 768w, assets/img/laser/luxury-large-laser-shade-villas-riyadh.webp 1200w"},"assets/img/mazallat_modern/multiple-modern-car-shades-apartment-building-riyadh.webp":{"w":549,"h":549,"srcset":"assets/img/mazallat_modern/multiple-modern-car-shades-apartment-building-riyadh-480w.webp 480w, assets/img/mazallat_modern/multiple-modern-car-shades-apartment-building-riyadh.webp 549w"},"assets/img/mazallat_modern/arched-modern-car-shade-villa-front-riyadh.webp":{"w":736,"h":735,"srcset":"assets/img/mazallat_modern/arched-modern-car-shade-villa-front-riyadh-480w.webp 480w, assets/img/mazallat_modern/arched-modern-car-shade-villa-front-riyadh.webp 736w"},"assets/img/mazallat_modern/modern-slat-shade-outdoor-seating-riyadh.webp":{"w":736,"h":703,"srcset":"assets/img/mazallat_modern/modern-slat-shade-outdoor-seating-riyadh-480w.webp 480w, assets/img/mazallat_modern/modern-slat-shade-outdoor-seating-riyadh.webp 736w"},"assets/img/mazallat_modern/modern-stretch-fabric-yard-shade-home-entrance-riyadh.webp":{"w":694,"h":674,"srcset":"assets/img/mazallat_modern/modern-stretch-fabric-yard-shade-home-entrance-riyadh-480w.webp 480w, assets/img/mazallat_modern/modern-stretch-fabric-yard-shade-home-entrance-riyadh.webp 694w"},"assets/img/mazallat_modern/modern-beige-fabric-villa-entrance-shade-riyadh.webp":{"w":736,"h":736,"srcset":"assets/img/mazallat_modern/modern-beige-fabric-villa-entrance-shade-riyadh-480w.webp 480w, assets/img/mazallat_modern/modern-beige-fabric-villa-entrance-shade-riyadh.webp 736w"},"assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh.webp":{"w":1024,"h":1024,"srcset":"assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-annex-installation-riyadh.webp 1024w"},"assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh.webp":{"w":900,"h":900,"srcset":"assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh-480w.webp 480w, assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh-768w.webp 768w, assets/img/sandwich_panel/modern-sandwich-panel-annex-rooms-riyadh.webp 900w"},"assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh.webp":{"w":900,"h":900,"srcset":"assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-rooftop-annexes-riyadh.webp 900w"},"assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh.webp":{"w":900,"h":900,"srcset":"assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-outdoor-seating-annexes-riyadh.webp 900w"},"assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh.webp":{"w":1024,"h":1024,"srcset":"assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh-480w.webp 480w, assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh-768w.webp 768w, assets/img/sandwich_panel/sandwich-panel-extra-rooms-thermal-insulation-riyadh.webp 1024w"},"assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh.webp":{"w":1024,"h":1024,"srcset":"assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh-480w.webp 480w, assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh-768w.webp 768w, assets/img/sandwich_panel/heat-resistant-sandwich-panel-outdoor-rooms-riyadh.webp 1024w"},"assets/img/wood/wpc-wood-alternative-interior-wall-slats-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/wood/wpc-wood-alternative-interior-wall-slats-riyadh-480w.webp 480w, assets/img/wood/wpc-wood-alternative-interior-wall-slats-riyadh-768w.webp 768w, assets/img/wood/wpc-wood-alternative-interior-wall-slats-riyadh.webp 1200w"},"assets/img/wood/wpc-wood-alternative-stair-entrance-slats-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/wood/wpc-wood-alternative-stair-entrance-slats-riyadh-480w.webp 480w, assets/img/wood/wpc-wood-alternative-stair-entrance-slats-riyadh-768w.webp 768w, assets/img/wood/wpc-wood-alternative-stair-entrance-slats-riyadh.webp 1200w"},"assets/img/wood/wpc-wood-alternative-tv-wall-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/wood/wpc-wood-alternative-tv-wall-riyadh-480w.webp 480w, assets/img/wood/wpc-wood-alternative-tv-wall-riyadh-768w.webp 768w, assets/img/wood/wpc-wood-alternative-tv-wall-riyadh.webp 1200w"},"assets/img/wood/wpc-wood-alternative-stair-wall-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/wood/wpc-wood-alternative-stair-wall-riyadh-480w.webp 480w, assets/img/wood/wpc-wood-alternative-stair-wall-riyadh-768w.webp 768w, assets/img/wood/wpc-wood-alternative-stair-wall-riyadh.webp 1200w"},"assets/img/wood/wpc-wood-alternative-majlis-wall-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/wood/wpc-wood-alternative-majlis-wall-riyadh-480w.webp 480w, assets/img/wood/wpc-wood-alternative-majlis-wall-riyadh-768w.webp 768w, assets/img/wood/wpc-wood-alternative-majlis-wall-riyadh.webp 1200w"},"assets/img/wood/wpc-wood-alternative-lighted-decor-slats-riyadh.webp":{"w":1200,"h":900,"srcset":"assets/img/wood/wpc-wood-alternative-lighted-decor-slats-riyadh-480w.webp 480w, assets/img/wood/wpc-wood-alternative-lighted-decor-slats-riyadh-768w.webp 768w, assets/img/wood/wpc-wood-alternative-lighted-decor-slats-riyadh.webp 1200w"}};
+
+  function getResponsiveImage(src) {
+    return RESPONSIVE_IMAGES[src] || null;
   }
 
-  function applyLevel2(intentKey){
-    initLevel2();
-    const { footer, nodesByKey, originalKeys } = LEVEL2_STATE;
-    if(!footer || !footer.parentNode) return;
+const PAGE_INTENTS = {
+    'mazallat.html': 'mazallat',
+    'laser.html': 'laser',
+    'wood.html': 'wood',
+    'sandwich.html': 'sandwich',
+    'cement.html': 'cement',
+    'majalis.html': 'majalis'
+  };
 
-    const orderMap = {
-      laser:   ["hero","spotlight","services","portfolio","beforeafter","car","about","why","cta"],
-      wood:    ["hero","spotlight","services","car","portfolio","beforeafter","about","why","cta"],
-      sandwich:["hero","spotlight","services","portfolio","about","why","beforeafter","cta","car"],
-    };
+  const INTENT_KEYS = Object.keys(INTENTS);
+  let currentIntentKey = null;
 
-    const order = (intentKey && orderMap[intentKey]) ? orderMap[intentKey] : originalKeys;
-    order.forEach(k => {
-      const el = nodesByKey.get(k);
-      if(el) footer.parentNode.insertBefore(el, footer);
-    });
+  // ==========================================================================
+  // أدوات عامة
+  // ==========================================================================
 
-    // Hide modules that are not relevant for a given intent
-    const car = nodesByKey.get("car");
-    if(car) car.hidden = (intentKey === "sandwich");
-
-    // Filter portfolio images to the selected intent
-    filterPortfolio(intentKey);
-
-    // Collapse non-primary sections to keep the flow focused
-    collapseNonPrimary(intentKey, order);
+  function qs(selector, root = document) {
+    return root.querySelector(selector);
   }
 
-  function filterPortfolio(intentKey){
-    const sec = document.querySelector('[data-module="portfolio"]');
-    if(!sec) return;
-    const items = Array.from(sec.querySelectorAll('.g-item'));
-    if(!intentKey){
-      items.forEach(i => i.hidden = false);
+  function qsa(selector, root = document) {
+    return Array.from(root.querySelectorAll(selector));
+  }
+
+  function onReady(callback) {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', callback, { once: true });
       return;
     }
 
-    const allow = new Set(getIntentImages(intentKey));
-    items.forEach(i => {
-      const src = i.querySelector('img')?.getAttribute('src') || "";
-      i.hidden = allow.size ? !allow.has(src) : false;
-    });
+    callback();
+  }
 
-    // Fallback by folder if the exact list doesn't match
-    if(items.every(i => i.hidden)){
-      items.forEach(i => {
-        const src = i.querySelector('img')?.getAttribute('src') || "";
-        const ok = intentKey === "sandwich" ? src.includes("sandwich_panel") : src.includes("mazallat_modern");
-        i.hidden = !ok;
-      });
+  function cleanText(value) {
+    return String(value || '').trim().replace(/\s+/g, ' ');
+  }
+
+  function normalizeText(value) {
+    return cleanText(value)
+      .toLowerCase()
+      .normalize('NFKD')
+      .replace(/[\u064B-\u065F\u0670]/g, '')
+      .replace(/\u0640/g, '')
+      .replace(/[إأآا]/g, 'ا')
+      .replace(/ى/g, 'ي')
+      .replace(/ئ/g, 'ي')
+      .replace(/ؤ/g, 'و')
+      .replace(/ة/g, 'ه');
+  }
+
+  function getUrlParam(name) {
+    try {
+      return new URL(window.location.href).searchParams.get(name) || '';
+    } catch (_error) {
+      return '';
     }
   }
 
-  function collapseNonPrimary(intentKey, order){
-    const sections = Array.from(document.querySelectorAll('[data-module]'));
-    if(!intentKey){
-      sections.forEach(sec => {
-        sec.classList.remove('module-collapsed','expanded');
-        const bar = sec.querySelector('.collapse-bar');
-        if(bar) bar.hidden = true;
+  function isValidIntent(key) {
+    return Object.prototype.hasOwnProperty.call(INTENTS, key);
+  }
+
+  function getIntent(key) {
+    return isValidIntent(key) ? INTENTS[key] : null;
+  }
+
+  function isSafeImagePath(src) {
+    return Boolean(src) && !/^(javascript|data):/i.test(src);
+  }
+
+  // ==========================================================================
+  // كشف الخدمة الحالية
+  // ==========================================================================
+
+  function detectIntentFromPath() {
+    const fileName = window.location.pathname.split('/').pop() || 'index.html';
+    return PAGE_INTENTS[fileName] || null;
+  }
+
+  function detectIntentFromText(text) {
+    const normalizedText = normalizeText(text);
+    if (!normalizedText) return null;
+
+    const matches = [];
+
+    INTENT_KEYS.forEach((key) => {
+      INTENTS[key].keywords.forEach((keyword) => {
+        const normalizedKeyword = normalizeText(keyword);
+
+        if (normalizedKeyword && normalizedText.includes(normalizedKeyword)) {
+          matches.push({
+            key,
+            score: normalizedKeyword.length
+          });
+        }
       });
+    });
+
+    matches.sort((a, b) => b.score - a.score);
+    return matches[0]?.key || null;
+  }
+
+  function detectIntentFromUrl() {
+    const directIntent = normalizeText(getUrlParam('intent'));
+
+    if (isValidIntent(directIntent)) {
+      return directIntent;
+    }
+
+    return detectIntentFromText([
+      directIntent,
+      getUrlParam('utm_source'),
+      getUrlParam('utm_medium'),
+      getUrlParam('utm_campaign'),
+      getUrlParam('utm_term'),
+      getUrlParam('utm_content')
+    ].join(' '));
+  }
+
+  function saveIntent(key) {
+    if (!isValidIntent(key)) return;
+
+    try {
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify({
+          key,
+          ts: Date.now()
+        })
+      );
+    } catch (_error) {}
+  }
+
+  function readSavedIntent() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return null;
+
+      const saved = JSON.parse(raw);
+      if (!saved || !isValidIntent(saved.key)) return null;
+
+      const savedAt = Number(saved.ts);
+
+      if (!Number.isFinite(savedAt) || Date.now() - savedAt > STORAGE_TTL_MS) {
+        localStorage.removeItem(STORAGE_KEY);
+        return null;
+      }
+
+      return saved.key;
+    } catch (_error) {
+      return null;
+    }
+  }
+
+  function clearSavedIntent() {
+    try {
+      localStorage.removeItem(STORAGE_KEY);
+    } catch (_error) {}
+  }
+
+  function resolveInitialIntent() {
+    return detectIntentFromUrl() || detectIntentFromPath() || readSavedIntent();
+  }
+
+  // ==========================================================================
+  // بناء رسالة واتساب تلقائياً حسب الخدمة الحالية
+  // ==========================================================================
+
+  function getPageTitle() {
+    return cleanText(qs('h1')?.textContent || document.title);
+  }
+
+  function getCurrentIntent() {
+    return getIntent(currentIntentKey);
+  }
+
+  function buildWhatsAppMessage(intentKey = currentIntentKey) {
+    const intent = getIntent(intentKey);
+    const serviceName = intent?.messageLabel || 'خدمات مؤسسة إبداع الظل';
+    const pageTitle = getPageTitle();
+
+    return [
+      `السلام عليكم، أرغب في معاينة مجانية وتسعيرة لخدمة ${serviceName}.`,
+      pageTitle ? `الصفحة: ${pageTitle}` : null,
+      'المدينة: الرياض',
+      'فضلاً تواصلوا معي لتحديد التفاصيل والمعاينة.'
+    ].filter(Boolean).join('\n');
+  }
+
+  function buildWhatsAppHref(intentKey = currentIntentKey) {
+    const message = buildWhatsAppMessage(intentKey);
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  }
+
+  function updateWhatsAppLinks() {
+    const href = buildWhatsAppHref();
+
+    qsa(SELECTORS.whatsappLink).forEach((link) => {
+      link.href = href;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.setAttribute('aria-label', 'تواصل عبر واتساب مع مؤسسة إبداع الظل');
+    });
+  }
+
+  // ==========================================================================
+  // تحديث عناصر الواجهة حسب الخدمة
+  // ==========================================================================
+
+  function updateIntentButtons() {
+    qsa(SELECTORS.intentButton).forEach((button) => {
+      const key = button.getAttribute('data-intent');
+      const isActive = key === currentIntentKey;
+
+      button.classList.toggle('active', isActive);
+      button.setAttribute('aria-pressed', String(isActive));
+    });
+  }
+
+  function updateIntentCtas() {
+    const intent = getCurrentIntent();
+    if (!intent) return;
+
+    qsa(SELECTORS.intentCta).forEach((element) => {
+      element.textContent = intent.cta;
+    });
+  }
+
+  // ==========================================================================
+  // Spotlight مخصص حسب الخدمة
+  // ==========================================================================
+
+  function renderSpotlightImage(src, intent) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'sg-thumb';
+    button.setAttribute('data-open-lightbox', '');
+    button.setAttribute('data-src', src);
+
+    const image = document.createElement('img');
+    const responsive = getResponsiveImage(src);
+
+    image.src = src;
+    image.alt = `${intent.label} - مؤسسة إبداع الظل بالرياض`;
+    image.loading = 'lazy';
+    image.decoding = 'async';
+
+    if (responsive) {
+      image.srcset = responsive.srcset;
+      image.sizes = '(max-width: 640px) 50vw, 33vw';
+      image.width = responsive.w;
+      image.height = responsive.h;
+    }
+
+    button.appendChild(image);
+    return button;
+  }
+
+  function renderSpotlight() {
+    const spotlight = qs(SELECTORS.spotlight);
+    if (!spotlight) return;
+
+    const intent = getCurrentIntent();
+
+    if (!intent) {
+      spotlight.hidden = true;
       return;
     }
 
-    const keepCount = intentKey === 'sandwich' ? 4 : 5;
-    const keep = new Set(order.slice(0, keepCount).concat(['hero','spotlight','cta']));
+    const title = qs(SELECTORS.spotlightTitle, spotlight);
+    const lead = qs(SELECTORS.spotlightLead, spotlight);
+    const gallery = qs(SELECTORS.spotlightGallery, spotlight);
 
-    sections.forEach(sec => {
-      const key = sec.dataset.module;
-      if(!key) return;
-      if(key === 'hero' || key === 'spotlight') return;
+    spotlight.hidden = false;
 
-      const shouldCollapse = !keep.has(key);
-      if(shouldCollapse){
-        ensureCollapser(sec);
-        sec.classList.add('module-collapsed');
-        sec.classList.remove('expanded');
-        const bar = sec.querySelector('.collapse-bar');
-        if(bar) bar.hidden = false;
-      }else{
-        sec.classList.remove('module-collapsed');
-        const bar = sec.querySelector('.collapse-bar');
-        if(bar) bar.hidden = true;
-      }
-    });
-  }
+    if (title) {
+      title.textContent = `${intent.label} — خيارات مختارة لك`;
+    }
 
-  function ensureCollapser(section){
-    if(section.querySelector('.collapse-bar')) return;
-    const container = section.querySelector('.container');
-    if(!container) return;
+    if (lead) {
+      lead.textContent = intent.hint;
+    }
 
-    const bar = document.createElement('div');
-    bar.className = 'collapse-bar';
-    bar.innerHTML = '<button type="button" class="btn ghost collapse-toggle">عرض المزيد</button>';
-    container.appendChild(bar);
+    if (gallery) {
+      const fragment = document.createDocumentFragment();
 
-    const btn = bar.querySelector('button');
-    btn.addEventListener('click', () => {
-      const expanded = section.classList.toggle('expanded');
-      if(expanded){
-        section.classList.remove('module-collapsed');
-        btn.textContent = 'إخفاء';
-      }else{
-        section.classList.add('module-collapsed');
-        btn.textContent = 'عرض المزيد';
-        section.scrollIntoView({behavior:'smooth', block:'start'});
-      }
-    });
-  }
-
-  function wireIntentBar(){
-    const bar = document.querySelector("[data-intentbar]");
-    if(!bar) return;
-
-    bar.querySelectorAll(".intent-pill").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const key = btn.dataset.intent;
-        saveIntent(key);
-        applyIntentUI(key);
-        // smooth scroll on home
-        const spot = document.querySelector("[data-intent-spotlight]");
-        if(spot) spot.scrollIntoView({behavior:"smooth", block:"start"});
+      intent.images.slice(0, 6).forEach((src) => {
+        if (!isSafeImagePath(src)) return;
+        fragment.appendChild(renderSpotlightImage(src, intent));
       });
-    });
 
-    const clear = bar.querySelector("[data-intent-clear]");
-    if(clear){
-      clear.addEventListener("click", (e) => {
-        e.preventDefault();
-        clearIntent();
-        applyIntentUI(null);
-      });
+      gallery.replaceChildren(fragment);
     }
   }
 
-  function wireSpotlightForm(){
-    const form = document.querySelector("[data-intent-form]");
-    if(!form) return;
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const intentKey = document.documentElement.dataset.intent || null;
-      const data = Object.fromEntries(new FormData(form).entries());
-      const msg = encodeURIComponent(buildWhatsAppMessage(intentKey, data));
-      const href = `https://wa.me/${WA_NUMBER}?text=${msg}`;
-      window.open(href, "_blank", "noopener");
-    });
+  // ==========================================================================
+  // Lightbox بسيط وآمن لصور Spotlight
+  // ==========================================================================
+
+  function closeLightbox() {
+    qs('.spotlight-lb')?.remove();
   }
 
-  function wireSpotlightLightbox(){
-    // If the page already has lightbox.js, reuse it by simulating clicks on a hidden gallery.
-    // Simple local lightbox for spotlight thumbs:
-    const overlay = document.createElement("div");
-    overlay.className = "spotlight-lb";
-    overlay.innerHTML = `
-      <div class="slb-backdrop" data-s-close></div>
-      <div class="slb-dialog" role="dialog" aria-modal="true" aria-label="تكبير الصورة">
-        <button class="slb-close" type="button" data-s-close aria-label="إغلاق">✕</button>
-        <img class="slb-img" alt="">
-      </div>
-    `;
+  function openLightbox(src, alt = '') {
+    if (!isSafeImagePath(src)) return;
+
+    closeLightbox();
+
+    const overlay = document.createElement('div');
+    overlay.className = 'spotlight-lb open';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'تكبير الصورة');
+
+    const backdrop = document.createElement('button');
+    backdrop.type = 'button';
+    backdrop.className = 'slb-backdrop';
+    backdrop.setAttribute('aria-label', 'إغلاق الصورة');
+
+    const dialog = document.createElement('div');
+    dialog.className = 'slb-dialog';
+
+    const closeButton = document.createElement('button');
+    closeButton.type = 'button';
+    closeButton.className = 'slb-close';
+    closeButton.textContent = '×';
+    closeButton.setAttribute('aria-label', 'إغلاق الصورة');
+
+    const image = document.createElement('img');
+    image.className = 'slb-img';
+    image.src = src;
+    image.alt = alt;
+    image.decoding = 'async';
+
+    backdrop.addEventListener('click', closeLightbox);
+    closeButton.addEventListener('click', closeLightbox);
+
+    dialog.append(closeButton, image);
+    overlay.append(backdrop, dialog);
     document.body.appendChild(overlay);
-    const img = overlay.querySelector(".slb-img");
 
-    function open(src){
-      img.src = src;
-      overlay.classList.add("open");
-      overlay.setAttribute("aria-hidden","false");
-    }
-    function close(){
-      overlay.classList.remove("open");
-      overlay.setAttribute("aria-hidden","true");
-      img.src = "";
-    }
-    overlay.querySelectorAll("[data-s-close]").forEach(el => el.addEventListener("click", close));
-    document.addEventListener("keydown", (e) => {
-      if(e.key === "Escape") close();
+    closeButton.focus();
+  }
+
+  function wireLightbox() {
+    document.addEventListener('click', (event) => {
+      const trigger = event.target.closest(SELECTORS.lightboxTrigger);
+      if (!trigger) return;
+
+      const src = trigger.getAttribute('data-src');
+      const alt = qs('img', trigger)?.alt || '';
+
+      event.preventDefault();
+      openLightbox(src, alt);
     });
 
-    document.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-open-lightbox]");
-      if(!btn) return;
-      const src = btn.getAttribute("data-src");
-      if(src) open(src);
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeLightbox();
+      }
     });
   }
 
-  // Init
-  const intentKey = detectIntent();
-  if(intentKey) saveIntent(intentKey);
+  // ==========================================================================
+  // تطبيق الخدمة الحالية
+  // ==========================================================================
 
-  wireIntentBar();
-  wireSpotlightForm();
-  wireSpotlightLightbox();
-  applyIntentUI(intentKey);
+  function applyIntent(key, options = {}) {
+    currentIntentKey = isValidIntent(key) ? key : null;
 
+    if (currentIntentKey) {
+      document.documentElement.dataset.intent = currentIntentKey;
+
+      if (options.save === true) {
+        saveIntent(currentIntentKey);
+      }
+    } else {
+      delete document.documentElement.dataset.intent;
+    }
+
+    updateIntentButtons();
+    updateIntentCtas();
+    updateWhatsAppLinks();
+    renderSpotlight();
+  }
+
+  function wireIntentBar() {
+    const bar = qs(SELECTORS.intentBar);
+    if (!bar) return;
+
+    bar.addEventListener('click', (event) => {
+      const clearButton = event.target.closest(SELECTORS.intentClear);
+
+      if (clearButton) {
+        event.preventDefault();
+        clearSavedIntent();
+        applyIntent(null);
+        return;
+      }
+
+      const intentButton = event.target.closest(SELECTORS.intentButton);
+      if (!intentButton || !bar.contains(intentButton)) return;
+
+      const key = intentButton.getAttribute('data-intent');
+      if (!isValidIntent(key)) return;
+
+      event.preventDefault();
+      applyIntent(key, { save: true });
+
+      const spotlight = qs(SELECTORS.spotlight);
+      if (spotlight && !spotlight.hidden) {
+        spotlight.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+      }
+    });
+  }
+
+  // ==========================================================================
+  // التهيئة النهائية
+  // ==========================================================================
+
+  function init() {
+    wireIntentBar();
+    wireLightbox();
+
+    applyIntent(resolveInitialIntent(), {
+      save: Boolean(detectIntentFromPath())
+    });
+
+    window.IbdaaIntent = Object.freeze({
+      apply(key) {
+        applyIntent(key, { save: true });
+      },
+      clear() {
+        clearSavedIntent();
+        applyIntent(null);
+      },
+      current() {
+        return currentIntentKey;
+      },
+      message() {
+        return buildWhatsAppMessage(currentIntentKey);
+      },
+      href() {
+        return buildWhatsAppHref(currentIntentKey);
+      }
+    });
+  }
+
+  onReady(init);
 })();

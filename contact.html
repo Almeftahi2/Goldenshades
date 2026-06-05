@@ -4,23 +4,18 @@
 <head>
 <script>
   (function () {
-    // Force canonical host/protocol on the LIVE site only.
-    // لا نعمل Redirect عند فتح الملفات محلياً (file://) أو على localhost.
     var targetHost = "www.ebdadhel.com";
     var proto = window.location.protocol;
     var host = window.location.hostname;
 
-    // Skip local file previews and local dev servers
     if (proto !== "http:" && proto !== "https:") return;
     if (host === "localhost" || host === "127.0.0.1") return;
 
-    // Redirect non-www to www
     if (host === "ebdadhel.com") {
       window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
       return;
     }
 
-    // Enforce HTTPS on www
     if (host === targetHost && proto !== "https:") {
       window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
     }
@@ -30,38 +25,378 @@
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="notranslate" name="google"/>
 <meta content="notranslate" name="googlebot"/>
-<link crossorigin="" href="https://cdn.jsdelivr.net" rel="preconnect"/>
-<link href="https://cdn.jsdelivr.net" rel="dns-prefetch"/>
-<title>اتصل بنا | مؤسسة إبداع الظل للمظلات والساندوتش بانل بالرياض</title>
+<title>اتصل بنا | مؤسسة إبداع الظل بالرياض - معاينة مجانية</title>
+<meta content="تواصل مع مؤسسة إبداع الظل في الرياض لطلب معاينة مجانية لمشاريع المظلات والديكور الخارجي والساندوتش بانل والإسمنت بورد وبديل الخشب." name="description"/>
+<meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
+<meta content="مؤسسة إبداع الظل" name="author"/>
+<meta content="Arabic" name="language"/>
+<meta content="SA-01" name="geo.region"/>
+<meta content="Riyadh" name="geo.placename"/>
+<meta content="telephone=yes" name="format-detection"/>
+<meta content="#2D2E32" name="theme-color"/>
+<link href="https://www.ebdadhel.com/contact.html" rel="canonical"/>
+<link href="https://www.ebdadhel.com/contact.html" hreflang="ar-SA" rel="alternate"/>
+<link href="https://www.ebdadhel.com/contact.html" hreflang="x-default" rel="alternate"/>
+<link href="/favicon.ico" rel="icon" sizes="any"/>
+<link href="assets/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+<link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180">
+<link href="site.webmanifest" rel="manifest"/>
+<meta content="ar_SA" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="مؤسسة إبداع الظل" property="og:site_name"/>
+<meta content="اتصل بنا | مؤسسة إبداع الظل بالرياض - معاينة مجانية" property="og:title"/>
+<meta content="اطلب معاينة مجانية الآن لمشروع مظلات أو ديكور خارجي داخل الرياض." property="og:description"/>
+<meta content="https://www.ebdadhel.com/contact.html" property="og:url"/>
+<meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image"/>
+<meta content="اتصل بنا - مؤسسة إبداع الظل بالرياض" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="اتصل بنا | مؤسسة إبداع الظل بالرياض - معاينة مجانية" name="twitter:title"/>
+<meta content="اطلب معاينة مجانية الآن لمشروع مظلات أو ديكور خارجي داخل الرياض." name="twitter:description"/>
+<meta content="https://www.ebdadhel.com/assets/img/og-cover.png" name="twitter:image"/>
+<link as="image" href="assets/img/logo-64.webp" imagesizes="56px" imagesrcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" rel="preload" type="image/webp"/>
+<link href="assets/css/site.min.css" rel="stylesheet"/>
+<style>
+:root{
+  --charcoal:#2D2E32;
+  --gold:#B58951;
+  --gold2:#D6A36B;
+  --ivory:#F9F9F9;
+  --bg:#1F2023;
+  --text:var(--ivory);
+  --sub:rgba(249,249,249,.72);
+  --line:rgba(255,255,255,.10);
+  --radius:18px;
+  --shadow:0 18px 44px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  background:var(--bg);
+  color:var(--ivory);
+  direction:rtl;
+  line-height:1.7;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1120px,92%);margin:0 auto}
+.skip-link{position:absolute;top:-80px}
 
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:rgba(45,46,50,.94);
+  border-bottom:1px solid rgba(255,255,255,.06);
+  backdrop-filter:blur(12px);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+.brand-link,.brand,.cta{display:flex;align-items:center;gap:10px}
+.brand-logo{width:54px;height:54px;border-radius:14px;object-fit:cover}
+.brand-title{font-size:15px;font-weight:800}
+.brand-sub{font-size:12px;color:rgba(243,244,246,.70);font-weight:700}
+.menu{display:flex;align-items:center;gap:14px}
+.menu a{color:rgba(243,244,246,.82);padding:8px 10px;border-radius:12px;font-weight:600}
+.menu a.active,.menu a:hover{background:linear-gradient(135deg,var(--gold),var(--gold2));color:#111}
+.hamburger{display:none}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:11px 15px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.055);
+  box-shadow:var(--shadow);
+  font-weight:800;
+}
+.btn.primary,.btn.gold{
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#111;
+  border:0;
+}
+.btn.ghost{
+  background:transparent;
+  border:1px solid rgba(181,137,81,.45);
+  color:var(--ivory);
+}
+.contact-hero{
+  padding:58px 0 34px;
+  background:
+    radial-gradient(circle at top right,rgba(181,137,81,.16),transparent 30rem),
+    linear-gradient(180deg,rgba(255,255,255,.035),transparent);
+}
+.contact-hero-inner{
+  max-width:840px;
+  margin:0 auto;
+  text-align:center;
+}
+.kicker{
+  display:inline-flex;
+  padding:7px 14px;
+  border-radius:999px;
+  border:1px solid rgba(181,137,81,.35);
+  background:rgba(181,137,81,.12);
+  color:#F6D6A8;
+  font-weight:800;
+  font-size:13px;
+}
+.contact-hero h1{
+  margin:16px 0 12px;
+  font-size:clamp(30px,5vw,54px);
+  line-height:1.2;
+  font-weight:900;
+}
+.contact-hero p{
+  margin:0 auto;
+  color:var(--sub);
+  font-size:18px;
+  max-width:720px;
+}
+.contact-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+.section{padding:38px 0}
+.contact-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:16px;
+}
+.contact-card{
+  position:relative;
+  min-height:255px;
+  padding:22px;
+  border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.035));
+  border:1px solid var(--line);
+  box-shadow:0 14px 34px rgba(0,0,0,.30);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  overflow:hidden;
+}
+.contact-card::after{
+  content:"";
+  position:absolute;
+  inset:auto -30% -60% -30%;
+  height:160px;
+  background:radial-gradient(circle,rgba(181,137,81,.18),transparent 65%);
+  pointer-events:none;
+}
+.contact-card.featured{
+  border-color:rgba(181,137,81,.55);
+  background:linear-gradient(180deg,rgba(181,137,81,.18),rgba(255,255,255,.035));
+}
+.fast-badge{
+  position:absolute;
+  top:14px;
+  left:14px;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(214,163,107,.18);
+  border:1px solid rgba(214,163,107,.35);
+  color:#F6D6A8;
+  font-size:12px;
+  font-weight:900;
+}
+.card-icon{
+  width:52px;
+  height:52px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#111;
+  font-size:25px;
+  margin-bottom:14px;
+}
+.contact-card h2{
+  margin:0 0 8px;
+  font-size:22px;
+}
+.contact-card p{
+  margin:0;
+  color:var(--sub);
+  font-size:15px;
+}
+.big-phone,.big-email{
+  margin-top:12px;
+  color:#F6D6A8;
+  font-weight:900;
+  font-size:21px;
+  direction:ltr;
+  text-align:right;
+}
+.card-link{
+  position:relative;
+  z-index:1;
+  margin-top:20px;
+  width:100%;
+}
+.note-box{
+  margin-top:22px;
+  padding:18px;
+  border-radius:20px;
+  border:1px solid rgba(181,137,81,.28);
+  background:rgba(181,137,81,.08);
+  text-align:center;
+  color:var(--sub);
+}
+.note-box b{color:#F6D6A8}
 
+.reviews-section{
+  background:rgba(255,255,255,.025);
+  border-top:1px solid rgba(255,255,255,.045);
+  border-bottom:1px solid rgba(255,255,255,.045);
+}
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+.review-card{
+  padding:20px;
+  border-radius:22px;
+  background:linear-gradient(180deg,rgba(255,255,255,.065),rgba(255,255,255,.03));
+  border:1px solid var(--line);
+  box-shadow:0 14px 34px rgba(0,0,0,.22);
+}
+.review-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:12px;
+}
+.review-name{
+  font-weight:900;
+  font-size:17px;
+}
+.review-area{
+  color:var(--sub);
+  font-size:13px;
+  margin-top:2px;
+}
+.stars{
+  color:#F6D6A8;
+  font-weight:900;
+  white-space:nowrap;
+  font-size:14px;
+}
+.review-card p{
+  margin:0;
+  color:rgba(249,249,249,.78);
+  font-size:15px;
+}
 
+.footer{
+  padding:38px 0;
+  background:#191A1D;
+  border-top:1px solid var(--line);
+}
+.cols{
+  display:grid;
+  grid-template-columns:1.4fr 1fr 1fr 1fr;
+  gap:24px;
+}
+.footer-brand{display:flex;gap:12px;align-items:center}
+.footer-logo{width:62px;height:62px;border-radius:16px}
+.footer h4{margin:0 0 10px}
+.footer .small,.footer div{color:rgba(249,249,249,.70)}
+.footer-service-links,.social-links{display:flex;flex-direction:column;gap:8px}
+.footer-service-links a,.social-links a{color:rgba(249,249,249,.82)}
+.floating-wa{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  z-index:55;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+.floating-wa a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border-radius:999px;
+  padding:11px 14px;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));
+  color:#111;
+  font-weight:900;
+  box-shadow:0 14px 36px rgba(0,0,0,.30);
+}
+.call-btn{background:rgba(255,255,255,.92)!important}
 
-
-
-
-
-
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/><link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" onload="this.onload=null;this.rel='stylesheet'"/><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap"/></noscript>
-<style>:root{--charcoal:#2D2E32;--gold:#B58951;--ivory:#F9F9F9;--bg:#1F2023;--text:var(--ivory);--radius:18px;--shadow:0 18px 44px rgba(0,0,0,.45)}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#1F2023;color:#F9F9F9;direction:rtl;line-height:1.7}a{color:inherit;text-decoration:none}img{max-width:100%;display:block}.container{width:min(1120px,92%);margin:0 auto}.topbar{position:sticky;top:0;z-index:50;background:rgba(45,46,50,.92);border-bottom:1px solid rgba(255,255,255,.06)}.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}.brand-link,.brand,.cta{display:flex;align-items:center;gap:10px}.brand-logo{width:54px;height:54px;border-radius:14px}.brand-title{font-size:15px;font-weight:800}.brand-sub{font-size:12px;color:rgba(243,244,246,.70);font-weight:700}.menu{display:flex;align-items:center;gap:14px}.menu a{color:rgba(243,244,246,.82);padding:8px 10px;border-radius:12px;font-weight:600}.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:10px 14px;border-radius:14px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.055);box-shadow:var(--shadow);font-weight:800}.btn.primary,.btn.gold{background:linear-gradient(135deg,#B58951,#D6A36B);color:#111;border:0}.hero{position:relative;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:32px;align-items:center;padding:56px 0}.hero h1{font-size:clamp(32px,5vw,64px);line-height:1.15;margin:0 0 16px}.lead{font-size:clamp(16px,2vw,21px);color:rgba(249,249,249,.82)}.hero-card{border-radius:24px;overflow:hidden;background:#111;box-shadow:var(--shadow)}@media(max-width:820px){.menu{display:none}.hero-grid{grid-template-columns:1fr;padding:28px 0}.brand-logo{width:44px;height:44px}.cta{gap:6px}.btn{padding:9px 10px}.hero-card{max-width:420px;margin:auto}}</style><link rel="stylesheet" href="assets/css/site.min.css">
-
-
-<meta content="تواصل مع مؤسسة إبداع الظل بالرياض لطلب معاينة مجانية للمظلات والساندوتش بانل والإسمنت بورد والمجالس. اتصال وواتساب 0562526395." name="description"/><meta content="اتصل مؤسسة إبداع الظل, رقم مظلات الرياض, رقم ساندوتش بانل الرياض, معاينة مجانية مظلات الرياض" name="keywords"/><meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/><meta content="مؤسسة إبداع الظل" name="author"/><meta content="مؤسسة إبداع الظل" name="publisher"/><meta content="Arabic" name="language"/><meta content="SA-01" name="geo.region"/><meta content="Riyadh" name="geo.placename"/><meta content="telephone=yes" name="format-detection"/><meta content="#2D2E32" name="theme-color"/><meta content="#2D2E32" name="msapplication-TileColor"/><link href="https://www.ebdadhel.com/contact.html" rel="canonical"/><link href="https://www.ebdadhel.com/contact.html" hreflang="ar-SA" rel="alternate"/><link href="https://www.ebdadhel.com/contact.html" hreflang="x-default" rel="alternate"/><link href="assets/img/favicon.ico" rel="icon" sizes="any"/><link href="assets/img/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/><link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/><link href="site.webmanifest" rel="manifest"/><meta content="ar_SA" property="og:locale"/><meta content="website" property="og:type"/><meta content="مؤسسة إبداع الظل" property="og:site_name"/><meta content="اتصل بنا | مؤسسة إبداع الظل للمظلات والساندوتش بانل بالرياض" property="og:title"/><meta content="تواصل مع مؤسسة إبداع الظل بالرياض لطلب معاينة مجانية للمظلات والساندوتش بانل والإسمنت بورد والمجالس. اتصال وواتساب 0562526395." property="og:description"/><meta content="https://www.ebdadhel.com/contact.html" property="og:url"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" property="og:image:secure_url"/><meta content="التواصل وطلب معاينة مجانية - مؤسسة إبداع الظل" property="og:image:alt"/><meta content="image/png" property="og:image:type"/><meta content="1200" property="og:image:width"/><meta content="630" property="og:image:height"/><meta content="summary_large_image" name="twitter:card"/><meta content="اتصل بنا | مؤسسة إبداع الظل للمظلات والساندوتش بانل بالرياض" name="twitter:title"/><meta content="تواصل مع مؤسسة إبداع الظل بالرياض لطلب معاينة مجانية للمظلات والساندوتش بانل والإسمنت بورد والمجالس. اتصال وواتساب 0562526395." name="twitter:description"/><meta content="https://www.ebdadhel.com/assets/img/og-cover.png" name="twitter:image"/><meta content="التواصل وطلب معاينة مجانية - مؤسسة إبداع الظل" name="twitter:image:alt"/><link as="image" href="assets/img/logo-64.webp" imagesrcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" imagesizes="56px" rel="preload" type="image/webp"/><script type="application/ld+json">{
+@media(max-width:980px){
+  .contact-grid,.reviews-grid{grid-template-columns:repeat(2,1fr)}
+  .cols{grid-template-columns:1fr 1fr}
+  .menu{
+    display:none;
+    position:absolute;
+    top:76px;
+    right:4%;
+    left:4%;
+    padding:12px;
+    background:rgba(31,32,35,.98);
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:var(--shadow);
+  }
+  .menu.mobile-open{display:grid}
+  .hamburger{
+    display:flex;
+    height:42px;
+    padding:0 13px;
+    border-radius:12px;
+    border:1px solid var(--line);
+    background:rgba(255,255,255,.06);
+    align-items:center;
+  }
+  .hamburger span{
+    width:20px;
+    height:2px;
+    background:#fff;
+    display:block;
+    position:relative;
+  }
+  .hamburger span:before,.hamburger span:after{
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    height:2px;
+    background:#fff;
+  }
+  .hamburger span:before{top:-7px}
+  .hamburger span:after{top:7px}
+  .cta{display:none}
+}
+@media(max-width:620px){
+  .container{width:min(94%,1120px)}
+  .contact-grid,.reviews-grid,.cols{grid-template-columns:1fr}
+  .contact-hero{padding:38px 0 24px}
+  .contact-hero h1{font-size:32px}
+  .contact-actions .btn{width:100%}
+  .floating-wa{right:12px;left:12px}
+  .big-phone,.big-email{text-align:center}
+}
+</style>
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": [
-        "LocalBusiness",
-        "HomeAndConstructionBusiness"
-      ],
+      "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
       "@id": "https://www.ebdadhel.com/#business",
       "name": "مؤسسة إبداع الظل",
-      "alternateName": [
-        "إبداع الظل",
-        "ابداع الظل"
-      ],
+      "alternateName": ["إبداع الظل", "ابداع الظل"],
       "url": "https://www.ebdadhel.com/",
       "logo": {
         "@type": "ImageObject",
@@ -69,13 +404,10 @@
         "width": 512,
         "height": 512
       },
-      "image": [
-        "https://www.ebdadhel.com/assets/img/logo-512.png",
-        "https://www.ebdadhel.com/assets/img/og-cover.png",
-        "https://www.ebdadhel.com/assets/img/hero.webp"
-      ],
       "telephone": "+966562526395",
-      "description": "مؤسسة متخصصة في تنفيذ المظلات المودرن والساندوتش بانل والإسمنت بورد والمجالس والجلسات في الرياض.",
+      "email": "info@ebdadhel.com",
+      "priceRange": "$$",
+      "description": "مؤسسة متخصصة في تنفيذ المظلات والديكور الخارجي والساندوتش بانل والإسمنت بورد وبديل الخشب والجلسات الخارجية في الرياض.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "الرياض",
@@ -83,32 +415,25 @@
         "addressCountry": "SA"
       },
       "areaServed": [
-        {
-          "@type": "City",
-          "name": "الرياض"
-        },
-        {
-          "@type": "Country",
-          "name": "المملكة العربية السعودية"
-        }
+        {"@type": "City", "name": "الرياض"},
+        {"@type": "Country", "name": "المملكة العربية السعودية"}
       ],
       "contactPoint": [
         {
           "@type": "ContactPoint",
           "telephone": "+966562526395",
+          "email": "info@ebdadhel.com",
           "contactType": "customer service",
           "areaServed": "SA",
-          "availableLanguage": [
-            "Arabic"
-          ]
+          "availableLanguage": ["Arabic"],
+          "url": "https://www.ebdadhel.com/contact.html"
         }
       ],
       "sameAs": [
         "https://tiktok.com/@abda.adel100",
         "https://www.instagram.com/mzalat1?igsh=czkyMzR5Y2tnNDYx",
         "https://youtube.com/channel/UCzd1sNGuzWcT3-sJaCvp3FA?si=JgEiq5I6LNmDnbls"
-      ],
-      "priceRange": "$$"
+      ]
     },
     {
       "@type": "WebSite",
@@ -116,27 +441,18 @@
       "url": "https://www.ebdadhel.com/",
       "name": "مؤسسة إبداع الظل",
       "inLanguage": "ar-SA",
-      "publisher": {
-        "@id": "https://www.ebdadhel.com/#business"
-      }
+      "publisher": {"@id": "https://www.ebdadhel.com/#business"}
     },
     {
-      "@type": "WebPage",
+      "@type": "ContactPage",
       "@id": "https://www.ebdadhel.com/contact.html#webpage",
       "url": "https://www.ebdadhel.com/contact.html",
-      "name": "اتصل بنا | مؤسسة إبداع الظل للمظلات والساندوتش بانل بالرياض",
-      "description": "تواصل مع مؤسسة إبداع الظل بالرياض لطلب معاينة مجانية للمظلات والساندوتش بانل والإسمنت بورد والمجالس. اتصال وواتساب 0562526395.",
+      "name": "اتصل بنا | مؤسسة إبداع الظل بالرياض - معاينة مجانية",
+      "description": "صفحة التواصل مع مؤسسة إبداع الظل في الرياض لطلب معاينة مجانية لمشاريع المظلات والديكور الخارجي.",
       "inLanguage": "ar-SA",
-      "isPartOf": {
-        "@id": "https://www.ebdadhel.com/#website"
-      },
-      "about": {
-        "@id": "https://www.ebdadhel.com/#business"
-      },
-      "primaryImageOfPage": {
-        "@type": "ImageObject",
-        "url": "https://www.ebdadhel.com/assets/img/og-cover.png"
-      }
+      "isPartOf": {"@id": "https://www.ebdadhel.com/#website"},
+      "about": {"@id": "https://www.ebdadhel.com/#business"},
+      "mainEntity": {"@id": "https://www.ebdadhel.com/#business"}
     },
     {
       "@type": "BreadcrumbList",
@@ -155,260 +471,212 @@
           "item": "https://www.ebdadhel.com/contact.html"
         }
       ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://www.ebdadhel.com/contact.html#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "ما رقم التواصل مع مؤسسة إبداع الظل؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "يمكن التواصل عبر الاتصال أو واتساب على الرقم 0562526395."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "ما المعلومات التي أرسلها لعرض السعر؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "أرسل نوع الخدمة، صور الموقع، الحي، المقاسات التقريبية، وأي تفاصيل خاصة بالتصميم أو التشطيب."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل المعاينة مجانية؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "نعم، يمكن طلب معاينة مجانية داخل الرياض لتقييم الموقع وتحديد التفاصيل."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "هل تخدمون خارج الرياض؟",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "الموقع يركز على الرياض، ويمكن مناقشة الطلبات خارجها حسب موقع المشروع وطبيعته."
-          }
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://www.ebdadhel.com/contact.html#service",
-      "name": "التواصل وطلب معاينة مجانية",
-      "serviceType": "خدمة العملاء",
-      "description": "تواصل مع مؤسسة إبداع الظل بالرياض لطلب معاينة مجانية للمظلات والساندوتش بانل والإسمنت بورد والمجالس. اتصال وواتساب 0562526395.",
-      "url": "https://www.ebdadhel.com/contact.html",
-      "image": "https://www.ebdadhel.com/assets/img/og-cover.png",
-      "provider": {
-        "@id": "https://www.ebdadhel.com/#business"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "الرياض"
-        }
-      ],
-      "availableChannel": {
-        "@type": "ServiceChannel",
-        "serviceUrl": "https://www.ebdadhel.com/contact.html",
-        "servicePhone": {
-          "@type": "ContactPoint",
-          "telephone": "+966562526395",
-          "contactType": "customer service"
-        }
-      }
     }
   ]
-}</script></head>
-<body class="notranslate"><a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a>
-<div class="intentbar" data-intentbar="">
-<div class="container">
-<div class="intentbar-inner">
-<span class="intentbar-label">اختر اهتمامك:</span>
-<button class="intent-pill" data-intent="laser" type="button">مظلات ليزر</button>
-<button class="intent-pill" data-intent="wood" type="button">بديل خشب</button>
-<button class="intent-pill" data-intent="sandwich" type="button">ساندوتش بانل</button>
-<a class="intent-clear" data-intent-clear="" href="#">عرض الكل</a>
-</div>
-</div>
-</div>
+}
+</script>
+</link></head>
+<body class="notranslate">
+<a class="skip-link" href="#main-content">تجاوز إلى المحتوى</a>
 <header class="topbar" role="banner">
 <div class="container">
 <div class="nav">
-<div class="brand"><a aria-label="الانتقال إلى الصفحة الرئيسية - مؤسسة إبداع الظل" class="brand-link" href="index.html"><img alt="شعار مؤسسة إبداع الظل" class="brand-logo" decoding="async" fetchpriority="high" height="56" loading="eager" sizes="56px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="56"/><span class="brand-text"><span class="brand-title">مؤسسة إبداع الظل</span><span class="brand-sub">الرياض - السعودية</span></span></a></div>
+<div class="brand">
+<a aria-label="الانتقال إلى الصفحة الرئيسية - مؤسسة إبداع الظل" class="brand-link" href="index.html">
+<img alt="شعار مؤسسة إبداع الظل" class="brand-logo" decoding="async" fetchpriority="high" height="56" loading="eager" sizes="56px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="56"/>
+<span class="brand-text">
+<span class="brand-title">مؤسسة إبداع الظل</span>
+<span class="brand-sub">الرياض - السعودية</span>
+</span>
+</a>
+</div>
 <button aria-expanded="false" aria-label="فتح القائمة" class="hamburger" data-hamburger="">
 <span></span>
 </button>
-<nav aria-label="القائمة الرئيسية" class="menu" data-menu=""><a class="" href="index.html">الرئيسية</a><a class="" href="mazallat.html">المظلات المودرن</a><a class="" href="laser.html">قص ليزر</a><a class="" href="wood.html">بديل خشب</a><a class="" href="sandwich.html">الساندوتش بانل</a><a class="" href="cement.html">الإسمنت بورد</a><a class="" href="majalis.html">المجالس والجلسات</a><a aria-current="page" class="active" href="contact.html">اتصل بنا</a></nav>
+<nav aria-label="القائمة الرئيسية" class="menu" data-menu="">
+<a class="" href="index.html">الرئيسية</a>
+<a class="" href="mazallat.html">المظلات المودرن</a>
+<a class="" href="laser.html">قص ليزر</a>
+<a class="" href="wood.html">بديل خشب</a>
+<a class="" href="sandwich.html">الساندوتش بانل</a>
+<a class="" href="cement.html">الإسمنت بورد</a>
+<a class="" href="majalis.html">المجالس والجلسات</a>
+<a aria-current="page" class="active" href="contact.html">اتصل بنا</a>
+</nav>
 <div class="cta">
-<a aria-label="طلب معاينة مجانية عبر واتساب لمؤسسة إبداع الظل" class="btn primary" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D8%A7%D9%84%D8%A2%D9%86." rel="noopener" target="_blank">معاينة مجانية بالرياض</a>
+<a aria-label="طلب معاينة مجانية عبر واتساب" class="btn primary" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">معاينة مجانية</a>
 </div>
 </div>
 </div>
 </header>
-<section class="banner" id="main-content">
+<main id="main-content">
+<section class="contact-hero">
 <div class="container">
-<h1>اتصل بنا في الرياض</h1>
-<p>اطلب معاينة مجانية الآن — تواصل سريع عبر واتساب أو عبّئ النموذج وسيتم تحويله مباشرة لواتساب.</p>
+<div class="contact-hero-inner">
+<div class="kicker">تواصل مباشر داخل الرياض</div>
+<h1>اطلب معاينة مجانية لمشروعك الآن</h1>
+<p>نساعدك في اختيار الحل الأنسب للمظلات، الجلسات الخارجية، بديل الخشب، الساندوتش بانل، والإسمنت بورد. تواصل معنا بالطريقة المناسبة لك.</p>
+<div class="contact-actions">
+<a class="btn primary" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">ابدأ عبر واتساب</a>
+<a class="btn ghost" href="tel:+966562526395">اتصل الآن</a>
+</div>
+</div>
 </div>
 </section>
 <section class="section">
 <div class="container">
-<div class="grid">
-<div class="card pad" style="grid-column:span 7">
-<h2 style="margin-top:0">نموذج طلب معاينة</h2>
-<form class="form" data-wa-base="https://wa.me/966562526395" data-wa-form="">
-<div class="field">
-<label>الاسم</label>
-<input name="name" placeholder="مثال: أبو محمد"/>
+<div class="contact-grid">
+<article class="contact-card featured">
+<span class="fast-badge">الأسرع</span>
+<div>
+<div class="card-icon">💬</div>
+<h2>واتساب</h2>
+<p>أرسل صور الموقع والمقاسات التقريبية، وسنرد عليك بسرعة لتحديد الخطوة المناسبة.</p>
 </div>
-<div class="field">
-<label>رقم الجوال</label>
-<input inputmode="tel" name="phone" placeholder="05xxxxxxxx"/>
+<a class="btn primary card-link" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">محادثة واتساب</a>
+</article>
+<article class="contact-card">
+<div>
+<div class="card-icon">📞</div>
+<h2>اتصال هاتفي</h2>
+<p>للاستفسار السريع أو تحديد موعد المعاينة مباشرة مع فريقنا.</p>
+<div class="big-phone">056 252 6395</div>
 </div>
-<div class="field">
-<label>نوع الخدمة</label>
-<select name="service">
-<option value="">اختر الخدمة</option>
-<option>المظلات المودرن</option>
-<option>الساندوتش بانل</option>
-<option>الإسمنت بورد</option>
-<option>المجالس والجلسات</option>
-</select>
+<a class="btn card-link" href="tel:+966562526395">اتصال الآن</a>
+</article>
+<article class="contact-card">
+<div>
+<div class="card-icon">✉️</div>
+<h2>البريد الإلكتروني</h2>
+<p>لإرسال تفاصيل المشروع أو طلبات التعاون والمراسلات الرسمية.</p>
+<div class="big-email">info@ebdadhel.com</div>
 </div>
-<div class="field">
-<label>المدينة / الحي</label>
-<input name="area" placeholder="الرياض - اكتب الحي"/>
+<a class="btn card-link" href="mailto:info@ebdadhel.com">إرسال بريد</a>
+</article>
+<article class="contact-card">
+<div>
+<div class="card-icon">⭐</div>
+<h2>آراء العملاء</h2>
+<p>شاهد تجارب العملاء قبل طلب المعاينة، وتعرّف على جودة التنفيذ والتشطيب.</p>
 </div>
-<div class="field full">
-<label>تفاصيل المشروع</label>
-<textarea name="message" placeholder="المقاس التقريبي، نوع المطلوب، وهل يوجد صور/مخطط؟"></textarea>
+<a class="btn ghost" href="#reviews">عرض كل التقييمات</a>
+</article>
 </div>
-<div class="field full">
-<button class="btn primary" type="submit">إرسال عبر واتساب</button>
-<div class="help">ملاحظة: سيتم فتح واتساب برسالة جاهزة — فقط اضغط إرسال.</div>
-</div>
-</form>
-</div>
-<div class="card pad" style="grid-column:span 5">
-<h2 style="margin-top:0">بيانات التواصل</h2>
-<div style="display:flex;flex-direction:column;gap:10px">
-<div>جوال / واتساب: <b dir="ltr">0562526395</b></div>
-<a class="btn gold" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9.%20" rel="noopener" target="_blank">محادثة واتساب مباشرة</a>
-<div class="small">نخدم الرياض وكافة مناطق السعودية</div>
-</div>
-<div style="margin-top:18px">
-<h3 style="margin:0 0 8px 0">خريطة الموقع</h3>
-<div style="border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,.08)">
-<!-- خريطة الموقع -->
-<iframe height="260" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Riyadh&amp;output=embed" style="border:0" title="خريطة الموقع" width="100%">
-</iframe>
-</div>
-<div class="help">يمكنك التواصل معنا مباشرة عبر الاتصال أو واتساب لتحديد الموقع وطلب المعاينة.</div>
-</div>
-</div>
+<div class="note-box">
+<b>نصيحة سريعة:</b> للحصول على رد أدق، أرسل صورة الموقع، نوع الخدمة المطلوبة، والحي داخل الرياض عبر واتساب.
 </div>
 </div>
 </section>
-
-<section class="section seo-local-section" id="seo-local-content">
+<section class="section reviews-section" id="reviews">
 <div class="container">
 <div class="section-head">
 <div>
-<div class="kicker">خدماتنا داخل الرياض</div>
-<h2>تواصل مباشر لطلب معاينة أو عرض سعر</h2>
+<div class="kicker">آراء العملاء</div>
+<h2>آراء عملائنا</h2>
+<p>تجارب مختصرة من عملاء تعاملوا معنا في مشاريع المظلات والديكور الخارجي داخل الرياض.</p>
 </div>
-<a class="btn primary" href="https://wa.me/966562526395?text=%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9%20%D9%85%D9%86%20%D9%85%D8%A4%D8%B3%D8%B3%D8%A9%20%D8%A5%D8%A8%D8%AF%D8%A7%D8%B9%20%D8%A7%D9%84%D8%B8%D9%84" rel="noopener" target="_blank">اطلب معاينة مجانية</a>
+<a class="btn ghost" href="#reviews">عرض كل التقييمات</a>
 </div>
-<div class="seo-copy">
-<p>نوفر لك طريقة تواصل مباشرة وواضحة: اتصال سريع، واتساب للمعاينة، وبيانات خدمة مخصصة للعملاء داخل الرياض.</p>
-<p>كلما كانت بيانات المشروع أوضح عند التواصل، كان تقدير التكلفة والمدة أدق، لذلك يفضّل إرسال الصور والمقاسات والحي.</p>
-</div>
-<div class="grid seo-grid">
-<article class="card pad seo-card" data-reveal="">
-<h3>اتصال مباشر</h3>
-<p>اتصل على 0562526395 للاستفسار العاجل.</p>
-</article>
-<article class="card pad seo-card" data-reveal="">
-<h3>واتساب</h3>
-<p>أرسل الصور والمقاسات للحصول على تقدير أولي.</p>
-</article>
-<article class="card pad seo-card" data-reveal="">
-<h3>معاينة مجانية</h3>
-<p>تحديد الاحتياج بدقة قبل اعتماد التصميم والتنفيذ.</p>
-</article>
-</div>
-<div class="card pad seo-areas-card">
-<h3>مناطق نخدمها داخل الرياض</h3>
-<p>نخدم أحياء شمال وشرق وغرب وجنوب الرياض، مع إمكانية تنسيق المشاريع حسب الموقع وطبيعة العمل.</p>
-<div aria-label="مناطق نخدمها في الرياض" class="service-areas">
-<span>الياسمين</span><span>النرجس</span><span>العارض</span><span>القيروان</span>
-<span>الملقا</span><span>الصحافة</span><span>قرطبة</span><span>غرناطة</span>
-<span>الروضة</span><span>الرمال</span><span>ظهرة لبن</span><span>السويدي</span>
-</div>
-</div>
-<div class="seo-links-card card pad">
-<h3>استكشف خدماتنا</h3>
-<p>انتقل بسهولة بين خدمات مؤسسة إبداع الظل واختر الخدمة الأقرب لاحتياجك.</p>
-<div aria-label="روابط خدمات مؤسسة إبداع الظل" class="seo-link-cluster">
-<a href="mazallat.html">مظلات مودرن</a>
-<a href="laser.html">مظلات قص ليزر</a>
-<a href="wood.html">مظلات بديل خشب</a>
-<a href="sandwich.html">ساندوتش بانل</a>
-<a href="cement.html">إسمنت بورد</a>
-<a href="majalis.html">مجالس خارجية</a>
-<a href="contact.html">طلب معاينة</a>
-</div>
-</div>
-</div>
-</section>
-<section class="section muted faq-section" id="faq">
-<div class="container">
-<div class="section-head">
+<div class="reviews-grid">
+<article class="review-card">
+<div class="review-top">
 <div>
-<div class="kicker">أسئلة شائعة</div>
-<h2>إجابات مختصرة قبل طلب المعاينة</h2>
+<div class="review-name">أبو خالد</div>
+<div class="review-area">حي الياسمين</div>
 </div>
+<div class="stars">★★★★★ 5</div>
 </div>
-<div class="faq-list">
-<details class="faq-item">
-<summary>ما رقم التواصل مع مؤسسة إبداع الظل؟</summary>
-<p>يمكن التواصل عبر الاتصال أو واتساب على الرقم 0562526395.</p>
-</details>
-<details class="faq-item">
-<summary>ما المعلومات التي أرسلها لعرض السعر؟</summary>
-<p>أرسل نوع الخدمة، صور الموقع، الحي، المقاسات التقريبية، وأي تفاصيل خاصة بالتصميم أو التشطيب.</p>
-</details>
-<details class="faq-item">
-<summary>هل المعاينة مجانية؟</summary>
-<p>نعم، يمكن طلب معاينة مجانية داخل الرياض لتقييم الموقع وتحديد التفاصيل.</p>
-</details>
-<details class="faq-item">
-<summary>هل تخدمون خارج الرياض؟</summary>
-<p>الموقع يركز على الرياض، ويمكن مناقشة الطلبات خارجها حسب موقع المشروع وطبيعته.</p>
-</details>
+<p>تعاملهم ممتاز، حضروا للمعاينة في الوقت المتفق عليه، والشغل طلع مرتب ونظيف. ركّبوا مظلة للسيارة وكانت النتيجة أفضل من المتوقع.</p>
+</article>
+<article class="review-card">
+<div class="review-top">
+<div>
+<div class="review-name">ناصر العتيبي</div>
+<div class="review-area">حي النرجس</div>
+</div>
+<div class="stars">★★★★★ 5</div>
+</div>
+<p>طلبت منهم جلسة خارجية مع تظليل، بصراحة ضبطوا المقاسات والتفاصيل. أكثر شيء أعجبني إنهم يقترحون حلول عملية مو بس تنفيذ.</p>
+</article>
+<article class="review-card">
+<div class="review-top">
+<div>
+<div class="review-name">عبدالله القحطاني</div>
+<div class="review-area">حي الملقا</div>
+</div>
+<div class="stars">★★★★☆ 4.5</div>
+</div>
+<p>سووا لنا بديل خشب للواجهة، اللون والتشطيب ممتازين. كان فيه تأخير بسيط في الموعد لكن النتيجة النهائية تستاهل.</p>
+</article>
+<article class="review-card">
+<div class="review-top">
+<div>
+<div class="review-name">أم فيصل</div>
+<div class="review-area">حي قرطبة</div>
+</div>
+<div class="stars">★★★★★ 5</div>
+</div>
+<p>التواصل كان سريع عن طريق الواتساب، أرسلت لهم الصور ورجعوا لي بتصور واضح. التنفيذ نظيف والعمال محترمين جداً.</p>
+</article>
+<article class="review-card">
+<div class="review-top">
+<div>
+<div class="review-name">سعد الدوسري</div>
+<div class="review-area">حي العارض</div>
+</div>
+<div class="stars">★★★★☆ 4.5</div>
+</div>
+<p>ركبوا ساندوتش بانل لملحق خارجي، العزل ممتاز والشكل النهائي مرتب. السعر كان مناسب مقارنة بالجودة.</p>
+</article>
+<article class="review-card">
+<div class="review-top">
+<div>
+<div class="review-name">محمد الشهري</div>
+<div class="review-area">حي الروضة</div>
+</div>
+<div class="stars">★★★★★ 5</div>
+</div>
+<p>شغل قص الليزر عندهم فخم، عطى المدخل شكل مختلف تماماً. أنصح فيهم خصوصاً للي يبي شكل مودرن وخصوصية بنفس الوقت.</p>
+</article>
 </div>
 </div>
 </section>
-<div class="footer">
+</main>
+<footer class="footer">
 <div class="container">
 <div class="cols">
-<div class="col"><div class="footer-brand"><img alt="شعار مؤسسة إبداع الظل" class="footer-logo" decoding="async" height="64" loading="lazy" sizes="64px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="64"/><div><h4>مؤسسة إبداع الظل</h4><div>تنفيذ مظلات مودرن، ساندوتش بانل، إسمنت بورد، مجالس وجلسات داخل الرياض.</div></div></div><div class="small">© <span id="year"></span> جميع الحقوق محفوظة</div></div>
+<div class="col">
+<div class="footer-brand">
+<img alt="شعار مؤسسة إبداع الظل" class="footer-logo" decoding="async" height="64" loading="lazy" sizes="64px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="64"/>
+<div>
+<h4>مؤسسة إبداع الظل</h4>
+<div>تنفيذ مظلات مودرن، ساندوتش بانل، إسمنت بورد، بديل خشب، مجالس وجلسات خارجية داخل الرياض.</div>
+</div>
+</div>
+<div class="small">© <span id="year"></span> جميع الحقوق محفوظة</div>
+</div>
 <div class="col">
 <h4>روابط سريعة</h4>
-
-<div class="footer-service-links"><a href="mazallat.html">المظلات المودرن</a><a href="laser.html">مظلات قص ليزر</a><a href="wood.html">مظلات بديل خشب</a><a href="sandwich.html">الساندوتش بانل</a><a href="cement.html">الإسمنت بورد</a><a href="majalis.html">المجالس والجلسات</a><a href="contact.html">اتصل بنا</a></div></div>
+<div class="footer-service-links">
+<a href="mazallat.html">المظلات المودرن</a>
+<a href="laser.html">مظلات قص ليزر</a>
+<a href="wood.html">بديل خشب</a>
+<a href="sandwich.html">الساندوتش بانل</a>
+<a href="cement.html">الإسمنت بورد</a>
+<a href="majalis.html">المجالس والجلسات</a>
+<a href="contact.html">اتصل بنا</a>
+</div>
+</div>
 <div class="col">
 <h4>تواصل معنا</h4>
 <div style="display:flex;flex-direction:column;gap:8px">
 <div>جوال / واتساب: <b dir="ltr">0562526395</b></div>
-<a class="btn gold" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9.%20" rel="noopener" style="width:max-content" target="_blank">محادثة واتساب</a>
+<div>البريد: <b dir="ltr">info@ebdadhel.com</b></div>
+<a class="btn gold" data-wa="" href="https://wa.me/966562526395" rel="noopener" style="width:max-content" target="_blank">محادثة واتساب</a>
 <div class="small">نخدم الرياض وكافة مناطق السعودية</div>
 </div>
-</div> <div class="col">
+</div>
+<div class="col">
 <h4>تابعنا</h4>
 <div class="social-links social-icons">
 <a aria-label="TikTok" class="social" href="https://tiktok.com/@abda.adel100" rel="noreferrer noopener" target="_blank"><span class="si">TT</span><span class="st">TikTok</span></a>
@@ -418,9 +686,9 @@
 </div>
 </div>
 </div>
-</div>
+</footer>
 <div class="floating-wa">
-<a aria-label="واتساب" href="https://wa.me/966562526395?text=%D8%A7%D9%84%D8%B3%D9%84%D8%A7%D9%85%20%D8%B9%D9%84%D9%8A%D9%83%D9%85%D8%8C%20%D8%A3%D8%B1%D8%BA%D8%A8%20%D9%81%D9%8A%20%D9%85%D8%B9%D8%A7%D9%8A%D9%86%D8%A9%20%D9%85%D8%AC%D8%A7%D9%86%D9%8A%D8%A9.%20" rel="noopener" target="_blank">
+<a aria-label="واتساب لطلب معاينة مجانية" data-wa="" href="https://wa.me/966562526395" rel="noopener" target="_blank">
 <span aria-hidden="true" class="wa-icon">💬</span>
 <span class="wa-label">واتساب • معاينة مجانية</span>
 </a>
@@ -429,7 +697,7 @@
 <span class="wa-text">اتصال مباشر</span>
 </a>
 </div>
-<script defer src="assets/js/main.js"></script>
-<script defer src="assets/js/intent.js"></script>
+<script defer="" src="assets/js/main.js"></script>
+<script defer="" src="assets/js/intent.js"></script>
 </body>
 </html>

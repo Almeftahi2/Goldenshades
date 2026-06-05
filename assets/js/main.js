@@ -103,6 +103,7 @@
       el.style.removeProperty('--my');
     });
   });
+
   // Before/After sliders
   document.querySelectorAll('.ba-wrap').forEach((wrap)=>{
     const range = wrap.querySelector('.ba-range');
@@ -112,238 +113,33 @@
     range.addEventListener('input', ()=> setPos(parseInt(range.value, 10)));
   });
 
-  // Scrollytelling (Sandwich Panel) — Scroll-linked & pinned
-  const scrolly = document.querySelector('[data-scrolly="sandwich"]');
-  if(scrolly){
-    const steps = Array.from(scrolly.querySelectorAll('.step'));
-    const build = scrolly.querySelector('.build');
-    const pinEl = scrolly.querySelector('.scrolly-wrap') || scrolly;
-    // Graphic element used for micro camera shakes.
-    // (Bug fix) Previously referenced as `graphicEl` without being defined.
-    const graphicEl = scrolly.querySelector('.scrolly-graphic') || build || scrolly;
-
-    const layers = {
-      foundation: scrolly.querySelector('[data-layer="foundation"]'),
-      frame: scrolly.querySelector('[data-layer="frame"]'),
-	      walls: scrolly.querySelector('[data-layer="walls"]'),
-      roof: scrolly.querySelector('[data-layer="roof"]'),
-      shine: scrolly.querySelector('[data-layer="shine"]'),
-      delivery: scrolly.querySelector('[data-layer="delivery"]'),
-    };
-
-    const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // --- Cinematic micro-interactions (sound + shake + golden shine) ---
-    // NOTE: Browsers block audio until a user gesture. We'll "arm" audio on first interaction.
-    let audioCtx = null;
-    let audioArmed = false;
-    const armAudio = ()=>{
-      if(audioArmed) return;
-      try{
-        const Ctx = window.AudioContext || window.webkitAudioContext;
-        if(!Ctx) return;
-        audioCtx = new Ctx();
-        audioArmed = true;
-      }catch(_){/* ignore */}
-    };
-    window.addEventListener('pointerdown', armAudio, { once:true, passive:true });
-
-    const playHit = ()=>{
-      if(!audioCtx) return;
-      const t = audioCtx.currentTime;
-      const o = audioCtx.createOscillator();
-      const g = audioCtx.createGain();
-      o.type = 'square';
-      o.frequency.setValueAtTime(190, t);
-      o.frequency.exponentialRampToValueAtTime(110, t + 0.06);
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.18, t + 0.01);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.09);
-      o.connect(g);
-      g.connect(audioCtx.destination);
-      o.start(t);
-      o.stop(t + 0.10);
-    };
-
-    const playChime = ()=>{
-      if(!audioCtx) return;
-      const t = audioCtx.currentTime;
-      const o = audioCtx.createOscillator();
-      const g = audioCtx.createGain();
-      o.type = 'sine';
-      o.frequency.setValueAtTime(880, t);
-      o.frequency.exponentialRampToValueAtTime(660, t + 0.22);
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(0.14, t + 0.02);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + 0.34);
-      o.connect(g);
-      g.connect(audioCtx.destination);
-      o.start(t);
-      o.stop(t + 0.36);
-    };
-
-    const activateStep = (idx)=>{
-      steps.forEach((s,i)=> s.classList.toggle('active', i === idx));
-    };
-
-    const setOrb = (p)=>{
-      if(!build) return;
-      const ox = Math.sin(p * Math.PI * 2) * 22;
-      const oy = Math.cos(p * Math.PI * 2) * 14;
-      build.style.setProperty('--sx', ox.toFixed(1)+'px');
-      build.style.setProperty('--sy', oy.toFixed(1)+'px');
-    };
-
-    // Preferred: GSAP ScrollTrigger (pinned + scrub)
-    if(window.gsap && window.ScrollTrigger && !prefersReduced){
-      try{
-        window.gsap.registerPlugin(window.ScrollTrigger);
-
-        // Clear any inline styles from fallback mode
-        Object.values(layers).forEach((el)=>{
-          if(!el) return;
-          el.style.removeProperty('opacity');
-          el.style.removeProperty('transform');
-        });
-
-        const mm = window.gsap.matchMedia();
-        mm.add(
-          {
-            isDesktop: '(min-width: 901px)',
-            isMobile: '(max-width: 900px)',
-          },
-          (ctx)=>{
-            const endDist = ctx.conditions.isMobile ? 1600 : 2400;
-
-            // Initial states (scenario: foundation → steel frame → walls → roof → shine)
-            window.gsap.set(layers.foundation, { opacity: 0, y: 20 });
-            window.gsap.set(layers.frame, { opacity: 0, y: -160, scale: 1.01, filter: 'contrast(1.12) brightness(1.06)' });
-
-	            // Walls stage (single full image) – show it as the third step
-	            window.gsap.set(layers.walls, { opacity: 0, y: 10, scale: 1.005, filter: 'contrast(1.06) brightness(1.02)' });
-
-            window.gsap.set(layers.roof, { opacity: 0, y: -180, scale: 0.99, transformOrigin: '50% 15%' });
-            window.gsap.set(layers.shine, { opacity: 0, scale: 1.02, backgroundPosition: '0% 50%' });
-            window.gsap.set(layers.delivery, { opacity: 0, y: 18, scale: 0.98, transformOrigin: '100% 100%' });
-
-            // Progress thresholds (for 1-shot sound triggers)
-            let prevP = 0;
-
-            // Timeline linked to scroll progress
-            const tl = window.gsap.timeline({
-              defaults: { ease: 'none' },
-              scrollTrigger: {
-                trigger: scrolly,
-                start: ctx.conditions.isMobile ? 'top top+=64' : 'top top+=80',
-                end: '+=' + endDist,
-                scrub: 0.9,
-                pin: pinEl,
-                anticipatePin: 1,
-                onUpdate: (self)=>{
-                  const p = self.progress || 0;
-                  const stepIdx = (p < 0.24) ? 0 : (p < 0.48) ? 1 : (p < 0.76) ? 2 : 3;
-                  activateStep(stepIdx);
-                  setOrb(p);
-
-                  // Cinematic sound cues (forward direction only)
-                  if(p > prevP){
-                    if(prevP < 0.26 && p >= 0.26) playHit();        // steel locks in
-                    if(prevP < 0.74 && p >= 0.74) playChime();      // roof completion
-                  }
-                  prevP = p;
-                },
-              },
-            });
-
-            // Keyframes (scroll-linked, scrubbed)
-            tl.to(layers.foundation, { opacity: 1, y: 0 }, 0.02)
-              // Steel skeleton lands and “locks”
-              .to(layers.frame, { opacity: 1, y: 0, scale: 1 }, 0.26)
-
-              // Subtle camera shake when the steel skeleton "clicks" into place
-              .to(graphicEl, { x: -5, y: 2, rotation: -0.35, duration: 0.018, ease: 'power4.out' }, 0.315)
-              .to(graphicEl, { x: 4, y: -2, rotation: 0.25, duration: 0.018, ease: 'power4.out' }, 0.335)
-              .to(graphicEl, { x: -3, y: 1, rotation: -0.18, duration: 0.018, ease: 'power4.out' }, 0.355)
-              .to(graphicEl, { x: 0, y: 0, rotation: 0, duration: 0.03, ease: 'power4.out' }, 0.375)
-
-              // Walls (single stage image)
-              .to(layers.walls, { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out' }, 0.50)
-
-              // Roof lands and completes the build
-              .to(layers.roof, { opacity: 1, y: 0, scale: 1 }, 0.74)
-              // Golden flash + shine sweep when roof completes
-              .to(graphicEl, { x: -3, y: 1, rotation: -0.18, duration: 0.015, ease: 'power4.out' }, 0.765)
-              .to(graphicEl, { x: 2, y: -1, rotation: 0.12, duration: 0.015, ease: 'power4.out' }, 0.78)
-              .to(graphicEl, { x: 0, y: 0, rotation: 0, duration: 0.02, ease: 'power4.out' }, 0.80)
-
-              .to(layers.roof, { filter: 'contrast(1.10) brightness(1.05) saturate(1.06) drop-shadow(0 24px 66px rgba(0,0,0,.62)) drop-shadow(0 12px 24px rgba(0,0,0,.45)) drop-shadow(0 0 30px rgba(181,137,81,.62))', duration: 0.07 }, 0.80)
-              .to(layers.roof, { filter: '', duration: 0.08 }, 0.90)
-
-              .to(layers.shine, { opacity: 1, scale: 1 }, 0.82)
-              .to(layers.shine, { backgroundPosition: '200% 50%', duration: 0.18 }, 0.82)
-              .to(layers.shine, { opacity: 0.0, duration: 0.12 }, 0.94)
-
-              // Delivery stamp (final handover)
-              .to(layers.delivery, { opacity: 1, y: 0, scale: 1, duration: 0.22, ease: 'power2.out' }, 0.90);
-
-// A subtle “lock-in” at the end (cinematic)
-	            tl.to([layers.foundation, layers.frame, layers.walls, layers.roof], { y: -2 }, 0.92)
-	              .to([layers.foundation, layers.frame, layers.walls, layers.roof], { y: 0 }, 0.96);
-
-// Ensure correct state on load
-            activateStep(0);
-            setOrb(0);
-
-            return ()=> {};
-          }
-        );
-
-      }catch(e){
-        console.warn('Scrolly GSAP init failed; falling back.', e);
-      }
-    }
-
-    // Fallback: lightweight scroll-linked progress (no external libs)
-    if(!(window.gsap && window.ScrollTrigger) || prefersReduced){
-      const clamp = (v)=> Math.max(0, Math.min(1, v));
-      const lerp = (a,b,t)=> a + (b-a)*t;
-      const smoothstep = (t)=> t*t*(3-2*t);
-      const reveal = (p, a, b)=> smoothstep(clamp((p-a)/Math.max(1e-6,(b-a))));
-
-      let raf2 = 0;
-      const onScroll = ()=>{
-        if(raf2) return;
-        raf2 = requestAnimationFrame(()=>{
-          raf2 = 0;
-          const rect = scrolly.getBoundingClientRect();
-          const start = rect.top + window.scrollY;
-          const end = start + scrolly.offsetHeight - window.innerHeight;
-          const denom = Math.max(1, end - start);
-          const p = clamp((window.scrollY - start) / denom);
-
-          const stepIdx = (p < 0.24) ? 0 : (p < 0.48) ? 1 : (p < 0.76) ? 2 : 3;
-          activateStep(stepIdx);
-
-          const setLayer = (el, t0, t1, xFrom, yFrom)=>{
-            if(!el) return;
-            const t = reveal(p, t0, t1);
-            const x = lerp(xFrom, 0, t);
-            const y = lerp(yFrom, 0, t);
-            el.style.opacity = (0.02 + 0.98*t).toFixed(3);
-            el.style.transform = `translate(${x}px, ${y}px)`;
-          };
-          setLayer(layers.foundation, 0.00, 0.24, 0, 18);
-          setLayer(layers.frame, 0.18, 0.48, 0, -140);
-	          setLayer(layers.walls, 0.40, 0.76, 0, 60);
-          setLayer(layers.roof, 0.66, 0.95, 0, -160);
-          setLayer(layers.shine, 0.80, 1.00, 0, 0);
-          setOrb(p);
-});
-      };
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      window.addEventListener('resize', onScroll);
-      onScroll();
-    }
-  }
 })();
+
+// Auto active Navbar link based on current page
+document.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll('nav.menu a');
+
+  let currentPage = window.location.pathname.split("/").pop();
+
+  // If the home page is opened from the domain root
+  if (!currentPage || currentPage === "") {
+    currentPage = "index.html";
+  }
+
+  navLinks.forEach(function (link) {
+    const linkHref = link.getAttribute("href");
+    if (!linkHref) return;
+
+    const linkPage = linkHref.split("/").pop();
+
+    // Remove old active state from all links
+    link.classList.remove("active");
+    link.removeAttribute("aria-current");
+
+    // Add active state to the current page link only
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+    }
+  });
+});
