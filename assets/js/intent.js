@@ -20,7 +20,7 @@
   const SELECTORS = {
     whatsappLink: 'a[data-wa]',
     intentBar: '[data-intentbar]',
-    intentButton: '[data-intent]',
+    intentButton: 'button.intent-pill[data-intent]',
     intentClear: '[data-intent-clear]',
     intentCta: '[data-intent-cta]',
     spotlight: '[data-intent-spotlight]',
@@ -403,6 +403,8 @@ const PAGE_INTENTS = {
 
   function updateIntentButtons() {
     qsa(SELECTORS.intentButton).forEach((button) => {
+      if (!(button instanceof HTMLButtonElement)) return;
+
       const key = button.getAttribute('data-intent');
       const isActive = key === currentIntentKey;
 
@@ -563,13 +565,13 @@ const PAGE_INTENTS = {
     currentIntentKey = isValidIntent(key) ? key : null;
 
     if (currentIntentKey) {
-      document.documentElement.dataset.intent = currentIntentKey;
+      document.documentElement.dataset.currentIntent = currentIntentKey;
 
       if (options.save === true) {
         saveIntent(currentIntentKey);
       }
     } else {
-      delete document.documentElement.dataset.intent;
+      delete document.documentElement.dataset.currentIntent;
     }
 
     updateIntentButtons();
