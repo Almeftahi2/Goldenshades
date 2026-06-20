@@ -644,13 +644,15 @@ label{display:block;margin:0 0 6px 0;font-weight:800;color:var(--sub)}
   font-weight:700;
   box-shadow: 0 10px 26px rgba(0,0,0,.45);
 }
-.about-stats{
+.about-stats,
+.stats{
   margin-top:18px;
   display:grid;
   grid-template-columns: repeat(3, minmax(0,1fr));
   gap:12px;
 }
-.stat{
+.stat,
+.stat-item{
   background:rgba(16,18,23,.72);
   backdrop-filter: blur(10px);
   border:1px solid rgba(255,255,255,.12);
@@ -658,16 +660,20 @@ label{display:block;margin:0 0 6px 0;font-weight:800;color:var(--sub)}
   padding:14px 14px;
   box-shadow: 0 12px 34px rgba(0,0,0,.45);
 }
-.stat-num{
+.stat-num,
+.counter{
   font-size:32px;
   font-weight:900;
   letter-spacing:-.02em;
+  display:block;
 }
-.stat-label{
+.stat-label,
+.stat-item span{
   margin-top:4px;
   color:var(--sub);
   font-weight:700;
   font-size:13px;
+  display:block;
 }
 .about-actions{
   margin-top:18px;

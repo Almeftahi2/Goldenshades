@@ -61,14 +61,24 @@
   }
 
   // Animated counters (small, safe numbers)
-  const countEls = document.querySelectorAll('[data-count]');
+  const countEls = document.querySelectorAll('[data-count], [data-target]');
   if(countEls.length){
     const cio = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{
         if(!e.isIntersecting) return;
         const el = e.target;
-        const target = parseInt(el.getAttribute('data-count') || '0', 10);
-        const start = 0;
+        const target = parseInt(el.getAttribute('data-count') || el.getAttribute('data-target') || el.textContent || '0', 10);
+        if(!Number.isFinite(target) || target <= 0){
+          cio.unobserve(el);
+          return;
+        }
+        const current = parseInt(el.textContent || '', 10);
+        const start = Number.isFinite(current) && current > 0 ? current : target;
+        el.textContent = String(start);
+        if(start === target){
+          cio.unobserve(el);
+          return;
+        }
         const dur = 900;
         const t0 = performance.now();
         const step = (t)=>{
