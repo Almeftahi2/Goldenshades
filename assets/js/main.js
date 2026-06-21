@@ -127,27 +127,54 @@
 
 // Auto active Navbar link based on current page
 document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll('nav.menu a');
+  const navLinks = document.querySelectorAll("nav.menu a");
 
-  let currentPage = window.location.pathname.split("/").pop();
+  function normalizePage(url) {
+    if (!url) return "";
 
-  // If the home page is opened from the domain root
-  if (!currentPage || currentPage === "") {
-    currentPage = "index.html";
+    // تجاهل الروابط الخارجية أو روابط الاتصال
+    if (
+      url.startsWith("#") ||
+      url.startsWith("tel:") ||
+      url.startsWith("mailto:") ||
+      url.startsWith("javascript:")
+    ) {
+      return "";
+    }
+
+    let pathname = "";
+
+    try {
+      pathname = new URL(url, window.location.origin).pathname;
+    } catch (e) {
+      pathname = url;
+    }
+
+    // إزالة / الزائدة من النهاية
+    pathname = pathname.replace(/\/+$/, "");
+
+    const page = pathname.split("/").pop();
+
+    // توحيد الصفحة الرئيسية
+    if (!page || page === "index.html") {
+      return "home";
+    }
+
+    return page;
   }
+
+  const currentPage = normalizePage(window.location.pathname);
 
   navLinks.forEach(function (link) {
     const linkHref = link.getAttribute("href");
-    if (!linkHref) return;
-
-    const linkPage = linkHref.split("/").pop();
+    const linkPage = normalizePage(linkHref);
 
     // Remove old active state from all links
     link.classList.remove("active");
     link.removeAttribute("aria-current");
 
     // Add active state to the current page link only
-    if (linkPage === currentPage) {
+    if (linkPage && linkPage === currentPage) {
       link.classList.add("active");
       link.setAttribute("aria-current", "page");
     }
