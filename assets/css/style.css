@@ -1344,3 +1344,70 @@ input:focus,select:focus,textarea:focus{
 .floating-wa a.call-btn:hover{
   background: #0b5ed7;
 }
+<!-- ==================== قسم الأسعار - ساندوتش بانل ==================== -->
+<section class="section muted sandwich-prices" id="sandwich-prices">
+  <div class="container">
+    <h2>أسعار الساندوتش بانل في الرياض</h2>
+    
+    <p class="section-lead">
+      تختلف أسعار الساندوتش بانل بالرياض حسب السماكة، نوع الاستخدام، مساحة المشروع، ومستوى التشطيب. 
+      الجدول التالي يوضح نطاقات سعرية تقريبية <strong>تشمل التوريد والتركيب داخل الرياض</strong>.
+    </p>
+
+    <div class="price-table-wrap">
+      <table class="price-table">
+        <thead>
+          <tr>
+            <th>الخدمة</th>
+            <th>السماكة</th>
+            <th>السعر التقريبي</th>
+            <th>الأنسب لـ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>غرف وملاحق ساندوتش بانل <span class="popular-badge">الأكثر طلباً</span></td>
+            <td>5 سم</td>
+            <td><strong>140 - 190 ريال/م²</strong></td>
+            <td>الغرف الخفيفة والملاحق الاقتصادية</td>
+          </tr>
+          <tr>
+            <td>ساندوتش بانل عزل متوسط</td>
+            <td>7.5 سم</td>
+            <td><strong>190 - 230 ريال/م²</strong></td>
+            <td>غرف السطح والملاحق السكنية بالرياض</td>
+          </tr>
+          <tr>
+            <td>ساندوتش بانل عزل أعلى</td>
+            <td>10 سم</td>
+            <td><strong>230 - 280 ريال/م²</strong></td>
+            <td>المشاريع التي تحتاج عزلاً حرارياً أقوى</td>
+          </tr>
+          <tr>
+            <td>غرفة حارس ساندوتش بانل</td>
+            <td>5 سم</td>
+            <td><strong>160 - 220 ريال/م²</strong></td>
+            <td>غرف الحراسة والغرف الخارجية الصغيرة</td>
+          </tr>
+          <tr>
+            <td>مجالس خارجية ساندوتش بانل</td>
+            <td>7.5 - 10 سم</td>
+            <td><strong>يبدأ من 200 ريال/م²</strong></td>
+            <td>المجالس الخارجية والاستراحات</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="price-note">
+      الأسعار تقريبية وقد تختلف حسب التصميم، نوع التشطيب، موقع المشروع داخل الرياض، وعدد الفتحات. 
+      <strong>جميع الأسعار تشمل التوريد والتركيب والضمان.</strong>
+    </p>
+
+    <div class="price-cta">
+      <a class="btn-primary" href="https://wa.me/966562526395?text=%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%B9%D8%B1%D8%B6%20%D8%B3%D8%B9%D8%B1%20%D8%B3%D8%A7%D9%86%D8%AF%D9%88%D8%AA%D8%B4%20%D8%A8%D8%A7%D9%86%D9%84%20%D9%81%D9%8A%20%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6" target="_blank" rel="noopener">
+        احصل على عرض سعر دقيق عبر واتساب
+      </a>
+    </div>
+  </div>
+</section>
