@@ -1344,3 +1344,237 @@ input:focus,select:focus,textarea:focus{
 .floating-wa a.call-btn:hover{
   background: #0b5ed7;
 }
+
+/* ==================== قسم الأسعار - ساندوتش بانل ==================== */
+/* مضاف خصيصاً لصفحة sandwich.html - مربوط بالـ ID لمنع تعارضه مع بقية أقسام الموقع */
+#sandwich-prices{
+  position:relative;
+  padding:74px 0;
+  direction:rtl;
+  overflow:hidden;
+  background:
+    radial-gradient(900px 420px at 18% 0%, rgba(181,137,81,.14), transparent 60%),
+    radial-gradient(760px 360px at 88% 25%, rgba(181,137,81,.09), transparent 62%),
+    linear-gradient(180deg, rgba(255,255,255,.025), rgba(255,255,255,.00)),
+    var(--muted);
+}
+
+#sandwich-prices .container{
+  position:relative;
+  z-index:1;
+}
+
+#sandwich-prices h2{
+  margin:0 0 16px;
+  text-align:center;
+  color:var(--ivory);
+  font-size:clamp(25px,3vw,38px);
+  line-height:1.35;
+  font-weight:900;
+  text-shadow:0 12px 36px rgba(0,0,0,.40);
+}
+
+#sandwich-prices .section-lead{
+  max-width:920px;
+  margin:0 auto 32px;
+  color:rgba(249,249,249,.82);
+  text-align:center;
+  font-size:clamp(15px,1.35vw,18px);
+  line-height:2;
+  font-weight:600;
+}
+
+#sandwich-prices .section-lead strong{
+  color:var(--gold);
+  font-weight:900;
+}
+
+#sandwich-prices .price-table-wrap{
+  width:100%;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  border-radius:24px;
+  border:1px solid rgba(181,137,81,.28);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.038)),
+    rgba(31,32,35,.82);
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.42),
+    0 0 0 1px rgba(255,255,255,.045) inset,
+    0 22px 70px rgba(181,137,81,.11);
+  backdrop-filter:blur(14px) saturate(145%);
+}
+
+#sandwich-prices .price-table{
+  width:100%;
+  min-width:820px;
+  margin:0;
+  border-collapse:separate;
+  border-spacing:0;
+  table-layout:auto;
+  direction:rtl;
+  color:var(--ivory);
+  background:transparent;
+}
+
+#sandwich-prices .price-table th,
+#sandwich-prices .price-table td{
+  padding:17px 18px;
+  text-align:right;
+  vertical-align:middle;
+  border:0;
+  line-height:1.85;
+}
+
+#sandwich-prices .price-table thead th{
+  position:relative;
+  background:linear-gradient(135deg, var(--gold), #D6A36B);
+  color:#111;
+  font-size:15px;
+  font-weight:900;
+  white-space:nowrap;
+  border-bottom:1px solid rgba(0,0,0,.12);
+}
+
+#sandwich-prices .price-table thead th:first-child{
+  border-start-start-radius:22px;
+}
+
+#sandwich-prices .price-table thead th:last-child{
+  border-start-end-radius:22px;
+}
+
+#sandwich-prices .price-table tbody td{
+  color:rgba(249,249,249,.90);
+  font-size:15px;
+  font-weight:700;
+  border-bottom:1px solid rgba(255,255,255,.085);
+}
+
+#sandwich-prices .price-table tbody td strong{
+  color:#fff;
+  font-weight:900;
+  white-space:nowrap;
+}
+
+#sandwich-prices .price-table tbody tr{
+  transition:background .22s ease, transform .22s ease;
+}
+
+#sandwich-prices .price-table tbody tr:nth-child(even){
+  background:rgba(255,255,255,.032);
+}
+
+#sandwich-prices .price-table tbody tr:hover{
+  background:rgba(181,137,81,.12);
+}
+
+#sandwich-prices .price-table tbody tr:last-child td{
+  border-bottom:0;
+}
+
+#sandwich-prices .price-table .highlight-row,
+#sandwich-prices .price-table tbody tr.highlight-row{
+  background:linear-gradient(90deg, rgba(181,137,81,.19), rgba(181,137,81,.075)) !important;
+}
+
+#sandwich-prices .popular-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-inline-start:8px;
+  padding:4px 10px;
+  border-radius:999px;
+  background:linear-gradient(135deg, var(--gold), #D6A36B);
+  color:#111;
+  font-size:12px;
+  line-height:1.4;
+  font-weight:900;
+  white-space:nowrap;
+  box-shadow:0 10px 26px rgba(181,137,81,.24);
+}
+
+#sandwich-prices .price-note{
+  max-width:960px;
+  margin:24px auto 0;
+  color:rgba(249,249,249,.82);
+  text-align:center;
+  font-size:15.5px;
+  line-height:2;
+  font-weight:700;
+}
+
+#sandwich-prices .price-note strong{
+  color:#fff;
+  font-weight:900;
+}
+
+#sandwich-prices .price-cta{
+  margin-top:26px;
+  text-align:center;
+}
+
+#sandwich-prices .price-cta .btn-primary{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:13px 24px;
+  border-radius:16px;
+  border:1px solid rgba(181,137,81,.45);
+  background:linear-gradient(135deg, var(--gold), #D6A36B);
+  color:#111;
+  font-size:16px;
+  font-weight:900;
+  text-decoration:none;
+  box-shadow:0 18px 54px rgba(181,137,81,.22), 0 16px 42px rgba(0,0,0,.25);
+  transition:transform .22s ease, box-shadow .22s ease;
+}
+
+#sandwich-prices .price-cta .btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 24px 70px rgba(181,137,81,.30), 0 18px 44px rgba(0,0,0,.32);
+}
+
+@media (max-width:768px){
+  #sandwich-prices{
+    padding:54px 0;
+  }
+
+  #sandwich-prices h2{
+    text-align:right;
+    font-size:25px;
+  }
+
+  #sandwich-prices .section-lead{
+    text-align:right;
+    font-size:15.5px;
+    margin-bottom:24px;
+  }
+
+  #sandwich-prices .price-table{
+    min-width:720px;
+  }
+
+  #sandwich-prices .price-table th,
+  #sandwich-prices .price-table td{
+    padding:13px 12px;
+    font-size:13.5px;
+  }
+
+  #sandwich-prices .popular-badge{
+    margin-top:6px;
+    margin-inline-start:0;
+  }
+
+  #sandwich-prices .price-note{
+    text-align:right;
+    font-size:14.5px;
+  }
+
+  #sandwich-prices .price-cta .btn-primary{
+    width:100%;
+    max-width:360px;
+    font-size:15.5px;
+  }
+}
