@@ -393,10 +393,16 @@ img{max-width:100%;display:block}
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["LocalBusiness", "HomeAndConstructionBusiness"],
+      "@type": [
+        "LocalBusiness",
+        "HomeAndConstructionBusiness"
+      ],
       "@id": "https://www.ebdadhel.com/#business",
       "name": "مؤسسة إبداع الظل",
-      "alternateName": ["إبداع الظل", "ابداع الظل"],
+      "alternateName": [
+        "إبداع الظل",
+        "ابداع الظل"
+      ],
       "url": "https://www.ebdadhel.com/",
       "logo": {
         "@type": "ImageObject",
@@ -404,35 +410,54 @@ img{max-width:100%;display:block}
         "width": 512,
         "height": 512
       },
-      "telephone": "+966562526395",
-      "email": "info@ebdadhel.com",
-      "priceRange": "$$",
-      "description": "مؤسسة متخصصة في تنفيذ المظلات والديكور الخارجي والساندوتش بانل والإسمنت بورد وبديل الخشب والجلسات الخارجية في الرياض.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "الرياض",
-        "addressRegion": "منطقة الرياض",
-        "addressCountry": "SA"
-      },
-      "areaServed": [
-        {"@type": "City", "name": "الرياض"},
-        {"@type": "Country", "name": "المملكة العربية السعودية"}
+      "image": [
+        "https://www.ebdadhel.com/assets/img/logo-512.png",
+        "https://www.ebdadhel.com/assets/img/og-cover.png",
+        "https://www.ebdadhel.com/assets/img/hero.webp"
       ],
-      "contactPoint": [
+      "telephone": "+966562526395",
+      "description": "تنفيذ مظلات مودرن وساندوتش بانل وإسمنت بورد ومجالس خارجية في الرياض بخامات عالية الجودة وتشطيب فاخر.",
+      "priceRange": "$$",
+      "areaServed": [
         {
-          "@type": "ContactPoint",
-          "telephone": "+966562526395",
-          "email": "info@ebdadhel.com",
-          "contactType": "customer service",
-          "areaServed": "SA",
-          "availableLanguage": ["Arabic"],
-          "url": "https://www.ebdadhel.com/contact.html"
+          "@type": "City",
+          "name": "الرياض"
+        },
+        {
+          "@type": "Country",
+          "name": "المملكة العربية السعودية"
         }
       ],
+      "hasMap": "https://maps.app.goo.gl/fe9xHRuFgqbUuPTv5",
       "sameAs": [
+        "https://maps.app.goo.gl/fe9xHRuFgqbUuPTv5",
         "https://tiktok.com/@abda.adel100",
         "https://www.instagram.com/mzalat1?igsh=czkyMzR5Y2tnNDYx",
         "https://youtube.com/channel/UCzd1sNGuzWcT3-sJaCvp3FA?si=JgEiq5I6LNmDnbls"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+966562526395",
+        "contactType": "customer service",
+        "areaServed": "SA",
+        "availableLanguage": [
+          "ar-SA"
+        ]
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Saturday",
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "opens": "08:00",
+          "closes": "22:00"
+        }
       ]
     },
     {
@@ -441,18 +466,26 @@ img{max-width:100%;display:block}
       "url": "https://www.ebdadhel.com/",
       "name": "مؤسسة إبداع الظل",
       "inLanguage": "ar-SA",
-      "publisher": {"@id": "https://www.ebdadhel.com/#business"}
+      "publisher": {
+        "@id": "https://www.ebdadhel.com/#business"
+      }
     },
     {
       "@type": "ContactPage",
       "@id": "https://www.ebdadhel.com/contact.html#webpage",
       "url": "https://www.ebdadhel.com/contact.html",
-      "name": "اتصل بنا | مؤسسة إبداع الظل بالرياض - معاينة مجانية",
-      "description": "صفحة التواصل مع مؤسسة إبداع الظل في الرياض لطلب معاينة مجانية لمشاريع المظلات والديكور الخارجي.",
+      "name": "تواصل معنا | مؤسسة إبداع الظل",
+      "description": "تواصل مع مؤسسة إبداع الظل لطلب معاينة مجانية أو عرض سعر للمظلات والملاحق الخارجية داخل الرياض.",
       "inLanguage": "ar-SA",
-      "isPartOf": {"@id": "https://www.ebdadhel.com/#website"},
-      "about": {"@id": "https://www.ebdadhel.com/#business"},
-      "mainEntity": {"@id": "https://www.ebdadhel.com/#business"}
+      "isPartOf": {
+        "@id": "https://www.ebdadhel.com/#website"
+      },
+      "about": {
+        "@id": "https://www.ebdadhel.com/#business"
+      },
+      "mainEntity": {
+        "@id": "https://www.ebdadhel.com/#business"
+      }
     },
     {
       "@type": "BreadcrumbList",
@@ -467,7 +500,7 @@ img{max-width:100%;display:block}
         {
           "@type": "ListItem",
           "position": 2,
-          "name": "اتصل بنا",
+          "name": "تواصل معنا",
           "item": "https://www.ebdadhel.com/contact.html"
         }
       ]
