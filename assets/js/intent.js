@@ -390,6 +390,8 @@ const PAGE_INTENTS = {
     const href = buildWhatsAppHref();
 
     qsa(SELECTORS.whatsappLink).forEach((link) => {
+      if (/[?&]text=/.test(link.getAttribute('href') || '')) return;
+
       link.href = href;
       link.target = '_blank';
       link.rel = 'noopener';
@@ -620,6 +622,34 @@ const PAGE_INTENTS = {
   function init() {
     wireIntentBar();
     wireLightbox();
+
+    const intentForm = qs('[data-intent-form]');
+    if (intentForm) {
+      intentForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const formData = new FormData(intentForm);
+        const name = cleanText(formData.get('name'));
+        const phone = cleanText(formData.get('phone'));
+        const city = cleanText(formData.get('city'));
+        const size = cleanText(formData.get('size'));
+        const note = cleanText(formData.get('note'));
+        const intent = getCurrentIntent();
+        const serviceName = intent?.messageLabel || getPageTitle();
+        const message = [
+          'السلام عليكم، أرغب في طلب معاينة أو تسعيرة.',
+          serviceName ? `الخدمة/الصفحة: ${serviceName}` : '',
+          name ? `الاسم: ${name}` : '',
+          phone ? `الجوال: ${phone}` : '',
+          city ? `المدينة/الحي: ${city}` : '',
+          size ? `المقاس التقريبي: ${size}` : '',
+          note ? `ملاحظات: ${note}` : ''
+        ].filter(Boolean).join('\n');
+        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+
+        window.open(url, '_blank', 'noopener');
+      });
+    }
 
     applyIntent(resolveInitialIntent(), {
       save: Boolean(detectIntentFromPath())
