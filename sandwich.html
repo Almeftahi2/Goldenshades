@@ -653,29 +653,6 @@ img{max-width:100%;display:block}
 .cta-actions{display:flex;gap:10px;flex-wrap:wrap}
 @media(max-width:640px){.final-cta .cta-actions a{width:100%}}
 </style>
-
-
-<!-- Non-critical canonical redirect moved out of head to avoid blocking first render -->
-<script>
-  (function () {
-    // Force canonical host/protocol on the LIVE site only.
-    var targetHost = "www.ebdadhel.com";
-    var proto = window.location.protocol;
-    var host = window.location.hostname;
-
-    if (proto !== "http:" && proto !== "https:") return;
-    if (host === "localhost" || host === "127.0.0.1") return;
-
-    if (host === "ebdadhel.com") {
-      window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
-      return;
-    }
-
-    if (host === targetHost && proto !== "https:") {
-      window.location.replace("https://" + targetHost + window.location.pathname + window.location.search + window.location.hash);
-    }
-  })();
-</script>
 <script defer="" src="assets/js/main.js"></script>
 <script defer src="assets/js/intent.js?v=3"></script>
 </body>
