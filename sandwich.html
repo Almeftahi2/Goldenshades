@@ -12,13 +12,13 @@
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link
-  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;display=optional"
+  href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;display=optional"
   rel="stylesheet"
   media="print"
   onload="this.onload=null;this.media='all'"/>
 <noscript>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&amp;display=optional"
+    href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;display=optional"
     rel="stylesheet"/>
 </noscript>
 <style>
@@ -26,21 +26,21 @@
 :root{--charcoal:#2D2E32;--gold:#B58951;--cement:#8D9196;--ivory:#F9F9F9;--bg:#1F2023;--muted:#26272B;--text:var(--ivory);--textDark:var(--charcoal);--sub:rgba(249,249,249,.78);--subDark:rgba(45,46,50,.72);--dark:var(--bg);--beige:#cbb89d;--radius:18px;--shadow:0 18px 44px rgba(0,0,0,.45);--card:rgba(255,255,255,.055);--cardBorder:rgba(255,255,255,.12);--accent:var(--gold)}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;font-family:"Cairo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:radial-gradient(1200px 700px at 15% 10%,rgba(181,137,81,.10),transparent 60%),radial-gradient(900px 520px at 85% 20%,rgba(181,137,81,.08),transparent 58%),radial-gradient(1000px 600px at 50% 85%,rgba(141,145,150,.08),transparent 60%),var(--bg);color:var(--text);direction:rtl;line-height:1.7}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#1F2023;color:var(--text);direction:rtl;line-height:1.7}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 .container{width:min(1120px,92%);margin:0 auto}
 .skip-link{position:absolute;right:-999px;top:auto;width:1px;height:1px;overflow:hidden}
 
 /* Reserve space for top controls before full CSS loads */
-.intentbar{position:sticky;top:64px;z-index:40;min-height:46px;background:rgba(45,46,50,.88);backdrop-filter:blur(10px);border-bottom:1px solid rgba(181,137,81,.18);font-family:"Cairo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.intentbar{position:sticky;top:64px;z-index:40;min-height:46px;background:rgba(45,46,50,.88);border-bottom:1px solid rgba(181,137,81,.18);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 .intentbar-inner{display:flex;align-items:center;gap:.6rem;min-height:46px;padding:.55rem 0;overflow:auto;-webkit-overflow-scrolling:touch}
 .intentbar-label{color:rgba(249,249,249,.85);font-weight:700;white-space:nowrap}
 .intent-pill{border:1px solid rgba(181,137,81,.35);background:rgba(31,32,35,.55);color:var(--ivory);padding:.45rem .8rem;border-radius:999px;font:inherit;font-weight:700;white-space:nowrap}
 .intent-pill.active{background:linear-gradient(135deg,rgba(181,137,81,.95),rgba(181,137,81,.55));color:var(--dark);border-color:rgba(181,137,81,1)}
 .intent-clear{margin-inline-start:auto;color:rgba(249,249,249,.8);font-weight:700;padding:.35rem .5rem;white-space:nowrap}
 
-.topbar{position:sticky;top:0;z-index:50;min-height:85px;background:rgba(45,46,50,.78);backdrop-filter:saturate(150%) blur(10px);border-bottom:1px solid rgba(255,255,255,.06);font-family:"Cairo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.topbar{position:sticky;top:0;z-index:50;min-height:85px;background:rgba(45,46,50,.78);border-bottom:1px solid rgba(255,255,255,.06);font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 .nav{display:flex;align-items:center;justify-content:space-between;min-height:85px;padding:14px 0;gap:16px}
 .brand,.brand-link,.cta{display:flex;align-items:center;gap:10px}
 .brand-link{min-height:56px}
@@ -60,7 +60,7 @@ img{max-width:100%;display:block}
 .btn.primary,.btn.gold,.btn-primary{background:linear-gradient(135deg,#B58951,#D6A36B);color:#111;border:0;box-shadow:var(--shadow)}
 .btn-secondary{background:rgba(255,255,255,.055);color:#fff;border:1px solid rgba(255,255,255,.12);box-shadow:var(--shadow)}
 
-.sandwich-hero{position:relative;width:100%;height:560px;min-height:560px;display:flex;align-items:center;color:#fff;overflow:hidden;margin-bottom:60px;font-family:"Cairo",system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
+.sandwich-hero{position:relative;width:100%;height:560px;min-height:560px;display:flex;align-items:center;color:#fff;overflow:hidden;margin-bottom:60px;font-family:system-ui,-apple-system,"Segoe UI",Arial,sans-serif}
 .sandwich-hero .hero-image{position:absolute;inset:0;z-index:0;display:block;width:100%;height:100%;aspect-ratio:1200/675}
 .sandwich-hero .hero-image img{display:block;width:100%;height:100%;object-fit:cover}
 .sandwich-hero .hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.65));pointer-events:none}
@@ -70,76 +70,6 @@ img{max-width:100%;display:block}
 .sandwich-hero .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
 .sandwich-page{display:block;overflow-anchor:none}
 .sandwich-hero,.sandwich-hero .hero-image,.sandwich-hero .hero-overlay{contain:layout style}
-
-/* CLS guard: keep CTA geometry identical before and after site.min.css loads */
-.intent-pill{
-  height:40px;
-  min-height:40px;
-  line-height:1;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-}
-.intent-pill[data-intent="mazallat"]{width:108px;min-width:108px}
-.intent-pill[data-intent="wood"]{width:92px;min-width:92px}
-.intent-pill[data-intent="sandwich"]{width:122px;min-width:122px}
-.intent-clear{
-  width:76px;
-  min-width:76px;
-  height:36px;
-  min-height:36px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  line-height:1;
-}
-
-.topbar .cta .btn{
-  width:190px;
-  min-width:190px;
-  height:44px;
-  min-height:44px;
-  padding:10px 14px;
-  line-height:1;
-  white-space:nowrap;
-}
-
-.sandwich-hero .btn-primary,
-.sandwich-hero .btn-secondary{
-  height:54px;
-  min-height:54px;
-  padding:13px 24px;
-  border-radius:16px;
-  font-size:16px;
-  line-height:1;
-  white-space:nowrap;
-}
-.sandwich-hero .btn-primary{
-  width:210px;
-  min-width:210px;
-}
-.sandwich-hero .btn-secondary{
-  width:160px;
-  min-width:160px;
-}
-
-@media(max-width:640px){
-  .sandwich-hero .btn-primary,
-  .sandwich-hero .btn-secondary{
-    width:100%;
-    min-width:0;
-  }
-}
-
-/* Critical first content section: prevents FOUC immediately below the hero */
-.section{padding:54px 0}
-.section h2{margin:0 0 16px;font-size:clamp(20px,2.2vw,32px);font-weight:900;line-height:1.35}
-.sandwich-intro{background:transparent}
-.sandwich-intro p{max-width:900px;margin:0;color:var(--sub);font-size:clamp(16px,1.7vw,18px);line-height:1.9}
-@media(max-width:640px){
-  .section{padding:42px 0}
-  .sandwich-intro p{font-size:16px;line-height:1.85}
-}
 
 @media(max-width:900px){
   .menu{display:none}
@@ -152,18 +82,7 @@ img{max-width:100%;display:block}
   .sandwich-hero .hero-actions a{width:100%;text-align:center}
 }
 </style>
-<link
-  rel="preload"
-  as="style"
-  href="assets/css/site.min.css?v=prices-20260626"/>
-<link
-  href="assets/css/site.min.css?v=prices-20260626"
-  rel="stylesheet"
-  media="print"
-  onload="this.onload=null;this.media='all'"/>
-<noscript>
-  <link href="assets/css/site.min.css?v=prices-20260626" rel="stylesheet"/>
-</noscript>
+<link href="assets/css/site.min.css?v=prices-20260626" rel="stylesheet"/>
 <meta content="تركيب ساندوتش بانل بالرياض للملاحق والغرف الخارجية والأسطح. عزل حراري فعال وتنفيذ سريع يناسب الفلل والاستراحات مع معاينة مجانية قبل البدء." name="description"/>
 <meta content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" name="robots"/>
 <meta content="مؤسسة إبداع الظل" name="author"/>
@@ -362,13 +281,13 @@ img{max-width:100%;display:block}
 <section class="sandwich-hero">
 <picture class="hero-image">
   <source
-    srcset="
-      assets/img/sandwich-hero-480w.webp 480w,
-      assets/img/sandwich-hero-768w.webp 768w,
-      assets/img/sandwich-hero.webp 1200w
-    "
-    sizes="100vw"
-    type="image/webp">
+  srcset="
+    assets/img/sandwich-hero-480w.webp 480w,
+    assets/img/sandwich-hero-768w.webp 768w,
+    assets/img/sandwich-hero.webp 1200w
+  "
+  sizes="100vw"
+  type="image/webp">
   <img
     src="assets/img/sandwich-hero.webp"
     alt="تركيب ساندوتش بانل بالرياض للملاحق وغرف السطح والغرف المعزولة حرارياً"
@@ -672,7 +591,7 @@ img{max-width:100%;display:block}
 <div class="footer">
 <div class="container">
 <div class="cols">
-<div class="col"><div class="footer-brand"><img alt="شعار مؤسسة إبداع الظل" class="footer-logo" decoding="async" height="64" loading="lazy" sizes="64px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="64"><div><h4>مؤسسة إبداع الظل</h4><div>تنفيذ ملاحق ساندوتش بانل، إسمنت بورد، مظلات مودرن، مجالس وجلسات داخل الرياض.</div></div></div><div class="small">© <span id="year"></span> جميع الحقوق محفوظة</div></div>
+<div class="col"><div class="footer-brand"><img alt="شعار مؤسسة إبداع الظل" class="footer-logo" decoding="async" height="64" loading="lazy" sizes="64px" src="assets/img/logo-64.webp" srcset="assets/img/logo-64.webp 64w, assets/img/logo-120.webp 120w" width="64"><div><h4>مؤسسة إبداع الظل</h4><div>تنفيذ ملاحق ساندوتش بانل، إسمنت بورد، مظلات مودرن، مجالس وجلسات داخل الرياض.</div></div></img></div><div class="small">© <span id="year"></span> جميع الحقوق محفوظة</div></div>
 <div class="col">
 <h4>روابط سريعة</h4>
 <div class="footer-service-links">
@@ -715,7 +634,7 @@ img{max-width:100%;display:block}
 
 <style id="sandwich-noncritical-css">
 .sandwich-page .section h2{margin-top:0}
-.why-sandwich,.sandwich-uses,.sandwich-process,.sandwich-cost,.sandwich-prices,.sandwich-gallery,.faq-section,.final-cta{content-visibility:auto;contain-intrinsic-size:600px}
+.sandwich-intro,.why-sandwich,.sandwich-uses,.sandwich-process,.sandwich-cost,.sandwich-gallery,.faq-section,.final-cta{content-visibility:auto;contain-intrinsic-size:600px}
 .benefits-grid,.uses-grid,.process-grid,.cost-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:22px}
 .benefit-box,.use-box,.process-box,.cost-box{background:var(--card);border:1px solid var(--cardBorder);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow)}
 .benefit-box h3,.use-box h3,.process-box h3,.cost-box h3{margin:0 0 8px;color:#fff}
